@@ -1,0 +1,24 @@
+Package: getTBinR
+Type: Package
+Version: 0.0.1.9000
+Title: Import Clean Analysis Ready WHO Tuberculosis Data
+Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
+                     email = "contact@samabbott.co.uk"))
+Description: The World Health Organisation compiles multiple datasets across infectious diseases. This package aims to facilitate easy import of analysis ready Tuberculosis data into R.
+License: MIT + file LICENSE
+VignetteBuilder: knitr
+URL: http://www.samabbott.co.uk/getTBinR, 
+     https://github.com/seabbs/getTBinR
+BugReports: https://github.com/seabbs/h2ohelper/getTBinR
+Encoding: UTF-8
+RoxygenNote: 6.0.1
+LazyData: true
+Suggests: devtools,
+    testthat,
+    covr,
+    pkgdown,
+    rmarkdown,
+    knitr
+Remotes: hadley/pkgdown
+Imports: data.table,
+    tibble
