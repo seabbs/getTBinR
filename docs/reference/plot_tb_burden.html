@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • getTBinR</title>
+<title>Plot TB Burden by Country — plot_tb_burden • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -90,64 +90,62 @@
       </header>
 
       <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.0.1.9000</small>
-      </h1>
+    <h1>Plot TB Burden by Country</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    
+    <p>Plot measures of TB burden by country. Currently only supports plotting of incidence rates.
+In development so use with caution.</p>
+    
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <pre class="usage"><span class='fu'>plot_tb_burden</span>(<span class='no'>df</span>, <span class='kw'>no_countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>Dataframe of TB burden data, as sourced by <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>no_countries</th>
+      <td><p>Numeric, the number of countries to plot</p></td>
+    </tr>
+    <tr>
+      <th>facet</th>
+      <td><p>Character string, the name of the variable to facet by.</p></td>
+    </tr>
+    <tr>
+      <th>scales</th>
+      <td><p>Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
+alternatives are "free_y", "free_x", or "free".</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_data_dict.html">get_data_dict</a></code> </p>
-          </td>
-          <td><p>Get the WHO Data Dictionary for TB Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_tb_burden.html">get_tb_burden</a></code> </p>
-          </td>
-          <td><p>Get the WHO TB Burden Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot_tb_burden.html">plot_tb_burden</a></code> </p>
-          </td>
-          <td><p>Plot TB Burden by Country</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="search_data_dict.html">search_data_dict</a></code> </p>
-          </td>
-          <td><p>Search the WHO TB Data Dictionary by Variable Name.</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <p>A plot of TB Incidence Rates by Country</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()
+
+<span class='fu'>plot_tb_burden</span>(<span class='no'>tb_burden</span>, <span class='kw'>no_countries</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='img'><img src='plot_tb_burden-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+</div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

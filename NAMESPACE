@@ -2,7 +2,10 @@
 
 export(get_data_dict)
 export(get_tb_burden)
+export(plot_tb_burden)
 export(search_data_dict)
+import(ggplot2)
+import(magrittr)
 importFrom(data.table,fread)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,distinct)

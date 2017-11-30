@@ -132,29 +132,10 @@ knitr::kable(vars_defs_of_interest)
 
 ### Plotting Incidence Rates over Time in 9 Randomly Sampled Countries
 
-To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries. As we are producing several similar graphs we first develop a basic plot function.
+To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries using the inbuilt `plot_tb_burden` function. We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!
 
 ``` r
-country_sample <- sample(unique(tb_burden$country), 9)
-
-graph_tb_burden <- function(df) {
-  df %>% 
-  filter(country %in% country_sample) %>% 
-  ggplot(aes(x = year, y = e_inc_100k, col = country, fill = country)) +
-  geom_line() +
-  geom_ribbon(aes(ymin = e_inc_100k_lo, ymax =  e_inc_100k_hi), alpha = 0.2) +
-  scale_colour_viridis_d(end = 0.9) +
-  scale_fill_viridis_d(end = 0.9) +
-  theme_minimal() +
-  theme(legend.position = "none") +
-  labs(x = "Year", y = "Incidence rates (per 100k population)")
-}
-```
-
-We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!
-
-``` r
-graph_tb_burden(tb_burden)
+plot_tb_burden(tb_burden, no_countries = 9)
 ```
 
 ![](figure/plot-incidence-1.png)
@@ -162,8 +143,7 @@ graph_tb_burden(tb_burden)
 We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.
 
 ``` r
-graph_tb_burden(tb_burden) +
-  facet_wrap(~country)
+plot_tb_burden(tb_burden, no_countries = 9, facet = "country")
 ```
 
 ![](figure/plot-incidence-facet-1.png)
@@ -171,8 +151,8 @@ graph_tb_burden(tb_burden) +
 To explore within country variation we need to change the scale of the y axis.
 
 ``` r
-graph_tb_burden(tb_burden) +
-  facet_wrap(~country, scales = "free_y")
+plot_tb_burden(tb_burden, no_countries = 9,
+               facet = "country", scales = "free_y")
 ```
 
 ![](figure/plot-incidence-facet-free-y-1.png)

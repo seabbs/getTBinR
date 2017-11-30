@@ -18,8 +18,6 @@ devtools::install_deps()
 use_package("pkgdown", type = "Suggests")
 use_package("devtools", type = "Suggests")
 use_package("testthat", type = "Suggests")
-use_package("magrittr", type = "Suggests")
-use_package("ggplot2", type = "Suggests")
 use_package("gganimiate", type = "Suggests")
 
 #Imports
@@ -27,6 +25,8 @@ use_package("data.table", type = "Imports")
 use_package("tibble", type = "Imports")
 use_package("dplyr", type = "Imports")
 use_package("purrr", type = "Imports")
+use_package("magrittr", type = "Imports")
+use_package("ggplot2", type = "Imports")
 
 #Vignettes
 use_vignette("intro")

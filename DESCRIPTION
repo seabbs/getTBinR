@@ -19,11 +19,12 @@ Suggests: devtools,
     covr,
     pkgdown,
     rmarkdown,
-    knitr,
-    ggplot2
+    knitr
 Remotes: hadley/pkgdown,
          tidyverse/ggplot2
 Imports: data.table,
     tibble,
     dplyr,
-    purrr
+    purrr,
+    ggplot2,
+    magrittr

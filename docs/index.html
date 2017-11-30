@@ -295,31 +295,15 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <div id="plotting-incidence-rates-over-time-in-9-randomly-sampled-countries" class="section level3">
 <h3 class="hasAnchor">
 <a href="#plotting-incidence-rates-over-time-in-9-randomly-sampled-countries" class="anchor"></a>Plotting Incidence Rates over Time in 9 Randomly Sampled Countries</h3>
-<p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries. As we are producing several similar graphs we first develop a basic plot function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_sample &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="kw">unique</span>(tb_burden<span class="op">$</span>country), <span class="dv">9</span>)
-
-graph_tb_burden &lt;-<span class="st"> </span><span class="cf">function</span>(df) {
-  df <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(country <span class="op">%in%</span><span class="st"> </span>country_sample) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> year, <span class="dt">y =</span> e_inc_100k, <span class="dt">col =</span> country, <span class="dt">fill =</span> country)) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_ribbon">geom_ribbon</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">ymin =</span> e_inc_100k_lo, <span class="dt">ymax =</span>  e_inc_100k_hi), <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis">scale_colour_viridis_d</a></span>(<span class="dt">end =</span> <span class="fl">0.9</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis">scale_fill_viridis_d</a></span>(<span class="dt">end =</span> <span class="fl">0.9</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"Year"</span>, <span class="dt">y =</span> <span class="st">"Incidence rates (per 100k population)"</span>)
-}</code></pre></div>
-<p>We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">graph_tb_burden</span>(tb_burden)</code></pre></div>
+<p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries using the inbuilt <code>plot_tb_burden</code> function. We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">no_countries =</span> <span class="dv">9</span>)</code></pre></div>
 <p><img src="figure/plot-incidence-1.png" width="672"></p>
 <p>We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">graph_tb_burden</span>(tb_burden) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>country)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">no_countries =</span> <span class="dv">9</span>, <span class="dt">facet =</span> <span class="st">"country"</span>)</code></pre></div>
 <p><img src="figure/plot-incidence-facet-1.png" width="672"></p>
 <p>To explore within country variation we need to change the scale of the y axis.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">graph_tb_burden</span>(tb_burden) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>country, <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">no_countries =</span> <span class="dv">9</span>,
+               <span class="dt">facet =</span> <span class="st">"country"</span>, <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
 <p><img src="figure/plot-incidence-facet-free-y-1.png" width="672"></p>
 </div>
 <div id="planned-functionality" class="section level3">
