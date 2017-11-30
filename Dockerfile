@@ -3,16 +3,8 @@ FROM rocker/tidyverse:latest
 
 MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
-RUN apt-get update -qq \
-  && apt-get -y --no-install-recommends install \
-    default-jdk \
-    default-jre \
-  && R CMD javareconf
+ADD . /home/rstudio/getTBinR
 
-EXPOSE 54321
+RUN Rscript -e 'devtools::install_dev_deps("home/rstudio/getTBinR")'
 
-ADD . /home/rstudio/h2ohelper
-
-RUN Rscript -e 'devtools::install_dev_deps("home/rstudio/h2ohelper")'
-
-RUN Rscript -e 'devtools::install("home/rstudio/h2ohelper")'
+RUN Rscript -e 'devtools::install("home/rstudio/getTBinR")'
