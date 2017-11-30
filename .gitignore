@@ -4,3 +4,4 @@
 .Ruserdata
 inst/doc
 data-raw/TB_data_dict.rds
+data-raw/TB_burden.rds
