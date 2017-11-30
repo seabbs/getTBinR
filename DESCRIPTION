@@ -21,4 +21,5 @@ Suggests: devtools,
     knitr
 Remotes: hadley/pkgdown
 Imports: data.table,
-    tibble
+    tibble,
+    dplyr

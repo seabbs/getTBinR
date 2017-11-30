@@ -22,6 +22,7 @@ use_package("testthat", type = "Suggests")
 #Imports
 use_package("data.table", type = "Imports")
 use_package("tibble", type = "Imports")
+use_package("dplyr", type = "Imports")
 
 #Vignettes
 use_vignette("intro")

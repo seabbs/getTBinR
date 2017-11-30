@@ -10,7 +10,7 @@
 #' @return A tibble containing the information in the data dictionary matching the variables
 #' searched for.
 #' @export
-#'
+#' @importFrom dplyr filter
 #' @examples
 #' 
 #' search_data_dict(var = "country")
