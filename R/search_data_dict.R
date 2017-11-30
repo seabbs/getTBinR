@@ -35,6 +35,8 @@ search_data_dict <- function(var = NULL, def = NULL, verbose = TRUE, ...) {
   dict <- get_data_dict(...)
   
   if (!is.null(var)) {
+    variable_name <- NULL
+    
     vars_of_interest <- dplyr::filter(dict, 
                                       variable_name %in% var)
     results_var <- nrow(vars_of_interest)
