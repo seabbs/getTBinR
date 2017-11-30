@@ -10,13 +10,13 @@
   return = TRUE)
 }
 \arguments{
-\item{url}{Character string, indicating  the url of the data 
+\item{url}{Character string, indicating  the url of the data
 dictionary. Default is current url.}
 
 \item{path}{Character string, indicating the folder to save the data into,
 defaults to \code{data-raw}.}
 
-\item{save}{Logical, should the dictionary be saved for reuse. Defaults to 
+\item{save}{Logical, should the dictionary be saved for reuse. Defaults to
 \code{TRUE}.}
 
 \item{save_name}{Character string, name to save dictionary under. Defaults to
@@ -30,8 +30,8 @@ The WHO TB data dictionary as a tibble with 4 variables:
 variable_name, dataset, code_list, definition.
 }
 \description{
-Get the data dictionary for TB burden data from the WHO, see 
-[here](http://www.who.int/tb/country/data/download/en/) for details.
+Get the data dictionary for TB burden data from the WHO, see
+\href{http://www.who.int/tb/country/data/download/en/}{here} for details.
 }
 \examples{
 

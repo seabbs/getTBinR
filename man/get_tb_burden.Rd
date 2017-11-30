@@ -16,7 +16,7 @@ Default is current url.}
 \item{path}{Character string, indicating the folder to save the data into,
 defaults to \code{data-raw}.}
 
-\item{save}{Logical, should the data be saved for reuse. Defaults to 
+\item{save}{Logical, should the data be saved for reuse. Defaults to
 \code{TRUE}.}
 
 \item{save_name}{Character string, name to save the data under. Defaults to
@@ -29,8 +29,8 @@ Defaults to \code{TRUE}.}
 The WHO TB burden data as a tibble.
 }
 \description{
-Get the TB burden data from the WHO, see 
-[here](http://www.who.int/tb/country/data/download/en/) for details.
+Get the TB burden data from the WHO, see
+\href{http://www.who.int/tb/country/data/download/en/}{here} for details.
 }
 \examples{
 

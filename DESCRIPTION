@@ -9,9 +9,10 @@ License: MIT + file LICENSE
 VignetteBuilder: knitr
 URL: http://www.samabbott.co.uk/getTBinR, 
      https://github.com/seabbs/getTBinR
-BugReports: https://github.com/seabbs/h2ohelper/getTBinR
+BugReports: https://github.com/seabbs/getTBinR/issues
 Encoding: UTF-8
 RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
 LazyData: true
 Suggests: devtools,
     testthat,
