@@ -6,7 +6,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "figure/"
 )
 ```
 
@@ -16,7 +16,104 @@ knitr::opts_chunk$set(
 [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR)
 [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master)
 
-This package contains functions to download and clean data made available by the World Health Organisation (WHO), see [here](http://www.who.int/about/copyright/en/) for permissions.
+Quickly and easily import analysis ready TB burden data from the World Health Orgnaisation (WHO) into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Commonly required aggregated datasets are provided to allow more time for conducting analysis. This package is inspired by a blog [post](https://incidental-ideas.org/2017/03/03/who-tuberculosis-data-ggplot2/), which looked at WHO TB incidence rates. See for [here](http://www.who.int/about/copyright/en/) for the WHO data permissions.
+
+## Using the package
+
+First load the package. We also load several other packages to help quickly explore the data.
+
+```{r packages, message = FALSE}
+library(getTBinR)
+library(ggplot2)
+library(knitr)
+library(magrittr)
+library(dplyr)
+```
+
+### Getting TB burden data
+
+Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy. If a local copy exists this will be loaded instead.
+
+```{r get-tb-burden-data}
+tb_burden <- get_tb_burden()
+
+tb_burden
+```
+
+### Searching for variable definitions
+
+The WHO provides a large, detailed, data dictionary for use with the TB burden data. However, searching through this dataset can be tedious. To streamline this process `getTBinR` provides a search function to find the definition of a single or multiple variables. Again if not previously used this function will download the data dictionary, but in subsequent uses will load a local copy.
+
+```{r search-data-dict}
+vars_of_interest <- search_data_dict(var = c("country",
+                                             "e_inc_100k",
+                                             "e_inc_100k_lo",
+                                             "e_inc_100k_hi"))
+
+knitr::kable(vars_of_interest)
+```
+
+We might also want to search the variable definitions for key phrases, for example mortality.
+
+```{r search-data-defs}
+defs_of_interest <- search_data_dict(def = c("mortality"))
+
+knitr::kable(defs_of_interest)
+```
+
+Finally we could both search for a known variable and for key phrases in variable definitions.
+
+```{r search-data-defs-var}
+vars_defs_of_interest <- search_data_dict(var = c("country"),
+                                     def = c("mortality"))
+
+knitr::kable(vars_defs_of_interest)
+```
+
+### Plotting Incidence Rates over Time in 9 Randomly Sampled Countries
+
+To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries. As we are producing several similar graphs we first develop a basic plot function.
+
+```{r set-up-graphs}
+country_sample <- sample(unique(tb_burden$country), 9)
+
+graph_tb_burden <- function(df) {
+  df %>% 
+  filter(country %in% country_sample) %>% 
+  ggplot(aes(x = year, y = e_inc_100k, col = country, fill = country)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = e_inc_100k_lo, ymax =  e_inc_100k_hi), alpha = 0.2) +
+  scale_colour_viridis_d(end = 0.9) +
+  scale_fill_viridis_d(end = 0.9) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  labs(x = "Year", y = "Incidence rates (per 100k population)")
+}
+```
+
+We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!
+
+```{r plot-incidence}
+graph_tb_burden(tb_burden)
+```
+
+We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.
+
+```{r plot-incidence-facet}
+graph_tb_burden(tb_burden) +
+  facet_wrap(~country)
+```
+
+To explore within country variation we need to change the scale of the y axis.
+
+```{r plot-incidence-facet-free-y}
+graph_tb_burden(tb_burden) +
+  facet_wrap(~country, scales = "free_y")
+```
+
+### Planned Functionality
+
+In future releases I plan to add addiitonal functionality that will import more data and aggregate existing datasets so that they are readily usable for analysis.
 
 ## Installation
 
@@ -33,7 +130,7 @@ This package has been developed in docker based on the `rocker/tidyverse` image,
 
 ```{bash, eval = FALSE}
 docker pull seabbs/gettbinr
-docker run -d -p 8787:8787 -p 54321:54321 -e USER=getTBinR -e PASSWORD=gettbinr --name getTBinR seabbs/gettbinr
+docker run -d -p 8787:8787 -e USER=getTBinR -e PASSWORD=getTBinR --name getTBinR seabbs/gettbinr
 ```
 
 The rstudio client can be accessed on port `8787` at `localhost` (or your machines ip). The default username is getTBinR and the default password is getTBinR.

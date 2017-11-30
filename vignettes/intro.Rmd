@@ -15,3 +15,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+
+See Readme for current functionality, more to come so watch this space... 

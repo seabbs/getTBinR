@@ -4,10 +4,13 @@
 \alias{search_data_dict}
 \title{Search the WHO TB Data Dictionary by Variable Name.}
 \usage{
-search_data_dict(var = NULL, verbose = TRUE, ...)
+search_data_dict(var = NULL, def = NULL, verbose = TRUE, ...)
 }
 \arguments{
 \item{var}{A character vector of variable names.}
+
+\item{def}{A character vector of terms to use to search the variable definitions
+for partial matches}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should search information be returned.}
 
@@ -24,7 +27,15 @@ To modify this behaviour pass arguements to \code{\link[getTBinR]{get_data_dict}
 }
 \examples{
 
+## Search for a known variable
 search_data_dict(var = "country")
+
+## Search for all variables mentioning mortality in their definition
+search_data_dict(def = "mortality")
+
+## Search for both a known variable and for mortality being mentioned in there definition
+## Duplicate entries will be omitted.
+search_data_dict(var = "e_mort_exc_tbhiv_100k", def = "mortality")
 
 }
 \seealso{

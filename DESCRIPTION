@@ -18,8 +18,11 @@ Suggests: devtools,
     covr,
     pkgdown,
     rmarkdown,
-    knitr
-Remotes: hadley/pkgdown
+    knitr,
+    ggplot2
+Remotes: hadley/pkgdown,
+         tidyverse/ggplot2
 Imports: data.table,
     tibble,
-    dplyr
+    dplyr,
+    purrr
