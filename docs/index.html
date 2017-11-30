@@ -77,7 +77,257 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#get-tb-data-in-r" class="anchor"></a>Get TB Data in R</h1></div>
 
-<p>This package contains functions to download and clean data made available by the World Health Organisation (WHO), see <a href="http://www.who.int/about/copyright/en/">here</a> for permissions.</p>
+<p>Quickly and easily import analysis ready TB burden data from the World Health Orgnaisation (WHO) into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Commonly required, aggregated, datasets are provided so that more time can be spent conducting analysis. This package is inspired by a blog <a href="https://incidental-ideas.org/2017/03/03/who-tuberculosis-data-ggplot2/">post</a>, which looked at WHO TB incidence rates. See <a href="http://www.who.int/about/copyright/en/">here</a> for the WHO data permissions.</p>
+<div id="using-the-package" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-the-package" class="anchor"></a>Using the package</h2>
+<p>First load the package. We also load several other packages to help quickly explore the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(getTBinR)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(knitr)
+<span class="kw">library</span>(magrittr)
+<span class="kw">library</span>(dplyr)</code></pre></div>
+<div id="getting-tb-burden-data" class="section level3">
+<h3 class="hasAnchor">
+<a href="#getting-tb-burden-data" class="anchor"></a>Getting TB burden data</h3>
+<p>Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy. If a local copy exists this will be loaded instead.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_tb_burden.html">get_tb_burden</a></span>()
+
+tb_burden
+<span class="co">#&gt; # A tibble: 3,651 x 71</span>
+<span class="co">#&gt;        country  iso2  iso3 iso_numeric g_whoregion  year e_pop_num</span>
+<span class="co">#&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt; &lt;int&gt;     &lt;int&gt;</span>
+<span class="co">#&gt;  1 Afghanistan    AF   AFG         004         EMR  2000  20093756</span>
+<span class="co">#&gt;  2 Afghanistan    AF   AFG         004         EMR  2001  20966463</span>
+<span class="co">#&gt;  3 Afghanistan    AF   AFG         004         EMR  2002  21979923</span>
+<span class="co">#&gt;  4 Afghanistan    AF   AFG         004         EMR  2003  23064851</span>
+<span class="co">#&gt;  5 Afghanistan    AF   AFG         004         EMR  2004  24118979</span>
+<span class="co">#&gt;  6 Afghanistan    AF   AFG         004         EMR  2005  25070798</span>
+<span class="co">#&gt;  7 Afghanistan    AF   AFG         004         EMR  2006  25893450</span>
+<span class="co">#&gt;  8 Afghanistan    AF   AFG         004         EMR  2007  26616792</span>
+<span class="co">#&gt;  9 Afghanistan    AF   AFG         004         EMR  2008  27294031</span>
+<span class="co">#&gt; 10 Afghanistan    AF   AFG         004         EMR  2009  28004331</span>
+<span class="co">#&gt; # ... with 3,641 more rows, and 64 more variables: e_inc_100k &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f15plus &lt;int&gt;, e_inc_num_f15plus_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;, e_inc_num_f_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f_hi &lt;int&gt;, e_inc_num_m014 &lt;int&gt;, e_inc_num_m014_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_m014_hi &lt;int&gt;, e_inc_num_m15plus &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_m15plus_lo &lt;int&gt;, e_inc_num_m15plus_hi &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_m &lt;int&gt;, e_inc_num_m_lo &lt;int&gt;, e_inc_num_m_hi &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_014 &lt;int&gt;, e_inc_num_014_lo &lt;int&gt;, e_inc_num_014_hi &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_15plus &lt;int&gt;, e_inc_num_15plus_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_15plus_hi &lt;int&gt;, e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_tbhiv_prct_hi &lt;dbl&gt;, e_inc_tbhiv_100k &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_inc_tbhiv_100k_lo &lt;dbl&gt;, e_inc_tbhiv_100k_hi &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_inc_tbhiv_num &lt;int&gt;, e_inc_tbhiv_num_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_tbhiv_num_hi &lt;int&gt;, e_mort_exc_tbhiv_100k &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_mort_exc_tbhiv_100k_lo &lt;dbl&gt;, e_mort_exc_tbhiv_100k_hi &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_mort_exc_tbhiv_num &lt;int&gt;, e_mort_exc_tbhiv_num_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_mort_exc_tbhiv_num_hi &lt;int&gt;, e_mort_tbhiv_100k &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_mort_tbhiv_100k_lo &lt;dbl&gt;, e_mort_tbhiv_100k_hi &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_mort_tbhiv_num &lt;int&gt;, e_mort_tbhiv_num_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;, e_mort_100k_lo &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;</span></code></pre></div>
+</div>
+<div id="searching-for-variable-definitions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#searching-for-variable-definitions" class="anchor"></a>Searching for variable definitions</h3>
+<p>The WHO provides a large, detailed, data dictionary for use with the TB burden data. However, searching through this dataset can be tedious. To streamline this process <code>getTBinR</code> provides a search function to find the definition of a single or multiple variables. Again if not previously used this function will download the data dictionary, but in subsequent uses will load a local copy.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vars_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">var =</span> <span class="kw">c</span>(<span class="st">"country"</span>,
+                                             <span class="st">"e_inc_100k"</span>,
+                                             <span class="st">"e_inc_100k_lo"</span>,
+                                             <span class="st">"e_inc_100k_hi"</span>))
+<span class="co">#&gt; 4 results found for your variable search for country, e_inc_100k, e_inc_100k_lo, e_inc_100k_hi</span>
+<span class="co">#&gt; 0 results found for your definition search for</span>
+
+knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(vars_of_interest)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">variable_name</th>
+<th align="left">dataset</th>
+<th align="left">code_list</th>
+<th align="left">definition</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">country</td>
+<td align="left">Country identification</td>
+<td align="left"></td>
+<td align="left">Country or territory name</td>
+</tr>
+<tr class="even">
+<td align="left">e_inc_100k</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated incidence (all forms) per 100 000 population</td>
+</tr>
+<tr class="odd">
+<td align="left">e_inc_100k_hi</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated incidence (all forms) per 100 000 population, high bound</td>
+</tr>
+<tr class="even">
+<td align="left">e_inc_100k_lo</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated incidence (all forms) per 100 000 population, low bound</td>
+</tr>
+</tbody>
+</table>
+<p>We might also want to search the variable definitions for key phrases, for example mortality.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">def =</span> <span class="kw">c</span>(<span class="st">"mortality"</span>))
+<span class="co">#&gt; 0 results found for your variable search for</span>
+<span class="co">#&gt; 6 results found for your definition search for mortality</span>
+
+knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(defs_of_interest)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">variable_name</th>
+<th align="left">dataset</th>
+<th align="left">code_list</th>
+<th align="left">definition</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">e_mort_exc_tbhiv_100k</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases (all forms, excluding HIV) per 100 000 population</td>
+</tr>
+<tr class="even">
+<td align="left">e_mort_exc_tbhiv_100k_hi</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases (all forms, excluding HIV), per 100 000 population, high bound</td>
+</tr>
+<tr class="odd">
+<td align="left">e_mort_exc_tbhiv_100k_lo</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases (all forms, excluding HIV), per 100 000 population, low bound</td>
+</tr>
+<tr class="even">
+<td align="left">e_mort_tbhiv_100k</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases who are HIV-positive, per 100 000 population</td>
+</tr>
+<tr class="odd">
+<td align="left">e_mort_tbhiv_100k_hi</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases who are HIV-positive, per 100 000 population, high bound</td>
+</tr>
+<tr class="even">
+<td align="left">e_mort_tbhiv_100k_lo</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases who are HIV-positive, per 100 000 population, low bound</td>
+</tr>
+</tbody>
+</table>
+<p>Finally we could both search for a known variable and for key phrases in variable definitions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vars_defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">var =</span> <span class="kw">c</span>(<span class="st">"country"</span>),
+                                     <span class="dt">def =</span> <span class="kw">c</span>(<span class="st">"mortality"</span>))
+<span class="co">#&gt; 1 results found for your variable search for country</span>
+<span class="co">#&gt; 6 results found for your definition search for mortality</span>
+
+knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(vars_defs_of_interest)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">variable_name</th>
+<th align="left">dataset</th>
+<th align="left">code_list</th>
+<th align="left">definition</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">country</td>
+<td align="left">Country identification</td>
+<td align="left"></td>
+<td align="left">Country or territory name</td>
+</tr>
+<tr class="even">
+<td align="left">e_mort_exc_tbhiv_100k</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases (all forms, excluding HIV) per 100 000 population</td>
+</tr>
+<tr class="odd">
+<td align="left">e_mort_exc_tbhiv_100k_hi</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases (all forms, excluding HIV), per 100 000 population, high bound</td>
+</tr>
+<tr class="even">
+<td align="left">e_mort_exc_tbhiv_100k_lo</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases (all forms, excluding HIV), per 100 000 population, low bound</td>
+</tr>
+<tr class="odd">
+<td align="left">e_mort_tbhiv_100k</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases who are HIV-positive, per 100 000 population</td>
+</tr>
+<tr class="even">
+<td align="left">e_mort_tbhiv_100k_hi</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases who are HIV-positive, per 100 000 population, high bound</td>
+</tr>
+<tr class="odd">
+<td align="left">e_mort_tbhiv_100k_lo</td>
+<td align="left">Estimates</td>
+<td align="left"></td>
+<td align="left">Estimated mortality of TB cases who are HIV-positive, per 100 000 population, low bound</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="plotting-incidence-rates-over-time-in-9-randomly-sampled-countries" class="section level3">
+<h3 class="hasAnchor">
+<a href="#plotting-incidence-rates-over-time-in-9-randomly-sampled-countries" class="anchor"></a>Plotting Incidence Rates over Time in 9 Randomly Sampled Countries</h3>
+<p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries. As we are producing several similar graphs we first develop a basic plot function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_sample &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="kw">unique</span>(tb_burden<span class="op">$</span>country), <span class="dv">9</span>)
+
+graph_tb_burden &lt;-<span class="st"> </span><span class="cf">function</span>(df) {
+  df <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(country <span class="op">%in%</span><span class="st"> </span>country_sample) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> year, <span class="dt">y =</span> e_inc_100k, <span class="dt">col =</span> country, <span class="dt">fill =</span> country)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_ribbon">geom_ribbon</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">ymin =</span> e_inc_100k_lo, <span class="dt">ymax =</span>  e_inc_100k_hi), <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis">scale_colour_viridis_d</a></span>(<span class="dt">end =</span> <span class="fl">0.9</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis">scale_fill_viridis_d</a></span>(<span class="dt">end =</span> <span class="fl">0.9</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"Year"</span>, <span class="dt">y =</span> <span class="st">"Incidence rates (per 100k population)"</span>)
+}</code></pre></div>
+<p>We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">graph_tb_burden</span>(tb_burden)</code></pre></div>
+<p><img src="figure/plot-incidence-1.png" width="672"></p>
+<p>We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">graph_tb_burden</span>(tb_burden) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>country)</code></pre></div>
+<p><img src="figure/plot-incidence-facet-1.png" width="672"></p>
+<p>To explore within country variation we need to change the scale of the y axis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">graph_tb_burden</span>(tb_burden) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>country, <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
+<p><img src="figure/plot-incidence-facet-free-y-1.png" width="672"></p>
+</div>
+<div id="planned-functionality" class="section level3">
+<h3 class="hasAnchor">
+<a href="#planned-functionality" class="anchor"></a>Planned Functionality</h3>
+<p>In future releases I plan to add addiitonal functionality that will import more data and aggregate existing datasets so that they are readily usable for analysis.</p>
+</div>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -88,8 +338,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
 <p>This package has been developed in docker based on the <code>rocker/tidyverse</code> image, to access the development environment enter the following at the command line (with an active docker daemon running),</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> pull seabbs/getTBinR
-<span class="ex">docker</span> run -d -p 8787:8787 -p 54321:54321 -e USER=getTBinR -e PASSWORD=getTBinR --name getTBinR seabbs/getTBinR</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> pull seabbs/gettbinr
+<span class="ex">docker</span> run -d -p 8787:8787 -e USER=getTBinR -e PASSWORD=getTBinR --name getTBinR seabbs/gettbinr</code></pre></div>
 <p>The rstudio client can be accessed on port <code>8787</code> at <code>localhost</code> (or your machines ip). The default username is getTBinR and the default password is getTBinR.</p>
 </div>
 </div>
@@ -115,8 +365,9 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=getTBinR"><img src="http://www.r-pkg.org/badges/version/getTBinR" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://travis-ci.org/%3CUSERNAME%3E/%3CREPO%3E"><img src="https://travis-ci.org/%3CUSERNAME%3E/%3CREPO%3E.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://codecov.io/github/%3CUSERNAME%3E/%3CREPO%3E?branch=master"><img src="https://img.shields.io/codecov/c/github/%3CUSERNAME%3E/%3CREPO%3E/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://travis-ci.org/seabbs/getTBinR"><img src="https://travis-ci.org/seabbs/getTBinR.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://codecov.io/github/seabbs/getTBinR?branch=master"><img src="https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/seabbs/getTBinR"><img src="https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 </ul>
 </div>
 

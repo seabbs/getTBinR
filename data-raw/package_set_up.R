@@ -10,7 +10,7 @@ use_testthat()
 use_roxygen_md()
 use_travis()
 use_coverage()
-
+use_appveyor()
 #install packages as in description
 devtools::install_deps()
 
