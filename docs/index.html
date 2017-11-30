@@ -296,15 +296,33 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <h3 class="hasAnchor">
 <a href="#plotting-incidence-rates-over-time-in-9-randomly-sampled-countries" class="anchor"></a>Plotting Incidence Rates over Time in 9 Randomly Sampled Countries</h3>
 <p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries using the inbuilt <code>plot_tb_burden</code> function. We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">no_countries =</span> <span class="dv">9</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Take a random sample of countries
+sample_countries &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="kw">unique</span>(tb_burden<span class="op">$</span>country), <span class="dv">9</span>)
+<span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
+               <span class="dt">countries =</span> sample_countries)</code></pre></div>
 <p><img src="figure/plot-incidence-1.png" width="672"></p>
 <p>We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">no_countries =</span> <span class="dv">9</span>, <span class="dt">facet =</span> <span class="st">"country"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
+               <span class="dt">countries =</span> sample_countries,
+               <span class="dt">facet =</span> <span class="st">"country"</span>)</code></pre></div>
 <p><img src="figure/plot-incidence-facet-1.png" width="672"></p>
 <p>To explore within country variation we need to change the scale of the y axis.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">no_countries =</span> <span class="dv">9</span>,
-               <span class="dt">facet =</span> <span class="st">"country"</span>, <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
+               <span class="dt">countries =</span> sample_countries,
+               <span class="dt">facet =</span> <span class="st">"country"</span>,
+               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
 <p><img src="figure/plot-incidence-facet-free-y-1.png" width="672"></p>
+<p>We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using <code>plot_tb_burden</code> as follows.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_mort_exc_tbhiv_100k"</span>,
+               <span class="dt">countries =</span> sample_countries,
+               <span class="dt">facet =</span> <span class="st">"country"</span>,
+               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
+<p><img src="figure/plot-mortality-excluding-hiv-1.png" width="672"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_mort_tbhiv_100k"</span>,
+               <span class="dt">countries =</span> sample_countries,
+               <span class="dt">facet =</span> <span class="st">"country"</span>,
+               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
+<p><img src="figure/plot-mortality-including-hiv-1.png" width="672"></p>
 </div>
 <div id="planned-functionality" class="section level3">
 <h3 class="hasAnchor">

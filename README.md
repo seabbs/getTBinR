@@ -135,7 +135,10 @@ knitr::kable(vars_defs_of_interest)
 To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries using the inbuilt `plot_tb_burden` function. We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!
 
 ``` r
-plot_tb_burden(tb_burden, no_countries = 9)
+## Take a random sample of countries
+sample_countries <- sample(unique(tb_burden$country), 9)
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries)
 ```
 
 ![](figure/plot-incidence-1.png)
@@ -143,7 +146,9 @@ plot_tb_burden(tb_burden, no_countries = 9)
 We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.
 
 ``` r
-plot_tb_burden(tb_burden, no_countries = 9, facet = "country")
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries,
+               facet = "country")
 ```
 
 ![](figure/plot-incidence-facet-1.png)
@@ -151,11 +156,33 @@ plot_tb_burden(tb_burden, no_countries = 9, facet = "country")
 To explore within country variation we need to change the scale of the y axis.
 
 ``` r
-plot_tb_burden(tb_burden, no_countries = 9,
-               facet = "country", scales = "free_y")
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
 ```
 
 ![](figure/plot-incidence-facet-free-y-1.png)
+
+We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using `plot_tb_burden` as follows.
+
+``` r
+plot_tb_burden(tb_burden, metric = "e_mort_exc_tbhiv_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
+```
+
+![](figure/plot-mortality-excluding-hiv-1.png)
+
+``` r
+plot_tb_burden(tb_burden, metric = "e_mort_tbhiv_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
+```
+
+![](figure/plot-mortality-including-hiv-1.png)
 
 ### Planned Functionality
 

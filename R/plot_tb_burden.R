@@ -3,11 +3,18 @@
 #' @description Plot measures of TB burden by country. Currently only supports plotting of incidence rates. 
 #' In development so use with caution.
 #' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
-#' @param no_countries Numeric, the number of countries to plot
+#' @param countries A character string specifying the countries to plot.
+#' @param metric Character string specifying the metric to plot
+#' @param metric_label Character string specifying the metric label to use. 
+#' Defaults to \code{NULL}, which then uses the metric's definition as the label.
+#' @param conf Character vector specifying the name variations to use to specify the upper
+#' and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
+#' then no confidence intervals are shown.
 #' @param facet Character string, the name of the variable to facet by.
 #' @param scales Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 #' alternatives are "free_y", "free_x", or "free".
 #'
+#' @seealso search_data_dict
 #' @return A plot of TB Incidence Rates by Country
 #' @export
 #' @import ggplot2
@@ -17,27 +24,46 @@
 #' 
 #' tb_burden <- get_tb_burden()
 #' 
-#' plot_tb_burden(tb_burden, no_countries = 9, facet = "country")
+#' sample_countries <- sample(unique(tb_burden$country), 9)
 #' 
-plot_tb_burden <- function(df, no_countries = NULL, 
+#' plot_tb_burden(tb_burden, facet = "country",
+#'  countries = sample_countries, scales = "free_y")
+#' 
+plot_tb_burden <- function(df, metric = "e_inc_100k",
+                           metric_label = NULL,
+                           conf = c("_lo", "_hi"), countries = NULL, 
                            facet = NULL, scales = "fixed") {
   
-  if (is.null(no_countries)) {
+  if (is.null(countries)) {
     country_sample <- unique(df$country)
   }else{
-    country_sample <- sample(unique(df$country), no_countries)
+    country_sample <- countries
   }
+  
+  if(is.null(metric_label)) {
+    metric_label <- search_data_dict(var = metric, verbose = FALSE)
+    metric_label <- metric_label$definition
+  }
+  country <- NULL
   
   plot <- df %>% 
     filter(country %in% country_sample) %>% 
-    ggplot(aes_string(x = "year", y = "e_inc_100k", col = "country", fill = "country")) +
-    geom_line() +
-    geom_ribbon(aes_string(ymin = "e_inc_100k_lo", ymax =  "e_inc_100k_hi", col = NULL), alpha = 0.2) +
+    ggplot(aes_string(x = "year", y = metric, col = "country", fill = "country")) +
+    geom_line()
+  
+  if (!is.null(conf)) {
+    plot <- plot +
+      geom_ribbon(aes_string(ymin = paste0(metric, conf[1]),
+                             ymax =  paste0(metric, conf[2]), 
+                             col = NULL), alpha = 0.2) 
+  }
+  
+  plot <- plot +
     scale_colour_viridis_d(end = 0.9) +
     scale_fill_viridis_d(end = 0.9) +
     theme_minimal() +
     theme(legend.position = "none") +
-    labs(x = "Year", y = "Incidence rates (per 100k population)")
+    labs(x = "Year", y = metric_label)
   
   if (!is.null(facet)) {
     plot <- plot + 

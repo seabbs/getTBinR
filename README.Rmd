@@ -76,20 +76,43 @@ knitr::kable(vars_defs_of_interest)
 To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries using the inbuilt `plot_tb_burden` function. We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!
 
 ```{r plot-incidence}
-plot_tb_burden(tb_burden, no_countries = 9)
+## Take a random sample of countries
+sample_countries <- sample(unique(tb_burden$country), 9)
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries)
 ```
 
 We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.
 
 ```{r plot-incidence-facet}
-plot_tb_burden(tb_burden, no_countries = 9, facet = "country")
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries,
+               facet = "country")
 ```
 
 To explore within country variation we need to change the scale of the y axis.
 
 ```{r plot-incidence-facet-free-y}
-plot_tb_burden(tb_burden, no_countries = 9,
-               facet = "country", scales = "free_y")
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
+```
+
+We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using `plot_tb_burden` as follows.
+
+```{r plot-mortality-excluding-hiv}
+plot_tb_burden(tb_burden, metric = "e_mort_exc_tbhiv_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
+```
+
+```{r plot-mortality-including-hiv}
+plot_tb_burden(tb_burden, metric = "e_mort_tbhiv_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
 ```
 
 ### Planned Functionality

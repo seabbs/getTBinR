@@ -4,12 +4,23 @@
 \alias{plot_tb_burden}
 \title{Plot TB Burden by Country}
 \usage{
-plot_tb_burden(df, no_countries = NULL, facet = NULL, scales = "fixed")
+plot_tb_burden(df, metric = "e_inc_100k", metric_label = NULL,
+  conf = c("_lo", "_hi"), countries = NULL, facet = NULL,
+  scales = "fixed")
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.}
 
-\item{no_countries}{Numeric, the number of countries to plot}
+\item{metric}{Character string specifying the metric to plot}
+
+\item{metric_label}{Character string specifying the metric label to use.
+Defaults to \code{NULL}, which then uses the metric's definition as the label.}
+
+\item{conf}{Character vector specifying the name variations to use to specify the upper
+and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
+then no confidence intervals are shown.}
+
+\item{countries}{A character string specifying the countries to plot.}
 
 \item{facet}{Character string, the name of the variable to facet by.}
 
@@ -27,6 +38,12 @@ In development so use with caution.
 
 tb_burden <- get_tb_burden()
 
-plot_tb_burden(tb_burden, no_countries = 9, facet = "country")
+sample_countries <- sample(unique(tb_burden$country), 9)
 
+plot_tb_burden(tb_burden, facet = "country",
+ countries = sample_countries, scales = "free_y")
+
+}
+\seealso{
+search_data_dict
 }
