@@ -1,7 +1,8 @@
 #' Plot TB Burden by Country
 #'
-#' @description Plot measures of TB burden by country. Currently only supports plotting of incidence rates. 
-#' In development so use with caution.
+#' @description Plot measures of TB burden by country by specifying a metric from the TB burden data.
+#' Specify a country or vector of countries in order to plot them (otherwise it will plot all countries).
+#' Various other options are available for tuning the plot further.
 #' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
 #' If not specified then will automatically source the WHO TB burden data, either locally if available
 #' or directly from the WHO.

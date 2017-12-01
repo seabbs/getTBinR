@@ -38,8 +38,9 @@ returned.}
 A plot of TB Incidence Rates by Country
 }
 \description{
-Plot measures of TB burden by country. Currently only supports plotting of incidence rates.
-In development so use with caution.
+Plot measures of TB burden by country by specifying a metric from the TB burden data.
+Specify a country or vector of countries in order to plot them (otherwise it will plot all countries).
+Various other options are available for tuning the plot further.
 }
 \examples{
 
