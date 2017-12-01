@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the WHO TB Burden Data — get_tb_burden • getTBinR</title>
+<title>Generic Get Data Function — get_data • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,25 +92,27 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the WHO TB Burden Data</h1>
+    <h1>Generic Get Data Function</h1>
     </div>
 
     
-    <p>Get the TB burden data from the WHO, see
-<a href='http://www.who.int/tb/country/data/download/en/'>here</a> for details.</p>
+    <p>Generic Get Data Function</p>
     
 
-    <pre class="usage"><span class='fu'>get_tb_burden</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>,
+  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>url</th>
-      <td><p>Character string, indicating  the url of the TB burden data.
-Default is current url.</p></td>
+      <td><p>Character string, indicating  the url of the data to download.</p></td>
+    </tr>
+    <tr>
+      <th>data_trans_fn</th>
+      <td><p>Function that takes a data.table as input and returns a single
+dataframe of any type. If not specified defaults to transforming the data into a tibble.</p></td>
     </tr>
     <tr>
       <th>path</th>
@@ -125,7 +127,7 @@ defaults to <code>data-raw</code>.</p></td>
     <tr>
       <th>save_name</th>
       <td><p>Character string, name to save the data under. Defaults to
-<code>TB_burden</code>.</p></td>
+<code>NULL</code>.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -136,16 +138,17 @@ Defaults to <code>TRUE</code>.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The WHO TB burden data as a tibble.</p>
+    <p>The data downloaded from the given url as a dataframe, exact format specified by data_trans_fn</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>get_data search_data_dict</p>
+    <p>get_tb_burden get_data_dict</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>()
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
+<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)
 
 <span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 71
 #&gt;       country  iso2  iso3 iso_numeric g_whoregion  year e_pop_num e_inc_100k

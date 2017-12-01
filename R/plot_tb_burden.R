@@ -3,6 +3,8 @@
 #' @description Plot measures of TB burden by country. Currently only supports plotting of incidence rates. 
 #' In development so use with caution.
 #' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
+#' If not specified then will automatically source the WHO TB burden data, either locally if available
+#' or directly from the WHO.
 #' @param countries A character string specifying the countries to plot.
 #' @param metric Character string specifying the metric to plot
 #' @param metric_label Character string specifying the metric label to use. 
@@ -13,13 +15,14 @@
 #' @param facet Character string, the name of the variable to facet by.
 #' @param scales Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 #' alternatives are "free_y", "free_x", or "free".
-#'
-#' @seealso search_data_dict
+#' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
+#' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
 #' @export
 #' @import ggplot2
 #' @import magrittr
 #' @importFrom dplyr filter
+#' @importFrom purrr map
 #' @examples
 #' 
 #' tb_burden <- get_tb_burden()
@@ -29,15 +32,29 @@
 #' plot_tb_burden(tb_burden, facet = "country",
 #'  countries = sample_countries, scales = "free_y")
 #' 
-plot_tb_burden <- function(df, metric = "e_inc_100k",
+plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                            metric_label = NULL,
                            conf = c("_lo", "_hi"), countries = NULL, 
-                           facet = NULL, scales = "fixed") {
+                           facet = NULL, scales = "fixed", ...) {
+  
+  if (is.null(df)) {
+    df <- get_tb_burden(...)
+  }
   
   if (is.null(countries)) {
     country_sample <- unique(df$country)
   }else{
     country_sample <- countries
+    
+    df_filt <- df %>% 
+      filter(country %in% country_sample)
+    
+    if (nrow(df_filt) != length(countries)) {
+      country_matches <- purrr::map(countries, ~grep(., df$country, fixed = FALSE))
+      country_matches <- unlist(country_matches)
+      
+      df_filt <- df[country_matches, ]
+    }
   }
   
   if(is.null(metric_label)) {
@@ -46,8 +63,7 @@ plot_tb_burden <- function(df, metric = "e_inc_100k",
   }
   country <- NULL
   
-  plot <- df %>% 
-    filter(country %in% country_sample) %>% 
+  plot <- df_filt %>% 
     ggplot(aes_string(x = "year", y = metric, col = "country", fill = "country")) +
     geom_line()
   

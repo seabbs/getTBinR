@@ -6,6 +6,16 @@ Get TB Data in R
 
 Quickly and easily import analysis ready TB burden data, from the World Health Orgnaisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Commonly required, aggregated, datasets are provided so that more time can be spent conducting analysis. This package is inspired by a blog [post](https://incidental-ideas.org/2017/03/03/who-tuberculosis-data-ggplot2/), which looked at WHO TB incidence rates. See [here](http://www.who.int/about/copyright/en/) for the WHO data permissions.
 
+Installation
+------------
+
+You can install getTBinR from github with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("seabbs/getTBinR")
+```
+
 Using the package
 -----------------
 
@@ -18,6 +28,18 @@ library(knitr)
 library(magrittr)
 library(dplyr)
 ```
+
+### Quick start
+
+Lets get started quickly by plotting TB incidence in the United Kingdom, discussion of the functions used will follow (note the fuzzy country matching, `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches).
+
+``` r
+plot_tb_burden(metric = "e_inc_100k",
+               countries = "United Kingdom",
+               facet = "country")
+```
+
+![](figure/plot-tb-incidence-uk-1.png)
 
 ### Getting TB burden data
 
@@ -164,10 +186,10 @@ plot_tb_burden(tb_burden, metric = "e_inc_100k",
 
 ![](figure/plot-incidence-facet-free-y-1.png)
 
-We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using `plot_tb_burden` as follows.
+We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using `plot_tb_burden` as follows. Note we can do this without specifying the TB burden data, the plotting function will automatically find it either locally or remotely.
 
 ``` r
-plot_tb_burden(tb_burden, metric = "e_mort_exc_tbhiv_100k",
+plot_tb_burden(metric = "e_mort_exc_tbhiv_100k",
                countries = sample_countries,
                facet = "country",
                scales = "free_y")
@@ -176,7 +198,7 @@ plot_tb_burden(tb_burden, metric = "e_mort_exc_tbhiv_100k",
 ![](figure/plot-mortality-excluding-hiv-1.png)
 
 ``` r
-plot_tb_burden(tb_burden, metric = "e_mort_tbhiv_100k",
+plot_tb_burden(metric = "e_mort_tbhiv_100k",
                countries = sample_countries,
                facet = "country",
                scales = "free_y")
@@ -188,17 +210,8 @@ plot_tb_burden(tb_burden, metric = "e_mort_tbhiv_100k",
 
 In future releases I plan to add addiitonal functionality that will import more data and aggregate existing datasets so that they are readily usable for analysis.
 
-Installation
-------------
-
-You can install getTBinR from github with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("seabbs/getTBinR")
-```
-
-### Docker
+Docker
+------
 
 This package has been developed in docker based on the `rocker/tidyverse` image, to access the development environment enter the following at the command line (with an active docker daemon running),
 

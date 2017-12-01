@@ -16,9 +16,7 @@
 #'
 #' @return The WHO TB burden data as a tibble.
 #' @export
-#' @importFrom data.table fread
-#' @importFrom tibble as_tibble
-#' @seealso search_data_dict
+#' @seealso get_data search_data_dict
 #' @examples
 #' 
 #' tb_burden <- get_tb_burden()
@@ -30,23 +28,10 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                           save = TRUE,
                           save_name = "TB_burden",
                           return = TRUE) {
-  data_path <- file.path(path, paste0(save_name, ".rds"))
-  
-  if (!file.exists(data_path) | !save) {
-    data <- data.table::fread(url)
-    data <- tibble::as_tibble(data)
-  }else{
-    data <- readRDS(data_path)
-  }
-  
-  if (save) {
-    if (!dir.exists(path)) {
-      dir.create(path)
-    }
-    saveRDS(data, data_path)
-  }
-  
-  if (return) {
-    return(data)
-  }
+
+  get_data(url = url,
+           path = path,
+           save = save,
+           save_name = save_name,
+           return = return)
 }

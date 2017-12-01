@@ -17,9 +17,7 @@
 #' @return The WHO TB data dictionary as a tibble with 4 variables:
 #' variable_name, dataset, code_list, definition.
 #' @export
-#' @importFrom data.table fread
-#' @importFrom tibble as_tibble
-#' @seealso search_data_dict
+#' @seealso get_data search_data_dict
 #' @examples
 #' 
 #' dict <- get_data_dict()
@@ -31,23 +29,10 @@ get_data_dict <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                           save = TRUE,
                           save_name = "TB_data_dict",
                           return = TRUE) {
-  dict_path <- file.path(path, paste0(save_name, ".rds"))
-  
-  if (!file.exists(dict_path) | !save) {
-    dict <- data.table::fread(url)
-    dict <- tibble::as_tibble(dict)
-  }else{
-    dict <- readRDS(dict_path)
-  }
-  
-  if (save) {
-    if (!dir.exists(path)) {
-      dir.create(path)
-    }
-    saveRDS(dict, dict_path)
-  }
-  
-  if (return) {
-    return(dict)
-  }
+
+  get_data(url = url,
+           path = path,
+           save = save,
+           save_name = save_name,
+           return = return)
 }

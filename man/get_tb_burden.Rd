@@ -40,5 +40,5 @@ head(tb_burden)
 
 }
 \seealso{
-search_data_dict
+get_data search_data_dict
 }

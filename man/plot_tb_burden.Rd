@@ -4,12 +4,14 @@
 \alias{plot_tb_burden}
 \title{Plot TB Burden by Country}
 \usage{
-plot_tb_burden(df, metric = "e_inc_100k", metric_label = NULL,
+plot_tb_burden(df = NULL, metric = "e_inc_100k", metric_label = NULL,
   conf = c("_lo", "_hi"), countries = NULL, facet = NULL,
-  scales = "fixed")
+  scales = "fixed", ...)
 }
 \arguments{
-\item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.}
+\item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
+If not specified then will automatically source the WHO TB burden data, either locally if available
+or directly from the WHO.}
 
 \item{metric}{Character string specifying the metric to plot}
 
@@ -26,6 +28,8 @@ then no confidence intervals are shown.}
 
 \item{scales}{Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 alternatives are "free_y", "free_x", or "free".}
+
+\item{...}{Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
 A plot of TB Incidence Rates by Country
@@ -45,5 +49,5 @@ plot_tb_burden(tb_burden, facet = "country",
 
 }
 \seealso{
-search_data_dict
+get_tb_burden search_data_dict
 }
