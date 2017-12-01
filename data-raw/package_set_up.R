@@ -27,6 +27,7 @@ use_package("dplyr", type = "Imports")
 use_package("purrr", type = "Imports")
 use_package("magrittr", type = "Imports")
 use_package("ggplot2", type = "Imports")
+use_package("plotly", type = "Imports")
 
 #Vignettes
 use_vignette("intro")

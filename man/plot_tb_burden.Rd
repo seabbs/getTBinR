@@ -6,7 +6,7 @@
 \usage{
 plot_tb_burden(df = NULL, metric = "e_inc_100k", metric_label = NULL,
   conf = c("_lo", "_hi"), countries = NULL, facet = NULL,
-  scales = "fixed", ...)
+  scales = "fixed", interactive = FALSE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -28,6 +28,9 @@ then no confidence intervals are shown.}
 
 \item{scales}{Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 alternatives are "free_y", "free_x", or "free".}
+
+\item{interactive}{Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is
+returned.}
 
 \item{...}{Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }

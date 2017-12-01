@@ -102,7 +102,7 @@ In development so use with caution.</p>
 
     <pre class="usage"><span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>, <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>), <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -140,6 +140,11 @@ then no confidence intervals are shown.</p></td>
       <th>scales</th>
       <td><p>Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 alternatives are "free_y", "free_x", or "free".</p></td>
+    </tr>
+    <tr>
+      <th>interactive</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> then an interactive plot is
+returned.</p></td>
     </tr>
     <tr>
       <th>...</th>

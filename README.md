@@ -31,12 +31,13 @@ library(dplyr)
 
 ### Quick start
 
-Lets get started quickly by plotting TB incidence in the United Kingdom, discussion of the functions used will follow (note the fuzzy country matching, `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches).
+Lets get started quickly by plotting TB incidence in the United Kingdom, discussion of the functions used will follow (note the fuzzy country matching, `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches). We could make this an interactive plot by specifying `interactive = TRUE`
 
 ``` r
 plot_tb_burden(metric = "e_inc_100k",
                countries = "United Kingdom",
-               facet = "country")
+               facet = "country",
+               interactive = FALSE)
 ```
 
 ![](figure/plot-tb-incidence-uk-1.png)

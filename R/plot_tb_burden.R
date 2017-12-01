@@ -15,6 +15,8 @@
 #' @param facet Character string, the name of the variable to facet by.
 #' @param scales Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 #' alternatives are "free_y", "free_x", or "free".
+#' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is 
+#' returned.
 #' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -23,6 +25,7 @@
 #' @import magrittr
 #' @importFrom dplyr filter
 #' @importFrom purrr map
+#' @importFrom plotly ggplotly
 #' @examples
 #' 
 #' tb_burden <- get_tb_burden()
@@ -35,7 +38,8 @@
 plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                            metric_label = NULL,
                            conf = c("_lo", "_hi"), countries = NULL, 
-                           facet = NULL, scales = "fixed", ...) {
+                           facet = NULL, scales = "fixed",
+                           interactive = FALSE, ...) {
   
   if (is.null(df)) {
     df <- get_tb_burden(...)
@@ -84,6 +88,10 @@ plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
   if (!is.null(facet)) {
     plot <- plot + 
       facet_wrap(facet, scales = scales)
+  }
+  
+  if (interactive) {
+    plot <- plotly::ggplotly(plot)
   }
   
   return(plot)

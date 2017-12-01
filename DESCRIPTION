@@ -27,4 +27,5 @@ Imports: data.table,
     dplyr,
     purrr,
     ggplot2,
-    magrittr
+    magrittr,
+    plotly
