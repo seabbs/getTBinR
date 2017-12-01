@@ -1,8 +1,6 @@
 #' Plot TB Burden by Country
 #'
-#' @description Plot measures of TB burden by country by specifying a metric from the TB burden data.
-#' Specify a country or vector of countries in order to plot them (otherwise it will plot all countries).
-#' Various other options are available for tuning the plot further.
+#' @description Developent function
 #' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
 #' If not specified then will automatically source the WHO TB burden data, either locally if available
 #' or directly from the WHO.
@@ -21,7 +19,6 @@
 #' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
-#' @export
 #' @import ggplot2
 #' @import magrittr
 #' @importFrom dplyr filter
@@ -31,12 +28,12 @@
 #' 
 #' tb_burden <- get_tb_burden()
 #' 
-#' sample_countries <- sample(unique(tb_burden$country), 9)
+#' tb_burden_eur <- filter(tb_burden, g_whoregion %in% "EUR")
+#' tb_burden_afr <- filter(tb_burden, g_whoregion %in% "AFR")
+#' sample_countries <- sample(unique(tb_burden$country), 10)
+#' plot_pointwise_tb_burden(tb_burden_afr, scales = "free")
 #' 
-#' plot_tb_burden(tb_burden, facet = "country",
-#'  countries = sample_countries, scales = "free_y")
-#' 
-plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
+plot_pointwise_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                            metric_label = NULL,
                            conf = c("_lo", "_hi"), countries = NULL, 
                            facet = NULL, scales = "fixed",
@@ -48,6 +45,7 @@ plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
   
   if (is.null(countries)) {
     country_sample <- unique(df$country)
+  
     df_filt <- df
   }else{
     country_sample <- countries
@@ -70,22 +68,14 @@ plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
   country <- NULL
   
   plot <- df_filt %>% 
-    ggplot(aes_string(x = "year", y = metric, col = "country", fill = "country")) +
-    geom_line()
-  
-  if (!is.null(conf)) {
-    plot <- plot +
-      geom_ribbon(aes_string(ymin = paste0(metric, conf[1]),
-                             ymax =  paste0(metric, conf[2]), 
-                             col = NULL), alpha = 0.2) 
-  }
+    ggplot(aes_string(x = "country", y = metric, col = "year")) +
+    geom_point(alpha = 0.6, size = 2)
   
   plot <- plot +
-    scale_colour_viridis_d(end = 0.9) +
-    scale_fill_viridis_d(end = 0.9) +
+    scale_colour_viridis_c(end = 0.9) +
     theme_minimal() +
-    theme(legend.position = "none") +
-    labs(x = "Year", y = metric_label)
+    labs(x = "Country", y = metric_label) + 
+    coord_flip()
   
   if (!is.null(facet)) {
     plot <- plot + 

@@ -314,7 +314,7 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <a href="#plotting-incidence-rates-over-time-in-9-randomly-sampled-countries" class="anchor"></a>Plotting Incidence Rates over Time in 9 Randomly Sampled Countries</h3>
 <p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries using the inbuilt <code>plot_tb_burden</code> function. We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Take a random sample of countries
-sample_countries &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="kw">unique</span>(tb_burden<span class="op">$</span>country), <span class="dv">9</span>)
+sample_countries &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/sample">sample</a></span>(<span class="kw">unique</span>(tb_burden<span class="op">$</span>country), <span class="dv">9</span>)
 <span class="kw"><a href="reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                <span class="dt">countries =</span> sample_countries)</code></pre></div>
 <p><img src="figure/plot-incidence-1.png" width="672"></p>

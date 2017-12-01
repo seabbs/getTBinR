@@ -59,8 +59,8 @@ search_data_dict <- function(var = NULL, def = NULL, verbose = TRUE, ...) {
   
   if (verbose) {
     if (results_var == 0 && results_def == 0) {
-      stop("No results found for your variable search for ", paste0(var, collapse = ", "))
-      stop("No results found for your definition search for ", paste0(def, collapse = ", "))
+      stop("No results found for your variable search for ", paste0(var, collapse = ", "), "\n",
+           "No results found for your definition search for ", paste0(def, collapse = ", "))
     }else{
       message(results_var, " results found for your variable search for ", paste0(var, collapse = ", "))
       message(results_def, " results found for your definition search for ", paste0(def, collapse = ", "))
