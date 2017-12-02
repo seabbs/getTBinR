@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the WHO Data Dictionary for TB Data — get_data_dict • Get WHO Tuberculosis Data in R</title>
+<title>Plot an overview of TB Burden for Multiple Countries — plot_tb_burden_overview • Get WHO Tuberculosis Data in R</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -85,72 +85,79 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the WHO Data Dictionary for TB Data</h1>
+    <h1>Plot an overview of TB Burden for Multiple Countries</h1>
     </div>
 
     
-    <p>Get the data dictionary for TB burden data from the WHO, see
-<a href='http://www.who.int/tb/country/data/download/en/'>here</a> for details.</p>
+    <p>This functions returns a dot plot for a given metric over a specified
+list of countries. If <code>compare_to_region</code> is specified then a given country will
+be compared to others in its region. This enables the user to rapidly understand trends in
+Tuberculosis over time and the progress towards global elimination.</p>
     
 
-    <pre class="usage"><span class='fu'>get_data_dict</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=dictionary"</span>,
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>,
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
+  <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>url</th>
-      <td><p>Character string, indicating  the url of the data
-dictionary. Default is current url.</p></td>
+      <th>df</th>
+      <td><p>Dataframe of TB burden data, as sourced by <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.
+If not specified then will automatically source the WHO TB burden data, either locally if available
+or directly from the WHO.</p></td>
     </tr>
     <tr>
-      <th>path</th>
-      <td><p>Character string, indicating the folder to save the data into,
-defaults to <code>data-raw</code>.</p></td>
+      <th>metric</th>
+      <td><p>Character string specifying the metric to plot</p></td>
     </tr>
     <tr>
-      <th>save</th>
-      <td><p>Logical, should the dictionary be saved for reuse. Defaults to
-<code>TRUE</code>.</p></td>
+      <th>metric_label</th>
+      <td><p>Character string specifying the metric label to use.</p></td>
     </tr>
     <tr>
-      <th>save_name</th>
-      <td><p>Character string, name to save dictionary under. Defaults to
-<code>TB_data_dict</code>.</p></td>
+      <th>countries</th>
+      <td><p>A character string specifying the countries to plot.</p></td>
     </tr>
     <tr>
-      <th>return</th>
-      <td><p>Logical, should the data  dictionary be returned as a dataframe.
-Defaults to <code>TRUE</code>.</p></td>
+      <th>compare_to_region</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> all
+countries that share a region with those listed in <code>countries</code> will be plotted.
+Note that this will override settings for <code>facet</code>, unless it is set to "country".</p></td>
+    </tr>
+    <tr>
+      <th>facet</th>
+      <td><p>Character string, the name of the variable to facet by.</p></td>
+    </tr>
+    <tr>
+      <th>scales</th>
+      <td><p>Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
+alternatives are "free_y", "free_x", or "free".</p></td>
+    </tr>
+    <tr>
+      <th>interactive</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> then an interactive plot is
+returned.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional parameters to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The WHO TB data dictionary as a tibble with 4 variables:
-variable_name, dataset, code_list, definition.</p>
+    <p>A dot plot of any numeric metric by country.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>get_data search_data_dict</p>
+    <p>get_tb_burden search_data_dict</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()
-
-<span class='fu'>head</span>(<span class='no'>dict</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
-#&gt;              variable_name              dataset   code_list
-#&gt;                      &lt;chr&gt;                &lt;chr&gt;       &lt;chr&gt;
-#&gt; 1                      bmu Community engagement            
-#&gt; 2       bmu_community_impl Community engagement            
-#&gt; 3             bmu_ref_data Community engagement            
-#&gt; 4       bmu_rxsupport_data Community engagement            
-#&gt; 5   bmu_rxsupport_data_coh Community engagement            
-#&gt; 6 community_data_available Community engagement 0=No; 1=Yes
-#&gt; # ... with 1 more variables: definition &lt;chr&gt;</div><div class='input'>
+<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>), <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in grid.newpage(): could not open file '/home/getTBinR/getTBinR/.Rproj.user/shared/notebooks/1E80F84B-README/1/s/ccw4etw9dfxa9_t/_rs_chunk_plot_001.png'</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

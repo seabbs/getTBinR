@@ -1,7 +1,7 @@
 Package: getTBinR
 Type: Package
-Version: 0.0.1.9000
-Title: Import Clean Analysis Ready WHO Tuberculosis Data
+Version: 0.0.2.0
+Title: Get WHO Tuberculosis Data in R
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk"))
 Description: The World Health Organisation compiles multiple datasets across infectious diseases. This package aims to facilitate easy import of analysis ready Tuberculosis data into R.

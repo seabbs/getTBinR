@@ -3,22 +3,14 @@
 #' @description Plot measures of TB burden by country by specifying a metric from the TB burden data.
 #' Specify a country or vector of countries in order to plot them (otherwise it will plot all countries).
 #' Various other options are available for tuning the plot further.
-#' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
-#' If not specified then will automatically source the WHO TB burden data, either locally if available
-#' or directly from the WHO.
-#' @param countries A character string specifying the countries to plot.
-#' @param metric Character string specifying the metric to plot
-#' @param metric_label Character string specifying the metric label to use. 
-#' Defaults to \code{NULL}, which then uses the metric's definition as the label.
 #' @param conf Character vector specifying the name variations to use to specify the upper
 #' and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
 #' then no confidence intervals are shown.
-#' @param facet Character string, the name of the variable to facet by.
 #' @param scales Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 #' alternatives are "free_y", "free_x", or "free".
 #' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is 
 #' returned.
-#' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
+#' @inheritParams prepare_df_plot
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
 #' @export
@@ -33,44 +25,25 @@
 #' 
 #' sample_countries <- sample(unique(tb_burden$country), 9)
 #' 
-#' plot_tb_burden(tb_burden, facet = "country",
-#'  countries = sample_countries, scales = "free_y")
+#' plot_tb_burden(facet = "country", countries = sample_countries)
 #' 
 plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                            metric_label = NULL,
-                           conf = c("_lo", "_hi"), countries = NULL, 
+                           conf = c("_lo", "_hi"), countries = NULL,
+                           compare_to_region = FALSE,
                            facet = NULL, scales = "fixed",
                            interactive = FALSE, ...) {
+
+  df_prep <- prepare_df_plot(df = df,
+                             metric = metric,
+                             metric_label = metric_label,
+                             countries = countries,
+                             compare_to_region = compare_to_region,
+                             facet = facet)
   
-  if (is.null(df)) {
-    df <- get_tb_burden(...)
-  }
-  
-  if (is.null(countries)) {
-    country_sample <- unique(df$country)
-    df_filt <- df
-  }else{
-    country_sample <- countries
-    
-    df_filt <- df %>% 
-      filter(country %in% country_sample)
-    
-    if (nrow(df_filt) != length(countries)) {
-      country_matches <- purrr::map(countries, ~grep(., df$country, fixed = FALSE))
-      country_matches <- unlist(country_matches)
-      
-      df_filt <- df[country_matches, ]
-    }
-  }
-  
-  if(is.null(metric_label)) {
-    metric_label <- search_data_dict(var = metric, verbose = FALSE)
-    metric_label <- metric_label$definition
-  }
   country <- NULL
   
-  plot <- df_filt %>% 
-    ggplot(aes_string(x = "year", y = metric, col = "country", fill = "country")) +
+  plot <- ggplot(df_prep$df, aes_string(x = "year", y = metric, col = "country", fill = "country")) +
     geom_line()
   
   if (!is.null(conf)) {
@@ -85,11 +58,11 @@ plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
     scale_fill_viridis_d(end = 0.9) +
     theme_minimal() +
     theme(legend.position = "none") +
-    labs(x = "Year", y = metric_label)
+    labs(x = "Year", y = df_prep$metric_label)
   
-  if (!is.null(facet)) {
+  if (!is.null(df_prep$facet)) {
     plot <- plot + 
-      facet_wrap(facet, scales = scales)
+      facet_wrap(df_prep$facet, scales = scales)
   }
   
   if (interactive) {

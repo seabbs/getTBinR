@@ -1,5 +1,5 @@
 ---
-title: "Introduction to getTBinR"
+title: "Getting started with getTBinR"
 author: "Sam Abbott"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,5 +16,110 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Using the package
 
-See Readme for current functionality, more to come so watch this space... 
+First load the package. We also load several other packages to help quickly explore the data.
+
+```{r packages, message = FALSE}
+library(getTBinR)
+library(ggplot2)
+library(knitr)
+library(magrittr)
+library(dplyr)
+```
+
+
+## Getting TB burden data
+
+Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy. If a local copy exists this will be loaded instead.
+
+```{r get-tb-burden-data}
+tb_burden <- get_tb_burden()
+
+tb_burden
+```
+
+## Searching for variable definitions
+
+The WHO provides a large, detailed, data dictionary for use with the TB burden data. However, searching through this dataset can be tedious. To streamline this process `getTBinR` provides a search function to find the definition of a single or multiple variables. Again if not previously used this function will download the data dictionary, but in subsequent uses will load a local copy.
+
+```{r search-data-dict}
+vars_of_interest <- search_data_dict(var = c("country",
+                                             "e_inc_100k",
+                                             "e_inc_100k_lo",
+                                             "e_inc_100k_hi"))
+
+knitr::kable(vars_of_interest)
+```
+
+We might also want to search the variable definitions for key phrases, for example mortality.
+
+```{r search-data-defs}
+defs_of_interest <- search_data_dict(def = c("mortality"))
+
+knitr::kable(defs_of_interest)
+```
+
+Finally we could both search for a known variable and for key phrases in variable definitions.
+
+```{r search-data-defs-var}
+vars_defs_of_interest <- search_data_dict(var = c("country"),
+                                     def = c("mortality"))
+
+knitr::kable(vars_defs_of_interest)
+```
+
+## Plotting Incidence Rates for All Countries
+
+To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates for all countries in the WHO data.
+
+
+```{r plot-tb-all, fig.height=20, fig.width = 10}
+getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
+                                  interactive = FALSE)
+```
+
+## Plotting Incidence Rates over Time in 9 Randomly Sampled Countries
+
+Now that we have the data lets plot a sample of 9 countries using the inbuilt `plot_tb_burden` function. Again plotting incidence rates, but this time with 95% confidence intervals. As you can see this isnt a hugely informative graph. Lets improve it!
+
+```{r plot-incidence}
+## Take a random sample of countries
+sample_countries <- sample(unique(tb_burden$country), 9)
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries)
+```
+
+We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.
+
+```{r plot-incidence-facet}
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries,
+               facet = "country")
+```
+
+To explore within country variation we need to change the scale of the y axis.
+
+```{r plot-incidence-facet-free-y}
+plot_tb_burden(tb_burden, metric = "e_inc_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
+```
+
+We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using `plot_tb_burden` as follows. Note we can do this without specifying the TB burden data, the plotting function will automatically find it either locally or remotely.
+
+```{r plot-mortality-excluding-hiv}
+plot_tb_burden(metric = "e_mort_exc_tbhiv_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
+```
+
+```{r plot-mortality-including-hiv}
+plot_tb_burden(metric = "e_mort_tbhiv_100k",
+               countries = sample_countries,
+               facet = "country",
+               scales = "free_y")
+```
+

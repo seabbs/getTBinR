@@ -28,117 +28,27 @@ You can install getTBinR from github with:
 devtools::install_github("seabbs/getTBinR")
 ```
 
-## Using the package
+## Quick start
 
-First load the package. We also load several other packages to help quickly explore the data.
+Lets get started quickly by plotting TB incidence in the United Kingdom, first by comparing it to other countries in the region and then by plotting incidence rates over time. See [Getting Started](https://www.samabbott.co.uk/getTBinR/articles/intro.html) and [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for more details of the functions used (note the fuzzy country matching, `plot_tb_burden_overview` and `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying `interactive = TRUE`
 
-```{r packages, message = FALSE}
-library(getTBinR)
-library(ggplot2)
-library(knitr)
-library(magrittr)
-library(dplyr)
+```{r plot-tb-incidence-eur, fig.height=10, fig.width = 10}
+getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
+                                  countries = "United Kingdom",
+                                  compare_to_region = TRUE,
+                                  interactive = FALSE)
 ```
-
-### Quick start
-
-Lets get started quickly by plotting TB incidence in the United Kingdom, discussion of the functions used will follow (note the fuzzy country matching, `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches). We could make this an interactive plot by specifying `interactive = TRUE`
 
 ```{r plot-tb-incidence-uk}
-plot_tb_burden(metric = "e_inc_100k",
-               countries = "United Kingdom",
-               facet = "country",
-               interactive = FALSE)
+getTBinR::plot_tb_burden(metric = "e_inc_100k",
+                         countries = "United Kingdom",
+                         facet = "country",
+                         interactive = FALSE)
 ```
 
-### Getting TB burden data
+## Planned Functionality
 
-Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy. If a local copy exists this will be loaded instead.
-
-```{r get-tb-burden-data}
-tb_burden <- get_tb_burden()
-
-tb_burden
-```
-
-### Searching for variable definitions
-
-The WHO provides a large, detailed, data dictionary for use with the TB burden data. However, searching through this dataset can be tedious. To streamline this process `getTBinR` provides a search function to find the definition of a single or multiple variables. Again if not previously used this function will download the data dictionary, but in subsequent uses will load a local copy.
-
-```{r search-data-dict}
-vars_of_interest <- search_data_dict(var = c("country",
-                                             "e_inc_100k",
-                                             "e_inc_100k_lo",
-                                             "e_inc_100k_hi"))
-
-knitr::kable(vars_of_interest)
-```
-
-We might also want to search the variable definitions for key phrases, for example mortality.
-
-```{r search-data-defs}
-defs_of_interest <- search_data_dict(def = c("mortality"))
-
-knitr::kable(defs_of_interest)
-```
-
-Finally we could both search for a known variable and for key phrases in variable definitions.
-
-```{r search-data-defs-var}
-vars_defs_of_interest <- search_data_dict(var = c("country"),
-                                     def = c("mortality"))
-
-knitr::kable(vars_defs_of_interest)
-```
-
-### Plotting Incidence Rates over Time in 9 Randomly Sampled Countries
-
-To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates in a sample of 9 countries using the inbuilt `plot_tb_burden` function. We first plot incidence rates, with 95% confidence intervals, in the 9 randomly sampled countries. As you can see this isnt a hugely informative graph. Lets improve it!
-
-```{r plot-incidence}
-## Take a random sample of countries
-sample_countries <- sample(unique(tb_burden$country), 9)
-plot_tb_burden(tb_burden, metric = "e_inc_100k",
-               countries = sample_countries)
-```
-
-We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.
-
-```{r plot-incidence-facet}
-plot_tb_burden(tb_burden, metric = "e_inc_100k",
-               countries = sample_countries,
-               facet = "country")
-```
-
-To explore within country variation we need to change the scale of the y axis.
-
-```{r plot-incidence-facet-free-y}
-plot_tb_burden(tb_burden, metric = "e_inc_100k",
-               countries = sample_countries,
-               facet = "country",
-               scales = "free_y")
-```
-
-We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using `plot_tb_burden` as follows. Note we can do this without specifying the TB burden data, the plotting function will automatically find it either locally or remotely.
-
-```{r plot-mortality-excluding-hiv}
-plot_tb_burden(metric = "e_mort_exc_tbhiv_100k",
-               countries = sample_countries,
-               facet = "country",
-               scales = "free_y")
-```
-
-```{r plot-mortality-including-hiv}
-plot_tb_burden(metric = "e_mort_tbhiv_100k",
-               countries = sample_countries,
-               facet = "country",
-               scales = "free_y")
-```
-
-
-### Planned Functionality
-
-In future releases I plan to add addiitonal functionality that will import more data and aggregate existing datasets so that they are readily usable for analysis.
+In future releases I plan to add addiitonal functionality that will import more data and aggregate existing datasets so that they are readily usable for analysis. File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!
 
 ## Docker
 

@@ -1,0 +1,6 @@
+urls:
+  reference: https://samabbott.co.uk/getTBinR//reference
+  article: https://samabbott.co.uk/getTBinR//articles
+articles:
+  intro: intro.html
+

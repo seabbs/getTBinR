@@ -1,0 +1,36 @@
+
+title: Get WHO Tuberculosis Data in R
+url: https://samabbott.co.uk/getTBinR/
+template:
+  params:
+    bootswatch: flatly
+
+navbar:
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Getting Started"
+      href: articles/intro.html
+ 
+  right:
+    - icon: fa-file-code-o 
+      text: "Functions"
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: "Github"
+      href: https://github.com/seabbs/getTBinR
+      
+reference:
+    - title: Get WHO Tuberculosis Data
+      desc:  Retrieve or load the WHO data into R
+      contents:
+      - starts_with("get_")
+    - title: Plot WHO Tuberculosis Data
+      desc: Generate exploratory plots of the WHO Tuberulosis data.
+      contents:
+      - starts_with("plot_")
+    - title: Helpers
+      contents:
+      - search_data_dict
+      - prepare_df_plot

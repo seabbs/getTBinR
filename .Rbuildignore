@@ -9,3 +9,4 @@
 ^README\.Rmd$
 ^figure$
 ^appveyor\.yml$
+^_pkgdown\.yml$
