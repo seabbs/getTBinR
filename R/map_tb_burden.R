@@ -30,6 +30,8 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                            trans = "identity",
                            interactive = FALSE, ...) {
 
+  sel_year <- year
+  
   df_prep <- prepare_df_plot(df = df,
                              metric = metric,
                              metric_label = metric_label,
@@ -44,7 +46,7 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
   
   df_prep$df <- df_prep$df %>% 
     left_join(getTBinR::who_shapefile, c("iso3" = "id")) %>% 
-    filter(year == year) %>% 
+    filter(year %in% sel_year) %>% 
     rename_at(.vars = metric, .funs = funs(df_prep$metric_label))
   
   if (trans != "identity") {

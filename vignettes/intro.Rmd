@@ -69,6 +69,15 @@ vars_defs_of_interest <- search_data_dict(var = c("country"),
 knitr::kable(vars_defs_of_interest)
 ```
 
+## Mapping Global Incidence Rates
+
+To start exploring the WHO TB data we map global TB incidence rates in 2016. Mapping data can help identify spatial patterns.
+
+```{r map-tb-incidence-eur, fig.width = 15}
+getTBinR::map_tb_burden(metric = "e_inc_100k",
+                        year = 2016)
+```
+
 ## Plotting Incidence Rates for All Countries
 
 To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates for all countries in the WHO data.
