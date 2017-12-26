@@ -21,11 +21,14 @@ Suggests: devtools,
     rmarkdown,
     knitr
 Remotes: hadley/pkgdown,
-         tidyverse/ggplot2
+         tidyverse/ggplot2,
+         jrnold/ggthemes,
+         tidyverse/dplyr
 Imports: data.table,
     tibble,
     dplyr,
     purrr,
     ggplot2,
     magrittr,
-    plotly
+    plotly,
+    ggthemes

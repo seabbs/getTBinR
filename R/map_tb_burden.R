@@ -31,7 +31,8 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                            metric_label = NULL,
                            countries = NULL,
                            compare_to_region = FALSE,
-                           facet = NULL, year = 2016, scales = "fixed",
+                           facet = NULL, year = 2016,
+                           trans = "identity",
                            interactive = FALSE, ...) {
 
   df_prep <- prepare_df_plot(df = df,
@@ -42,30 +43,36 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                              facet = facet)
   
   ## Bind in world data
-  world <- gworld
-  
+  if (trans != "identity") {
+    df_prep$metric_label <- paste0(df_prep$metric_label, "(", trans, ")")
+  }
   df_prep$df <- df_prep$df %>% 
-    left_join(world, c("iso3" = "id")) %>% 
-    filter(year == year)
+    left_join(getTBinR::who_shapefile, c("iso3" = "id")) %>% 
+    filter(year == year) %>% 
+    rename_at(.vars = metric, .funs = funs(df_prep$metric_label))
   
   country <- NULL
   
-  plot <- ggplot(df_prep$df, aes_string(x = "long", y = "lat", fill = metric)) +
+  plot <- ggplot(df_prep$df, 
+                 aes_string(x = "long", 
+                            y = "lat", 
+                            text = "country",
+                            fill = paste0("`",df_prep$metric_label, "`"))) +
     geom_polygon(aes_string(group = "group")) + 
-    scale_fill_viridis_c(end = 0.9) +
-    theme_minimal() +
-    theme(legend.position = "bottom",
-          axis.ticks = NULL) +
-    guides(fill = guide_legend(title = df_prep$metric_label)) + 
-    labs(x = "", y = "")
+    scale_fill_viridis_c(end = 0.95, trans = trans) +
+    coord_fixed(1.5) +
+    ggthemes::theme_map() +
+    theme(legend.position = "bottom") 
   
   if (!is.null(df_prep$facet)) {
     plot <- plot + 
-      facet_wrap(df_prep$facet, scales = scales)
+      facet_wrap(df_prep$facet, scales = "free")
   }
   
   if (interactive) {
     plot <- plotly::ggplotly(plot)
+    
+    plot <- plot 
   }
   
   return(plot)
