@@ -67,7 +67,7 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                             text = "country",
                             fill = paste0("`",df_prep$metric_label, "`"))) +
     geom_polygon(aes_string(group = "group")) + 
-    scale_fill_viridis_c(end = 0.95, trans = trans) +
+    scale_fill_viridis_c(end = 0.95, trans = trans, direction = -1) +
     coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = "bottom") 

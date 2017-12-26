@@ -54,8 +54,8 @@ plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
   }
   
   plot <- plot +
-    scale_colour_viridis_d(end = 0.9) +
-    scale_fill_viridis_d(end = 0.9) +
+    scale_colour_viridis_d(end = 0.9, direction = -1) +
+    scale_fill_viridis_d(end = 0.9, direction = -1) +
     theme_minimal() +
     theme(legend.position = "none") +
     labs(x = "Year", y = df_prep$metric_label)

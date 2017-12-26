@@ -33,7 +33,7 @@ plot_tb_burden_overview <- function(df = NULL, metric = "e_inc_100k",
     geom_point(alpha = 0.6, size = 1.5)
   
   plot <- plot +
-    scale_colour_viridis_c(end = 0.9) +
+    scale_colour_viridis_c(end = 0.9, direction = -1) +
     theme_minimal() +
     labs(x = "Country", y = df_prep$metric_label) + 
     coord_flip()
