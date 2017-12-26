@@ -17,6 +17,12 @@ navbar:
     - icon: fa-file-code-o 
       text: "Functions"
       href: reference/index.html
+    - text: News
+      menu:
+       - text: "Release notes"
+       - text: "Version 1.0.0"
+       - text: "Change log"
+         href: news/index.html
     - icon: fa-github fa-lg
       text: "Github"
       href: https://github.com/seabbs/getTBinR
@@ -26,6 +32,10 @@ reference:
       desc:  Retrieve or load the WHO data into R
       contents:
       - starts_with("get_")
+    - title: Map WHO Tuberculosis Data
+      desc: Make maps of the WHO tuberculois data
+      contents:
+      - starts_with("map_")
     - title: Plot WHO Tuberculosis Data
       desc: Generate exploratory plots of the WHO Tuberulosis data.
       contents:

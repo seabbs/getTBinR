@@ -1,31 +1,26 @@
 #' Map TB Burden
 #'
-#' @description Plot measures of TB burden by country by specifying a metric from the TB burden data.
-#' Specify a country or vector of countries in order to plot them (otherwise it will plot all countries).
+#' @description Map measures of TB burden by country by specifying a metric from the TB burden data.
+#' Specify a country or vector of countries in order to map them (otherwise it will map all countries).
 #' Various other options are available for tuning the plot further.
-#' @param conf Character vector specifying the name variations to use to specify the upper
-#' and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
-#' then no confidence intervals are shown.
-#' @param scales Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
-#' alternatives are "free_y", "free_x", or "free".
-#' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is 
-#' returned.
-#' @inheritParams prepare_df_plot
-#' @seealso get_tb_burden search_data_dict
+#' @param year Numeric, indicating the year of data to map. Defaults to 2016.
+#' @param trans A character string specifying the transform to use on the mapped metric. Defaults to no 
+#' transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
+#' ("log10"). For a complete list of options see \code{ggplot2::continous_scale}.
+#' @inheritParams plot_tb_burden
+#' @seealso plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
 #' @export
 #' @import ggplot2
+#' @importFrom ggthemes theme_map
 #' @import magrittr
-#' @importFrom dplyr filter
+#' @importFrom dplyr filter left_join rename_at funs
+#' @importFrom ggthemes theme_map
 #' @importFrom purrr map
 #' @importFrom plotly ggplotly
 #' @examples
 #' 
-#' tb_burden <- get_tb_burden()
-#' 
-#' sample_countries <- sample(unique(tb_burden$country), 9)
-#' 
-#' plot_tb_burden(facet = "country", countries = sample_countries)
+#' map_tb_burden()
 #' 
 map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                            metric_label = NULL,
@@ -46,12 +41,23 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
   if (trans != "identity") {
     df_prep$metric_label <- paste0(df_prep$metric_label, "(", trans, ")")
   }
+  
   df_prep$df <- df_prep$df %>% 
     left_join(getTBinR::who_shapefile, c("iso3" = "id")) %>% 
     filter(year == year) %>% 
     rename_at(.vars = metric, .funs = funs(df_prep$metric_label))
   
+  if (trans != "identity") {
+    df_prep$metric_label <- paste0(df_prep$metric_label, " (", trans, ")")
+  }
+  
   country <- NULL
+  
+  if (compare_to_region) {
+    if (length(countries) == 1) {
+      df_prep$facet <- NULL
+    }
+  }
   
   plot <- ggplot(df_prep$df, 
                  aes_string(x = "long", 
@@ -60,19 +66,20 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
                             fill = paste0("`",df_prep$metric_label, "`"))) +
     geom_polygon(aes_string(group = "group")) + 
     scale_fill_viridis_c(end = 0.95, trans = trans) +
-    coord_fixed(1.5) +
+    coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = "bottom") 
   
   if (!is.null(df_prep$facet)) {
     plot <- plot + 
-      facet_wrap(df_prep$facet, scales = "free")
+      facet_wrap(df_prep$facet, scales = "fixed")
   }
   
   if (interactive) {
-    plot <- plotly::ggplotly(plot)
+    plot <- plot +
+      theme(legend.position = "none")
     
-    plot <- plot 
+    plot <- plotly::ggplotly(plot)
   }
   
   return(plot)
