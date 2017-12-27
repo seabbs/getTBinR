@@ -9,3 +9,4 @@ docs/reference/data-raw
 docs/data-raw
 docs/articles/data-raw
 vignettes/data-raw
+tests/testthat/data-raw
