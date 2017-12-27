@@ -1,4 +1,4 @@
-context("get_data_dict")
+context("search_data_dict")
 
 
 ## Search for a known variable
