@@ -21,18 +21,6 @@ exp_def <- c("e_mort_exc_tbhiv_100k", "e_mort_exc_tbhiv_100k_hi",
 ## Duplicate entries will be omitted.
 test_var_def <- search_data_dict(var = "e_mort_exc_tbhiv_100k", def = "mortality")
 
-
-
-## Check local data is used
-search_data_dict(var = "country")
-ncols_dict <- ncol(data_dict)
-nrows_dict <-  nrow(data_dict)
-class_dict <- class(data_dict)[1]
-## Expected
-exp_nrows <- 396
-exp_ncols <- 4
-exp_class <- "tbl_df"
-
 test_that("Variable search for a known variable returns expected results", {
   expect_equal(exp_var, test_var)
 })
