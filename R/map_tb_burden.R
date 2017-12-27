@@ -49,10 +49,6 @@ map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
     filter(year %in% sel_year) %>% 
     rename_at(.vars = metric, .funs = funs(df_prep$metric_label))
   
-  if (trans != "identity") {
-    df_prep$metric_label <- paste0(df_prep$metric_label, " (", trans, ")")
-  }
-  
   country <- NULL
   
   if (compare_to_region) {
