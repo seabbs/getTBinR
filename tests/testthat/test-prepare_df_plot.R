@@ -17,6 +17,10 @@ df_fuzzy_country <- prepare_df_plot(countries = "United Kingdom")
 df_region <- prepare_df_plot(countries = "United Kingdom",
                              compare_to_region = TRUE)
 
+##Add country facet
+df_country_facet <- prepare_df_plot(facet = "g_whoregion")
+
+
 eur_countries <-  c("Albania", "Andorra",
                     "Armenia", "Austria", 
                     "Azerbaijan", "Belarus", 
@@ -68,4 +72,6 @@ test_that("TB burden data is correctly proccessed when comparing to the region",
                as.character(unique(df_region$df$country))[1:10])
 })
 
-
+test_that("Add a facet works correctly", {
+  expect_equal("g_whoregion", df_country_facet$facet)
+})
