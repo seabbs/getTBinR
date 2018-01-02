@@ -19,6 +19,6 @@ who_shapefile
 }
 \description{
 The shapefile used in the WHO TB report, see \href{https://github.com/hazimtimimi/global_report/raw/master/Data/gparts.Rdata}{here}
-for the original source. This shapefule is used in \code{\link[getTBinR]{map_tb_burden}}.
+for the original source. This shapefile is used in \code{\link[getTBinR]{map_tb_burden}}.
 }
 \keyword{datasets}

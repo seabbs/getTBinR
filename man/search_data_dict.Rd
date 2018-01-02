@@ -42,7 +42,7 @@ searched for.
 Searches the WHO data dictionary for TB burden data. When run for the first time
 it will download the data dictionary into the default path as specified by \code{\link[getTBinR]{get_data_dict}} if
 \code{download_data = TRUE} and \code{save = TRUE}. Alternatively the data dictionary can be passed to the function.
-To modify this behaviour pass arguements to \code{\link[getTBinR]{get_data_dict}}.
+To modify this behaviour pass arguments to \code{\link[getTBinR]{get_data_dict}}.
 }
 \examples{
 
