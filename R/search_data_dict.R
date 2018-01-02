@@ -3,7 +3,7 @@
 #' @description Searches the WHO data dictionary for TB burden data. When run for the first time
 #' it will download the data dictionary into the default path as specified by \code{\link[getTBinR]{get_data_dict}} if
 #' \code{download_data = TRUE} and \code{save = TRUE}. Alternatively the data dictionary can be passed to the function.
-#' To modify this behaviour pass arguements to \code{\link[getTBinR]{get_data_dict}}.
+#' To modify this behaviour pass arguments to \code{\link[getTBinR]{get_data_dict}}.
 #' @param var A character vector of variable names.
 #' @param def A character vector of terms to use to search the variable definitions
 #' for partial matches
