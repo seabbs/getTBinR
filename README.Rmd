@@ -30,11 +30,13 @@ devtools::install_github("seabbs/getTBinR")
 
 ## Quick start
 
-Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map global TB incidence rates in 2016,
+Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map global TB incidence rates in 2016 (this will also download and save both the TB burden data and its data dictionary if they are not found locally),
 
 ```{r map-tb-incidence-eur}
 getTBinR::map_tb_burden(metric = "e_inc_100k",
-                        year = 2016)
+                        year = 2016,
+                        download_data = TRUE, 
+                        save = TRUE)
 ```
 
 Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,

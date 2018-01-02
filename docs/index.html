@@ -43,19 +43,8 @@
     Functions
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Release notes</li>
-    <li class="dropdown-header">Version 1.0.0</li>
-    <li>
-      <a href="news/index.html">Change log</a>
-    </li>
-  </ul>
+<li>
+  <a href="news/index.html">News</a>
 </li>
 <li>
   <a href="https://github.com/seabbs/getTBinR">
@@ -95,21 +84,35 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick start</h2>
-<p>Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map global TB incidence rates in 2016,</p>
+<p>Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map global TB incidence rates in 2016 (this will also download and save both the TB burden data and its data dictionary if they are not found locally),</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
-                        <span class="dt">year =</span> <span class="dv">2016</span>)</code></pre></div>
+                        <span class="dt">year =</span> <span class="dv">2016</span>,
+                        <span class="dt">download_data =</span> <span class="ot">TRUE</span>, 
+                        <span class="dt">save =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; Loading data from: data-raw/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: data-raw/TB_data_dict.rds</span>
+<span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
+<span class="co">#&gt; 0 results found for your definition search for</span></code></pre></div>
 <p><img src="figure/map-tb-incidence-eur-1.png" width="672"></p>
 <p>Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                                   <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
-                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
+<span class="co">#&gt; Loading data from: data-raw/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: data-raw/TB_data_dict.rds</span>
+<span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
+<span class="co">#&gt; 0 results found for your definition search for</span></code></pre></div>
 <p><img src="figure/plot-tb-incidence-eur-1.png" width="960"></p>
 <p>Finally plot TB incidence rates over time in the United Kingdom.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                          <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                          <span class="dt">facet =</span> <span class="st">"country"</span>,
-                         <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+                         <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
+<span class="co">#&gt; Loading data from: data-raw/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: data-raw/TB_data_dict.rds</span>
+<span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
+<span class="co">#&gt; 0 results found for your definition search for</span></code></pre></div>
 <p><img src="figure/plot-tb-incidence-uk-1.png" width="672"></p>
 <p>See <a href="https://www.samabbott.co.uk/getTBinR/articles/intro.html">Getting Started</a> and <a href="https://www.samabbott.co.uk/getTBinR/reference/index.html">Functions</a> for more details of the functions used (note the fuzzy country matching, <code>map_tb_burden</code>, <code>plot_tb_burden_overview</code> and <code>plot_tb_burden</code> will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying <code>interactive = TRUE</code></p>
 </div>

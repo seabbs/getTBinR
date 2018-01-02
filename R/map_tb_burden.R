@@ -20,24 +20,37 @@
 #' @importFrom plotly ggplotly
 #' @examples
 #' 
-#' map_tb_burden()
+#' map_tb_burden(download_data = TRUE, save = TRUE)
 #' 
-map_tb_burden <- function(df = NULL, metric = "e_inc_100k",
+map_tb_burden <- function(df = NULL, dict = NULL,
+                           metric = "e_inc_100k",
                            metric_label = NULL,
                            countries = NULL,
                            compare_to_region = FALSE,
                            facet = NULL, year = 2016,
                            trans = "identity",
-                           interactive = FALSE, ...) {
+                           interactive = FALSE, 
+                           download_data = FALSE,
+                           save = FALSE,
+                           burden_save_name = "TB_burden",
+                           dict_save_name = "TB_data_dict",
+                           path = "data-raw", 
+                           verbose = TRUE, ...) {
 
   sel_year <- year
   
-  df_prep <- prepare_df_plot(df = df,
+  df_prep <- prepare_df_plot(df = df, dict = dict,
                              metric = metric,
                              metric_label = metric_label,
                              countries = countries,
                              compare_to_region = compare_to_region,
-                             facet = facet)
+                             facet = facet,
+                             download_data = download_data,
+                             save = save,
+                             burden_save_name = burden_save_name,
+                             dict_save_name = dict_save_name,
+                             path = path, 
+                             verbose = verbose)
   
   ## Bind in world data
   if (trans != "identity") {

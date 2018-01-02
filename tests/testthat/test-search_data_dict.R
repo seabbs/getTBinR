@@ -2,7 +2,7 @@ context("search_data_dict")
 
 
 ## Search for a known variable
-test_var <- search_data_dict(var = "country")
+test_var <- search_data_dict(var = "country", download_data = TRUE, save = TRUE)
 
 exp_var <- tibble::tibble(variable_name = "country",
                           dataset = "Country identification",

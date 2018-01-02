@@ -18,11 +18,7 @@ navbar:
       text: "Functions"
       href: reference/index.html
     - text: News
-      menu:
-       - text: "Release notes"
-       - text: "Version 1.0.0"
-       - text: "Change log"
-         href: news/index.html
+      href: news/index.html
     - icon: fa-github fa-lg
       text: "Github"
       href: https://github.com/seabbs/getTBinR

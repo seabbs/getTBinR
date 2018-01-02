@@ -67,19 +67,8 @@
     Functions
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Release notes</li>
-    <li class="dropdown-header">Version 1.0.0</li>
-    <li>
-      <a href="../news/index.html">Change log</a>
-    </li>
-  </ul>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
 <li>
   <a href="https://github.com/seabbs/getTBinR">
@@ -109,9 +98,11 @@ be compared to others in its region. This enables the user to rapidly understand
 Tuberculosis over time and the progress towards global elimination.</p>
     
 
-    <pre class="usage"><span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
+    <pre class="usage"><span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
   <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
+  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -119,8 +110,14 @@ Tuberculosis over time and the progress towards global elimination.</p>
     <tr>
       <th>df</th>
       <td><p>Dataframe of TB burden data, as sourced by <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.
-If not specified then will automatically source the WHO TB burden data, either locally if available
-or directly from the WHO.</p></td>
+If not specified then will source the WHO TB burden data, either locally if available
+or directly from the WHO (if <code>download_data = TRUE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>dict</th>
+      <td><p>A tibble of the data dictionary. See <code><a href='get_data_dict.html'>get_data_dict</a></code>
+for details. If not supplied the function will attempt to load a saved version of the
+dictionary. If this fails and <code>download_data = TRUE</code> then the dictionary will be downloaded.</p></td>
     </tr>
     <tr>
       <th>metric</th>
@@ -155,6 +152,36 @@ alternatives are "free_y", "free_x", or "free".</p></td>
 returned.</p></td>
     </tr>
     <tr>
+      <th>download_data</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. If not found locally should the data be
+downloaded from the specified URL?</p></td>
+    </tr>
+    <tr>
+      <th>save</th>
+      <td><p>Logical, should the data be saved for reuse. Defaults to
+<code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>burden_save_name</th>
+      <td><p>Character string, name to save the data under. Defaults to
+<code>TB_burden</code>.</p></td>
+    </tr>
+    <tr>
+      <th>dict_save_name</th>
+      <td><p>Character string, name to save dictionary under. Defaults to
+<code>TB_data_dict</code>.</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Character string, indicating the folder to save the data into,
+defaults to <code>data-raw</code>.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Should additional status and progress messages
+be displayed.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Additional parameters to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
@@ -171,7 +198,8 @@ returned.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>), <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='plot_tb_burden_overview-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: data-raw/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: data-raw/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='output co'>#&gt; <span class='message'>0 results found for your definition search for </span></div><div class='img'><img src='plot_tb_burden_overview-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

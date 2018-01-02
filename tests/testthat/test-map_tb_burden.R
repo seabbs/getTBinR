@@ -1,6 +1,6 @@
 context("map_tb_burden")
 
-plot <- map_tb_burden()
+plot <- map_tb_burden(download_data = TRUE, save = TRUE)
 
 plot_int <- map_tb_burden(interactive = TRUE)
 

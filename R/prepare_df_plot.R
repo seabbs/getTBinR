@@ -3,8 +3,8 @@
 #' @description This function is used internally by \code{\link[getTBinR]{plot_tb_burden}}
 #' and \code{\link[getTBinR]{plot_tb_burden_overview}} to prepare data for plotting.
 #' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
-#' If not specified then will automatically source the WHO TB burden data, either locally if available
-#' or directly from the WHO.
+#' If not specified then will source the WHO TB burden data, either locally if available
+#' or directly from the WHO (if \code{download_data = TRUE}).
 #' @param countries A character string specifying the countries to plot.
 #' @param metric Character string specifying the metric to plot
 #' @param metric_label Character string specifying the metric label to use. 
@@ -13,6 +13,8 @@
 #' countries that share a region with those listed in \code{countries} will be plotted.
 #' Note that this will override settings for \code{facet}, unless it is set to "country".
 #' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
+#' @inheritParams get_tb_burden
+#' @inheritParams search_data_dict
 #' @import magrittr
 #' @importFrom dplyr filter arrange_at mutate pull
 #' @importFrom purrr map
@@ -23,14 +25,20 @@
 #'
 #' @examples
 #' 
-#' prepare_df_plot(countries = "Guinea")
+#' prepare_df_plot(countries = "Guinea", download_data = TRUE, save = TRUE)
 #' 
 prepare_df_plot <- function(df = NULL,
+                            dict = NULL,
                             metric = "e_inc_100k",
                             metric_label = NULL,
                             countries = NULL,
                             compare_to_region = FALSE,
                             facet = NULL,
+                            download_data = FALSE, save = FALSE, 
+                            burden_save_name = "TB_burden",
+                            dict_save_name = "TB_data_dict",
+                            path = "data-raw",
+                            verbose = TRUE,
                             ...){
 
   country <- NULL
@@ -38,7 +46,11 @@ prepare_df_plot <- function(df = NULL,
   g_whoregion <- NULL
   
   if (is.null(df)) {
-    df <- get_tb_burden(...)
+    df <- get_tb_burden(download_data = download_data,
+                        save = save,
+                        burden_save_name = burden_save_name,
+                        path = path, 
+                        verbose = verbose, ...)
   }
   
   if (is.null(countries)) {
@@ -69,7 +81,14 @@ prepare_df_plot <- function(df = NULL,
   }
   
   if(is.null(metric_label)) {
-    metric_label <- search_data_dict(var = metric, verbose = FALSE)
+    metric_label <- search_data_dict(var = metric, 
+                                     dict = dict,
+                                     download_data = download_data,
+                                     save = save,
+                                     dict_save_name = dict_save_name,
+                                     path = path, 
+                                     verbose = verbose)
+    
     metric_label <- metric_label$definition
   }
   

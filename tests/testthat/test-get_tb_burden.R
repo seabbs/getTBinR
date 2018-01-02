@@ -1,7 +1,8 @@
 context("get_tb_burden")
 
 ## Data dict summary data
-tb_data <- get_tb_burden()
+tb_data <- get_tb_burden(download_data = TRUE,
+                         save = TRUE)
 
 ncols_tb_data <- ncol(tb_data)
 nrows_tb_data <-  nrow(tb_data)

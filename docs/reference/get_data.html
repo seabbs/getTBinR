@@ -67,19 +67,8 @@
     Functions
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Release notes</li>
-    <li class="dropdown-header">Version 1.0.0</li>
-    <li>
-      <a href="../news/index.html">Change log</a>
-    </li>
-  </ul>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
 <li>
   <a href="https://github.com/seabbs/getTBinR">
@@ -103,11 +92,14 @@
     </div>
 
     
-    <p>Generic Get Data Function</p>
+    <p>If the data is found locally then this function will load the data into R. Otherwise
+if <code>download_data = TRUE</code> then the data will be retrieved from the specified URL. Data can then be
+saved by specifying <code>save = TRUE</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>,
-  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -122,14 +114,14 @@
 dataframe of any type. If not specified defaults to transforming the data into a tibble.</p></td>
     </tr>
     <tr>
-      <th>path</th>
-      <td><p>Character string, indicating the folder to save the data into,
-defaults to <code>data-raw</code>.</p></td>
+      <th>download_data</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. If not found locally should the data be
+downloaded from the specified URL?</p></td>
     </tr>
     <tr>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse. Defaults to
-<code>TRUE</code>.</p></td>
+<code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>save_name</th>
@@ -137,15 +129,25 @@ defaults to <code>data-raw</code>.</p></td>
 <code>NULL</code>.</p></td>
     </tr>
     <tr>
+      <th>path</th>
+      <td><p>Character string, indicating the folder to save the data into,
+defaults to <code>data-raw</code>.</p></td>
+    </tr>
+    <tr>
       <th>return</th>
       <td><p>Logical, should the data be returned as a dataframe.
 Defaults to <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Should additional status and progress messages
+be displayed.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The data downloaded from the given url as a dataframe, exact format specified by data_trans_fn</p>
+    <p>The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -155,24 +157,23 @@ Defaults to <code>TRUE</code>.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
-<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)
-
+<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
+<span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: data-raw/TB_burden.rds</span></div><div class='input'>
 <span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 71
-#&gt;       country  iso2  iso3 iso_numeric g_whoregion  year e_pop_num e_inc_100k
-#&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt; &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghanistan    AF   AFG         004         EMR  2000  20093756        190
-#&gt; 2 Afghanistan    AF   AFG         004         EMR  2001  20966463        189
-#&gt; 3 Afghanistan    AF   AFG         004         EMR  2002  21979923        189
-#&gt; 4 Afghanistan    AF   AFG         004         EMR  2003  23064851        189
-#&gt; 5 Afghanistan    AF   AFG         004         EMR  2004  24118979        189
-#&gt; 6 Afghanistan    AF   AFG         004         EMR  2005  25070798        189
-#&gt; # ... with 63 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
-#&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
-#&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,
-#&gt; #   e_inc_num_f15plus &lt;int&gt;, e_inc_num_f15plus_lo &lt;int&gt;,
-#&gt; #   e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;, e_inc_num_f_lo &lt;int&gt;,
-#&gt; #   e_inc_num_f_hi &lt;int&gt;, e_inc_num_m014 &lt;int&gt;, e_inc_num_m014_lo &lt;int&gt;,
-#&gt; #   e_inc_num_m014_hi &lt;int&gt;, e_inc_num_m15plus &lt;int&gt;,
+#&gt;   count… iso2  iso3  iso_n… g_who…  year e_pop_… e_inc… e_in… e_in… e_in… e_in…
+#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+#&gt; 1 Afgha… AF    AFG   004    EMR     2000  2.01e⁷    190   123   271 38000 25000
+#&gt; 2 Afgha… AF    AFG   004    EMR     2001  2.10e⁷    189   123   271 40000 26000
+#&gt; 3 Afgha… AF    AFG   004    EMR     2002  2.20e⁷    189   122   270 42000 27000
+#&gt; 4 Afgha… AF    AFG   004    EMR     2003  2.31e⁷    189   122   270 44000 28000
+#&gt; 5 Afgha… AF    AFG   004    EMR     2004  2.41e⁷    189   122   270 46000 29000
+#&gt; 6 Afgha… AF    AFG   004    EMR     2005  2.51e⁷    189   122   270 47000 31000
+#&gt; # ... with 59 more variables: e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;,
+#&gt; #   e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;, e_inc_num_f15plus &lt;int&gt;,
+#&gt; #   e_inc_num_f15plus_lo &lt;int&gt;, e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;,
+#&gt; #   e_inc_num_f_lo &lt;int&gt;, e_inc_num_f_hi &lt;int&gt;, e_inc_num_m014 &lt;int&gt;,
+#&gt; #   e_inc_num_m014_lo &lt;int&gt;, e_inc_num_m014_hi &lt;int&gt;, e_inc_num_m15plus &lt;int&gt;,
 #&gt; #   e_inc_num_m15plus_lo &lt;int&gt;, e_inc_num_m15plus_hi &lt;int&gt;, e_inc_num_m &lt;int&gt;,
 #&gt; #   e_inc_num_m_lo &lt;int&gt;, e_inc_num_m_hi &lt;int&gt;, e_inc_num_014 &lt;int&gt;,
 #&gt; #   e_inc_num_014_lo &lt;int&gt;, e_inc_num_014_hi &lt;int&gt;, e_inc_num_15plus &lt;int&gt;,

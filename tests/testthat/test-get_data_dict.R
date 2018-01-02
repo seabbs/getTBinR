@@ -1,7 +1,8 @@
 context("get_data_dict")
 
 ## Data dict summary data
-data_dict <- get_data_dict()
+data_dict <- get_data_dict(download_data = TRUE, 
+                           save = TRUE)
 
 ncols_dict <- ncol(data_dict)
 nrows_dict <-  nrow(data_dict)

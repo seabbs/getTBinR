@@ -4,14 +4,20 @@
 \alias{map_tb_burden}
 \title{Map TB Burden}
 \usage{
-map_tb_burden(df = NULL, metric = "e_inc_100k", metric_label = NULL,
-  countries = NULL, compare_to_region = FALSE, facet = NULL,
-  year = 2016, trans = "identity", interactive = FALSE, ...)
+map_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
+  metric_label = NULL, countries = NULL, compare_to_region = FALSE,
+  facet = NULL, year = 2016, trans = "identity", interactive = FALSE,
+  download_data = FALSE, save = FALSE, burden_save_name = "TB_burden",
+  dict_save_name = "TB_data_dict", path = "data-raw", verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
-If not specified then will automatically source the WHO TB burden data, either locally if available
-or directly from the WHO.}
+If not specified then will source the WHO TB burden data, either locally if available
+or directly from the WHO (if \code{download_data = TRUE}).}
+
+\item{dict}{A tibble of the data dictionary. See \code{\link[getTBinR]{get_data_dict}}
+for details. If not supplied the function will attempt to load a saved version of the
+dictionary. If this fails and \code{download_data = TRUE} then the dictionary will be downloaded.}
 
 \item{metric}{Character string specifying the metric to plot}
 
@@ -34,6 +40,24 @@ transform ("identity"). Other options include log scaling ("log") and log base 1
 \item{interactive}{Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is
 returned.}
 
+\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+downloaded from the specified URL?}
+
+\item{save}{Logical, should the data be saved for reuse. Defaults to
+\code{FALSE}.}
+
+\item{burden_save_name}{Character string, name to save the data under. Defaults to
+\code{TB_burden}.}
+
+\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
+\code{TB_data_dict}.}
+
+\item{path}{Character string, indicating the folder to save the data into,
+defaults to \code{data-raw}.}
+
+\item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
+be displayed.}
+
 \item{...}{Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
@@ -46,7 +70,7 @@ Various other options are available for tuning the plot further.
 }
 \examples{
 
-map_tb_burden()
+map_tb_burden(download_data = TRUE, save = TRUE)
 
 }
 \seealso{

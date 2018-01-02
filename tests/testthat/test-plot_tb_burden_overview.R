@@ -1,6 +1,6 @@
 context("plot_tb_burden_overview")
 
-plot <- plot_tb_burden_overview()
+plot <- plot_tb_burden_overview(download_data = TRUE, save = TRUE)
 
 plot_int <- plot_tb_burden_overview(interactive = TRUE)
 

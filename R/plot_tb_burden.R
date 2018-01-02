@@ -21,25 +21,39 @@
 #' @importFrom plotly ggplotly
 #' @examples
 #' 
-#' tb_burden <- get_tb_burden()
-#' 
+#' tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
+#' dict <- get_data_dict(download_data = TRUE, save = TRUE)
 #' sample_countries <- sample(unique(tb_burden$country), 9)
 #' 
-#' plot_tb_burden(facet = "country", countries = sample_countries)
+#' plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
 #' 
-plot_tb_burden <- function(df = NULL, metric = "e_inc_100k",
+plot_tb_burden <- function(df = NULL, dict = NULL, 
+                           metric = "e_inc_100k",
                            metric_label = NULL,
                            conf = c("_lo", "_hi"), countries = NULL,
                            compare_to_region = FALSE,
                            facet = NULL, scales = "fixed",
-                           interactive = FALSE, ...) {
+                           interactive = FALSE,
+                           download_data = FALSE,
+                           save = FALSE,
+                           burden_save_name = "TB_burden",
+                           dict_save_name = "TB_data_dict",
+                           path = "data-raw", 
+                           verbose = TRUE, ...) {
 
   df_prep <- prepare_df_plot(df = df,
+                             dict = dict,
                              metric = metric,
                              metric_label = metric_label,
                              countries = countries,
                              compare_to_region = compare_to_region,
-                             facet = facet)
+                             facet = facet,
+                             download_data = download_data,
+                             save = save,
+                             burden_save_name = burden_save_name,
+                             dict_save_name = dict_save_name,
+                             path = path, 
+                             verbose = verbose)
   
   country <- NULL
   

@@ -4,15 +4,16 @@ author: "Sam Abbott"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Getting started with getTBinR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+  collapse = TRUE, comment = "#>",
+  fig.width = 7, fig.height = 7, 
+  fig.align = "center"
 )
 ```
 
@@ -34,7 +35,7 @@ library(dplyr)
 Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy. If a local copy exists this will be loaded instead.
 
 ```{r get-tb-burden-data}
-tb_burden <- get_tb_burden()
+tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
 
 tb_burden
 ```
@@ -47,7 +48,9 @@ The WHO provides a large, detailed, data dictionary for use with the TB burden d
 vars_of_interest <- search_data_dict(var = c("country",
                                              "e_inc_100k",
                                              "e_inc_100k_lo",
-                                             "e_inc_100k_hi"))
+                                             "e_inc_100k_hi"),
+                                     download_data = TRUE, 
+                                     save = TRUE)
 
 knitr::kable(vars_of_interest)
 ```

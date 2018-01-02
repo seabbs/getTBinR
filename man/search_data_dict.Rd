@@ -4,13 +4,31 @@
 \alias{search_data_dict}
 \title{Search the WHO TB Data Dictionary by Variable Name.}
 \usage{
-search_data_dict(var = NULL, def = NULL, verbose = TRUE, ...)
+search_data_dict(var = NULL, def = NULL, dict = NULL,
+  download_data = FALSE, save = FALSE, dict_save_name = "TB_data_dict",
+  path = "data-raw", verbose = TRUE, ...)
 }
 \arguments{
 \item{var}{A character vector of variable names.}
 
 \item{def}{A character vector of terms to use to search the variable definitions
 for partial matches}
+
+\item{dict}{A tibble of the data dictionary. See \code{\link[getTBinR]{get_data_dict}}
+for details. If not supplied the function will attempt to load a saved version of the
+dictionary. If this fails and \code{download_data = TRUE} then the dictionary will be downloaded.}
+
+\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+downloaded from the specified URL?}
+
+\item{save}{Logical, should the data be saved for reuse. Defaults to
+\code{FALSE}.}
+
+\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
+\code{TB_data_dict}.}
+
+\item{path}{Character string, indicating the folder to save the data into,
+defaults to \code{data-raw}.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should search information be returned.}
 
@@ -22,13 +40,15 @@ searched for.
 }
 \description{
 Searches the WHO data dictionary for TB burden data. When run for the first time
-it will download the data dictionary into the default path as specified by \code{\link[getTBinR]{get_data_dict}}.
+it will download the data dictionary into the default path as specified by \code{\link[getTBinR]{get_data_dict}} if
+\code{download_data = TRUE} and \code{save = TRUE}. Alternatively the data dictionary can be passed to the function.
 To modify this behaviour pass arguements to \code{\link[getTBinR]{get_data_dict}}.
 }
 \examples{
 
 ## Search for a known variable
-search_data_dict(var = "country")
+## Download and save the dictionary if it is not available locally
+search_data_dict(var = "country", download_data = TRUE, save = TRUE)
 
 ## Search for all variables mentioning mortality in their definition
 search_data_dict(def = "mortality")

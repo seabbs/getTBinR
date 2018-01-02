@@ -1,7 +1,7 @@
 context("prepare_df_plot")
 
 ##No country
-df_all <- prepare_df_plot()
+df_all <- prepare_df_plot(download_data = TRUE, save = TRUE)
 
 ##Supply data
 tb_data <- get_tb_burden()
