@@ -93,14 +93,12 @@
 
     
     <p>Searches the WHO data dictionary for TB burden data. When run for the first time
-it will download the data dictionary into the default path as specified by <code><a href='get_data_dict.html'>get_data_dict</a></code> if
-<code>download_data = TRUE</code> and <code>save = TRUE</code>. Alternatively the data dictionary can be passed to the function.
-To modify this behaviour pass arguments to <code><a href='get_data_dict.html'>get_data_dict</a></code>.</p>
+it will download the data dictionary, if <code>download_data = TRUE</code>, and save it into the temporary</p>
     
 
     <pre class="usage"><span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>,
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -127,18 +125,13 @@ downloaded from the specified URL?</p></td>
     </tr>
     <tr>
       <th>save</th>
-      <td><p>Logical, should the data be saved for reuse. Defaults to
-<code>FALSE</code>.</p></td>
+      <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
+<code>FALSE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>dict_save_name</th>
       <td><p>Character string, name to save dictionary under. Defaults to
 <code>TB_data_dict</code>.</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>Character string, indicating the folder to save the data into,
-defaults to <code>data-raw</code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -164,12 +157,12 @@ searched for.</p>
     <pre class="examples"><div class='input'>
 <span class='co'>## Search for a known variable</span>
 <span class='co'>## Download and save the dictionary if it is not available locally</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: data-raw/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; <span class='message'>0 results found for your definition search for </span></div><div class='output co'>#&gt; # A tibble: 1 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEjKCaH/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; # A tibble: 1 x 4
 #&gt;   variable_name dataset                code_list definition               
 #&gt;   &lt;chr&gt;         &lt;chr&gt;                  &lt;chr&gt;     &lt;chr&gt;                    
 #&gt; 1 country       Country identification ""        Country or territory name</div><div class='input'>
 <span class='co'>## Search for all variables mentioning mortality in their definition</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: data-raw/TB_data_dict.rds</span></div><div class='output co'>#&gt; # A tibble: 6 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEjKCaH/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>6 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 6 x 4
 #&gt;   variable_name            dataset   code_list definition                      
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                           
 #&gt; 1 e_mort_exc_tbhiv_100k    Estimates ""        Estimated mortality of TB cases…
@@ -180,7 +173,7 @@ searched for.</p>
 #&gt; 6 e_mort_tbhiv_100k_lo     Estimates ""        Estimated mortality of TB cases…</div><div class='input'>
 <span class='co'>## Search for both a known variable and for mortality being mentioned in there definition</span>
 <span class='co'>## Duplicate entries will be omitted.</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: data-raw/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>6 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 6 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEjKCaH/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>6 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 6 x 4
 #&gt;   variable_name            dataset   code_list definition                      
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                           
 #&gt; 1 e_mort_exc_tbhiv_100k    Estimates ""        Estimated mortality of TB cases…

@@ -1,12 +1,12 @@
 #' Get the WHO TB Burden Data
 #'
 #' @description Get the TB burden data from the WHO, see 
-#' [here](http://www.who.int/tb/country/data/download/en/) for details.
+#' [here](http://www.who.int/tb/country/data/download/en/) for details. This function will first attempt
+#' to load the data from the temporary directory (\code{\link[base]{tempdir}}). If that fails, and \code{download_data = TRUE}, it
+#' will instead download the data.
 #' 
 #' @param url Character string, indicating  the url of the TB burden data.
 #'  Default is current url.
-#' @param path Character string, indicating the folder to save the data into,
-#' defaults to \code{data-raw}.
 #' @param burden_save_name Character string, name to save the data under. Defaults to
 #' \code{TB_burden}.
 #' @param return Logical, should the data be returned as a dataframe.
@@ -28,7 +28,6 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                           download_data = FALSE,
                           save = TRUE,
                           burden_save_name = "TB_burden",
-                          path = "data-raw",
                           return = TRUE,
                           verbose = TRUE) {
 
@@ -47,7 +46,6 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
   
   get_data(
     url = url,
-    path = path,
     download_data = download_data,
     data_trans_fn = trans_burden_data,
     save = save,

@@ -92,14 +92,13 @@
     </div>
 
     
-    <p>If the data is found locally then this function will load the data into R. Otherwise
-if <code>download_data = TRUE</code> then the data will be retrieved from the specified URL. Data can then be
-saved by specifying <code>save = TRUE</code>.</p>
+    <p>If the data is found locally in the temporary directory then this function will load the data into R.
+Otherwise if <code>download_data = TRUE</code> then the data will be retrieved from the specified URL. Data can then be
+saved  to the temporary directory by specifying <code>save = TRUE</code>.</p>
     
 
     <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -120,18 +119,13 @@ downloaded from the specified URL?</p></td>
     </tr>
     <tr>
       <th>save</th>
-      <td><p>Logical, should the data be saved for reuse. Defaults to
-<code>FALSE</code>.</p></td>
+      <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
+<code>FALSE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>save_name</th>
       <td><p>Character string, name to save the data under. Defaults to
 <code>NULL</code>.</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>Character string, indicating the folder to save the data into,
-defaults to <code>data-raw</code>.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -159,16 +153,16 @@ be displayed.</p></td>
 <span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
 <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
 <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: data-raw/TB_burden.rds</span></div><div class='input'>
+<span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEjKCaH/TB_burden.rds</span></div><div class='input'>
 <span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 71
-#&gt;   count… iso2  iso3  iso_n… g_who…  year e_pop_… e_inc… e_in… e_in… e_in… e_in…
-#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
-#&gt; 1 Afgha… AF    AFG   004    EMR     2000  2.01e⁷    190   123   271 38000 25000
-#&gt; 2 Afgha… AF    AFG   004    EMR     2001  2.10e⁷    189   123   271 40000 26000
-#&gt; 3 Afgha… AF    AFG   004    EMR     2002  2.20e⁷    189   122   270 42000 27000
-#&gt; 4 Afgha… AF    AFG   004    EMR     2003  2.31e⁷    189   122   270 44000 28000
-#&gt; 5 Afgha… AF    AFG   004    EMR     2004  2.41e⁷    189   122   270 46000 29000
-#&gt; 6 Afgha… AF    AFG   004    EMR     2005  2.51e⁷    189   122   270 47000 31000
+#&gt;   count… iso2  iso3  iso_n… g_whor…  year e_pop_… e_in… e_in… e_in… e_in… e_in…
+#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+#&gt; 1 Afgha… AF    AFG   004    Easter…  2000  2.01e⁷   190   123   271 38000 25000
+#&gt; 2 Afgha… AF    AFG   004    Easter…  2001  2.10e⁷   189   123   271 40000 26000
+#&gt; 3 Afgha… AF    AFG   004    Easter…  2002  2.20e⁷   189   122   270 42000 27000
+#&gt; 4 Afgha… AF    AFG   004    Easter…  2003  2.31e⁷   189   122   270 44000 28000
+#&gt; 5 Afgha… AF    AFG   004    Easter…  2004  2.41e⁷   189   122   270 46000 29000
+#&gt; 6 Afgha… AF    AFG   004    Easter…  2005  2.51e⁷   189   122   270 47000 31000
 #&gt; # ... with 59 more variables: e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;,
 #&gt; #   e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;, e_inc_num_f15plus &lt;int&gt;,
 #&gt; #   e_inc_num_f15plus_lo &lt;int&gt;, e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;,

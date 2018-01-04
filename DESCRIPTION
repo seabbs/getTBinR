@@ -1,10 +1,10 @@
 Package: getTBinR
 Type: Package
 Version: 0.5.0
-Title: Get WHO Tuberculosis Data in R
+Title: Get WHO Tuberculosis Data
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk"))
-Description: The World Health Organisation compiles multiple datasets across infectious diseases. This package aims to facilitate easy import of analysis ready Tuberculosis data into R.
+Description: Facilitates easy import of analysis ready World Health Organisation Tuberculosis data and provides plotting functions for exploratory data analysis.
 License: GPL-3 | file LICENSE
 VignetteBuilder: knitr
 URL: http://www.samabbott.co.uk/getTBinR, 

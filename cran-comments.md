@@ -1,3 +1,10 @@
+## Response to CRAN comments from last submit
+
+* Omitted redundant 'in R' in package title. 
+* Saving to tempdir() only rather than optionally to the user directory.
+* Updated documentation to reflect the use of tempdir().
+* Updated Getting Started vignette to reflect the use of tempdir().
+
 ## Test environments
 
 * local OS X install, R 3.4.3

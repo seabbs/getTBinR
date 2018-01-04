@@ -1,7 +1,7 @@
 #' Map TB Burden
 #'
 #' @description Map measures of TB burden by country by specifying a metric from the TB burden data.
-#' Specify a country or vector of countries in order to map them (otherwise it will map all countries).
+#' Specify a country or vector of countries in order to map them (the default is to map all countries).
 #' Various other options are available for tuning the plot further.
 #' @param year Numeric, indicating the year of data to map. Defaults to 2016.
 #' @param trans A character string specifying the transform to use on the mapped metric. Defaults to no 
@@ -45,7 +45,6 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            save = FALSE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
-                           path = "data-raw", 
                            verbose = TRUE, ...) {
 
   sel_year <- year
@@ -60,7 +59,6 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                              save = save,
                              burden_save_name = burden_save_name,
                              dict_save_name = dict_save_name,
-                             path = path, 
                              verbose = verbose)
   
   ## Bind in world data

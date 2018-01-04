@@ -1,17 +1,15 @@
 #' Generic Get Data Function
 #'
-#' @description If the data is found locally then this function will load the data into R. Otherwise
-#' if \code{download_data = TRUE} then the data will be retrieved from the specified URL. Data can then be 
-#' saved by specifying \code{save = TRUE}.
+#' @description If the data is found locally in the temporary directory then this function will load the data into R.
+#'  Otherwise if \code{download_data = TRUE} then the data will be retrieved from the specified URL. Data can then be 
+#'  saved  to the temporary directory by specifying \code{save = TRUE}.
 #' @param url Character string, indicating  the url of the data to download.
 #' @param data_trans_fn Function that takes a data.table as input and returns a single
 #' dataframe of any type. If not specified defaults to transforming the data into a tibble.
-#' @param path Character string, indicating the folder to save the data into,
-#' defaults to \code{data-raw}.
 #' @param download_data Logical, defaults to \code{FALSE}. If not found locally should the data be
 #'  downloaded from the specified URL?
-#' @param save Logical, should the data be saved for reuse. Defaults to 
-#' \code{FALSE}.
+#' @param save Logical, should the data be saved for reuse during the current R session. Defaults to 
+#' \code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.
 #' @param save_name Character string, name to save the data under. Defaults to
 #' \code{NULL}.
 #' @param return Logical, should the data be returned as a dataframe.
@@ -38,9 +36,10 @@ get_data <- function(url = NULL,
                      download_data = FALSE,
                      save = FALSE,
                      save_name = NULL,
-                     path = "data-raw",
                      return = TRUE,
                      verbose = TRUE) {
+  
+    path <- tempdir()
   
   if (is.null(data_trans_fn)) {
     data_trans_fn <- tibble::as_tibble

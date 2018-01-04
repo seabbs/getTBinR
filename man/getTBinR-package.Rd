@@ -4,9 +4,9 @@
 \name{getTBinR-package}
 \alias{getTBinR}
 \alias{getTBinR-package}
-\title{getTBinR: Get WHO Tuberculosis Data in R}
+\title{getTBinR: Get WHO Tuberculosis Data}
 \description{
-The World Health Organisation compiles multiple datasets across infectious diseases. This package aims to facilitate easy import of analysis ready Tuberculosis data into R.
+Facilitates easy import of analysis ready World Health Organisation Tuberculosis data and provides plotting functions for exploratory data analysis.
 }
 \seealso{
 Useful links:

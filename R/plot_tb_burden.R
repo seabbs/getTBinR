@@ -1,7 +1,7 @@
 #' Plot TB Burden by Country
 #'
 #' @description Plot measures of TB burden by country by specifying a metric from the TB burden data.
-#' Specify a country or vector of countries in order to plot them (otherwise it will plot all countries).
+#' Specify a country or vector of countries in order to plot them (by default plots all countries).
 #' Various other options are available for tuning the plot further.
 #' @param conf Character vector specifying the name variations to use to specify the upper
 #' and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
@@ -52,7 +52,6 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            save = FALSE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
-                           path = "data-raw", 
                            verbose = TRUE, ...) {
 
   df_prep <- prepare_df_plot(df = df,
@@ -66,7 +65,6 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                              save = save,
                              burden_save_name = burden_save_name,
                              dict_save_name = dict_save_name,
-                             path = path, 
                              verbose = verbose)
   
   country <- NULL

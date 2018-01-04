@@ -3,10 +3,3 @@
 .RData
 .Ruserdata
 inst/doc
-data-raw/TB_data_dict.rds
-data-raw/TB_burden.rds
-docs/reference/data-raw
-docs/data-raw
-docs/articles/data-raw
-vignettes/data-raw
-tests/testthat/data-raw

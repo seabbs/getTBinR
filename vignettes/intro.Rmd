@@ -32,7 +32,7 @@ library(dplyr)
 
 ## Getting TB burden data
 
-Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy. If a local copy exists this will be loaded instead.
+Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy to R's temporary directory (see `tempdir()`). If a local copy exists from the current seesion then this will be loaded instead.
 
 ```{r get-tb-burden-data}
 tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
@@ -42,7 +42,7 @@ tb_burden
 
 ## Searching for variable definitions
 
-The WHO provides a large, detailed, data dictionary for use with the TB burden data. However, searching through this dataset can be tedious. To streamline this process `getTBinR` provides a search function to find the definition of a single or multiple variables. Again if not previously used this function will download the data dictionary, but in subsequent uses will load a local copy.
+The WHO provides a large, detailed, data dictionary for use with the TB burden data. However, searching through this dataset can be tedious. To streamline this process `getTBinR` provides a search function to find the definition of a single or multiple variables. Again if not previously used this function will download the data dictionary to the temporary directory, but in subsequent uses will load a local copy.
 
 ```{r search-data-dict}
 vars_of_interest <- search_data_dict(var = c("country",

@@ -7,7 +7,7 @@
 
   get_tb_burden(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
   download_data = FALSE, save = TRUE, burden_save_name = "TB_burden",
-  path = "data-raw", return = TRUE, verbose = TRUE)
+  return = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the TB burden data.
@@ -16,14 +16,11 @@ Default is current url.}
 \item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
 downloaded from the specified URL?}
 
-\item{save}{Logical, should the data be saved for reuse. Defaults to
-\code{FALSE}.}
+\item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
+\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{burden_save_name}{Character string, name to save the data under. Defaults to
 \code{TB_burden}.}
-
-\item{path}{Character string, indicating the folder to save the data into,
-defaults to \code{data-raw}.}
 
 \item{return}{Logical, should the data be returned as a dataframe.
 Defaults to \code{TRUE}.}
@@ -36,7 +33,9 @@ The WHO TB burden data as a tibble.
 }
 \description{
 Get the TB burden data from the WHO, see
-\href{http://www.who.int/tb/country/data/download/en/}{here} for details.
+\href{http://www.who.int/tb/country/data/download/en/}{here} for details. This function will first attempt
+to load the data from the temporary directory (\code{\link[base]{tempdir}}). If that fails, and \code{download_data = TRUE}, it
+will instead download the data.
 }
 \examples{
 

@@ -12,6 +12,7 @@
 * Updated tests to reflect changes.
 * Doc improvements ready for CRAN.
 * Switched Imported packages from github versions to CRAN versions.
+* Switched to saving data only to temporary directory (`tempdir()`)
 
 # getTBinR 0.1.0.0
 

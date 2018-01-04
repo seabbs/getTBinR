@@ -37,7 +37,6 @@ prepare_df_plot <- function(df = NULL,
                             download_data = FALSE, save = FALSE, 
                             burden_save_name = "TB_burden",
                             dict_save_name = "TB_data_dict",
-                            path = "data-raw",
                             verbose = TRUE,
                             ...){
 
@@ -49,7 +48,6 @@ prepare_df_plot <- function(df = NULL,
     df <- get_tb_burden(download_data = download_data,
                         save = save,
                         burden_save_name = burden_save_name,
-                        path = path, 
                         verbose = verbose, ...)
   }
   
@@ -86,7 +84,6 @@ prepare_df_plot <- function(df = NULL,
                                      download_data = download_data,
                                      save = save,
                                      dict_save_name = dict_save_name,
-                                     path = path, 
                                      verbose = verbose)
     
     metric_label <- metric_label$definition

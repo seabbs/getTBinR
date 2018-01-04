@@ -5,8 +5,7 @@
 \title{Generic Get Data Function}
 \usage{
 get_data(url = NULL, data_trans_fn = NULL, download_data = FALSE,
-  save = FALSE, save_name = NULL, path = "data-raw", return = TRUE,
-  verbose = TRUE)
+  save = FALSE, save_name = NULL, return = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data to download.}
@@ -17,14 +16,11 @@ dataframe of any type. If not specified defaults to transforming the data into a
 \item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
 downloaded from the specified URL?}
 
-\item{save}{Logical, should the data be saved for reuse. Defaults to
-\code{FALSE}.}
+\item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
+\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{save_name}{Character string, name to save the data under. Defaults to
 \code{NULL}.}
-
-\item{path}{Character string, indicating the folder to save the data into,
-defaults to \code{data-raw}.}
 
 \item{return}{Logical, should the data be returned as a dataframe.
 Defaults to \code{TRUE}.}
@@ -36,9 +32,9 @@ be displayed.}
 The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn
 }
 \description{
-If the data is found locally then this function will load the data into R. Otherwise
-if \code{download_data = TRUE} then the data will be retrieved from the specified URL. Data can then be
-saved by specifying \code{save = TRUE}.
+If the data is found locally in the temporary directory then this function will load the data into R.
+Otherwise if \code{download_data = TRUE} then the data will be retrieved from the specified URL. Data can then be
+saved  to the temporary directory by specifying \code{save = TRUE}.
 }
 \examples{
 

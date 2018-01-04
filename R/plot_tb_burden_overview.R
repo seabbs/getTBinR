@@ -40,7 +40,6 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                    save = FALSE,
                                    burden_save_name = "TB_burden",
                                    dict_save_name = "TB_data_dict",
-                                   path = "data-raw", 
                                    verbose = TRUE, 
                                    ...) {
  
@@ -55,7 +54,6 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                              save = save,
                              burden_save_name = burden_save_name,
                              dict_save_name = dict_save_name,
-                             path = path, 
                              verbose = verbose)
   country <- NULL
   

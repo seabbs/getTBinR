@@ -6,7 +6,7 @@
 \usage{
 search_data_dict(var = NULL, def = NULL, dict = NULL,
   download_data = FALSE, save = FALSE, dict_save_name = "TB_data_dict",
-  path = "data-raw", verbose = TRUE, ...)
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{var}{A character vector of variable names.}
@@ -21,14 +21,11 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 \item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
 downloaded from the specified URL?}
 
-\item{save}{Logical, should the data be saved for reuse. Defaults to
-\code{FALSE}.}
+\item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
+\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{dict_save_name}{Character string, name to save dictionary under. Defaults to
 \code{TB_data_dict}.}
-
-\item{path}{Character string, indicating the folder to save the data into,
-defaults to \code{data-raw}.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should search information be returned.}
 
@@ -40,9 +37,7 @@ searched for.
 }
 \description{
 Searches the WHO data dictionary for TB burden data. When run for the first time
-it will download the data dictionary into the default path as specified by \code{\link[getTBinR]{get_data_dict}} if
-\code{download_data = TRUE} and \code{save = TRUE}. Alternatively the data dictionary can be passed to the function.
-To modify this behaviour pass arguments to \code{\link[getTBinR]{get_data_dict}}.
+it will download the data dictionary, if \code{download_data = TRUE}, and save it into the temporary
 }
 \examples{
 

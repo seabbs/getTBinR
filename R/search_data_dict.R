@@ -1,9 +1,9 @@
 #' Search the WHO TB Data Dictionary by Variable Name.
 #'
 #' @description Searches the WHO data dictionary for TB burden data. When run for the first time
-#' it will download the data dictionary into the default path as specified by \code{\link[getTBinR]{get_data_dict}} if
-#' \code{download_data = TRUE} and \code{save = TRUE}. Alternatively the data dictionary can be passed to the function.
-#' To modify this behaviour pass arguments to \code{\link[getTBinR]{get_data_dict}}.
+#' it will download the data dictionary, if \code{download_data = TRUE}, and save it into the temporary
+#` directory (\code{\link[base]{tempdir}}) if \code{save = TRUE}. Alternatively the data dictionary can 
+#` be passed to the function. 
 #' @param var A character vector of variable names.
 #' @param def A character vector of terms to use to search the variable definitions
 #' for partial matches
@@ -36,7 +36,6 @@
 search_data_dict <- function(var = NULL, def = NULL, dict = NULL, 
                              download_data = FALSE, save = FALSE, 
                              dict_save_name = "TB_data_dict",
-                             path = "data-raw",
                              verbose = TRUE, ...) {
   if (is.null(var) && is.null(def)) {
     stop("At least one variable name  or definition fragment should be supplied")
@@ -46,7 +45,6 @@ search_data_dict <- function(var = NULL, def = NULL, dict = NULL,
     dict <- get_data_dict(download_data = download_data,
                           save = save,
                           dict_save_name = dict_save_name,
-                          path = path, 
                           verbose = verbose, ...)
   }
   
@@ -82,7 +80,7 @@ search_data_dict <- function(var = NULL, def = NULL, dict = NULL,
         message(results_var, " results found for your variable search for ", paste0(var, collapse = ", "))
       }
 
-      if (!is.null(var)) {
+      if (!is.null(def)) {
         message(results_def, " results found for your definition search for ", paste0(def, collapse = ", "))
       }
     }
