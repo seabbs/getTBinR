@@ -5,6 +5,7 @@ MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
 RUN apt-get install -y \
     texlive-latex-recommended \
+    texinfo \
     libqpdf-dev \
     && apt-get clean
     
