@@ -4,7 +4,7 @@ FROM rocker/tidyverse:latest
 MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
 RUN apt-get install -y \
-    texlive-base \
+    texlive-latex-recommended \
     libqpdf-dev \
     && apt-get clean
     
