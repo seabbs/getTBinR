@@ -26,15 +26,13 @@ getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016,
                         download_data = TRUE, 
                         save = TRUE)
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: data-raw/TB_burden.rds
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: data-raw/TB_data_dict.rds
+#> Loading data from: data-raw/TB_burden.rds
+#> Loading data from: data-raw/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> 0 results found for your definition search for
 ```
 
-![](figure/map-tb-incidence-eur-1.png)
+![](man/figure/map-tb-incidence-eur-1.png)
 
 Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,
 
@@ -49,7 +47,7 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
 #> 0 results found for your definition search for
 ```
 
-![](figure/plot-tb-incidence-eur-1.png)
+![](man/figure/plot-tb-incidence-eur-1.png)
 
 Finally plot TB incidence rates over time in the United Kingdom.
 
@@ -64,7 +62,7 @@ getTBinR::plot_tb_burden(metric = "e_inc_100k",
 #> 0 results found for your definition search for
 ```
 
-![](figure/plot-tb-incidence-uk-1.png)
+![](man/figure/plot-tb-incidence-uk-1.png)
 
 See [Getting Started](https://www.samabbott.co.uk/getTBinR/articles/intro.html) and [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for more details of the functions used (note the fuzzy country matching, `map_tb_burden`, `plot_tb_burden_overview` and `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying `interactive = TRUE`
 
