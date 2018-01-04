@@ -70,7 +70,17 @@ Various other options are available for tuning the plot further.
 }
 \examples{
 
+## Map raw incidence rates
 map_tb_burden(download_data = TRUE, save = TRUE)
+
+## Map log scaled incidence rates
+map_tb_burden(trans = "log")
+
+## Find variables relating to mortality in the WHO dataset
+search_data_dict(def = "mortality")
+
+## Map mortality rates (exc HIV) - without progress messages
+map_tb_burden(metric = "e_mort_exc_tbhiv_100k", verbose = FALSE)
 
 }
 \seealso{

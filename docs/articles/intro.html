@@ -89,7 +89,8 @@
 <a href="#getting-tb-burden-data" class="anchor"></a>Getting TB burden data</h2>
 <p>Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy. If a local copy exists this will be loaded instead.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>(<span class="dt">download_data =</span> <span class="ot">TRUE</span>, <span class="dt">save =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; Loading data from: data-raw/TB_burden.rds</span>
+<span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span>
+<span class="co">#&gt; Saving data to: data-raw/TB_burden.rds</span>
 
 tb_burden
 <span class="co">#&gt; # A tibble: 3,651 x 71</span>
@@ -141,7 +142,8 @@ tb_burden
                                              <span class="st">"e_inc_100k_hi"</span>),
                                      <span class="dt">download_data =</span> <span class="ot">TRUE</span>, 
                                      <span class="dt">save =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; Loading data from: data-raw/TB_data_dict.rds</span>
+<span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span>
+<span class="co">#&gt; Saving data to: data-raw/TB_data_dict.rds</span>
 <span class="co">#&gt; 4 results found for your variable search for country, e_inc_100k, e_inc_100k_lo, e_inc_100k_hi</span>
 <span class="co">#&gt; 0 results found for your definition search for</span>
 

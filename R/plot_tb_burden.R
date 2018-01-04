@@ -19,14 +19,28 @@
 #' @importFrom dplyr filter
 #' @importFrom purrr map
 #' @importFrom plotly ggplotly
+#' @importFrom viridis  scale_fill_viridis  scale_colour_viridis
 #' @examples
 #' 
+#' ## Get the WHO TB burden data nand the data dictionary
 #' tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
 #' dict <- get_data_dict(download_data = TRUE, save = TRUE)
+#' 
+#' ## Get a random sample of 9 countries
 #' sample_countries <- sample(unique(tb_burden$country), 9)
 #' 
+#' ## Plot incidence rates in these countries
 #' plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
 #' 
+#' ## Use data caching to plot incidence rates with free y scales
+#' plot_tb_burden(facet = "country", countries = sample_countries, scales = "free_y")
+#'  
+#' ## Find variables relating to mortality in the WHO dataset
+#' search_data_dict(def = "mortality")
+#' ## Plot mortality rates (exc HIV) - without progress messages
+#' plot_tb_burden(metric = "e_mort_exc_tbhiv_100k", facet = "country", 
+#'                countries = sample_countries, scales = "free_y", verbose = FALSE)
+#'                
 plot_tb_burden <- function(df = NULL, dict = NULL, 
                            metric = "e_inc_100k",
                            metric_label = NULL,
@@ -68,8 +82,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   }
   
   plot <- plot +
-    scale_colour_viridis_d(end = 0.9, direction = -1) +
-    scale_fill_viridis_d(end = 0.9, direction = -1) +
+    scale_colour_viridis(end = 0.9, direction = -1, discrete = TRUE) +
+    scale_fill_viridis(end = 0.9, direction = -1, discrete = TRUE) +
     theme_minimal() +
     theme(legend.position = "none") +
     labs(x = "Year", y = df_prep$metric_label)

@@ -9,12 +9,26 @@
 #' @return A dot plot of any numeric metric by country.
 #' @export 
 #' @import ggplot2
+#' @importFrom viridis scale_colour_viridis
 #' @importFrom plotly ggplotly
 #' @examples
 #' 
+#' ## Plot incidence rates over time for both the United Kingdom and Botswana
 #' plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
-#'                         compare_to_region = TRUE, download_data = TRUE, save = TRUE)
-#' 
+#'                         compare_to_region = FALSE, download_data = TRUE, save = TRUE)
+#'                         
+#' ## Compare incidence rates in the UK and Botswana to incidence rates in their regions
+#' plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
+#'                         compare_to_region = TRUE)
+#'    
+#' ## Find variables relating to mortality in the WHO dataset
+#' search_data_dict(def = "mortality")
+#'                    
+#' ## Compare mortality rates (exc HIV) in the UK and Botswana to mortality rates in their regions
+#' ## Do not show progress messages
+#' plot_tb_burden_overview(metric = "e_mort_exc_tbhiv_100k",
+#'                         countries = c("United Kingdom", "Botswana"), 
+#'                         compare_to_region = TRUE, verbose = FALSE)
 plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                     metric = "e_inc_100k",
                                    metric_label = NULL,
@@ -49,7 +63,7 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
     geom_point(alpha = 0.6, size = 1.5)
   
   plot <- plot +
-    scale_colour_viridis_c(end = 0.9, direction = -1) +
+    scale_colour_viridis(end = 0.9, direction = -1, discrete = FALSE) +
     theme_minimal() +
     labs(x = "Country", y = df_prep$metric_label) + 
     coord_flip()

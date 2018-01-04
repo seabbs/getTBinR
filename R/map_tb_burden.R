@@ -12,15 +12,26 @@
 #' @return A plot of TB Incidence Rates by Country
 #' @export
 #' @import ggplot2
+#' @importFrom viridis scale_fill_viridis
 #' @importFrom ggthemes theme_map
 #' @import magrittr
-#' @importFrom dplyr filter left_join rename_at funs
+#' @importFrom dplyr filter left_join
 #' @importFrom ggthemes theme_map
 #' @importFrom purrr map
 #' @importFrom plotly ggplotly
 #' @examples
 #' 
+#' ## Map raw incidence rates
 #' map_tb_burden(download_data = TRUE, save = TRUE)
+#' 
+#' ## Map log scaled incidence rates
+#' map_tb_burden(trans = "log")
+#' 
+#' ## Find variables relating to mortality in the WHO dataset
+#' search_data_dict(def = "mortality")
+#' 
+#' ## Map mortality rates (exc HIV) - without progress messages
+#' map_tb_burden(metric = "e_mort_exc_tbhiv_100k", verbose = FALSE)
 #' 
 map_tb_burden <- function(df = NULL, dict = NULL,
                            metric = "e_inc_100k",
@@ -59,10 +70,11 @@ map_tb_burden <- function(df = NULL, dict = NULL,
   
   df_prep$df <- df_prep$df %>% 
     left_join(getTBinR::who_shapefile, c("iso3" = "id")) %>% 
-    filter(year %in% sel_year) %>% 
-    rename_at(.vars = metric, .funs = funs(df_prep$metric_label))
+    filter(year %in% sel_year)
   
-  country <- NULL
+   names(df_prep$df)[names(df_prep$df) == metric] <- df_prep$metric_label
+   
+   country <- NULL
   
   if (compare_to_region) {
     if (length(countries) == 1) {
@@ -76,7 +88,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                             text = "country",
                             fill = paste0("`",df_prep$metric_label, "`"))) +
     geom_polygon(aes_string(group = "group")) + 
-    scale_fill_viridis_c(end = 0.95, trans = trans, direction = -1) +
+    scale_fill_viridis(end = 0.95, trans = trans, direction = -1, discrete = FALSE) +
     coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = "bottom") 
