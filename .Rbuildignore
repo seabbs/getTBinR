@@ -7,7 +7,6 @@
 ^pkgdown\.yml$
 ^docs$
 ^README\.Rmd$
-^figure$
 ^appveyor\.yml$
 ^_pkgdown\.yml$
 ^CODE_OF_CONDUCT\.md$

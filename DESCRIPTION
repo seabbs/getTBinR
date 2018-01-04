@@ -1,6 +1,6 @@
 Package: getTBinR
 Type: Package
-Version: 0.1.0.0
+Version: 0.5.0.0
 Title: Get WHO Tuberculosis Data in R
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk"))
@@ -18,13 +18,8 @@ Depends: R (>= 2.10)
 Suggests: devtools,
     testthat,
     covr,
-    pkgdown,
     rmarkdown,
     knitr
-Remotes: hadley/pkgdown,
-         tidyverse/ggplot2,
-         jrnold/ggthemes,
-         tidyverse/dplyr
 Imports: data.table,
     tibble,
     dplyr,

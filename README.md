@@ -26,8 +26,10 @@ getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016,
                         download_data = TRUE, 
                         save = TRUE)
-#> Loading data from: data-raw/TB_burden.rds
-#> Loading data from: data-raw/TB_data_dict.rds
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
+#> Saving data to: data-raw/TB_burden.rds
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
+#> Saving data to: data-raw/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> 0 results found for your definition search for
 ```

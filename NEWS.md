@@ -1,4 +1,4 @@
-# getTBinR 1.0.0.0
+# getTBinR 0.5.0.0
 
 ## Feature updates
 
@@ -10,7 +10,8 @@
 
 * Updated documentation to reflect above changes.
 * Updated tests to reflect changes.
-* Doc improvements ready for CRAN
+* Doc improvements ready for CRAN.
+* Switched Imported packages from github versions to CRAN versions.
 
 # getTBinR 0.1.0.0
 
