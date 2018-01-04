@@ -78,8 +78,13 @@ search_data_dict <- function(var = NULL, def = NULL, dict = NULL,
       stop("No results found for your variable search for ", paste0(var, collapse = ", "), "\n",
            "No results found for your definition search for ", paste0(def, collapse = ", "))
     }else{
-      message(results_var, " results found for your variable search for ", paste0(var, collapse = ", "))
-      message(results_def, " results found for your definition search for ", paste0(def, collapse = ", "))
+      if (!is.null(var)) {
+        message(results_var, " results found for your variable search for ", paste0(var, collapse = ", "))
+      }
+
+      if (!is.null(var)) {
+        message(results_def, " results found for your definition search for ", paste0(def, collapse = ", "))
+      }
     }
   }
   

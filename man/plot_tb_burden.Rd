@@ -72,7 +72,7 @@ Various other options are available for tuning the plot further.
 }
 \examples{
 
-## Get the WHO TB burden data nand the data dictionary
+## Get the WHO TB burden data and the data dictionary
 tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
 dict <- get_data_dict(download_data = TRUE, save = TRUE)
 

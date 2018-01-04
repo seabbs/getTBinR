@@ -22,7 +22,7 @@
 #' @importFrom viridis  scale_fill_viridis  scale_colour_viridis
 #' @examples
 #' 
-#' ## Get the WHO TB burden data nand the data dictionary
+#' ## Get the WHO TB burden data and the data dictionary
 #' tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
 #' dict <- get_data_dict(download_data = TRUE, save = TRUE)
 #' 

@@ -40,3 +40,7 @@ reference:
       contents:
       - search_data_dict
       - prepare_df_plot
+    - title: Package Data
+      desc: Data supplied with the package.
+      contents:
+      - who_shapefile
