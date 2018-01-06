@@ -17,6 +17,7 @@
 #' @import ggplot2
 #' @import magrittr
 #' @importFrom dplyr filter
+#' @importFrom scales percent
 #' @importFrom purrr map
 #' @importFrom plotly ggplotly
 #' @importFrom viridis  scale_fill_viridis  scale_colour_viridis
@@ -46,7 +47,9 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            metric_label = NULL,
                            conf = c("_lo", "_hi"), countries = NULL,
                            compare_to_region = FALSE,
-                           facet = NULL, scales = "fixed",
+                           facet = NULL, annual_change = FALSE,
+                           trans = "identity",
+                           scales = "fixed",
                            interactive = FALSE,
                            download_data = FALSE,
                            save = FALSE,
@@ -57,10 +60,13 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   df_prep <- prepare_df_plot(df = df,
                              dict = dict,
                              metric = metric,
+                             conf = conf,
                              metric_label = metric_label,
                              countries = countries,
                              compare_to_region = compare_to_region,
                              facet = facet,
+                             trans = trans,
+                             annual_change = annual_change,
                              download_data = download_data,
                              save = save,
                              burden_save_name = burden_save_name,
@@ -85,6 +91,14 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
     theme_minimal() +
     theme(legend.position = "none") +
     labs(x = "Year", y = df_prep$metric_label)
+  
+  if (annual_change) {
+    plot <- plot +
+      scale_y_continuous(labels = percent, trans = trans)
+  }else{
+    plot <- plot + 
+      scale_y_continuous(trans = trans)
+  }
   
   if (!is.null(df_prep$facet)) {
     plot <- plot + 

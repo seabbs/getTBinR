@@ -28,4 +28,5 @@ Imports: data.table,
     magrittr,
     plotly,
     ggthemes,
-    viridis
+    viridis,
+    scales

@@ -1,3 +1,13 @@
+# getTBinR 0.5.1.0
+
+## Feature updates
+
+* Added `annual_change` arguement to all plotting/mapping functions. Passed to `prepare_df_plot`. Returns the percentage annual change for the supplied metric.
+* Added `trans` arguement to all plotting functions to allow scaling using any `ggplot2::continous_scale` `trans` arguement.
+* Added adaptive axis and legend labels to properly show annual percentage change.
+
+## Package updates
+
 # getTBinR 0.5.0.0
 
 ## Feature updates

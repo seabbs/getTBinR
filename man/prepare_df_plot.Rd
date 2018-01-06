@@ -5,8 +5,9 @@
 \title{Generic Function to Prepare TB Burden Data for Plotting}
 \usage{
 prepare_df_plot(df = NULL, dict = NULL, metric = "e_inc_100k",
-  metric_label = NULL, countries = NULL, compare_to_region = FALSE,
-  facet = NULL, download_data = FALSE, save = FALSE,
+  conf = NULL, metric_label = NULL, countries = NULL,
+  compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
+  trans = "identity", download_data = FALSE, save = FALSE,
   burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
   verbose = TRUE, ...)
 }
@@ -21,6 +22,10 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 
 \item{metric}{Character string specifying the metric to plot}
 
+\item{conf}{Character vector specifying the name variations to use to specify the upper
+and lower confidence intervals. Defaults to \code{NULL} for which no confidence intervals
+are used. Used by \code{annual_change}.}
+
 \item{metric_label}{Character string specifying the metric label to use.}
 
 \item{countries}{A character string specifying the countries to plot.}
@@ -30,6 +35,13 @@ countries that share a region with those listed in \code{countries} will be plot
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
 \item{facet}{Character string, the name of the variable to facet by.}
+
+\item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
+percentage annual change is computed for the specified metric.}
+
+\item{trans}{A character string specifying the transform to use on the specified metric. Defaults to no
+transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
+("log10"). For a complete list of options see \code{ggplot2::continous_scale}.}
 
 \item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
 downloaded from the specified URL?}

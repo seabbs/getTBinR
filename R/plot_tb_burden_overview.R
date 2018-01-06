@@ -11,6 +11,7 @@
 #' @import ggplot2
 #' @importFrom viridis scale_colour_viridis
 #' @importFrom plotly ggplotly
+#' @importFrom scales percent
 #' @examples
 #' 
 #' ## Plot incidence rates over time for both the United Kingdom and Botswana
@@ -31,17 +32,19 @@
 #'                         compare_to_region = TRUE, verbose = FALSE)
 plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                     metric = "e_inc_100k",
-                                   metric_label = NULL,
-                                   countries = NULL,
-                                   compare_to_region = FALSE,
-                                   facet = NULL, scales = "free_y",
-                                   interactive = FALSE, 
-                                   download_data = FALSE,
-                                   save = FALSE,
-                                   burden_save_name = "TB_burden",
-                                   dict_save_name = "TB_data_dict",
-                                   verbose = TRUE, 
-                                   ...) {
+                                    metric_label = NULL,
+                                    countries = NULL,
+                                    compare_to_region = FALSE,
+                                    facet = NULL, annual_change = FALSE,
+                                    trans = "identity",
+                                    scales = "free_y",
+                                    interactive = FALSE, 
+                                    download_data = FALSE,
+                                    save = FALSE,
+                                    burden_save_name = "TB_burden",
+                                    dict_save_name = "TB_data_dict",
+                                    verbose = TRUE, 
+                                    ...) {
  
   df_prep <- prepare_df_plot(df = df,
                              dict = dict,
@@ -50,6 +53,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                              countries = countries,
                              compare_to_region = compare_to_region,
                              facet = facet,
+                             annual_change = annual_change,
+                             trans = trans,
                              download_data = download_data,
                              save = save,
                              burden_save_name = burden_save_name,
@@ -61,10 +66,19 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
     geom_point(alpha = 0.6, size = 1.5)
   
   plot <- plot +
-    scale_colour_viridis(end = 0.9, direction = -1, discrete = FALSE) +
+    scale_colour_viridis(end = 0.9, direction = -1,
+                         discrete = FALSE, trans = trans) +
     theme_minimal() +
     labs(x = "Country", y = df_prep$metric_label) + 
     coord_flip()
+  
+  if (annual_change) {
+    plot <- plot +
+      scale_y_continuous(labels = percent, trans = trans) 
+  }else {
+    plot <- plot +
+      scale_y_continuous(trans = trans)
+  }
   
   if (!is.null(df_prep$facet)) {
     plot <- plot + 
