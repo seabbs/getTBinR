@@ -112,7 +112,7 @@ prepare_df_plot <- function(df = NULL,
     
     df_filt <- df_filt %>% 
       group_by(country) %>% 
-      mutate_at(.vars = metrics, .funs = funs((lag(.) - .) / lag(.))) %>% 
+      mutate_at(.vars = metrics, .funs = funs((. - lag(.)) / lag(.))) %>% 
       arrange(year) %>% 
       slice(-1) %>% 
       ungroup
