@@ -100,8 +100,9 @@ Tuberculosis over time and the progress towards global elimination.</p>
 
     <pre class="usage"><span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
   <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
+  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
+  <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
   <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -140,6 +141,17 @@ Note that this will override settings for <code>facet</code>, unless it is set t
     <tr>
       <th>facet</th>
       <td><p>Character string, the name of the variable to facet by.</p></td>
+    </tr>
+    <tr>
+      <th>annual_change</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> then the
+percentage annual change is computed for the specified metric.</p></td>
+    </tr>
+    <tr>
+      <th>trans</th>
+      <td><p>A character string specifying the transform to use on the specified metric. Defaults to no
+transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
+("log10"). For a complete list of options see <code>ggplot2::continous_scale</code>.</p></td>
     </tr>
     <tr>
       <th>scales</th>
@@ -195,12 +207,15 @@ be displayed.</p></td>
     <pre class="examples"><div class='input'>
 <span class='co'>## Plot incidence rates over time for both the United Kingdom and Botswana</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmppNdQmq/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmppNdQmq/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJjGfgA/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJjGfgA/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='co'>## Plot percentage annual change in incidence rates.</span>
+<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJjGfgA/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJjGfgA/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='co'>## Compare incidence rates in the UK and Botswana to incidence rates in their regions</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmppNdQmq/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmppNdQmq/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJjGfgA/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJjGfgA/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='co'>## Find variables relating to mortality in the WHO dataset</span>
-<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmppNdQmq/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>6 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 6 x 4
+<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJjGfgA/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>6 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 6 x 4
 #&gt;   variable_name            dataset   code_list definition                      
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                           
 #&gt; 1 e_mort_exc_tbhiv_100k    Estimates ""        Estimated mortality of TB cases…
@@ -213,7 +228,7 @@ be displayed.</p></td>
 <span class='co'>## Do not show progress messages</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>,
                         <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plot_tb_burden_overview-3.png' alt='' width='700' height='432.632880098887' /></div></pre>
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plot_tb_burden_overview-4.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

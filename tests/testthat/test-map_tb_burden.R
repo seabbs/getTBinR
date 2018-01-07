@@ -11,11 +11,20 @@ test_that("map_tb_burden produces a plot", {
 
 test_that("map_tb_burden produces a plot when a log transform is used", {
   
-  plot <- map_tb_burden(download_data = TRUE, save = TRUE, trans = "log")
+  plot <- map_tb_burden(trans = "log")
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
 })
+
+test_that("map_tb_burden produces a plot with annual change", {
+  
+  plot <- map_tb_burden(annual_change = TRUE)
+  
+  expect_true(!is.null(plot))
+  expect_equal("ggplot", class(plot)[2])
+})
+
 
 test_that("map_tb_burden produces an interactive plot", {
   

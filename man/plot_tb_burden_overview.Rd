@@ -6,8 +6,9 @@
 \usage{
 plot_tb_burden_overview(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, countries = NULL, compare_to_region = FALSE,
-  facet = NULL, scales = "free_y", interactive = FALSE,
-  download_data = FALSE, save = FALSE, burden_save_name = "TB_burden",
+  facet = NULL, annual_change = FALSE, trans = "identity",
+  scales = "free_y", interactive = FALSE, download_data = FALSE,
+  save = FALSE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", verbose = TRUE, ...)
 }
 \arguments{
@@ -30,6 +31,13 @@ countries that share a region with those listed in \code{countries} will be plot
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
 \item{facet}{Character string, the name of the variable to facet by.}
+
+\item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
+percentage annual change is computed for the specified metric.}
+
+\item{trans}{A character string specifying the transform to use on the specified metric. Defaults to no
+transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
+("log10"). For a complete list of options see \code{ggplot2::continous_scale}.}
 
 \item{scales}{Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 alternatives are "free_y", "free_x", or "free".}
@@ -68,7 +76,11 @@ Tuberculosis over time and the progress towards global elimination.
 ## Plot incidence rates over time for both the United Kingdom and Botswana
 plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
                         compare_to_region = FALSE, download_data = TRUE, save = TRUE)
-                        
+ 
+## Plot percentage annual change in incidence rates.
+plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
+                        compare_to_region = FALSE, annual_change = TRUE)
+                         
 ## Compare incidence rates in the UK and Botswana to incidence rates in their regions
 plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
                         compare_to_region = TRUE)

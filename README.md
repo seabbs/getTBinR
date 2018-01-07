@@ -33,9 +33,9 @@ getTBinR::map_tb_burden(metric = "e_inc_100k",
                         download_data = TRUE, 
                         save = TRUE)
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpdY8moE/TB_burden.rds
+#> Saving data to: /tmp/RtmpPCjyow/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpdY8moE/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpPCjyow/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -48,12 +48,28 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpdY8moE/TB_burden.rds
-#> Loading data from: /tmp/RtmpdY8moE/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpPCjyow/TB_burden.rds
+#> Loading data from: /tmp/RtmpPCjyow/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
 ![](man/figure/plot-tb-incidence-eur-1.png)
+
+In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change (note that this functionality is currently only available in the development version of the package),
+
+``` r
+getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
+                                  countries = "United Kingdom",
+                                  compare_to_region = TRUE,
+                                  annual_change = TRUE,
+                                  interactive = FALSE)
+#> Loading data from: /tmp/RtmpPCjyow/TB_burden.rds
+#> Loading data from: /tmp/RtmpPCjyow/TB_data_dict.rds
+#> 1 results found for your variable search for e_inc_100k
+#> Warning: Removed 16 rows containing missing values (geom_point).
+```
+
+![](man/figure/plot-tb-incidence-eur-per-1.png)
 
 Finally plot TB incidence rates over time in the United Kingdom.
 
@@ -62,8 +78,8 @@ getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          facet = "country",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmpdY8moE/TB_burden.rds
-#> Loading data from: /tmp/RtmpdY8moE/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpPCjyow/TB_burden.rds
+#> Loading data from: /tmp/RtmpPCjyow/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 

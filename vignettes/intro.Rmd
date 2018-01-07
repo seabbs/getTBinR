@@ -91,6 +91,24 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   interactive = FALSE)
 ```
 
+
+Another way to compre incidence rates in countries is to look at the annual percentage change (currently only available in the development version of the package). The plot below only shows countries with a maximum incidence rate above 5 per 100,000.
+
+
+```{r plot-tb-al-per, fig.height=20, fig.width = 10}
+higher_burden_countries <- tb_burden %>% 
+  group_by(country) %>% 
+  summarise(e_inc_100k = min(e_inc_100k)) %>% 
+  filter(e_inc_100k > 5) %>% 
+  pull(country) %>% 
+  unique
+
+getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
+                                  interactive = FALSE,
+                                  annual_change = TRUE,
+                                  countries = higher_burden_countries)
+```
+
 ## Plotting Incidence Rates over Time in 9 Randomly Sampled Countries
 
 Now that we have the data lets plot a sample of 9 countries using the inbuilt `plot_tb_burden` function. Again plotting incidence rates, but this time with 95% confidence intervals. As you can see this isnt a hugely informative graph. Lets improve it!

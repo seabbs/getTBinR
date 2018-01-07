@@ -6,10 +6,10 @@
 \usage{
 plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, conf = c("_lo", "_hi"), countries = NULL,
-  compare_to_region = FALSE, facet = NULL, scales = "fixed",
-  interactive = FALSE, download_data = FALSE, save = FALSE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  verbose = TRUE, ...)
+  compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
+  trans = "identity", scales = "fixed", interactive = FALSE,
+  download_data = FALSE, save = FALSE, burden_save_name = "TB_burden",
+  dict_save_name = "TB_data_dict", verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -26,7 +26,8 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 
 \item{conf}{Character vector specifying the name variations to use to specify the upper
 and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
-then no confidence intervals are shown.}
+then no confidence intervals are shown. When \code{annual_change = TRUE} the confidene
+intervals represent the annual percentage change in the metrics confidence intervals.}
 
 \item{countries}{A character string specifying the countries to plot.}
 
@@ -35,6 +36,13 @@ countries that share a region with those listed in \code{countries} will be plot
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
 \item{facet}{Character string, the name of the variable to facet by.}
+
+\item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
+percentage annual change is computed for the specified metric.}
+
+\item{trans}{A character string specifying the transform to use on the specified metric. Defaults to no
+transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
+("log10"). For a complete list of options see \code{ggplot2::continous_scale}.}
 
 \item{scales}{Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 alternatives are "free_y", "free_x", or "free".}
@@ -78,10 +86,14 @@ sample_countries <- sample(unique(tb_burden$country), 9)
 
 ## Plot incidence rates in these countries
 plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
-
+ 
 ## Use data caching to plot incidence rates with free y scales
 plot_tb_burden(facet = "country", countries = sample_countries, scales = "free_y")
  
+## Plot annual percentage change in incidence rates in selected countries
+plot_tb_burden(df = tb_burden, dict = dict, facet = "country", scales = "free_y", 
+               countries = sample_countries, annual_change = TRUE, conf = NULL)
+               
 ## Find variables relating to mortality in the WHO dataset
 search_data_dict(def = "mortality")
 ## Plot mortality rates (exc HIV) - without progress messages

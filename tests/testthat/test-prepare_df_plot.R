@@ -55,7 +55,7 @@ test_that("TB burden data is correctly proccessed when using a single country", 
                as.character(unique(df_exact_country$df$country)))
 })
 
-test_that("Fuzzy conutry matching correctly selects a country", {
+test_that("Fuzzy country matching correctly selects a country", {
   expect_equal(df_exact_country, df_fuzzy_country)
 })
 
@@ -74,4 +74,45 @@ test_that("TB burden data is correctly proccessed when comparing to the region",
 
 test_that("Add a facet works correctly", {
   expect_equal("g_whoregion", df_country_facet$facet)
+})
+
+test_that("Adding a transform label to the metric label works correctly", {
+  df_lab <- prepare_df_plot(metric_label = "test", trans = "suffix")
+  
+  exp_lab <- "test (suffix)"
+  
+  expect_equal(exp_lab, df_lab$metric_label)
+})
+
+## Tests using dummy data
+test_df <- tibble::tibble(country = "test", year = 2000:2001, 
+                          e_inc_100k = c(10, 12), e_inc_100k_lo = c(8, 10),
+                          e_inc_100k_hi = c(20, 22))
+
+result_df <- test_df
+result_df$Year <- result_df$year
+result_df$country <- factor(result_df$country)
+
+
+test_that("prepare_df_plot correctly formats the input data.", {
+
+  df_annual_change <- prepare_df_plot(metric = "e_inc_100k", conf = c("_lo", "_hi"),
+                                      df = test_df, annual_change = FALSE)
+  
+  expect_equal(result_df, df_annual_change$df)
+})
+
+
+
+test_that("annual_change correctly transforms metric and confidence intervals", {
+
+  result_df <- result_df[-1, ]
+  result_df$e_inc_100k <- 0.2
+  result_df$e_inc_100k_lo <- 0.25
+  result_df$e_inc_100k_hi <- 0.1
+  
+  df_annual_change <- prepare_df_plot(metric = "e_inc_100k", conf = c("_lo", "_hi"),
+                                      df = test_df, annual_change = TRUE)
+  
+  expect_equal(result_df, df_annual_change$df)
 })
