@@ -8,6 +8,23 @@ test_that("plot_tb_burden_overview produces a plot", {
   expect_equal("ggplot", class(plot)[2])
 })
 
+test_that("plot_tb_burden_overview produces a plot with a log10 transform", {
+  
+  plot <- plot_tb_burden_overview(trans = "log10")
+  
+  expect_true(!is.null(plot))
+  expect_equal("ggplot", class(plot)[2])
+})
+
+test_that("plot_tb_burden_overview produces a plot when the annual_change option is used", {
+  
+  plot <- plot_tb_burden_overview(annual_change = TRUE)
+  
+  expect_true(!is.null(plot))
+  expect_equal("ggplot", class(plot)[2])
+})
+
+
 test_that("plot_tb_burden_overview produces an interactive plot", {
   plot_int <- plot_tb_burden_overview(interactive = TRUE)
   
