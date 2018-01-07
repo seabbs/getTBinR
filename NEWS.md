@@ -8,6 +8,10 @@
 
 ## Package updates
 
+* Added new examples to display new functionality
+* Updated readme with new functionality
+* Updated intro vignette with new functionality
+
 # getTBinR 0.5.0.0
 
 ## Feature updates

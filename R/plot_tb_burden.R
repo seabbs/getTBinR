@@ -5,7 +5,8 @@
 #' Various other options are available for tuning the plot further.
 #' @param conf Character vector specifying the name variations to use to specify the upper
 #' and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
-#' then no confidence intervals are shown.
+#' then no confidence intervals are shown. When \code{annual_change = TRUE} the confidene 
+#' intervals represent the annual percentage change in the metrics confidence intervals.
 #' @param scales Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 #' alternatives are "free_y", "free_x", or "free".
 #' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is 
@@ -32,10 +33,14 @@
 #' 
 #' ## Plot incidence rates in these countries
 #' plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
-#' 
+#'  
 #' ## Use data caching to plot incidence rates with free y scales
 #' plot_tb_burden(facet = "country", countries = sample_countries, scales = "free_y")
 #'  
+#' ## Plot annual percentage change in incidence rates in selected countries
+#' plot_tb_burden(df = tb_burden, dict = dict, facet = "country", scales = "free_y", 
+#'                countries = sample_countries, annual_change = TRUE, conf = NULL)
+#'                
 #' ## Find variables relating to mortality in the WHO dataset
 #' search_data_dict(def = "mortality")
 #' ## Plot mortality rates (exc HIV) - without progress messages

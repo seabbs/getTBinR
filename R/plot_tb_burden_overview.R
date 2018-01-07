@@ -17,7 +17,11 @@
 #' ## Plot incidence rates over time for both the United Kingdom and Botswana
 #' plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
 #'                         compare_to_region = FALSE, download_data = TRUE, save = TRUE)
-#'                         
+#'  
+#' ## Plot percentage annual change in incidence rates.
+#' plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
+#'                         compare_to_region = FALSE, annual_change = TRUE)
+#'                          
 #' ## Compare incidence rates in the UK and Botswana to incidence rates in their regions
 #' plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
 #'                         compare_to_region = TRUE)
@@ -74,7 +78,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
   
   if (annual_change) {
     plot <- plot +
-      scale_y_continuous(labels = percent, trans = trans) 
+      scale_y_continuous(labels = percent, trans = trans) +
+      geom_hline(yintercept = 0, linetype = 2, alpha = 0.6)
   }else {
     plot <- plot +
       scale_y_continuous(trans = trans)

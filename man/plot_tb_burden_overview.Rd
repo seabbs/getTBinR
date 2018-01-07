@@ -76,7 +76,11 @@ Tuberculosis over time and the progress towards global elimination.
 ## Plot incidence rates over time for both the United Kingdom and Botswana
 plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
                         compare_to_region = FALSE, download_data = TRUE, save = TRUE)
-                        
+ 
+## Plot percentage annual change in incidence rates.
+plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
+                        compare_to_region = FALSE, annual_change = TRUE)
+                         
 ## Compare incidence rates in the UK and Botswana to incidence rates in their regions
 plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
                         compare_to_region = TRUE)
