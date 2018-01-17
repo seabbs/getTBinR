@@ -12,6 +12,10 @@ navbar:
       href: index.html
     - text: "Getting Started"
       href: articles/intro.html
+    - text: "Case Studies"
+      menu:
+      - text: Exploring Global Trends in Tuberculosis Incidence Rates
+        href: articles/case_study_global_trends.html
  
   right:
     - icon: fa-file-code-o 

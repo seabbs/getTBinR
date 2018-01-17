@@ -34,6 +34,18 @@
 <li>
   <a href="../articles/intro.html">Getting Started</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Case Studies
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/case_study_global_trends.html">Exploring Global Trends in Tuberculosis Incidence Rates</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -68,7 +80,7 @@
       <h1>Getting started with getTBinR</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2018-01-07</h4>
+            <h4 class="date">2018-01-17</h4>
           </div>
 
     
@@ -90,23 +102,24 @@
 <p>Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy to R’s temporary directory (see <code>tempdir()</code>). If a local copy exists from the current seesion then this will be loaded instead.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>(<span class="dt">download_data =</span> <span class="ot">TRUE</span>, <span class="dt">save =</span> <span class="ot">TRUE</span>)
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmphcyvyD/TB_burden.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/RtmpSJTMvW/TB_burden.rds</span>
 
 tb_burden
 <span class="co">#&gt; # A tibble: 3,651 x 71</span>
-<span class="co">#&gt;    count… iso2  iso3  iso_n… g_whor…  year e_pop_… e_in… e_in… e_in… e_in…</span>
-<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 Afgha… AF    AFG   004    Easter…  2000  2.01e⁷   190   123   271 38000</span>
-<span class="co">#&gt;  2 Afgha… AF    AFG   004    Easter…  2001  2.10e⁷   189   123   271 40000</span>
-<span class="co">#&gt;  3 Afgha… AF    AFG   004    Easter…  2002  2.20e⁷   189   122   270 42000</span>
-<span class="co">#&gt;  4 Afgha… AF    AFG   004    Easter…  2003  2.31e⁷   189   122   270 44000</span>
-<span class="co">#&gt;  5 Afgha… AF    AFG   004    Easter…  2004  2.41e⁷   189   122   270 46000</span>
-<span class="co">#&gt;  6 Afgha… AF    AFG   004    Easter…  2005  2.51e⁷   189   122   270 47000</span>
-<span class="co">#&gt;  7 Afgha… AF    AFG   004    Easter…  2006  2.59e⁷   189   122   270 49000</span>
-<span class="co">#&gt;  8 Afgha… AF    AFG   004    Easter…  2007  2.66e⁷   189   122   270 50000</span>
-<span class="co">#&gt;  9 Afgha… AF    AFG   004    Easter…  2008  2.73e⁷   189   122   270 52000</span>
-<span class="co">#&gt; 10 Afgha… AF    AFG   004    Easter…  2009  2.80e⁷   189   123   270 53000</span>
-<span class="co">#&gt; # ... with 3,641 more rows, and 60 more variables: e_inc_num_lo &lt;int&gt;,</span>
+<span class="co">#&gt;    country  iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Afghani… AF    AFG   004         Eastern Me…  2000  20093756        190</span>
+<span class="co">#&gt;  2 Afghani… AF    AFG   004         Eastern Me…  2001  20966463        189</span>
+<span class="co">#&gt;  3 Afghani… AF    AFG   004         Eastern Me…  2002  21979923        189</span>
+<span class="co">#&gt;  4 Afghani… AF    AFG   004         Eastern Me…  2003  23064851        189</span>
+<span class="co">#&gt;  5 Afghani… AF    AFG   004         Eastern Me…  2004  24118979        189</span>
+<span class="co">#&gt;  6 Afghani… AF    AFG   004         Eastern Me…  2005  25070798        189</span>
+<span class="co">#&gt;  7 Afghani… AF    AFG   004         Eastern Me…  2006  25893450        189</span>
+<span class="co">#&gt;  8 Afghani… AF    AFG   004         Eastern Me…  2007  26616792        189</span>
+<span class="co">#&gt;  9 Afghani… AF    AFG   004         Eastern Me…  2008  27294031        189</span>
+<span class="co">#&gt; 10 Afghani… AF    AFG   004         Eastern Me…  2009  28004331        189</span>
+<span class="co">#&gt; # ... with 3,641 more rows, and 63 more variables: e_inc_100k_lo &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_f014_hi &lt;int&gt;, e_inc_num_f15plus &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_f15plus_lo &lt;int&gt;, e_inc_num_f15plus_hi &lt;int&gt;,</span>
@@ -143,7 +156,7 @@ tb_burden
                                      <span class="dt">download_data =</span> <span class="ot">TRUE</span>, 
                                      <span class="dt">save =</span> <span class="ot">TRUE</span>)
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 4 results found for your variable search for country, e_inc_100k, e_inc_100k_lo, e_inc_100k_hi</span>
 
 knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(vars_of_interest)</code></pre></div>
@@ -183,7 +196,7 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 </table>
 <p>We might also want to search the variable definitions for key phrases, for example mortality.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">def =</span> <span class="kw">c</span>(<span class="st">"mortality"</span>))
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 6 results found for your definition search for mortality</span>
 
 knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(defs_of_interest)</code></pre></div>
@@ -236,7 +249,7 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <p>Finally we could both search for a known variable and for key phrases in variable definitions.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vars_defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">var =</span> <span class="kw">c</span>(<span class="st">"country"</span>),
                                      <span class="dt">def =</span> <span class="kw">c</span>(<span class="st">"mortality"</span>))
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for country</span>
 <span class="co">#&gt; 6 results found for your definition search for mortality</span>
 
@@ -300,8 +313,8 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <p>To start exploring the WHO TB data we map global TB incidence rates in 2016. Mapping data can help identify spatial patterns.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                         <span class="dt">year =</span> <span class="dv">2016</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/map-tb-incidence-eur-1.png" width="1440" style="display: block; margin: auto;"></p>
 </div>
@@ -311,8 +324,8 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates for all countries in the WHO data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/plot-tb-all-1.png" width="960" style="display: block; margin: auto;"></p>
 <p>Another way to compre incidence rates in countries is to look at the annual percentage change (currently only available in the development version of the package). The plot below only shows countries with a maximum incidence rate above 5 per 100,000.</p>
@@ -327,8 +340,8 @@ getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>,
                                   <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">countries =</span> higher_burden_countries)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/plot-tb-al-per-1.png" width="960" style="display: block; margin: auto;"></p>
 </div>
@@ -340,14 +353,14 @@ getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co
 sample_countries &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="kw">unique</span>(tb_burden<span class="op">$</span>country), <span class="dv">9</span>)
 <span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                <span class="dt">countries =</span> sample_countries)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                <span class="dt">countries =</span> sample_countries,
                <span class="dt">facet =</span> <span class="st">"country"</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-facet-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>To explore within country variation we need to change the scale of the y axis.</p>
@@ -355,7 +368,7 @@ sample_countries &lt;-<span class="st"> </span><span class="kw"><a href="http://
                <span class="dt">countries =</span> sample_countries,
                <span class="dt">facet =</span> <span class="st">"country"</span>,
                <span class="dt">scales =</span> <span class="st">"free_y"</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-facet-free-y-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using <code>plot_tb_burden</code> as follows. Note we can do this without specifying the TB burden data, the plotting function will automatically find it either locally or remotely.</p>
@@ -363,16 +376,16 @@ sample_countries &lt;-<span class="st"> </span><span class="kw"><a href="http://
                <span class="dt">countries =</span> sample_countries,
                <span class="dt">facet =</span> <span class="st">"country"</span>,
                <span class="dt">scales =</span> <span class="st">"free_y"</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_mort_exc_tbhiv_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/plot-mortality-excluding-hiv-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_mort_tbhiv_100k"</span>,
                <span class="dt">countries =</span> sample_countries,
                <span class="dt">facet =</span> <span class="st">"country"</span>,
                <span class="dt">scales =</span> <span class="st">"free_y"</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmphcyvyD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpSJTMvW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_mort_tbhiv_100k</span></code></pre></div>
 <p><img src="intro_files/figure-html/plot-mortality-including-hiv-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
@@ -402,7 +415,7 @@ sample_countries &lt;-<span class="st"> </span><span class="kw"><a href="http://
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

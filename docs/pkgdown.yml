@@ -2,5 +2,6 @@ urls:
   reference: https://samabbott.co.uk/getTBinR//reference
   article: https://samabbott.co.uk/getTBinR//articles
 articles:
+  case_study_global_trends: case_study_global_trends.html
   intro: intro.html
 
