@@ -19,7 +19,8 @@ Suggests: devtools,
     testthat,
     covr,
     rmarkdown,
-    knitr
+    knitr,
+    tidyverse
 Imports: data.table,
     tibble,
     dplyr,
