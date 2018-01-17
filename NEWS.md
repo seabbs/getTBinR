@@ -11,6 +11,8 @@
 * Added new examples to display new functionality
 * Updated readme with new functionality
 * Updated intro vignette with new functionality
+* Added a new case studies vignette section
+* Added a case study exploring global trends in Tuberculosis incidence rates
 
 # getTBinR 0.5.0.0
 
