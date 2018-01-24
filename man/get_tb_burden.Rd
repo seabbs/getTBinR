@@ -7,7 +7,7 @@
 
   get_tb_burden(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
   download_data = FALSE, save = TRUE, burden_save_name = "TB_burden",
-  return = TRUE, verbose = TRUE)
+  return = TRUE, verbose = TRUE, use_utils = FALSE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the TB burden data.
@@ -27,6 +27,9 @@ Defaults to \code{TRUE}.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
+
+\item{use_utils}{Logical, defaults to \code{FALSE}. Used for testing alternative
+data download function. When \code{TRUE} data is downloaded using \code{read.csv}.}
 }
 \value{
 The WHO TB burden data as a tibble.

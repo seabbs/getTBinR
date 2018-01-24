@@ -68,7 +68,7 @@ get_data <- function(url = NULL,
         message("Downloading the data using fread::data.table has failed. Trying
                 again using utils::read.csv")
       }
-      data <- read.csv(url)
+      data <- read.csv(url, stringsAsFactors = FALSE)
     }
     
     data <- data_trans_fn(data)

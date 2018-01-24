@@ -29,11 +29,14 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                           save = TRUE,
                           burden_save_name = "TB_burden",
                           return = TRUE,
-                          verbose = TRUE) {
+                          verbose = TRUE,
+                          use_utils = FALSE) {
 
   g_whoregion <- NULL
   
   trans_burden_data <- function(df) {
+    
+    df$iso_numeric <- as.integer(df$iso_numeric)
     df <- tibble::as_tibble(df)
     df <- mutate(df, g_whoregion = case_when(g_whoregion %in% "AFR" ~ "Africa",
                                               g_whoregion %in% "AMR" ~ "Americas",
@@ -51,7 +54,8 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     save = save,
     save_name = burden_save_name,
     return = return,
-    verbose = verbose
+    verbose = verbose,
+    use_utils = use_utils
   )                                 
 
 }

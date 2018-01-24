@@ -27,12 +27,14 @@ get_data_dict <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                           save = FALSE,
                           dict_save_name = "TB_data_dict",
                           return = TRUE,
-                          verbose = TRUE) {
+                          verbose = TRUE,
+                          use_utils = FALSE) {
 
   get_data(url = url,
            download_data = download_data,
            save = save,
            save_name = dict_save_name,
            return = return,
-           verbose = verbose)
+           verbose = verbose,
+           use_utils = use_utils)
 }

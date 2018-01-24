@@ -27,3 +27,11 @@ test_that("TB burden data has the expected number of variables", {
 test_that("TB burden has the expected number of entries", {
   expect_equal(exp_nrows, nrows_tb_data)
 })
+
+test_that("TB burden data is the same when downloaded using utils::read.csv", {
+  tb_data_utils <- get_tb_burden(download_data = TRUE,
+                                 use_utils = TRUE,
+                                 burden_save_name = "TB_with_utils")
+  
+  expect_equal(tb_data, tb_data_utils)
+})
