@@ -104,9 +104,9 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                         <span class="dt">download_data =</span> <span class="ot">TRUE</span>, 
                         <span class="dt">save =</span> <span class="ot">TRUE</span>)
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmprchsnX/TB_burden.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/RtmpvyK7te/TB_burden.rds</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmprchsnX/TB_data_dict.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/RtmpvyK7te/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/map-tb-incidence-eur-1.png" width="672"></p>
 <p>Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,</p>
@@ -114,8 +114,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                                   <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmprchsnX/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmprchsnX/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpvyK7te/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpvyK7te/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-1.png" width="960"></p>
 <p>In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change (note that this functionality is currently only available in the development version of the package),</p>
@@ -124,8 +124,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmprchsnX/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmprchsnX/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpvyK7te/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpvyK7te/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
 <span class="co">#&gt; Warning: Removed 16 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-per-1.png" width="960"></p>
@@ -134,8 +134,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                          <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                          <span class="dt">facet =</span> <span class="st">"country"</span>,
                          <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmprchsnX/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmprchsnX/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpvyK7te/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpvyK7te/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-uk-1.png" width="672"></p>
 <p>See <a href="https://www.samabbott.co.uk/getTBinR/reference/index.html">Functions</a> for more details of the functions used (note the fuzzy country matching, <code>map_tb_burden</code>, <code>plot_tb_burden_overview</code> and <code>plot_tb_burden</code> will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying <code>interactive = TRUE</code></p>
