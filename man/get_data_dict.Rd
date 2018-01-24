@@ -7,7 +7,7 @@
 
   get_data_dict(url = "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary",
   download_data = FALSE, save = FALSE, dict_save_name = "TB_data_dict",
-  return = TRUE, verbose = TRUE)
+  return = TRUE, verbose = TRUE, use_utils = FALSE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data
@@ -27,6 +27,9 @@ Defaults to \code{TRUE}.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
+
+\item{use_utils}{Logical, defaults to \code{FALSE}. Used for testing alternative
+data download function. When \code{TRUE} data is downloaded using \code{read.csv}.}
 }
 \value{
 The WHO TB data dictionary as a tibble with 4 variables:

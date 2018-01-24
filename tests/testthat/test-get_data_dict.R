@@ -26,3 +26,13 @@ test_that("Data dictionary has the expected number of variables", {
 test_that("Data dictionary has the expected number of entries", {
   expect_equal(exp_nrows, nrows_dict)
 })
+
+test_that("Data dictionary is the same when downloaded using utils::read.csv.
+          Not testing definitions as encoded differently", {
+  data_dict_utils <- get_data_dict(download_data = TRUE,
+                                   use_utils = TRUE,
+                                   dict_save_name = "dict_with_utils")
+
+  expect_equal(data_dict[-ncol(data_dict)], data_dict_utils[,-ncol(data_dict_utils)])
+  
+})
