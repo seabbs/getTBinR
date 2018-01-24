@@ -16,10 +16,13 @@
 #' Defaults to \code{TRUE}.
 #' @param verbose Logical, defaults to \code{TRUE}. Should additional status and progress messages
 #' be displayed.
+#' @param use_utils Logical, defaults to \code{FALSE}. Used for testing alternative
+#' data download function. When \code{TRUE} data is downloaded using \code{read.csv}.
 #'
 #' @return The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn
 #' @export
 #' @importFrom data.table fread
+#' @importFrom utils read.csv
 #' @importFrom tibble as_tibble
 #' @seealso get_tb_burden get_data_dict
 #' @examples
@@ -37,7 +40,8 @@ get_data <- function(url = NULL,
                      save = FALSE,
                      save_name = NULL,
                      return = TRUE,
-                     verbose = TRUE) {
+                     verbose = TRUE,
+                     use_utils = FALSE) {
   
     path <- tempdir()
   
@@ -52,7 +56,21 @@ get_data <- function(url = NULL,
       message("Downloading data from: ", url)
     }
     
-    data <- data.table::fread(url)
+    if (!use_utils) {
+      data <- try(data.table::fread(url), silent = TRUE)
+    }
+
+    if ("try-error" %in% class(data)) {
+      use_utils <- TRUE
+    }
+    if (use_utils) {
+      if (verbose) {
+        message("Downloading the data using fread::data.table has failed. Trying
+                again using utils::read.csv")
+      }
+      data <- read.csv(url)
+    }
+    
     data <- data_trans_fn(data)
     
     if (save) {

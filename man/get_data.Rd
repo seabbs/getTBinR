@@ -5,7 +5,8 @@
 \title{Generic Get Data Function}
 \usage{
 get_data(url = NULL, data_trans_fn = NULL, download_data = FALSE,
-  save = FALSE, save_name = NULL, return = TRUE, verbose = TRUE)
+  save = FALSE, save_name = NULL, return = TRUE, verbose = TRUE,
+  use_utils = FALSE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data to download.}
@@ -27,6 +28,9 @@ Defaults to \code{TRUE}.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
+
+\item{use_utils}{Logical, defaults to \code{FALSE}. Used for testing alternative
+data download function. When \code{TRUE} data is downloaded using \code{read.csv}.}
 }
 \value{
 The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn
