@@ -5,8 +5,7 @@ url <- "https://extranet.who.int/tme/generateCSV.asp?ds=estimates"
 
 
 test_that("get_data fails to retrieve data when download_data is specified as FALSE", {
-  expect_error(get_data(url = url, download_data = FALSE)
-  )
+  expect_error(get_data(url = url, save_name = "not_present", download_data = FALSE))
 })
 
 test_that("get_data retrieves the specified data when download_data is TRUE", {
@@ -20,7 +19,7 @@ test_that("get_data retrieves the specified data when download_data is TRUE", {
 
 
 test_that("get_data saves a local copy of the data which can then be successfully retrieved", {
-  tb_data_local <- get_data(save_name = "test_data")
+  tb_data_local <- get_data(save_name = "test_data", download_data = FALSE)
   
   expect_true(!is.null(tb_data_local))
 })

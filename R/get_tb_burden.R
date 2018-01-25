@@ -20,12 +20,12 @@
 #' @seealso get_data search_data_dict
 #' @examples
 #' 
-#' tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
+#' tb_burden <- get_tb_burden()
 #' 
 #' head(tb_burden)
 #' 
 get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates", 
-                          download_data = FALSE,
+                          download_data = TRUE,
                           save = TRUE,
                           burden_save_name = "TB_burden",
                           return = TRUE,

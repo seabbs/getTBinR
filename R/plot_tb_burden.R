@@ -25,8 +25,8 @@
 #' @examples
 #' 
 #' ## Get the WHO TB burden data and the data dictionary
-#' tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
-#' dict <- get_data_dict(download_data = TRUE, save = TRUE)
+#' tb_burden <- get_tb_burden()
+#' dict <- get_data_dict()
 #' 
 #' ## Get a random sample of 9 countries
 #' sample_countries <- sample(unique(tb_burden$country), 9)
@@ -56,8 +56,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            trans = "identity",
                            scales = "fixed",
                            interactive = FALSE,
-                           download_data = FALSE,
-                           save = FALSE,
+                           download_data = TRUE,
+                           save = TRUE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
                            verbose = TRUE, ...) {
@@ -80,7 +80,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   
   country <- NULL
   
-  plot <- ggplot(df_prep$df, aes_string(x = "year", y = metric, col = "country", fill = "country")) +
+  plot <- ggplot(df_prep$df, aes_string(x = "year", y = paste0("`", df_prep$metric_label, "`"),
+                                        col = "country", fill = "country")) +
     geom_line()
   
   if (!is.null(conf)) {
@@ -111,7 +112,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   }
   
   if (interactive) {
-    plot <- plotly::ggplotly(plot)
+    plot <- ggplotly(plot)
   }
   
   return(plot)

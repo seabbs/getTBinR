@@ -20,7 +20,11 @@ Suggests: devtools,
     covr,
     rmarkdown,
     knitr,
-    tidyverse
+    tidyverse,
+    shiny,
+    shinydashboard,
+    shinyWidgets,
+    shinycssloaders
 Imports: data.table,
     tibble,
     dplyr,

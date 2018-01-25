@@ -6,18 +6,18 @@
 \usage{
 
   get_tb_burden(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
-  download_data = FALSE, save = TRUE, burden_save_name = "TB_burden",
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
   return = TRUE, verbose = TRUE, use_utils = FALSE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the TB burden data.
 Default is current url.}
 
-\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
 
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
-\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{burden_save_name}{Character string, name to save the data under. Defaults to
 \code{TB_burden}.}
@@ -42,7 +42,7 @@ will instead download the data.
 }
 \examples{
 
-tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
+tb_burden <- get_tb_burden()
 
 head(tb_burden)
 

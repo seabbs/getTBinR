@@ -4,8 +4,8 @@
 \alias{get_data}
 \title{Generic Get Data Function}
 \usage{
-get_data(url = NULL, data_trans_fn = NULL, download_data = FALSE,
-  save = FALSE, save_name = NULL, return = TRUE, verbose = TRUE,
+get_data(url = NULL, data_trans_fn = NULL, download_data = TRUE,
+  save = TRUE, save_name = NULL, return = TRUE, verbose = TRUE,
   use_utils = FALSE)
 }
 \arguments{
@@ -14,11 +14,11 @@ get_data(url = NULL, data_trans_fn = NULL, download_data = FALSE,
 \item{data_trans_fn}{Function that takes a data.table as input and returns a single
 dataframe of any type. If not specified defaults to transforming the data into a tibble.}
 
-\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
 
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
-\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{save_name}{Character string, name to save the data under. Defaults to
 \code{NULL}.}
@@ -43,9 +43,7 @@ saved  to the temporary directory by specifying \code{save = TRUE}.
 \examples{
 
 tb_burden <- get_data(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
-save_name = "TB_burden",
-save = TRUE, 
-download_data = TRUE)
+save_name = "TB_burden")
 
 head(tb_burden)
 

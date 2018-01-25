@@ -20,7 +20,7 @@
 #' @examples
 #' 
 #' ## Map raw incidence rates
-#' map_tb_burden(download_data = TRUE, save = TRUE)
+#' map_tb_burden()
 #' 
 #' ## Map log10 scaled incidence rates
 #' map_tb_burden(trans = "log10")
@@ -43,8 +43,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            annual_change = FALSE,
                            trans = "identity",
                            interactive = FALSE, 
-                           download_data = FALSE,
-                           save = FALSE,
+                           download_data = TRUE,
+                           save = TRUE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
                            verbose = TRUE, ...) {
@@ -84,7 +84,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                  aes_string(x = "long", 
                             y = "lat", 
                             text = "country",
-                            fill = paste0("`",df_prep$metric_label, "`"))) +
+                            fill = paste0("`", df_prep$metric_label, "`"))) +
     geom_polygon(aes_string(group = "group")) + 
     coord_equal() +
     ggthemes::theme_map() +

@@ -7,8 +7,8 @@
 plot_tb_burden_overview(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, countries = NULL, compare_to_region = FALSE,
   facet = NULL, annual_change = FALSE, trans = "identity",
-  scales = "free_y", interactive = FALSE, download_data = FALSE,
-  save = FALSE, burden_save_name = "TB_burden",
+  scales = "free_y", interactive = FALSE, download_data = TRUE,
+  save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", verbose = TRUE, ...)
 }
 \arguments{
@@ -45,11 +45,11 @@ alternatives are "free_y", "free_x", or "free".}
 \item{interactive}{Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is
 returned.}
 
-\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
 
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
-\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{burden_save_name}{Character string, name to save the data under. Defaults to
 \code{TB_burden}.}
@@ -75,7 +75,7 @@ Tuberculosis over time and the progress towards global elimination.
 
 ## Plot incidence rates over time for both the United Kingdom and Botswana
 plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
-                        compare_to_region = FALSE, download_data = TRUE, save = TRUE)
+                        compare_to_region = FALSE)
  
 ## Plot percentage annual change in incidence rates.
 plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 

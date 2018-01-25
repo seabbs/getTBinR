@@ -16,7 +16,7 @@
 #' 
 #' ## Plot incidence rates over time for both the United Kingdom and Botswana
 #' plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
-#'                         compare_to_region = FALSE, download_data = TRUE, save = TRUE)
+#'                         compare_to_region = FALSE)
 #'  
 #' ## Plot percentage annual change in incidence rates.
 #' plot_tb_burden_overview(countries = c("United Kingdom", "Botswana"), 
@@ -43,8 +43,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                     trans = "identity",
                                     scales = "free_y",
                                     interactive = FALSE, 
-                                    download_data = FALSE,
-                                    save = FALSE,
+                                    download_data = TRUE,
+                                    save = TRUE,
                                     burden_save_name = "TB_burden",
                                     dict_save_name = "TB_data_dict",
                                     verbose = TRUE, 
@@ -66,7 +66,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                              verbose = verbose)
   country <- NULL
   
-  plot <- ggplot(df_prep$df, aes_string(x = "country", y = metric, col = "Year")) +
+  plot <- ggplot(df_prep$df, aes_string(x = "country", y = paste0("`", df_prep$metric_label, "`"),
+                                        col = "Year")) +
     geom_point(alpha = 0.6, size = 1.5)
   
   plot <- plot +

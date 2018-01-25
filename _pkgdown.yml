@@ -40,6 +40,10 @@ reference:
       desc: Generate exploratory plots of the WHO Tuberulosis data.
       contents:
       - starts_with("plot_")
+    - title: Dashboards
+      desc: Launch interactive dashboards showcasing package functionality. These dashboards require the shiny package.
+      contents:
+      - starts_with("run_")
     - title: Helpers
       contents:
       - search_data_dict

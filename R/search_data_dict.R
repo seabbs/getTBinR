@@ -24,7 +24,7 @@
 #' 
 #' ## Search for a known variable
 #' ## Download and save the dictionary if it is not available locally
-#' search_data_dict(var = "country", download_data = TRUE, save = TRUE)
+#' search_data_dict(var = "country")
 #' 
 #' ## Search for all variables mentioning mortality in their definition
 #' search_data_dict(def = "mortality")
@@ -34,7 +34,7 @@
 #' search_data_dict(var = "e_mort_exc_tbhiv_100k", def = "mortality")
 #' 
 search_data_dict <- function(var = NULL, def = NULL, dict = NULL, 
-                             download_data = FALSE, save = FALSE, 
+                             download_data = TRUE, save = TRUE, 
                              dict_save_name = "TB_data_dict",
                              verbose = TRUE, ...) {
   if (is.null(var) && is.null(def)) {

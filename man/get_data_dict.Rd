@@ -6,18 +6,18 @@
 \usage{
 
   get_data_dict(url = "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary",
-  download_data = FALSE, save = FALSE, dict_save_name = "TB_data_dict",
+  download_data = TRUE, save = TRUE, dict_save_name = "TB_data_dict",
   return = TRUE, verbose = TRUE, use_utils = FALSE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data
 dictionary. Default is current url.}
 
-\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
 
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
-\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{dict_save_name}{Character string, name to save dictionary under. Defaults to
 \code{TB_data_dict}.}
@@ -43,7 +43,7 @@ will instead download the data.
 }
 \examples{
 
-dict <- get_data_dict(download_data = TRUE, save = TRUE)
+dict <- get_data_dict()
 
 head(dict)
 

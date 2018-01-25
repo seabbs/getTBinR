@@ -33,7 +33,7 @@
 #'
 #' @examples
 #' 
-#' prepare_df_plot(countries = "Guinea", download_data = TRUE, save = TRUE)
+#' prepare_df_plot(countries = "Guinea")
 #' 
 prepare_df_plot <- function(df = NULL,
                             dict = NULL,
@@ -45,7 +45,7 @@ prepare_df_plot <- function(df = NULL,
                             facet = NULL,
                             annual_change = FALSE,
                             trans = "identity",
-                            download_data = FALSE, save = FALSE, 
+                            download_data = TRUE, save = TRUE, 
                             burden_save_name = "TB_burden",
                             dict_save_name = "TB_data_dict",
                             verbose = TRUE,
@@ -125,12 +125,14 @@ prepare_df_plot <- function(df = NULL,
   }
   
   df_filt <- df_filt %>% 
+    mutate(!!metric_label := df_filt[[metric]]) %>% 
     mutate(country = country %>% 
              factor(levels = df_filt %>% 
                       arrange_at(.vars = metric) %>% 
                       pull(country) %>% 
                       unique)) %>% 
     mutate(Year = year)
+  
   
   df_prep_list <- list(df_filt, facet, metric_label)
   names(df_prep_list) <- c("df", "facet", "metric_label")

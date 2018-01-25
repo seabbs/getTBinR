@@ -42,9 +42,7 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 
 ```{r map-tb-incidence-eur}
 getTBinR::map_tb_burden(metric = "e_inc_100k",
-                        year = 2016,
-                        download_data = TRUE, 
-                        save = TRUE)
+                        year = 2016)
 ```
 
 Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,
