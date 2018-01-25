@@ -17,7 +17,7 @@ interactively. A hosted version of this dashboard is available \href{http://www.
 \examples{
 
 ## Only run the example if in an interative session
-if (interactive()) {
+\dontrun{
 
 ## Run the TB dashboard
 run_tb_dashboard()

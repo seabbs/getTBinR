@@ -13,7 +13,8 @@ shinyServer(function(input, output) {
   
   ## Get data
   tb_df <- reactive({
-    tb_df <- get_tb_burden(download_data = TRUE, save = TRUE)
+    tb_df <- get_tb_burden(download_data = TRUE, save = TRUE) %>% 
+      mutate(g_whoregion = ifelse(is.na(g_whoregion), "Asia", g_whoregion))
   })
   
   dict <- reactive({
@@ -92,24 +93,73 @@ shinyServer(function(input, output) {
   
   # Make map of metric
   output$map_tb_burden <- renderPlotly({
-    map_tb_burden(tb_df_filt(), dict(), metric = metric(), 
-                  year = year(), interactive = TRUE)
+    map <- map_tb_burden(tb_df_filt(), dict(), metric = metric(), 
+                  year = year(), interactive = FALSE) + 
+      ggplot2::theme(legend.position = "none") 
+    
+      ggplotly(map, source = "WorldMap")
   })
   
-  # Regional comparision of a chosen metric
-  output$plot_region_com <- renderPlotly({
-    plot_tb_burden_overview(tb_df_filt(), dict(), metric = metric(),
-                            countries = country, interactive = TRUE,
-                            compare_to_region = TRUE)
+  #Get country clicked on map
+  country <- reactive({
+    country <- event_data(event = "plotly_click", source = "WorldMap")
+    
+    country <- country$key[[1]]
+  })
+  
+  output$country <- renderText({
+    if (is.null(country())) {
+      "Select a country for more information"
+    } else {
+      paste0("Showing data for ", country())
+    }
   })
   
   # Plot country metric
   output$plot_country_metric <- renderPlotly({
+    validate(
+      need(!is.null(country()), "Select a country using the map to see trends over time.")
+    )
+    
+    if (is.null(country())) {
+      stop("A country is required")
+    }
+    
     plot_tb_burden(tb_df_filt(), dict(), metric = metric(),
-                   countries = country, interactive = TRUE)
+                   countries = country(), interactive = TRUE)
+  })
+  
+  
+  
+  # Regional comparision of a chosen metric
+  output$plot_region_com <- renderPlotly({
+    validate(
+      need(!is.null(country()), "Select a country using the map to see a regional comparision.")
+    )
+    
+    if (is.null(country())) {
+      stop("A country is required")
+    }
+    
+    plot_tb_burden_overview(tb_df_filt(), dict(), metric = metric(),
+                            countries = country(), interactive = TRUE,
+                            compare_to_region = TRUE)
   })
 
+  
+  # Plot country metric
+  output$plot_region_trend <- renderPlotly({
+    validate(
+      need(!is.null(country()), "Select a country using the map to see trends over time in the region.")
+    )
     
-
+    if (is.null(country())) {
+      stop("A country is required")
+    }
+    
+    plot_tb_burden(tb_df_filt(), dict(), metric = metric(),
+                   countries = country(), interactive = TRUE,
+                   compare_to_region = TRUE, facet = "country", scales = "free_y")
+  })
   
 })

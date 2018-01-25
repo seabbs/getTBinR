@@ -94,8 +94,8 @@
 <span class="co"># install.packages("viridis")</span>
 <span class="kw">library</span>(viridis)</code></pre></div>
 <p>The package is loaded, time to get the data. We download both the data itself and it’s accompanying data dictionary.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>(<span class="dt">download_data =</span> <span class="ot">TRUE</span>, <span class="dt">save =</span> <span class="ot">TRUE</span>)
-dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>(<span class="dt">download_data =</span> <span class="ot">TRUE</span>, <span class="dt">save =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>()
+dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>()</code></pre></div>
 <p>We want to explore incidence rates so we need to find them in the data. We can do this using the <code><a href="https://samabbott.co.uk/getTBinR//reference/search_data_dict.html">getTBinR::search_data_dict</a></code> function,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">dict =</span> dict, <span class="dt">def =</span> <span class="st">"incidence"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>

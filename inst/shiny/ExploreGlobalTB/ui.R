@@ -23,7 +23,8 @@ body <- dashboardBody(
                    circle = FALSE, icon = icon("gear"), size = "sm",
                    width = "400px", tooltip = tooltipOptions(title = "Dashboard options")
                  ),
-                 plotlyOutput("map_tb_burden",  width = "100%") %>% withSpinner()
+                 plotlyOutput("map_tb_burden",  width = "100%") %>% withSpinner(),
+                 textOutput("country")
                  
              ),
              box(width = NULL,
@@ -33,10 +34,16 @@ body <- dashboardBody(
              )
       ),
       column(width = 5,
-             box(width = NULL,
+             tabBox(width = NULL,
                  title = "Regional Comparision",
-                 solidHeader = FALSE,
-                 plotlyOutput("plot_region_com", width = "100%", height = "890px") %>% withSpinner()
+                 side = "right",
+                 tabPanel(title = "Overview",
+                          plotlyOutput("plot_region_com", width = "100%", height = "890px") %>% withSpinner()
+                          ),
+                 tabPanel(title = "Trend over time",
+                          plotlyOutput("plot_region_trend", width = "100%", height = "890px") %>% withSpinner()
+                 )
+                
              )
       )
       
@@ -48,7 +55,7 @@ body <- dashboardBody(
 
 
 dashboardPage(
-  dashboardHeader(title = "Explore Tuberculosis"),
+  dashboardHeader(title = "Explore Global Tuberculosis",  titleWidth = 300),
   sidebar,
   body,
   skin = "black"

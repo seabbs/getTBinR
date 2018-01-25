@@ -5,11 +5,11 @@
 #' interactively. A hosted version of this dashboard is available [here](http://www.seabbs.co.uk/shiny/ExploreTB). 
 #' @return Starts a shiny Tuberculosis dashboard
 #' @export
-#'
+#' @importFrom utils installed.packages
 #' @examples
 #' 
 #' ## Only run the example if in an interative session
-#' if (interactive()) {
+#' \dontrun{
 #' 
 #' ## Run the TB dashboard
 #' run_tb_dashboard()
@@ -21,14 +21,14 @@ run_tb_dashboard <- function() {
   
   lapply(required_packages, function(package) {
     if (!(package %in% rownames(installed.packages()))) {
-      stop(paste0(package,
+      message(paste0(package,
                   " is required to use run_tb_dashboard, please install it before using this function"))
     }
   }
   )
 
   
-  appDir <- system.file("shiny", "ExploreTB", package = "getTBinR")
+  appDir <- system.file("shiny", "ExploreGlobalTB", package = "getTBinR")
   if (appDir == "") {
     stop("Could not find the ExploreTB directory. Try re-installing `getTBinR`.", call. = FALSE)
   }

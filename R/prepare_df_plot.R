@@ -124,6 +124,8 @@ prepare_df_plot <- function(df = NULL,
     metric_label <- paste0(metric_label, " (", trans, ")")
   }
   
+  `:=` <- NULL
+  
   df_filt <- df_filt %>% 
     mutate(!!metric_label := df_filt[[metric]]) %>% 
     mutate(country = country %>% 

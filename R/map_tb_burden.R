@@ -84,7 +84,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                  aes_string(x = "long", 
                             y = "lat", 
                             text = "country",
-                            fill = paste0("`", df_prep$metric_label, "`"))) +
+                            fill = paste0("`", df_prep$metric_label, "`"),
+                            key = "country")) +
     geom_polygon(aes_string(group = "group")) + 
     coord_equal() +
     ggthemes::theme_map() +
