@@ -35,7 +35,7 @@ run_tb_dashboard <- function() {
   if (any(not_present)) {
     stop("Packages required for this dashboard are not installed, 
          please use the following code to install the required packages \n\n 
-         install.packages(c('", paste(required_packages[not_present], sep = "', '"), "'))")
+         install.packages(c('", paste(required_packages[not_present], collapse = "', '"), "'))")
   }
   
   appDir <- system.file("shiny", "ExploreGlobalTB", package = "getTBinR")
