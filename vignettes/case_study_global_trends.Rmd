@@ -31,8 +31,8 @@ library(viridis)
 The package is loaded, time to get the data. We download both the data itself and it's accompanying data dictionary.
 
 ```{r get-data, message = FALSE}
-tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
-dict <- get_data_dict(download_data = TRUE, save = TRUE)
+tb_burden <- get_tb_burden()
+dict <- get_data_dict()
 ```
 
 We want to explore incidence rates so we need to find them in the data. We can do this using the `getTBinR::search_data_dict` function,

@@ -5,7 +5,7 @@
 \title{Search the WHO TB Data Dictionary by Variable Name.}
 \usage{
 search_data_dict(var = NULL, def = NULL, dict = NULL,
-  download_data = FALSE, save = FALSE, dict_save_name = "TB_data_dict",
+  download_data = TRUE, save = TRUE, dict_save_name = "TB_data_dict",
   verbose = TRUE, ...)
 }
 \arguments{
@@ -18,11 +18,11 @@ for partial matches}
 for details. If not supplied the function will attempt to load a saved version of the
 dictionary. If this fails and \code{download_data = TRUE} then the dictionary will be downloaded.}
 
-\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
 
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
-\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{dict_save_name}{Character string, name to save dictionary under. Defaults to
 \code{TB_data_dict}.}
@@ -43,7 +43,7 @@ it will download the data dictionary, if \code{download_data = TRUE}, and save i
 
 ## Search for a known variable
 ## Download and save the dictionary if it is not available locally
-search_data_dict(var = "country", download_data = TRUE, save = TRUE)
+search_data_dict(var = "country")
 
 ## Search for all variables mentioning mortality in their definition
 search_data_dict(def = "mortality")

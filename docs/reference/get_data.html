@@ -109,8 +109,8 @@ Otherwise if <code>download_data = TRUE</code> then the data will be retrieved f
 saved  to the temporary directory by specifying <code>save = TRUE</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -127,13 +127,13 @@ dataframe of any type. If not specified defaults to transforming the data into a
     </tr>
     <tr>
       <th>download_data</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. If not found locally should the data be
+      <td><p>Logical, defaults to <code>TRUE</code>. If not found locally should the data be
 downloaded from the specified URL?</p></td>
     </tr>
     <tr>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
-<code>FALSE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
+<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>save_name</th>
@@ -169,18 +169,16 @@ data download function. When <code>TRUE</code> data is downloaded using <code>re
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
-<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
-<span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpwkPyzD/TB_burden.rds</span></div><div class='input'>
+<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmpc1qfTo/TB_burden.rds</span></div><div class='input'>
 <span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 71
-#&gt;   country   iso2  iso3  iso_numeric g_whoregion       year e_pop_num e_inc_100k
-#&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghanis… AF    AFG             4 Eastern Mediter…  2000  20093756        190
-#&gt; 2 Afghanis… AF    AFG             4 Eastern Mediter…  2001  20966463        189
-#&gt; 3 Afghanis… AF    AFG             4 Eastern Mediter…  2002  21979923        189
-#&gt; 4 Afghanis… AF    AFG             4 Eastern Mediter…  2003  23064851        189
-#&gt; 5 Afghanis… AF    AFG             4 Eastern Mediter…  2004  24118979        189
-#&gt; 6 Afghanis… AF    AFG             4 Eastern Mediter…  2005  25070798        189
+#&gt;   country     iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
+#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
+#&gt; 1 Afghanistan AF    AFG   004         EMR          2000  20093756        190
+#&gt; 2 Afghanistan AF    AFG   004         EMR          2001  20966463        189
+#&gt; 3 Afghanistan AF    AFG   004         EMR          2002  21979923        189
+#&gt; 4 Afghanistan AF    AFG   004         EMR          2003  23064851        189
+#&gt; 5 Afghanistan AF    AFG   004         EMR          2004  24118979        189
+#&gt; 6 Afghanistan AF    AFG   004         EMR          2005  25070798        189
 #&gt; # ... with 63 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,

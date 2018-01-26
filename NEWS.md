@@ -5,6 +5,9 @@
 * Added `annual_change` arguement to all plotting/mapping functions. Passed to `prepare_df_plot`. Returns the percentage annual change for the supplied metric.
 * Added `trans` arguement to all plotting functions to allow scaling using any `ggplot2::continous_scale` `trans` arguement.
 * Added adaptive axis and legend labels to properly show annual percentage change.
+* Added `run_tb_dashboard` to launch a shiny dashboard for exploring global tuberculosis
+* Changed function defaults so that data is automatically downloaded and saved into the temporary
+directory when `get_data` functions are called.
 
 ## Package updates
 

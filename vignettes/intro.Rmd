@@ -35,7 +35,7 @@ library(dplyr)
 Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy to R's temporary directory (see `tempdir()`). If a local copy exists from the current seesion then this will be loaded instead.
 
 ```{r get-tb-burden-data}
-tb_burden <- get_tb_burden(download_data = TRUE, save = TRUE)
+tb_burden <- get_tb_burden()
 
 tb_burden
 ```
@@ -48,9 +48,7 @@ The WHO provides a large, detailed, data dictionary for use with the TB burden d
 vars_of_interest <- search_data_dict(var = c("country",
                                              "e_inc_100k",
                                              "e_inc_100k_lo",
-                                             "e_inc_100k_hi"),
-                                     download_data = TRUE, 
-                                     save = TRUE)
+                                             "e_inc_100k_hi"))
 
 knitr::kable(vars_of_interest)
 ```

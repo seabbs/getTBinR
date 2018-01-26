@@ -18,13 +18,13 @@
 #' @seealso get_data search_data_dict
 #' @examples
 #' 
-#' dict <- get_data_dict(download_data = TRUE, save = TRUE)
+#' dict <- get_data_dict()
 #' 
 #' head(dict)
 #' 
 get_data_dict <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary", 
-                          download_data = FALSE,
-                          save = FALSE,
+                          download_data = TRUE,
+                          save = TRUE,
                           dict_save_name = "TB_data_dict",
                           return = TRUE,
                           verbose = TRUE,

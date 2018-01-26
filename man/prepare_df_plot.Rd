@@ -7,7 +7,7 @@
 prepare_df_plot(df = NULL, dict = NULL, metric = "e_inc_100k",
   conf = NULL, metric_label = NULL, countries = NULL,
   compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
-  trans = "identity", download_data = FALSE, save = FALSE,
+  trans = "identity", download_data = TRUE, save = TRUE,
   burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
   verbose = TRUE, ...)
 }
@@ -43,11 +43,11 @@ percentage annual change is computed for the specified metric.}
 transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
 ("log10"). For a complete list of options see \code{ggplot2::continous_scale}.}
 
-\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
 
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
-\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{burden_save_name}{Character string, name to save the data under. Defaults to
 \code{TB_burden}.}
@@ -70,7 +70,7 @@ and \code{\link[getTBinR]{plot_tb_burden_overview}} to prepare data for plotting
 }
 \examples{
 
-prepare_df_plot(countries = "Guinea", download_data = TRUE, save = TRUE)
+prepare_df_plot(countries = "Guinea")
 
 }
 \seealso{

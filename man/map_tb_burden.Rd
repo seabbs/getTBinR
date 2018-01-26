@@ -7,7 +7,7 @@
 map_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, countries = NULL, compare_to_region = FALSE,
   facet = NULL, year = 2016, annual_change = FALSE, trans = "identity",
-  interactive = FALSE, download_data = FALSE, save = FALSE,
+  interactive = FALSE, download_data = TRUE, save = TRUE,
   burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
   verbose = TRUE, ...)
 }
@@ -44,11 +44,11 @@ transform ("identity"). Other options include log scaling ("log") and log base 1
 \item{interactive}{Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is
 returned.}
 
-\item{download_data}{Logical, defaults to \code{FALSE}. If not found locally should the data be
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
 
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
-\code{FALSE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{burden_save_name}{Character string, name to save the data under. Defaults to
 \code{TB_burden}.}
@@ -72,7 +72,7 @@ Various other options are available for tuning the plot further.
 \examples{
 
 ## Map raw incidence rates
-map_tb_burden(download_data = TRUE, save = TRUE)
+map_tb_burden()
 
 ## Map log10 scaled incidence rates
 map_tb_burden(trans = "log10")
