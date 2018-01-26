@@ -12,7 +12,7 @@ Starts a shiny Tuberculosis dashboard
 \description{
 This functions runs a TB dashboard that has been built using other
 package functionality. The dashboard can be used to explore the global burden of TB
-interactively. A hosted version of this dashboard is available \href{http://www.seabbs.co.uk/shiny/ExploreTB}{here}.
+interactively. A hosted version of this dashboard is available \href{http://www.seabbs.co.uk/shiny/ExploreGlobalTB}{here}.
 }
 \examples{
 

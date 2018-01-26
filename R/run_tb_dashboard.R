@@ -2,7 +2,7 @@
 #'
 #' @description This functions runs a TB dashboard that has been built using other
 #' package functionality. The dashboard can be used to explore the global burden of TB 
-#' interactively. A hosted version of this dashboard is available [here](http://www.seabbs.co.uk/shiny/ExploreTB). 
+#' interactively. A hosted version of this dashboard is available [here](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). 
 #' @return Starts a shiny Tuberculosis dashboard
 #' @export
 #' @importFrom utils installed.packages

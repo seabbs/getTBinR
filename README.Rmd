@@ -83,7 +83,7 @@ To explore the package functionality in an interactive session, or to investigat
 getTBinR::run_tb_dashboard()
 ```
 
-Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreTB). Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.
+Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.
 
 ![](man/img/ExploreGlobalTB.png)
 

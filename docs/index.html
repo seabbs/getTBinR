@@ -102,9 +102,9 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                         <span class="dt">year =</span> <span class="dv">2016</span>)
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpboZhFx/TB_burden.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp8nhIO2/TB_burden.rds</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpboZhFx/TB_data_dict.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp8nhIO2/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/map-tb-incidence-eur-1.png" width="672"></p>
 <p>Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,</p>
@@ -112,8 +112,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                                   <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpboZhFx/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpboZhFx/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp8nhIO2/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp8nhIO2/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-1.png" width="960"></p>
 <p>In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change (note that this functionality is currently only available in the development version of the package),</p>
@@ -122,8 +122,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpboZhFx/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpboZhFx/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp8nhIO2/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp8nhIO2/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
 <span class="co">#&gt; Warning: Removed 16 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-per-1.png" width="960"></p>
@@ -132,8 +132,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                          <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                          <span class="dt">facet =</span> <span class="st">"country"</span>,
                          <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpboZhFx/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpboZhFx/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp8nhIO2/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp8nhIO2/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-uk-1.png" width="672"></p>
 <p>See <a href="https://www.samabbott.co.uk/getTBinR/reference/index.html">Functions</a> for more details of the functions used (note the fuzzy country matching, <code>map_tb_burden</code>, <code>plot_tb_burden_overview</code> and <code>plot_tb_burden</code> will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying <code>interactive = TRUE</code></p>
@@ -143,7 +143,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <a href="#shiny-dashboard" class="anchor"></a>Shiny Dashboard</h2>
 <p>To explore the package functionality in an interactive session, or to investigate TB without having to code extensively in R, a shiny dashboard has been built into the package. This can either be used locally using,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/run_tb_dashboard.html">run_tb_dashboard</a></span>()</code></pre></div>
-<p>Or accessed <a href="http://www.seabbs.co.uk/shiny/ExploreTB">online</a>. Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.</p>
+<p>Or accessed <a href="http://www.seabbs.co.uk/shiny/ExploreGlobalTB">online</a>. Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.</p>
 <div class="figure">
 <img src="man/img/ExploreGlobalTB.png">
 </div>
