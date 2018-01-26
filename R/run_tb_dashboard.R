@@ -17,7 +17,7 @@
 run_tb_dashboard <- function() {
   
   required_packages <- c("shiny", "shinydashboard", "shinyWidgets", "shinycssloaders",
-                         "plotly", "magrittr", "dplyr", "getTBinR")
+                         "plotly", "magrittr", "dplyr", "tibble", "getTBinR")
   
   not_present <- sapply(required_packages, function(package) {
     

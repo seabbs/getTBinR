@@ -5,6 +5,7 @@ library(shinycssloaders)
 library(plotly)
 library(magrittr)
 library(dplyr)
+library(tibble)
 library(getTBinR)
 
 
@@ -58,7 +59,7 @@ dashboardPage(
   dashboardHeader(title = helpText("Explore Global Tuberculosis: Powered by", 
                                    a("getTBinR", href = "https://www.samabbott.co.uk/getTBinR/"),
                                    ", and developed by ",
-                                   a("Sam Abbott", href = "http://samabbott.co.uk"), "."),
+                                   a("Sam Abbott", href = "http://samabbott.co.uk")),
                   titleWidth = 800),
   sidebar,
   body,
