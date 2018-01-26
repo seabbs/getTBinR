@@ -26,7 +26,7 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 
 \item{conf}{Character vector specifying the name variations to use to specify the upper
 and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
-then no confidence intervals are shown. When \code{annual_change = TRUE} the confidene
+then no confidence intervals are shown. When \code{annual_change = TRUE} the confidence
 intervals represent the annual percentage change in the metrics confidence intervals.}
 
 \item{countries}{A character string specifying the countries to plot.}
