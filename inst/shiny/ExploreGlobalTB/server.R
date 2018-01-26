@@ -13,12 +13,24 @@ shinyServer(function(input, output) {
   
   ## Get data
   tb_df <- reactive({
-    tb_df <- get_tb_burden(download_data = TRUE, save = TRUE) %>% 
-      mutate(g_whoregion = ifelse(is.na(g_whoregion), "Asia", g_whoregion))
+    tb_df <- try(get_tb_burden(download_data = TRUE, save = TRUE) %>% 
+      mutate(g_whoregion = ifelse(is.na(g_whoregion), "Asia", g_whoregion)))
+    
+    validate(
+      need(!(class(tb_df) %in% "try-error"), "There has been an issue downloading the TB burden data please contact the app author.")
+    )
+
+    tb_df
   })
   
   dict <- reactive({
-    dict <- get_data_dict(download_data = TRUE, save = TRUE)
+    dict <- try(get_data_dict(download_data = TRUE, save = TRUE))
+    
+    validate(
+      need(!(class(dict) %in% "try-error"), "There has been an issue downloading the data dictionary please contact the app author.")
+    )
+    
+    dict
   })
   
   unique_metrics <- reactive({
@@ -43,7 +55,7 @@ shinyServer(function(input, output) {
     
     ## Filter out confidence intvervals
     selectInput(inputId = 'metric', 
-                label = 'Select the metric to display',
+                label = 'Select the metric to display (note: some metrics have incomplete data)',
                 choices = choices,
                 selected = "e_inc_100k")
   })
@@ -56,6 +68,14 @@ shinyServer(function(input, output) {
     }
   })
   
+  ## Set up confidence intervals
+  conf <- reactive({
+    if (any(grepl(paste0(metric(), "_lo"), colnames(tb_df())))) {
+      conf <-  c("_lo", "_hi")
+    }else{
+      conf <- NULL
+    }
+  })
   ## Country
   output$select_year <- renderUI({
     
@@ -87,12 +107,14 @@ shinyServer(function(input, output) {
   
   ## Filter date based on year selected
   tb_df_filt <- reactive({
+    
     tb_df <- tb_df() %>% 
       filter(year <= year())
   })
   
   # Make map of metric
   output$map_tb_burden <- renderPlotly({
+    
     map <- map_tb_burden(tb_df_filt(), dict(), metric = metric(), 
                   year = year(), interactive = FALSE) + 
       ggplot2::theme(legend.position = "none") 
@@ -125,8 +147,8 @@ shinyServer(function(input, output) {
       stop("A country is required")
     }
     
-    plot_tb_burden(tb_df_filt(), dict(), metric = metric(),
-                   countries = country(), interactive = TRUE)
+    plot_tb_burden(tb_df_filt(), dict(), metric = metric(), conf = conf(),
+                   countries = country(), interactive = TRUE, facet = "country")
   })
   
   
@@ -158,7 +180,7 @@ shinyServer(function(input, output) {
     }
     
     plot_tb_burden(tb_df_filt(), dict(), metric = metric(),
-                   countries = country(), interactive = TRUE,
+                   countries = country(), interactive = TRUE, conf = conf(),
                    compare_to_region = TRUE, facet = "country", scales = "free_y")
   })
   

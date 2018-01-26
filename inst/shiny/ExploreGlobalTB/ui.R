@@ -30,7 +30,7 @@ body <- dashboardBody(
              box(width = NULL,
                  title = "Trend over Time",
                  solidHeader = FALSE,
-                 plotlyOutput("plot_country_metric", width = "100%", height = "375px") %>% withSpinner()
+                 plotlyOutput("plot_country_metric", width = "100%", height = "358px") %>% withSpinner()
              )
       ),
       column(width = 5,
@@ -55,7 +55,11 @@ body <- dashboardBody(
 
 
 dashboardPage(
-  dashboardHeader(title = "Explore Global Tuberculosis",  titleWidth = 300),
+  dashboardHeader(title = helpText("Explore Global Tuberculosis: Powered by", 
+                                   a("getTBinR", href = "https://www.samabbott.co.uk/getTBinR/"),
+                                   ", and developed by ",
+                                   a("Sam Abbott", href = "http://samabbott.co.uk"), "."),
+                  titleWidth = 800),
   sidebar,
   body,
   skin = "black"

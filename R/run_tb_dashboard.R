@@ -17,16 +17,26 @@
 run_tb_dashboard <- function() {
   
   required_packages <- c("shiny", "shinydashboard", "shinyWidgets", "shinycssloaders",
-                         "plotly", "magrittr")
+                         "plotly", "magrittr", "dplyr", "getTBinR")
   
-  lapply(required_packages, function(package) {
-    if (!(package %in% rownames(installed.packages()))) {
+  not_present <- sapply(required_packages, function(package) {
+    
+    not_present <- !(package %in% rownames(installed.packages()))
+    
+    if (not_present) {
       message(paste0(package,
                   " is required to use run_tb_dashboard, please install it before using this function"))
     }
+    
+    return(not_present)
   }
   )
 
+  if (any(not_present)) {
+    stop("Packages required for this dashboard are not installed, 
+         please use the following code to install the required packages \n\n 
+         install.packages(c('", paste(required_packages[not_present], sep = "', '"), "'))")
+  }
   
   appDir <- system.file("shiny", "ExploreGlobalTB", package = "getTBinR")
   if (appDir == "") {
