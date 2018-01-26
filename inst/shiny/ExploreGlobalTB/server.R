@@ -61,6 +61,7 @@ shinyServer(function(input, output) {
   })
   
   metric <- reactive({
+    
     if (is.null(input$metric)) {
       metric <- "e_inc_100k"
     }else{
@@ -96,6 +97,7 @@ shinyServer(function(input, output) {
   })
   
   year <- reactive({
+    
     if (is.null(input$year)) {
       year <- 2016
     }else{
