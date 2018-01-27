@@ -16,6 +16,10 @@ navbar:
       menu:
       - text: Exploring Global Trends in Tuberculosis Incidence Rates
         href: articles/case_study_global_trends.html
+    - text: "Dashboards"
+      menu:
+      - text: Explore Global Tuberculosis
+        href: http://www.seabbs.co.uk/shiny/ExploreGlobalTB/
  
   right:
     - icon: fa-file-code-o 
