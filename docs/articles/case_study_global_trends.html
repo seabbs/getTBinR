@@ -210,7 +210,7 @@ dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_da
 
 plot_tb_inc_region &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">df =</span> <span class="ot">NULL</span>, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">subtitle =</span> <span class="ot">NULL</span>, <span class="dt">scales =</span> <span class="ot">NULL</span>) {
   df <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> e_inc_num_inc_rate, <span class="dt">col =</span> g_whoregion)) <span class="op">+</span>
+<span class="st">      </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> e_inc_num_inc_rate, <span class="dt">col =</span> g_whoregion, <span class="dt">group =</span> g_whoregion)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> e_inc_num_lo_inc_rate, <span class="dt">ymax =</span> e_inc_num_hi_inc_rate)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
@@ -226,37 +226,13 @@ plot_tb_inc_region &lt;-<span class="st"> </span><span class="cf">function</span
 tb_inc_region <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot_tb_inc_region</span>(<span class="dt">title =</span> <span class="st">"Global Tuberculosis Incidence Rates"</span>,
                      <span class="dt">subtitle =</span> <span class="st">"By WHO region, with a fixed y axis"</span>,
-                     <span class="dt">scales =</span> <span class="st">"fixed"</span>)
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span></code></pre></div>
+                     <span class="dt">scales =</span> <span class="st">"fixed"</span>)</code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/plot-region-tb-inc-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We see that incidence rates are much higher in Africa, and in Asia, than in other regions, and that incidence rates in the Americas and Europe are the lowest. This chart has a fixed y axis which makes it hard to see trends over time within regions, if we repeat it with a free y axis the trends over time become more apparent,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_inc_region <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot_tb_inc_region</span>(<span class="dt">title =</span> <span class="st">"Global Tuberculosis Incidence Rates"</span>,
                      <span class="dt">subtitle =</span> <span class="st">"By WHO region, with a variable y axis"</span>,
-                     <span class="dt">scales =</span> <span class="st">"free_y"</span>)
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span>
-<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
-<span class="co">#&gt; adjust the group aesthetic?</span></code></pre></div>
+                     <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/plot-region-tb-inc-free-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>This plot shows that Tuberculosis incidence rates are decreasing in all regions, which is a great sign for the elimination of Tuberculosis. However whilst this is true on the regional level it may not be true for all countries in the data set, something that is required to truly eradicate Tuberculosis. To explore this we find the countries that had higher incidence rates in 2016 than in 2000.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countries_inc_up &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
