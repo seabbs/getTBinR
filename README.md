@@ -2,7 +2,7 @@
 Get TB Data in R
 ================
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/getTBinR)](https://cran.r-project.org/package=getTBinR) [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR) [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master) [![metacran downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/getTBinR)](https://cran.r-project.org/package=getTBinR) [![Rdoc](http://www.rdocumentation.org/badges/version/getTBinR)](http://www.rdocumentation.org/packages/getTBinR) [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR) [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master) [![metacran downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR)
 
 Quickly and easily import analysis ready TB burden data, from the World Health Orgnaisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. This package is inspired by a blog [post](https://incidental-ideas.org/2017/03/03/who-tuberculosis-data-ggplot2/), which looked at WHO TB incidence rates. See [here](http://www.who.int/about/copyright/en/) for the WHO data permissions. For help getting started see the [Getting Started](https://www.samabbott.co.uk/getTBinR/articles/intro.html) vignette and for a case study using the package see the [Exploring Global Trends in Tuberculosis Incidence Rates](https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html) vignette.
 
@@ -31,9 +31,9 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016)
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/Rtmpzj7Tu1/TB_burden.rds
+#> Saving data to: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/Rtmpzj7Tu1/TB_data_dict.rds
+#> Saving data to: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -46,8 +46,8 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmpzj7Tu1/TB_burden.rds
-#> Loading data from: /tmp/Rtmpzj7Tu1/TB_data_dict.rds
+#> Loading data from: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_burden.rds
+#> Loading data from: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -61,8 +61,8 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmpzj7Tu1/TB_burden.rds
-#> Loading data from: /tmp/Rtmpzj7Tu1/TB_data_dict.rds
+#> Loading data from: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_burden.rds
+#> Loading data from: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Warning: Removed 16 rows containing missing values (geom_point).
 ```
@@ -76,8 +76,8 @@ getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          facet = "country",
                          interactive = FALSE)
-#> Loading data from: /tmp/Rtmpzj7Tu1/TB_burden.rds
-#> Loading data from: /tmp/Rtmpzj7Tu1/TB_data_dict.rds
+#> Loading data from: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_burden.rds
+#> Loading data from: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpsXlQZD/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
