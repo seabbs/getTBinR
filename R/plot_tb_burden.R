@@ -20,7 +20,7 @@
 #' @importFrom dplyr filter
 #' @importFrom scales percent
 #' @importFrom purrr map
-#' @importFrom plotly ggplotly
+#' @importFrom plotly ggplotly style
 #' @importFrom viridis  scale_fill_viridis  scale_colour_viridis
 #' @examples
 #' 
@@ -80,7 +80,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   
   country <- NULL
   
-  plot <- ggplot(df_prep$df, aes_string(x = "year", y = paste0("`", df_prep$metric_label, "`"),
+  plot <- ggplot(df_prep$df, aes_string(x = "year", 
+                                        y = paste0("`", df_prep$metric_label, "`"),
                                         col = "country", fill = "country")) +
     geom_line()
   
@@ -112,7 +113,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   }
   
   if (interactive) {
-    plot <- ggplotly(plot)
+    plot <- ggplotly(plot)  %>% 
+      style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
   }
   
   return(plot)
