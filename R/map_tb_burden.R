@@ -123,7 +123,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
     plot <- plot +
       theme(legend.position = "none")
     
-    plot <- plotly::ggplotly(plot) %>% 
+    plot <- plotly::ggplotly(plot, source = "WorldMap") %>% 
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
     
     plot$x$frames <- lapply(
