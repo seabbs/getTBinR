@@ -13,7 +13,7 @@
 #' @importFrom viridis scale_fill_viridis
 #' @importFrom ggthemes theme_map
 #' @import magrittr
-#' @importFrom dplyr filter left_join
+#' @importFrom dplyr filter left_join rename
 #' @importFrom ggthemes theme_map
 #' @importFrom purrr map
 #' @importFrom plotly ggplotly style
