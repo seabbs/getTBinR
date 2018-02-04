@@ -124,7 +124,8 @@ will instead download the data.</p>
 
     <pre class="usage"><span class='fu'>get_tb_burden</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
   <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -164,6 +165,12 @@ be displayed.</p></td>
       <td><p>Logical, defaults to <code>FALSE</code>. Used for testing alternative
 data download function. When <code>TRUE</code> data is downloaded using <code>read.csv</code>.</p></td>
     </tr>
+    <tr>
+      <th>retry_download</th>
+      <td><p>Logical defaults to <code>TRUE</code>. When <code>TRUE</code>, if downloading
+fails, the function will try repeatedly to download the data within 5 seconds, up
+to 5 times.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -177,16 +184,16 @@ data download function. When <code>TRUE</code> data is downloaded using <code>re
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /var/folders/2w/5yycrt5563n0phlj0sbmhsch0000gn/T//RtmpfYTVQZ/TB_burden.rds</span></div><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpXECyOO/TB_burden.rds</span></div><div class='input'>
 <span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 71
-#&gt;   country   iso2  iso3  iso_numeric g_whoregion       year e_pop_num e_inc_100k
-#&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghanis… AF    AFG             4 Eastern Mediter…  2000  20093756        190
-#&gt; 2 Afghanis… AF    AFG             4 Eastern Mediter…  2001  20966463        189
-#&gt; 3 Afghanis… AF    AFG             4 Eastern Mediter…  2002  21979923        189
-#&gt; 4 Afghanis… AF    AFG             4 Eastern Mediter…  2003  23064851        189
-#&gt; 5 Afghanis… AF    AFG             4 Eastern Mediter…  2004  24118979        189
-#&gt; 6 Afghanis… AF    AFG             4 Eastern Mediter…  2005  25070798        189
+#&gt;   country     iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
+#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
+#&gt; 1 Afghanistan AF    AFG   004         EMR          2000  20093756        190
+#&gt; 2 Afghanistan AF    AFG   004         EMR          2001  20966463        189
+#&gt; 3 Afghanistan AF    AFG   004         EMR          2002  21979923        189
+#&gt; 4 Afghanistan AF    AFG   004         EMR          2003  23064851        189
+#&gt; 5 Afghanistan AF    AFG   004         EMR          2004  24118979        189
+#&gt; 6 Afghanistan AF    AFG   004         EMR          2005  25070798        189
 #&gt; # ... with 63 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,

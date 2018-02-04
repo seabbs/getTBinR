@@ -7,7 +7,8 @@
 
   get_data_dict(url = "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary",
   download_data = TRUE, save = TRUE, dict_save_name = "TB_data_dict",
-  return = TRUE, verbose = TRUE, use_utils = FALSE)
+  return = TRUE, verbose = TRUE, use_utils = FALSE,
+  retry_download = TRUE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data
@@ -30,6 +31,10 @@ be displayed.}
 
 \item{use_utils}{Logical, defaults to \code{FALSE}. Used for testing alternative
 data download function. When \code{TRUE} data is downloaded using \code{read.csv}.}
+
+\item{retry_download}{Logical defaults to \code{TRUE}. When \code{TRUE}, if downloading
+fails, the function will try repeatedly to download the data within 5 seconds, up
+to 5 times.}
 }
 \value{
 The WHO TB data dictionary as a tibble with 4 variables:

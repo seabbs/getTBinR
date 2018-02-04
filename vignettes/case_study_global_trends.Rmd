@@ -59,8 +59,7 @@ tb_inc_region <- tb_burden %>%
   summarise_at(.vars = vars(e_inc_num, e_inc_num_lo, e_inc_num_hi, e_pop_num),
                .funs = funs(sum(as.numeric(.), na.rm = T))) %>% 
   mutate_at(.vars = vars(e_inc_num, e_inc_num_lo, e_inc_num_hi),
-            .funs = funs(inc_rate = . / e_pop_num * 1e5)) %>% 
-  mutate(g_whoregion = ifelse(is.na(g_whoregion), "Asia", g_whoregion))
+            .funs = funs(inc_rate = . / e_pop_num * 1e5))
 
 plot_tb_inc_region <- function(df = NULL, title = NULL, subtitle = NULL, scales = NULL) {
   df %>% 
