@@ -83,10 +83,15 @@ get_data <- function(url = NULL,
                 again using utils::read.csv")
         }
         ddata <- try(read.csv(url, stringsAsFactors = FALSE), silent = TRUE)
+        
+        if ("try-error" %in% class(ddata)) {
+          failed <- TRUE
+          }else{
+          failed <- FALSE
+        }
       }
       
-      if ("try-error" %in% class(ddata)) {
-        failed <- TRUE
+      if (failed) {
         
         message("Downloading data has failed after ", tries, " tries.")
         
