@@ -18,12 +18,16 @@
 #' be displayed.
 #' @param use_utils Logical, defaults to \code{FALSE}. Used for testing alternative
 #' data download function. When \code{TRUE} data is downloaded using \code{read.csv}.
+#' @param retry_download Logical defaults to \code{TRUE}. When \code{TRUE}, if downloading
+#' fails, the function will try repeatedly to download the data within 5 seconds, up
+#' to 5 times.
 #'
 #' @return The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn
 #' @export
 #' @importFrom data.table fread
 #' @importFrom utils read.csv
 #' @importFrom tibble as_tibble
+#' @importFrom stats runif
 #' @seealso get_tb_burden get_data_dict
 #' @examples
 #' 
@@ -39,8 +43,8 @@ get_data <- function(url = NULL,
                      save_name = NULL,
                      return = TRUE,
                      verbose = TRUE,
-                     use_utils = FALSE) {
-  
+                     use_utils = FALSE,
+                     retry_download = TRUE) {
     path <- tempdir()
   
   if (is.null(data_trans_fn)) {
@@ -50,26 +54,69 @@ get_data <- function(url = NULL,
   data_path <- file.path(path, paste0(save_name, ".rds"))
   
   if (!file.exists(data_path) && download_data) {
-    if (verbose) {
-      message("Downloading data from: ", url)
+  
+    tries <- 1
+    failed <- FALSE
+    
+    if (!retry_download) {
+      tries <- 5
     }
     
-    if (!use_utils) {
-      data <- try(data.table::fread(url), silent = TRUE)
+    while (tries < 6) {
+      
+      if (verbose) {
+        message("Downloading data from: ", url)
+      }
+      
+      if (!use_utils) {
+        ddata <- try(data.table::fread(url), silent = TRUE)
+        
+        if ("try-error" %in% class(ddata)) {
+          use_utils <- TRUE
+          failed <- TRUE
+        }
+      }
+      
+      if (use_utils) {
+        if (verbose) {
+          message("Downloading the data using fread::data.table has failed. Trying
+                again using utils::read.csv")
+        }
+        ddata <- try(read.csv(url, stringsAsFactors = FALSE), silent = TRUE)
+        
+        if ("try-error" %in% class(ddata)) {
+          failed <- TRUE
+          }else{
+          failed <- FALSE
+        }
+      }
+      
+      if (failed) {
+        
+        message("Downloading data has failed after ", tries, " tries.")
+        
+        tries <- tries + 1
+        
+        pause_time <- runif(1, 0.5, 5)
+        pause_time <- round(pause_time, digits = 1)
+        
+        message("Attempting data download in ", pause_time, " seconds.")
+        
+        Sys.sleep(pause_time)
+      }
+      
+      if(!failed) {
+        break
+      }
+      
     }
 
-    if ("try-error" %in% class(data)) {
-      use_utils <- TRUE
-    }
-    if (use_utils) {
-      if (verbose) {
-        message("Downloading the data using fread::data.table has failed. Trying
-                again using utils::read.csv")
-      }
-      data <- read.csv(url, stringsAsFactors = FALSE)
+    if (failed || is.null(ddata)) {
+      stop("Data downloading has failed, check your internet connection.
+           If this issue is not resolved, contact the package author.")
     }
     
-    data <- data_trans_fn(data)
+    ddata <- data_trans_fn(ddata)
     
     if (save) {
       if (!dir.exists(path)) {
@@ -79,12 +126,12 @@ get_data <- function(url = NULL,
       if (verbose) {
         message("Saving data to: ", data_path)
       }
-      saveRDS(data, data_path)
+      saveRDS(ddata, data_path)
     }
     
   }else if (!file.exists(data_path) && !download_data) {
-    stop("Data not found locally at: ", data_path,
-         "\n Permission to download has not been given. 
+    stop("Data not found locally at: ", data_path, "Permission to download has 
+not been given. 
 If the data exists locally, check the path and save_name.
 If it does not exist locally then change download_data to TRUE to download the data.
 Set save to TRUE to save the data for local use.")
@@ -94,10 +141,10 @@ Set save to TRUE to save the data for local use.")
       message("Loading data from: ", data_path)
     }
     
-    data <- readRDS(data_path)
+    ddata <- readRDS(data_path)
   }
   
   if (return) {
-    return(data)
+    return(ddata)
   }
 }

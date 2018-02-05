@@ -1,3 +1,11 @@
+# getTBinR 0.5.2.0
+
+## Feature updates
+
+## Package updates
+
+* Added retry download option to deal with possible API rate limits in response to [this issue](https://github.com/seabbs/getTBinR/issues/24).
+
 # getTBinR 0.5.1.0
 
 ## Feature updates
