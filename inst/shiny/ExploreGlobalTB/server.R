@@ -9,7 +9,7 @@ library(tibble)
 library(getTBinR)
 
 
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
   
   ## Get data
   tb_df <- reactive({
@@ -118,10 +118,8 @@ shinyServer(function(input, output) {
   output$map_tb_burden <- renderPlotly({
     
     map <- map_tb_burden(tb_df_filt(), dict(), metric = metric(), 
-                  year = year(), interactive = FALSE) + 
-      ggplot2::theme(legend.position = "none") 
-    
-      ggplotly(map, source = "WorldMap")
+                  year = year(), interactive = TRUE)
+        
   })
   
   #Get country clicked on map

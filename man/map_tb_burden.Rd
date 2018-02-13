@@ -32,7 +32,8 @@ Note that this will override settings for \code{facet}, unless it is set to "cou
 
 \item{facet}{Character string, the name of the variable to facet by.}
 
-\item{year}{Numeric, indicating the year of data to map. Defaults to 2016.}
+\item{year}{Numeric, indicating the year of data to map. Defaults to 2016. If \code{interactive = TRUE}
+then multiple years may be passed as a vector, the result will then be animated over years.}
 
 \item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
 percentage annual change is computed for the specified metric.}

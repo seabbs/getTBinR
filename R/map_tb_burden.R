@@ -3,7 +3,8 @@
 #' @description Map measures of TB burden by country by specifying a metric from the TB burden data.
 #' Specify a country or vector of countries in order to map them (the default is to map all countries).
 #' Various other options are available for tuning the plot further.
-#' @param year Numeric, indicating the year of data to map. Defaults to 2016.
+#' @param year Numeric, indicating the year of data to map. Defaults to 2016. If \code{interactive = TRUE}
+#' then multiple years may be passed as a vector, the result will then be animated over years.
 #' @inheritParams plot_tb_burden
 #' @seealso plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -12,10 +13,10 @@
 #' @importFrom viridis scale_fill_viridis
 #' @importFrom ggthemes theme_map
 #' @import magrittr
-#' @importFrom dplyr filter left_join
+#' @importFrom dplyr filter left_join rename
 #' @importFrom ggthemes theme_map
 #' @importFrom purrr map
-#' @importFrom plotly ggplotly
+#' @importFrom plotly ggplotly style
 #' @importFrom scales percent
 #' @examples
 #' 
@@ -49,6 +50,11 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            dict_save_name = "TB_data_dict",
                            verbose = TRUE, ...) {
 
+  if (!interactive && length(year) > 1) {
+    stop("When not producing interactive plots only a single year of data must be used. 
+         Please specify a single year (i.e 2016)")
+  }
+  
   sel_year <- year
   
   df_prep <- prepare_df_plot(df = df, dict = dict,
@@ -70,6 +76,11 @@ map_tb_burden <- function(df = NULL, dict = NULL,
     left_join(getTBinR::who_shapefile, c("iso3" = "id")) %>% 
     filter(year %in% sel_year)
   
+  ## Format year
+  df_prep$df <- df_prep$df %>% 
+    rename(Year = year)
+  
+  ## Change metric label
    names(df_prep$df)[names(df_prep$df) == metric] <- df_prep$metric_label
    
    country <- NULL
@@ -85,7 +96,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                             y = "lat", 
                             text = "country",
                             fill = paste0("`", df_prep$metric_label, "`"),
-                            key = "country")) +
+                            key = "country",
+                            frame = "Year")) +
     geom_polygon(aes_string(group = "group")) + 
     coord_equal() +
     ggthemes::theme_map() +
@@ -107,10 +119,19 @@ map_tb_burden <- function(df = NULL, dict = NULL,
   }
   
   if (interactive) {
+  
     plot <- plot +
       theme(legend.position = "none")
     
-    plot <- plotly::ggplotly(plot)
+    plot <- plotly::ggplotly(plot, source = "WorldMap") %>% 
+      style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
+    
+    plot$x$frames <- lapply(
+      plot$x$frames, function(f) { 
+        f$data <- lapply(f$data, function(d) d[!names(d) %in% c("x", "y")])
+        f 
+      })
+    
   }
   
   return(plot)

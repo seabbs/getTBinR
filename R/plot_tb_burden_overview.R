@@ -10,7 +10,7 @@
 #' @export 
 #' @import ggplot2
 #' @importFrom viridis scale_colour_viridis
-#' @importFrom plotly ggplotly
+#' @importFrom plotly ggplotly style
 #' @importFrom scales percent
 #' @examples
 #' 
@@ -66,7 +66,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                              verbose = verbose)
   country <- NULL
   
-  plot <- ggplot(df_prep$df, aes_string(x = "country", y = paste0("`", df_prep$metric_label, "`"),
+  plot <- ggplot(df_prep$df, aes_string(x = "country", 
+                                        y = paste0("`", df_prep$metric_label, "`"),
                                         col = "Year")) +
     geom_point(alpha = 0.6, size = 1.5)
   
@@ -92,7 +93,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
   }
   
   if (interactive) {
-    plot <- plotly::ggplotly(plot)
+    plot <- plotly::ggplotly(plot)  %>% 
+      style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
   }
   
   return(plot)
