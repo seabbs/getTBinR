@@ -2,9 +2,14 @@
 
 ## Feature updates
 
+* Improved plotly tool tips in all interactive plots.
+* Added option to pass multiple years for interactive maps using the built in plotly frame functionality.
+
 ## Package updates
 
 * Added retry download option to deal with possible API rate limits in response to [this issue](https://github.com/seabbs/getTBinR/issues/24).
+* Added downloads badge to readme.
+
 
 # getTBinR 0.5.1.0
 
