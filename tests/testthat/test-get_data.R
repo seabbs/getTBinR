@@ -25,10 +25,12 @@ test_that("get_data saves a local copy of the data which can then be successfull
 })
 
 test_that("get_data can download data using utils alternative", {
+  
   tb_data_utils <- get_data(url = url,
                             download_data = TRUE,
                             use_utils = TRUE)
   
+  skip_on_cran()
   expect_true(!is.null(tb_data_utils))
 })
 

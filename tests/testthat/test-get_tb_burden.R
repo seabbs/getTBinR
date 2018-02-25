@@ -33,5 +33,6 @@ test_that("TB burden data is the same when downloaded using utils::read.csv", {
                                  use_utils = TRUE,
                                  burden_save_name = "TB_with_utils")
   
+  skip_on_cran()
   expect_equal(tb_data, tb_data_utils)
 })
