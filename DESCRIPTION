@@ -1,6 +1,6 @@
 Package: getTBinR
 Type: Package
-Version: 0.5.2
+Version: 0.5.3
 Title: Get WHO Tuberculosis Data
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk"))

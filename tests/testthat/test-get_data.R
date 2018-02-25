@@ -41,3 +41,15 @@ test_that("get_data fails to download the data when an incorrect URL is given.",
                         retry_download = FALSE,
                         save_name = "test_no_url"))
 })
+
+
+test_that("get_data can download data using direct download alternative.", {
+  
+  tb_data_direct <- get_data(url = url,
+                            download_data = TRUE,
+                            use_direct_download = TRUE,
+                            save_name = "direct_test")
+  
+  skip_on_cran()
+  expect_true(!is.null(tb_data_direct))
+})

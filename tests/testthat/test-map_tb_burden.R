@@ -34,7 +34,7 @@ test_that("map_tb_burden produces an interactive plot", {
   expect_equal("plotly", class(plot_int)[1])
 })
 
-test_that("map_tb_burden produces and error when multiple years are mapped with
+test_that("map_tb_burden produces an error when multiple years are mapped with
           interative = FALSE", {
             expect_error(map_tb_burden(year = c(2000, 2001), interactive = FALSE))
           })

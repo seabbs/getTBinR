@@ -18,9 +18,11 @@
 #' be displayed.
 #' @param use_utils Logical, defaults to \code{FALSE}. Used for testing alternative
 #' data download function. When \code{TRUE} data is downloaded using \code{read.csv}.
+#' @param use_direct_download Logical, defaults to \code{FALSE}. Used for testing alternative
+#' data download function. When \code{TRUE} data is downloaded using \code{download.file}.
 #' @param retry_download Logical defaults to \code{TRUE}. When \code{TRUE}, if downloading
-#' fails, the function will try repeatedly to download the data within 5 seconds, up
-#' to 5 times.
+#' fails, the function will try repeatedly to download the data within 3 seconds, up
+#' to 3 times.
 #'
 #' @return The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn
 #' @export
@@ -44,6 +46,7 @@ get_data <- function(url = NULL,
                      return = TRUE,
                      verbose = TRUE,
                      use_utils = FALSE,
+                     use_direct_download = FALSE,
                      retry_download = TRUE) {
     path <- tempdir()
   
@@ -55,40 +58,64 @@ get_data <- function(url = NULL,
   
   if (!file.exists(data_path) && download_data) {
   
+    max_tries <- 3
     tries <- 1
     failed <- FALSE
     
     if (!retry_download) {
-      tries <- 5
+      tries <- max_tries
     }
     
-    while (tries < 6) {
+    while (tries < max_tries + 1) {
       
       if (verbose) {
         message("Downloading data from: ", url)
       }
       
-      if (!use_utils) {
+      if (!use_utils && !use_direct_download) {
         ddata <- try(data.table::fread(url), silent = TRUE)
         
         if ("try-error" %in% class(ddata)) {
           use_utils <- TRUE
           failed <- TRUE
+          
+          if (verbose) {
+            message("Downloading the data using fread::data.table has failed. Trying
+                again using utils::read.csv")
+          }
         }
       }
       
       if (use_utils) {
-        if (verbose) {
-          message("Downloading the data using fread::data.table has failed. Trying
-                again using utils::read.csv")
-        }
         ddata <- try(read.csv(url, stringsAsFactors = FALSE), silent = TRUE)
         
         if ("try-error" %in% class(ddata)) {
+          use_direct_download <- TRUE
           failed <- TRUE
+          
+          if (verbose) {
+            message("Downloading the data using utils::read.csv has failed trying a 
+                  direct download instead.")
+          }
           }else{
           failed <- FALSE
         }
+      }
+      
+      if (use_direct_download) {
+        
+        tmp_loc <- tempfile()
+        
+        download.file(url, destfile = tmp_loc)
+        
+        ddata <- try(read.csv(tmp_loc, stringsAsFactors = FALSE), silent = TRUE)
+        
+        if ("try-error" %in% class(ddata)) {
+          failed <- TRUE
+        }else{
+          failed <- FALSE
+        }
+        
       }
       
       if (failed) {
@@ -97,7 +124,7 @@ get_data <- function(url = NULL,
         
         tries <- tries + 1
         
-        pause_time <- runif(1, 0.5, 5)
+        pause_time <- runif(1, 0.5, 3)
         pause_time <- round(pause_time, digits = 1)
         
         message("Attempting data download in ", pause_time, " seconds.")

@@ -20,10 +20,12 @@ test_that("Data dictionary is a tibble",{
 })
 
 test_that("Data dictionary has at least the expected number of variables", {
+  skip_on_cran()
   expect_true(exp_ncols <= ncols_dict)
 })
 
 test_that("Data dictionary has at least the expected number of entries", {
+  skip_on_cran()
   expect_true(exp_nrows <= nrows_dict)
 })
 

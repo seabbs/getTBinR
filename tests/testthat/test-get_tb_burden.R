@@ -20,12 +20,14 @@ test_that("Data dictionary is a tibble",{
   expect_equal(exp_class, class_tb_data)
 })
 
-test_that("TB burden data has the expected number of variables", {
-  expect_equal(exp_ncols, ncols_tb_data)
+test_that("TB burden data has at least the expected number of variables", {
+  skip_on_cran()
+  expect_true(exp_ncols <= ncols_tb_data)
 })
 
-test_that("TB burden has the expected number of entries", {
-  expect_equal(exp_nrows, nrows_tb_data)
+test_that("TB burden has at least the expected number of entries", {
+  skip_on_cran()
+  expect_true(exp_nrows <= nrows_tb_data)
 })
 
 test_that("TB burden data is the same when downloaded using utils::read.csv", {
