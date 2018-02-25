@@ -27,7 +27,7 @@
 #' @return The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn
 #' @export
 #' @importFrom data.table fread
-#' @importFrom utils read.csv
+#' @importFrom utils read.csv download.file
 #' @importFrom tibble as_tibble
 #' @importFrom stats runif
 #' @seealso get_tb_burden get_data_dict
