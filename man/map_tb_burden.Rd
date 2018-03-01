@@ -6,10 +6,10 @@
 \usage{
 map_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, countries = NULL, compare_to_region = FALSE,
-  facet = NULL, year = 2016, annual_change = FALSE, trans = "identity",
+  facet = NULL, year = NULL, annual_change = FALSE, trans = "identity",
   interactive = FALSE, download_data = TRUE, save = TRUE,
   burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  verbose = TRUE, ...)
+  viridis_pallete = "viridis", verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -32,8 +32,8 @@ Note that this will override settings for \code{facet}, unless it is set to "cou
 
 \item{facet}{Character string, the name of the variable to facet by.}
 
-\item{year}{Numeric, indicating the year of data to map. Defaults to 2016. If \code{interactive = TRUE}
-then multiple years may be passed as a vector, the result will then be animated over years.}
+\item{year}{Numeric, indicating the year of data to map. Defaults to the latest year in the data.
+If \code{interactive = TRUE} then multiple years may be passed as a vector, the result will then be animated over years.}
 
 \item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
 percentage annual change is computed for the specified metric.}
@@ -56,6 +56,10 @@ downloaded from the specified URL?}
 
 \item{dict_save_name}{Character string, name to save dictionary under. Defaults to
 \code{TB_data_dict}.}
+
+\item{viridis_pallete}{Character string indicating the \code{viridis} colour pallete to use. Defaults
+to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
+see \code{\link[viridis]{viridis_pal}} for additional details.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}

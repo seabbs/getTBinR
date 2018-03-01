@@ -25,6 +25,13 @@ test_that("map_tb_burden produces a plot with annual change", {
   expect_equal("ggplot", class(plot)[2])
 })
 
+test_that("map_tb_burden produces when no year is specified", {
+  
+  plot <- map_tb_burden(annual_change = TRUE, year = NULL)
+  
+  expect_true(!is.null(plot))
+  expect_equal("ggplot", class(plot)[2])
+})
 
 test_that("map_tb_burden produces an interactive plot", {
   

@@ -9,7 +9,8 @@ plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
   trans = "identity", scales = "fixed", interactive = FALSE,
   download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", verbose = TRUE, ...)
+  dict_save_name = "TB_data_dict", viridis_pallete = "vividis",
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -61,6 +62,10 @@ downloaded from the specified URL?}
 
 \item{dict_save_name}{Character string, name to save dictionary under. Defaults to
 \code{TB_data_dict}.}
+
+\item{viridis_pallete}{Character string indicating the \code{viridis} colour pallete to use. Defaults
+to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
+see \code{\link[viridis]{viridis_pal}} for additional details.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
