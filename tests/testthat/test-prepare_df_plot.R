@@ -28,6 +28,7 @@ eur_countries <-  c("Albania", "Andorra",
                     "Bulgaria", "Croatia")                                         
                                             
 test_that("TB burden data is correctly processed ready for plotting", {
+  skip_on_cran()
   expect_equal(3, length(df_all))
   expect_null(df_all$facet)
   expect_equal("Estimated incidence (all forms) per 100 000 population",
@@ -44,6 +45,7 @@ test_that("TB burden data is correctly proccessed when using local data", {
 
 
 test_that("TB burden data is correctly proccessed when using a single country", {
+  skip_on_cran()
   expect_equal(3, length(df_exact_country))
   expect_null(df_exact_country$facet)
   expect_equal("Estimated incidence (all forms) per 100 000 population",
@@ -61,6 +63,7 @@ test_that("Fuzzy country matching correctly selects a country", {
 
 
 test_that("TB burden data is correctly proccessed when comparing to the region", {
+  skip_on_cran()
   expect_equal(3, length(df_region))
   expect_equal("g_whoregion", df_region$facet)
   expect_equal("Estimated incidence (all forms) per 100 000 population",

@@ -1,3 +1,16 @@
+# getTBinR 0.5.3.0
+
+## Feature updates
+
+
+## Package updates
+
+* Added improved tests in response to WHO data updates. See [here](https://github.com/seabbs/getTBinR/issues/28)
+* Added an additional method for downloading data in reponse to test failures
+on CRAN. See [here](https://github.com/seabbs/getTBinR/issues/29)
+* Added skip on CRAN for data backend related tests.
+
+
 # getTBinR 0.5.2.0
 
 ## Feature updates

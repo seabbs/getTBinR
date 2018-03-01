@@ -33,8 +33,8 @@ be displayed.}
 data download function. When \code{TRUE} data is downloaded using \code{read.csv}.}
 
 \item{retry_download}{Logical defaults to \code{TRUE}. When \code{TRUE}, if downloading
-fails, the function will try repeatedly to download the data within 5 seconds, up
-to 5 times.}
+fails, the function will try repeatedly to download the data within 3 seconds, up
+to 3 times.}
 }
 \value{
 The WHO TB data dictionary as a tibble with 4 variables:
