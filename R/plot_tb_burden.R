@@ -11,6 +11,9 @@
 #' alternatives are "free_y", "free_x", or "free".
 #' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is 
 #' returned.
+#' @param viridis_pallete Character string indicating the \code{viridis} colour pallete to use. Defaults
+#' to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details 
+#' see \code{\link[viridis]{viridis_pal}} for additional details.
 #' @inheritParams prepare_df_plot
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -60,6 +63,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            save = TRUE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
+                           viridis_pallete = "vividis",
                            verbose = TRUE, ...) {
 
   df_prep <- prepare_df_plot(df = df,
@@ -93,8 +97,10 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   }
   
   plot <- plot +
-    scale_colour_viridis(end = 0.9, direction = -1, discrete = TRUE) +
-    scale_fill_viridis(end = 0.9, direction = -1, discrete = TRUE) +
+    scale_colour_viridis(end = 0.9, direction = -1, discrete = TRUE,
+                         option = viridis_pallete) +
+    scale_fill_viridis(end = 0.9, direction = -1, discrete = TRUE,
+                       option = viridis_pallete) +
     theme_minimal() +
     theme(legend.position = "none") +
     labs(x = "Year", y = df_prep$metric_label)
