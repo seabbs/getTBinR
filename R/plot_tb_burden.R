@@ -63,7 +63,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            save = TRUE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
-                           viridis_pallete = "vividis",
+                           viridis_pallete = "viridis",
                            verbose = TRUE, ...) {
 
   df_prep <- prepare_df_plot(df = df,
