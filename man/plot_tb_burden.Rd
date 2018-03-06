@@ -9,7 +9,7 @@ plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
   trans = "identity", scales = "fixed", interactive = FALSE,
   download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", viridis_pallete = "vividis",
+  dict_save_name = "TB_data_dict", viridis_pallete = "viridis",
   verbose = TRUE, ...)
 }
 \arguments{
