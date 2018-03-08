@@ -103,7 +103,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                        option = viridis_pallete) +
     theme_minimal() +
     theme(legend.position = "none") +
-    labs(x = "Year", y = df_prep$metric_label)
+    labs(x = "Year", y = df_prep$metric_label,
+         caption = "Source: World Health Organisation")
   
   if (annual_change) {
     plot <- plot +

@@ -128,7 +128,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
     geom_polygon(aes_string(group = "group")) + 
     coord_equal() +
     ggthemes::theme_map() +
-    theme(legend.position = "bottom") 
+    theme(legend.position = "bottom") +
+    labs(caption = "Source: World Health Organisation")
   
   if (annual_change) {
     plot <- plot +

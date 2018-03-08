@@ -77,7 +77,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                          discrete = FALSE, trans = trans,
                          option = viridis_pallete) +
     theme_minimal() +
-    labs(x = "Country", y = df_prep$metric_label) + 
+    labs(x = "Country", y = df_prep$metric_label,
+         caption = "Source: World Health Organisation") + 
     coord_flip()
   
   if (annual_change) {
