@@ -64,7 +64,7 @@ test_that("Fuzzy country matching correctly selects a country", {
 
 test_that("TB burden data is correctly proccessed when comparing to the region", {
  
-  expect_equal(1 <= length(df_region))
+  expect_true(1 <= length(df_region))
   expect_equal("g_whoregion", df_region$facet)
   expect_equal("Estimated incidence (all forms) per 100 000 population",
                df_region$metric_label)
