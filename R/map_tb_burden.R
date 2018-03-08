@@ -5,6 +5,8 @@
 #' Various other options are available for tuning the plot further.
 #' @param year Numeric, indicating the year of data to map. Defaults to the latest year in the data.
 #' If \code{interactive = TRUE} then multiple years may be passed as a vector, the result will then be animated over years.
+#' @param fill_var_type A character string, defaults to \code{NULL}. To set the fill variable type to be
+#' discrete use "discrete" and to be continous use "continous".
 #' @inheritParams plot_tb_burden
 #' @seealso plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -38,6 +40,7 @@
 map_tb_burden <- function(df = NULL, dict = NULL,
                            metric = "e_inc_100k",
                            metric_label = NULL,
+                           fill_var_type = NULL,
                            countries = NULL,
                            compare_to_region = FALSE,
                            facet = NULL, year = NULL,
@@ -70,6 +73,22 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                              dict_save_name = dict_save_name,
                              verbose = verbose)
   
+  ## Guess at variable type for filling
+  if (is.null(fill_var_type)) {
+    if (is.numeric(df_prep$df[[metric]])) {
+      fill_var_type <- FALSE
+    }else{
+      fill_var_type <- TRUE
+    }
+  }else{
+    if (fill_var_type %in% "discrete") {
+      fill_var_type <- TRUE
+    }else if (fill_var_type %in% "continous") {
+      fill_var_type <- FALSE
+    }else{
+      stop('fill_var_type must be either NULL, "discrete" or "continous"')
+    }
+  }
   ## Get latest data year
   if (is.null(year)){
     sel_year <- df_prep$df$year %>% 
@@ -98,6 +117,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
     }
   }
   
+  ## Check if variable is discrete or continous
   plot <- ggplot(df_prep$df, 
                  aes_string(x = "long", 
                             y = "lat", 
@@ -113,13 +133,13 @@ map_tb_burden <- function(df = NULL, dict = NULL,
   if (annual_change) {
     plot <- plot +
       scale_fill_viridis(end = 0.95, trans = trans, 
-                         direction = -1, discrete = FALSE,
+                         direction = -1, discrete = fill_var_type,
                          labels = percent, 
                          option = viridis_pallete)
   }else{
     plot <- plot +
       scale_fill_viridis(end = 0.95, trans = trans, 
-                         direction = -1, discrete = FALSE,
+                         direction = -1, discrete = fill_var_type,
                          option = viridis_pallete)
   }
   if (!is.null(df_prep$facet)) {
