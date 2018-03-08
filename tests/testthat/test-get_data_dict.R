@@ -8,8 +8,8 @@ ncols_dict <- ncol(data_dict)
 nrows_dict <-  nrow(data_dict)
 class_dict <- class(data_dict)[1]
 ## Expected
-exp_nrows <- 300
-exp_ncols <- 4
+exp_nrows <- 1
+exp_ncols <- 1
 exp_class <- "tbl_df"
 
 test_that("Data dictionary has been successfully downloaded", {
@@ -20,23 +20,19 @@ test_that("Data dictionary is a tibble",{
 })
 
 test_that("Data dictionary has at least the expected number of variables", {
-  skip_on_cran()
   expect_true(exp_ncols <= ncols_dict)
 })
 
 test_that("Data dictionary has at least the expected number of entries", {
-  skip_on_cran()
   expect_true(exp_nrows <= nrows_dict)
 })
 
 test_that("Data dictionary is the same when downloaded using utils::read.csv.
           Not testing definitions as encoded differently", {
-
-  data_dict_utils <- get_data_dict(download_data = TRUE,
-                                   use_utils = TRUE,
-                                   dict_save_name = "dict_with_utils")
-  
   skip_on_cran()
-  expect_equal(data_dict[-ncol(data_dict)], data_dict_utils[,-ncol(data_dict_utils)])
+  expect_equal(data_dict[-ncol(data_dict)], 
+               get_data_dict(download_data = TRUE, 
+                             use_utils = TRUE,
+                             dict_save_name = "dict_with_utils")[,-ncol(data_dict_utils)])
   
 })

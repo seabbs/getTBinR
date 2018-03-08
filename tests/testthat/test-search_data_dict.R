@@ -31,15 +31,15 @@ test_that("Variable search for a known variable returns expected results", {
 test_that("Definition search for an unknown variable returns expected results", {
   expect_true(!is.null(test_def))
   expect_equal("tbl_df", class(test_def)[1])
-  expect_true(9 <= nrow(test_def))
-  expect_true(4 <= ncol(test_def))
+  expect_true(1 <= nrow(test_def))
+  expect_true(1 <= ncol(test_def))
   expect_equal(exp_def, test_def$variable_name)
 })
 
 test_that("Combined variable and definition search returns expected results", {
   expect_true(!is.null(test_var_def))
   expect_equal("tbl_df", class(test_var_def)[1])
-  expect_true(9 <= nrow(test_var_def))
-  expect_true(4 <= ncol(test_var_def))
+  expect_true(1 <= nrow(test_var_def))
+  expect_true(1 <= ncol(test_var_def))
   expect_equal(exp_def, test_var_def$variable_name)
 })
