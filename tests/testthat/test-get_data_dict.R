@@ -33,6 +33,6 @@ test_that("Data dictionary is the same when downloaded using utils::read.csv.
   expect_equal(data_dict[-ncol(data_dict)], 
                get_data_dict(download_data = TRUE, 
                              use_utils = TRUE,
-                             dict_save_name = "dict_with_utils")[,-ncol(data_dict_utils)])
+                             dict_save_name = "dict_with_utils")[,-ncol(data_dict)])
   
 })
