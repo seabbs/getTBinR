@@ -45,14 +45,14 @@ test_that("TB burden data is correctly proccessed when using local data", {
 
 
 test_that("TB burden data is correctly proccessed when using a single country", {
-  skip_on_cran()
-  expect_equal(3, length(df_exact_country))
+
+  expect_true(1 <= length(df_exact_country))
   expect_null(df_exact_country$facet)
   expect_equal("Estimated incidence (all forms) per 100 000 population",
                df_exact_country$metric_label)
   expect_equal("tbl_df", class(df_exact_country$df)[1])
-  expect_equal(17, nrow(df_exact_country$df))
-  expect_equal(73, ncol(df_exact_country$df))
+  expect_true(1 <= nrow(df_exact_country$df))
+  expect_true(1 <= ncol(df_exact_country$df))
   expect_equal("United Kingdom of Great Britain and Northern Ireland", 
                as.character(unique(df_exact_country$df$country)))
 })
@@ -63,14 +63,14 @@ test_that("Fuzzy country matching correctly selects a country", {
 
 
 test_that("TB burden data is correctly proccessed when comparing to the region", {
-  skip_on_cran()
-  expect_equal(3, length(df_region))
+ 
+  expect_true(1 <= length(df_region))
   expect_equal("g_whoregion", df_region$facet)
   expect_equal("Estimated incidence (all forms) per 100 000 population",
                df_region$metric_label)
   expect_equal("tbl_df", class(df_region$df)[1])
-  expect_equal(913, nrow(df_region$df))
-  expect_equal(73, ncol(df_region$df))
+  expect_true(1 <= nrow(df_region$df))
+  expect_true(1 <= ncol(df_region$df))
   expect_equal(eur_countries, 
                as.character(unique(df_region$df$country))[1:10])
 })
@@ -99,11 +99,11 @@ result_df$`Estimated incidence (all forms) per 100 000 population` <- result_df$
 
 
 test_that("prepare_df_plot correctly formats the input data.", {
-
-  df_annual_change <- prepare_df_plot(metric = "e_inc_100k", conf = c("_lo", "_hi"),
-                                      df = test_df, annual_change = FALSE)
-  
-  expect_equal(result_df, df_annual_change$df)
+  skip_on_cran()
+  expect_equal(result_df, prepare_df_plot(metric = "e_inc_100k", 
+                                          conf = c("_lo", "_hi"),
+                                          df = test_df, 
+                                          annual_change = FALSE)$df)
 })
 
 
@@ -119,6 +119,9 @@ test_that("annual_change correctly transforms metric and confidence intervals", 
   
   df_annual_change <- prepare_df_plot(metric = "e_inc_100k", conf = c("_lo", "_hi"),
                                       df = test_df, annual_change = TRUE)
-  
-  expect_equal(result_df, df_annual_change$df)
+  skip_on_cran()
+  expect_equal(result_df, prepare_df_plot(metric = "e_inc_100k", 
+                                          conf = c("_lo", "_hi"),
+                                          df = test_df, 
+                                          annual_change = TRUE)$df)
 })

@@ -33,6 +33,15 @@ test_that("map_tb_burden produces when no year is specified", {
   expect_equal("ggplot", class(plot)[2])
 })
 
+test_that("map_tb_burden produces fill type is manually specified and fails when it is misspecifed", {
+  
+  plot <- map_tb_burden(fill_var_type = "continous")
+  
+  expect_true(!is.null(plot))
+  expect_equal("ggplot", class(plot)[2])
+  expect_error(map_tb_burden(fill_var_type = "test"))
+})
+
 test_that("map_tb_burden produces an interactive plot", {
   
   plot_int <- map_tb_burden(interactive = TRUE)

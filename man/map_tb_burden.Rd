@@ -5,11 +5,12 @@
 \title{Map TB Burden}
 \usage{
 map_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
-  metric_label = NULL, countries = NULL, compare_to_region = FALSE,
-  facet = NULL, year = NULL, annual_change = FALSE, trans = "identity",
-  interactive = FALSE, download_data = TRUE, save = TRUE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  viridis_pallete = "viridis", verbose = TRUE, ...)
+  metric_label = NULL, fill_var_type = NULL, countries = NULL,
+  compare_to_region = FALSE, facet = NULL, year = NULL,
+  annual_change = FALSE, trans = "identity", interactive = FALSE,
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
+  dict_save_name = "TB_data_dict", viridis_pallete = "viridis",
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -23,6 +24,9 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 \item{metric}{Character string specifying the metric to plot}
 
 \item{metric_label}{Character string specifying the metric label to use.}
+
+\item{fill_var_type}{A character string, defaults to \code{NULL}. To set the fill variable type to be
+discrete use "discrete" and to be continous use "continous".}
 
 \item{countries}{A character string specifying the countries to plot.}
 
