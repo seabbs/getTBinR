@@ -51,7 +51,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            save = TRUE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
-                           viridis_pallete = "viridis",
+                           viridis_palette = "viridis",
                            viridis_direction = -1,
                            viridis_end = 0.9,
                            verbose = TRUE, ...) {
@@ -138,12 +138,12 @@ map_tb_burden <- function(df = NULL, dict = NULL,
       scale_fill_viridis(end = viridis_end, trans = trans, 
                          direction = viridis_direction, discrete = fill_var_type,
                          labels = percent, 
-                         option = viridis_pallete)
+                         option = viridis_palette)
   }else{
     plot <- plot +
       scale_fill_viridis(end = viridis_end, trans = trans, 
                          direction = viridis_direction, discrete = fill_var_type,
-                         option = viridis_pallete)
+                         option = viridis_palette)
   }
   if (!is.null(df_prep$facet)) {
     plot <- plot + 

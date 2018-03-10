@@ -9,7 +9,7 @@ plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
   trans = "identity", scales = "fixed", interactive = FALSE,
   download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", viridis_pallete = "viridis",
+  dict_save_name = "TB_data_dict", viridis_palette = "viridis",
   viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
@@ -63,11 +63,11 @@ downloaded from the specified URL?}
 \item{dict_save_name}{Character string, name to save dictionary under. Defaults to
 \code{TB_data_dict}.}
 
-\item{viridis_pallete}{Character string indicating the \code{viridis} colour pallete to use. Defaults
+\item{viridis_palette}{Character string indicating the \code{viridis} colour palette to use. Defaults
 to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
 see \code{\link[viridis]{viridis_pal}} for additional details.}
 
-\item{viridis_direction}{Numeric, indicating the direction for the colour pallete (1 or -1), defaults to -1.
+\item{viridis_direction}{Numeric, indicating the direction for the colour palette (1 or -1), defaults to -1.
 See \code{\link[viridis]{scale_color_viridis}} for additional details.}
 
 \item{viridis_end}{Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.

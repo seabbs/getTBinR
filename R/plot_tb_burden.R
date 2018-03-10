@@ -11,10 +11,10 @@
 #' alternatives are "free_y", "free_x", or "free".
 #' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is 
 #' returned.
-#' @param viridis_pallete Character string indicating the \code{viridis} colour pallete to use. Defaults
+#' @param viridis_palette Character string indicating the \code{viridis} colour palette to use. Defaults
 #' to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details 
 #' see \code{\link[viridis]{viridis_pal}} for additional details.
-#' @param viridis_direction Numeric, indicating the direction for the colour pallete (1 or -1), defaults to -1. 
+#' @param viridis_direction Numeric, indicating the direction for the colour palette (1 or -1), defaults to -1. 
 #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
 #' @param viridis_end Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
 #' #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
@@ -67,7 +67,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            save = TRUE,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
-                           viridis_pallete = "viridis",
+                           viridis_palette = "viridis",
                            viridis_direction = -1,
                            viridis_end = 0.9,
                            verbose = TRUE, ...) {
@@ -104,9 +104,9 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   
   plot <- plot +
     scale_colour_viridis(end = viridis_end, direction = viridis_direction, discrete = TRUE,
-                         option = viridis_pallete) +
+                         option = viridis_palette) +
     scale_fill_viridis(end = viridis_end, direction = viridis_direction, discrete = TRUE,
-                       option = viridis_pallete) +
+                       option = viridis_palette) +
     theme_minimal() +
     theme(legend.position = "none") +
     labs(x = "Year", y = df_prep$metric_label,

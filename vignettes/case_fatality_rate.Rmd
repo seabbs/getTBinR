@@ -57,7 +57,7 @@ Maps can be a useful first visualisation for summarising spatial data, although 
 ```{r make-inc-map, message = FALSE}
 # Map TB incidence rates - 2016
 mp1 <- map_tb_burden(year = 2016, verbose = FALSE, 
-                     viridis_pallete = "cividis", 
+                     viridis_palette = "cividis", 
                      viridis_direction = -1
                      ) +
   labs(title = "Map of Tuberculosis Incidence Rates - 2016",
@@ -69,7 +69,7 @@ mp1
 ```{r make-cfr-map, message = FALSE}
 # Map TB case fatality ratio -2016
 mp2 <- map_tb_burden(metric = "cfr", year = 2016, 
-                     viridis_pallete = "cividis", 
+                     viridis_palette = "cividis", 
                      viridis_direction = -1,
                      verbose= FALSE) +
   labs(title = "Map of Tuberculosis Case Fatality Ratio - 2016",
@@ -227,7 +227,7 @@ We can then plot the TB case fatality ratio in these countries, as well as the T
 plot_high_cfr <- plot_tb_burden_overview(metric = "cfr", 
                                          countries = highest_case_fataltity_countries,
                                          verbose = FALSE,
-                                         viridis_pallete = "cividis",
+                                         viridis_palette = "cividis",
                                          viridis_direction = -1,
                                          viridis_end = 0.9) +
   theme_minimal() +
@@ -242,7 +242,7 @@ plot_high_cfr
 ```{r plot-inc-rates-high-cfr, message = FALSE}
 plot_inc_high_cfr <- plot_tb_burden_overview(countries = highest_case_fataltity_countries,
                                              verbose = FALSE,
-                                             viridis_pallete = "cividis",
+                                             viridis_palette = "cividis",
                                              viridis_direction = -1,
                                              viridis_end = 0.9) +
   theme(legend.position = "none") +
