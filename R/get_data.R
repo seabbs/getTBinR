@@ -106,7 +106,7 @@ get_data <- function(url = NULL,
         
         tmp_loc <- tempfile()
         
-        download.file(url, destfile = tmp_loc)
+        try(download.file(url, destfile = tmp_loc), silent = TRUE)
         
         ddata <- try(read.csv(tmp_loc, stringsAsFactors = FALSE), silent = TRUE)
         
