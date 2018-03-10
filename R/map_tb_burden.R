@@ -52,6 +52,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            burden_save_name = "TB_burden",
                            dict_save_name = "TB_data_dict",
                            viridis_pallete = "viridis",
+                           viridis_direction = -1,
+                           viridis_end = 0.9,
                            verbose = TRUE, ...) {
 
   if (!interactive && length(year) > 1) {
@@ -133,14 +135,14 @@ map_tb_burden <- function(df = NULL, dict = NULL,
   
   if (annual_change) {
     plot <- plot +
-      scale_fill_viridis(end = 0.95, trans = trans, 
-                         direction = -1, discrete = fill_var_type,
+      scale_fill_viridis(end = viridis_end, trans = trans, 
+                         direction = viridis_direction, discrete = fill_var_type,
                          labels = percent, 
                          option = viridis_pallete)
   }else{
     plot <- plot +
-      scale_fill_viridis(end = 0.95, trans = trans, 
-                         direction = -1, discrete = fill_var_type,
+      scale_fill_viridis(end = viridis_end, trans = trans, 
+                         direction = viridis_direction, discrete = fill_var_type,
                          option = viridis_pallete)
   }
   if (!is.null(df_prep$facet)) {

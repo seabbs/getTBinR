@@ -10,7 +10,7 @@ map_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   annual_change = FALSE, trans = "identity", interactive = FALSE,
   download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", viridis_pallete = "viridis",
-  verbose = TRUE, ...)
+  viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -64,6 +64,12 @@ downloaded from the specified URL?}
 \item{viridis_pallete}{Character string indicating the \code{viridis} colour pallete to use. Defaults
 to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
 see \code{\link[viridis]{viridis_pal}} for additional details.}
+
+\item{viridis_direction}{Numeric, indicating the direction for the colour pallete (1 or -1), defaults to -1.
+See \code{\link[viridis]{scale_color_viridis}} for additional details.}
+
+\item{viridis_end}{Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
+#' See \code{\link[viridis]{scale_color_viridis}} for additional details.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}

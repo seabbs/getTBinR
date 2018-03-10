@@ -16,6 +16,8 @@ navbar:
       menu:
       - text: Exploring Global Trends in Tuberculosis Incidence Rates
         href: articles/case_study_global_trends.html
+      - text: Exploring Estimates of the Tuberculosis Case Fatality Ratio
+        href: articles/case_fatality_rate.html
     - text: "Dashboards"
       menu:
       - text: Explore Global Tuberculosis

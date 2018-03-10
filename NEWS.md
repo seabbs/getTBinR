@@ -4,6 +4,7 @@
 
 * Added `viridis_palette` option to all plotting functions to allow the colour scheme to be set by the user.
 * Added ability to handle categories in the legend for `map_tb_burden`
+* Added new case study exploring case fatality rates.
 
 ## Package updates
 

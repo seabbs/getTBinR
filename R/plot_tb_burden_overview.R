@@ -48,6 +48,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                     burden_save_name = "TB_burden",
                                     dict_save_name = "TB_data_dict",
                                     viridis_pallete = "viridis",
+                                    viridis_direction = -1,
+                                    viridis_end = 0.9,
                                     verbose = TRUE, 
                                     ...) {
  
@@ -73,7 +75,7 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
     geom_point(alpha = 0.6, size = 1.5)
   
   plot <- plot +
-    scale_colour_viridis(end = 0.9, direction = -1,
+    scale_colour_viridis(end = viridis_end, direction = viridis_direction,
                          discrete = FALSE, trans = trans,
                          option = viridis_pallete) +
     theme_minimal() +
