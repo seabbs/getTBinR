@@ -35,7 +35,7 @@ test_that("map_tb_burden produces when no year is specified", {
 
 test_that("map_tb_burden produces fill type is manually specified and fails when it is misspecifed", {
   
-  plot <- map_tb_burden(fill_var_type = "continous")
+  plot <- map_tb_burden(fill_var_type = "continuous")
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])

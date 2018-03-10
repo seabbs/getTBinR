@@ -85,10 +85,10 @@ map_tb_burden <- function(df = NULL, dict = NULL,
   }else{
     if (fill_var_type %in% "discrete") {
       fill_var_type <- TRUE
-    }else if (fill_var_type %in% "continous") {
+    }else if (fill_var_type %in% "continuous") {
       fill_var_type <- FALSE
     }else{
-      stop('fill_var_type must be either NULL, "discrete" or "continous"')
+      stop('fill_var_type must be either NULL, "discrete" or "continuous"')
     }
   }
   ## Get latest data year
