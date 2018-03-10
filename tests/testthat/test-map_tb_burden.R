@@ -42,6 +42,15 @@ test_that("map_tb_burden produces fill type is manually specified and fails when
   expect_error(map_tb_burden(fill_var_type = "test"))
 })
 
+test_that("map_tb_burden can have a custom legend specified.", {
+  
+  test_label <- "test (test - test)"
+  plot <- map_tb_burden(metric_label = test_label)
+  
+  expect_true(!is.null(plot))
+  expect_equal(plot$labels$fill, test_label)
+})
+
 test_that("map_tb_burden produces an interactive plot", {
   
   plot_int <- map_tb_burden(interactive = TRUE)

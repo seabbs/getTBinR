@@ -3,6 +3,8 @@
 ## Feature updates
 
 * Added `viridis_palette` option to all plotting functions to allow the colour scheme to be set by the user.
+* Added ability to handle categories in the legend for `map_tb_burden`
+
 ## Package updates
 
 * Added improved tests in response to WHO data updates. See [here](https://github.com/seabbs/getTBinR/issues/28)
