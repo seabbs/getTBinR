@@ -136,12 +136,12 @@ map_tb_burden <- function(df = NULL, dict = NULL,
   if (annual_change) {
     plot <- plot +
       scale_fill_viridis(end = viridis_end, trans = trans, 
-                         direction = viridis_direction, discrete = fill_var_type,
+                         direction = viridis_direction, discrete = ifelse(fill_var_type, NULL, trans),
                          labels = percent, 
                          option = viridis_palette)
   }else{
     plot <- plot +
-      scale_fill_viridis(end = viridis_end, trans = trans, 
+      scale_fill_viridis(end = viridis_end, trans = ifelse(fill_var_type, NULL, trans), 
                          direction = viridis_direction, discrete = fill_var_type,
                          option = viridis_palette)
   }
