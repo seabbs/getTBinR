@@ -44,7 +44,6 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
   
   trans_burden_data <- function(tb_df) {
     
-    tb_df$iso_numeric <- as.integer(tb_df$iso_numeric)
     tb_df <- tibble::as_tibble(tb_df)
     tb_df <- mutate(tb_df, g_whoregion = case_when(g_whoregion %in% "AFR" ~ "Africa",
                                               g_whoregion %in% "AMR" ~ "Americas",
@@ -56,6 +55,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     )
     
     tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
+    tb_df$iso_numeric <- as.integer(tb_df$iso_numeric)
   }
   
   ## Get TB burden data
@@ -74,10 +74,9 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
   if (add_mdr_data) {
     trans_mdr_data <- function(tb_df) {
       
-      tb_df$iso_numeric <- as.integer(tb_df$iso_numeric)
       tb_df <- tibble::as_tibble(tb_df)
-
       tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
+      tb_df$iso_numeric <- as.integer(tb_df$iso_numeric)
     }
     
     mdr_tb <- get_data(
