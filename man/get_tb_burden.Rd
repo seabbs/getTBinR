@@ -7,6 +7,8 @@
 
   get_tb_burden(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
   download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
+  add_mdr_data = TRUE, mdr_save_name = "MDR_TB",
+  mdr_url = "https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates",
   return = TRUE, verbose = TRUE, use_utils = FALSE,
   retry_download = TRUE)
 }
@@ -21,7 +23,14 @@ downloaded from the specified URL?}
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
 \item{burden_save_name}{Character string, name to save the data under. Defaults to
-\code{TB_burden}.}
+"TB_burden".}
+
+\item{add_mdr_data}{Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
+to the TB burden data.}
+
+\item{mdr_save_name}{Character string, name to save the MDR data under. Defaults to "MDR_TB"}
+
+\item{mdr_url}{Character string, indicating the url of the MDR TB data.}
 
 \item{return}{Logical, should the data be returned as a dataframe.
 Defaults to \code{TRUE}.}
@@ -40,10 +49,10 @@ to 3 times.}
 The WHO TB burden data as a tibble.
 }
 \description{
-Get the TB burden data from the WHO, see
+Get the TB burden data, and multi-drug resistant TB (MDR-TB) data from the WHO, see
 \href{http://www.who.int/tb/country/data/download/en/}{here} for details. This function will first attempt
 to load the data from the temporary directory (\code{\link[base]{tempdir}}). If that fails, and \code{download_data = TRUE}, it
-will instead download the data.
+will instead download the data. The MDR TB data is only available for the latest year of data.
 }
 \examples{
 

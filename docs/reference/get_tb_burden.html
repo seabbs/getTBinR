@@ -29,10 +29,10 @@
   
 <meta property="og:title" content="Get the WHO TB Burden Data — get_tb_burden" />
 
-<meta property="og:description" content="Get the TB burden data from the WHO, see
+<meta property="og:description" content="Get the TB burden data, and multi-drug resistant TB (MDR-TB) data from the WHO, see
 here for details. This function will first attempt
 to load the data from the temporary directory (tempdir). If that fails, and download_data = TRUE, it
-will instead download the data." />
+will instead download the data. The MDR TB data is only available for the latest year of data." />
 <meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -128,14 +128,16 @@ will instead download the data." />
     </div>
 
     
-    <p>Get the TB burden data from the WHO, see
+    <p>Get the TB burden data, and multi-drug resistant TB (MDR-TB) data from the WHO, see
 <a href='http://www.who.int/tb/country/data/download/en/'>here</a> for details. This function will first attempt
 to load the data from the temporary directory (<code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>). If that fails, and <code>download_data = TRUE</code>, it
-will instead download the data.</p>
+will instead download the data. The MDR TB data is only available for the latest year of data.</p>
     
 
     <pre class="usage"><span class='fu'>get_tb_burden</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
   <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
+  <span class='kw'>add_mdr_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mdr_save_name</span> <span class='kw'>=</span> <span class='st'>"MDR_TB"</span>,
+  <span class='kw'>mdr_url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates"</span>,
   <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
@@ -160,7 +162,20 @@ downloaded from the specified URL?</p></td>
     <tr>
       <th>burden_save_name</th>
       <td><p>Character string, name to save the data under. Defaults to
-<code>TB_burden</code>.</p></td>
+"TB_burden".</p></td>
+    </tr>
+    <tr>
+      <th>add_mdr_data</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Should MDR TB burden data be downloaded and joined
+to the TB burden data.</p></td>
+    </tr>
+    <tr>
+      <th>mdr_save_name</th>
+      <td><p>Character string, name to save the MDR data under. Defaults to "MDR_TB"</p></td>
+    </tr>
+    <tr>
+      <th>mdr_url</th>
+      <td><p>Character string, indicating the url of the MDR TB data.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -196,40 +211,8 @@ to 3 times.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5IA9IW/TB_burden.rds</span></div><div class='input'>
-<span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 71
-#&gt;   country     iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
-#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghanistan AF    AFG   004         EMR          2000  20093756       190.
-#&gt; 2 Afghanistan AF    AFG   004         EMR          2001  20966463       189.
-#&gt; 3 Afghanistan AF    AFG   004         EMR          2002  21979923       189.
-#&gt; 4 Afghanistan AF    AFG   004         EMR          2003  23064851       189.
-#&gt; 5 Afghanistan AF    AFG   004         EMR          2004  24118979       189.
-#&gt; 6 Afghanistan AF    AFG   004         EMR          2005  25070798       189.
-#&gt; # ... with 63 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
-#&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
-#&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,
-#&gt; #   e_inc_num_f15plus &lt;int&gt;, e_inc_num_f15plus_lo &lt;int&gt;,
-#&gt; #   e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;, e_inc_num_f_lo &lt;int&gt;,
-#&gt; #   e_inc_num_f_hi &lt;int&gt;, e_inc_num_m014 &lt;int&gt;, e_inc_num_m014_lo &lt;int&gt;,
-#&gt; #   e_inc_num_m014_hi &lt;int&gt;, e_inc_num_m15plus &lt;int&gt;,
-#&gt; #   e_inc_num_m15plus_lo &lt;int&gt;, e_inc_num_m15plus_hi &lt;int&gt;, e_inc_num_m &lt;int&gt;,
-#&gt; #   e_inc_num_m_lo &lt;int&gt;, e_inc_num_m_hi &lt;int&gt;, e_inc_num_014 &lt;int&gt;,
-#&gt; #   e_inc_num_014_lo &lt;int&gt;, e_inc_num_014_hi &lt;int&gt;, e_inc_num_15plus &lt;int&gt;,
-#&gt; #   e_inc_num_15plus_lo &lt;int&gt;, e_inc_num_15plus_hi &lt;int&gt;, e_tbhiv_prct &lt;dbl&gt;,
-#&gt; #   e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;, e_inc_tbhiv_100k &lt;dbl&gt;,
-#&gt; #   e_inc_tbhiv_100k_lo &lt;dbl&gt;, e_inc_tbhiv_100k_hi &lt;dbl&gt;,
-#&gt; #   e_inc_tbhiv_num &lt;int&gt;, e_inc_tbhiv_num_lo &lt;int&gt;, e_inc_tbhiv_num_hi &lt;int&gt;,
-#&gt; #   e_mort_exc_tbhiv_100k &lt;dbl&gt;, e_mort_exc_tbhiv_100k_lo &lt;dbl&gt;,
-#&gt; #   e_mort_exc_tbhiv_100k_hi &lt;dbl&gt;, e_mort_exc_tbhiv_num &lt;int&gt;,
-#&gt; #   e_mort_exc_tbhiv_num_lo &lt;int&gt;, e_mort_exc_tbhiv_num_hi &lt;int&gt;,
-#&gt; #   e_mort_tbhiv_100k &lt;dbl&gt;, e_mort_tbhiv_100k_lo &lt;dbl&gt;,
-#&gt; #   e_mort_tbhiv_100k_hi &lt;dbl&gt;, e_mort_tbhiv_num &lt;int&gt;,
-#&gt; #   e_mort_tbhiv_num_lo &lt;int&gt;, e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;,
-#&gt; #   e_mort_100k_lo &lt;dbl&gt;, e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;,
-#&gt; #   e_mort_num_lo &lt;int&gt;, e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;,
-#&gt; #   cfr_hi &lt;dbl&gt;, c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;,
-#&gt; #   c_cdr_hi &lt;dbl&gt;</div><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmpj2eF7i/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='error'>Error in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y, check_na_matches(na_matches)): Can't join on 'iso_numeric' x 'iso_numeric' because of incompatible types (integer / character)</span></div><div class='input'>
+<span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(tb_burden): object 'tb_burden' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

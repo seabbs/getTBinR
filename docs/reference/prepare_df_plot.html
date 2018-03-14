@@ -204,7 +204,7 @@ downloaded from the specified URL?</p></td>
     <tr>
       <th>burden_save_name</th>
       <td><p>Character string, name to save the data under. Defaults to
-<code>TB_burden</code>.</p></td>
+"TB_burden".</p></td>
     </tr>
     <tr>
       <th>dict_save_name</th>
@@ -234,59 +234,7 @@ the label to assign to the metric axis.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>prepare_df_plot</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"Guinea"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5IA9IW/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5IA9IW/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='output co'>#&gt; $df
-#&gt; # A tibble: 17 x 73
-#&gt;    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
-#&gt;    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt;  1 Guinea  GN    GIN   324         AFR          2000   8808546       228.
-#&gt;  2 Guinea  GN    GIN   324         AFR          2001   8971139       224.
-#&gt;  3 Guinea  GN    GIN   324         AFR          2002   9137345       221.
-#&gt;  4 Guinea  GN    GIN   324         AFR          2003   9309848       218.
-#&gt;  5 Guinea  GN    GIN   324         AFR          2004   9490229       214.
-#&gt;  6 Guinea  GN    GIN   324         AFR          2005   9679745       210.
-#&gt;  7 Guinea  GN    GIN   324         AFR          2006   9881428       206.
-#&gt;  8 Guinea  GN    GIN   324         AFR          2007  10096727       200.
-#&gt;  9 Guinea  GN    GIN   324         AFR          2008  10323142       195.
-#&gt; 10 Guinea  GN    GIN   324         AFR          2009  10556524       190.
-#&gt; 11 Guinea  GN    GIN   324         AFR          2010  10794170       186.
-#&gt; 12 Guinea  GN    GIN   324         AFR          2011  11035170       183.
-#&gt; 13 Guinea  GN    GIN   324         AFR          2012  11281469       180.
-#&gt; 14 Guinea  GN    GIN   324         AFR          2013  11536615       177.
-#&gt; 15 Guinea  GN    GIN   324         AFR          2014  11805509       177.
-#&gt; 16 Guinea  GN    GIN   324         AFR          2015  12091533       177.
-#&gt; 17 Guinea  GN    GIN   324         AFR          2016  12395924       176.
-#&gt; # ... with 65 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
-#&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
-#&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,
-#&gt; #   e_inc_num_f15plus &lt;int&gt;, e_inc_num_f15plus_lo &lt;int&gt;,
-#&gt; #   e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;, e_inc_num_f_lo &lt;int&gt;,
-#&gt; #   e_inc_num_f_hi &lt;int&gt;, e_inc_num_m014 &lt;int&gt;, e_inc_num_m014_lo &lt;int&gt;,
-#&gt; #   e_inc_num_m014_hi &lt;int&gt;, e_inc_num_m15plus &lt;int&gt;,
-#&gt; #   e_inc_num_m15plus_lo &lt;int&gt;, e_inc_num_m15plus_hi &lt;int&gt;, e_inc_num_m &lt;int&gt;,
-#&gt; #   e_inc_num_m_lo &lt;int&gt;, e_inc_num_m_hi &lt;int&gt;, e_inc_num_014 &lt;int&gt;,
-#&gt; #   e_inc_num_014_lo &lt;int&gt;, e_inc_num_014_hi &lt;int&gt;, e_inc_num_15plus &lt;int&gt;,
-#&gt; #   e_inc_num_15plus_lo &lt;int&gt;, e_inc_num_15plus_hi &lt;int&gt;, e_tbhiv_prct &lt;dbl&gt;,
-#&gt; #   e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;, e_inc_tbhiv_100k &lt;dbl&gt;,
-#&gt; #   e_inc_tbhiv_100k_lo &lt;dbl&gt;, e_inc_tbhiv_100k_hi &lt;dbl&gt;,
-#&gt; #   e_inc_tbhiv_num &lt;int&gt;, e_inc_tbhiv_num_lo &lt;int&gt;, e_inc_tbhiv_num_hi &lt;int&gt;,
-#&gt; #   e_mort_exc_tbhiv_100k &lt;dbl&gt;, e_mort_exc_tbhiv_100k_lo &lt;dbl&gt;,
-#&gt; #   e_mort_exc_tbhiv_100k_hi &lt;dbl&gt;, e_mort_exc_tbhiv_num &lt;int&gt;,
-#&gt; #   e_mort_exc_tbhiv_num_lo &lt;int&gt;, e_mort_exc_tbhiv_num_hi &lt;int&gt;,
-#&gt; #   e_mort_tbhiv_100k &lt;dbl&gt;, e_mort_tbhiv_100k_lo &lt;dbl&gt;,
-#&gt; #   e_mort_tbhiv_100k_hi &lt;dbl&gt;, e_mort_tbhiv_num &lt;int&gt;,
-#&gt; #   e_mort_tbhiv_num_lo &lt;int&gt;, e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;,
-#&gt; #   e_mort_100k_lo &lt;dbl&gt;, e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;,
-#&gt; #   e_mort_num_lo &lt;int&gt;, e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;,
-#&gt; #   cfr_hi &lt;dbl&gt;, c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;,
-#&gt; #   c_cdr_hi &lt;dbl&gt;, `Estimated incidence (all forms) per 100 000
-#&gt; #   population` &lt;dbl&gt;, Year &lt;int&gt;
-#&gt; 
-#&gt; $facet
-#&gt; NULL
-#&gt; 
-#&gt; $metric_label
-#&gt; [1] "Estimated incidence (all forms) per 100 000 population"
-#&gt; </div><div class='input'>
+<span class='fu'>prepare_df_plot</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"Guinea"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='error'>Error in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y, check_na_matches(na_matches)): Can't join on 'iso_numeric' x 'iso_numeric' because of incompatible types (integer / character)</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
