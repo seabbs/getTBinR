@@ -36,7 +36,7 @@ test_that("TB burden data is the same when downloaded using utils::read.csv", {
                                       burden_save_name = "TB_with_utils"))
 })
 
-test_that("When TB burden data can be correctly downloaded when MDR is not also downloaded,{
+test_that("When TB burden data can be correctly downloaded when MDR is not also downloaded",{
   tb_burden_with_mdr <- get_tb_burden(add_mdr_data = TRUE)
   tb_burden_no_mdr <- get_tb_burden(add_mdr_data = FALSE) 
 
