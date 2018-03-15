@@ -98,7 +98,7 @@
       <h1>Exploring Estimates of the Tuberculosis Case Fatality Ratio</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2018-03-10</h4>
+            <h4 class="date">2018-03-14</h4>
           </div>
 
     
@@ -120,7 +120,7 @@
 dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>(<span class="dt">verbose =</span> <span class="ot">FALSE</span>)
 
 tb_burden
-<span class="co">#&gt; # A tibble: 3,651 x 71</span>
+<span class="co">#&gt; # A tibble: 3,651 x 91</span>
 <span class="co">#&gt;    country  iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k</span>
 <span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 Afghani… AF    AFG             4 Eastern Me…  2000  20093756       190.</span>
@@ -133,7 +133,7 @@ tb_burden
 <span class="co">#&gt;  8 Afghani… AF    AFG             4 Eastern Me…  2007  26616792       189.</span>
 <span class="co">#&gt;  9 Afghani… AF    AFG             4 Eastern Me…  2008  27294031       189.</span>
 <span class="co">#&gt; 10 Afghani… AF    AFG             4 Eastern Me…  2009  28004331       189.</span>
-<span class="co">#&gt; # ... with 3,641 more rows, and 63 more variables: e_inc_100k_lo &lt;dbl&gt;,</span>
+<span class="co">#&gt; # ... with 3,641 more rows, and 83 more variables: e_inc_100k_lo &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_f014_hi &lt;int&gt;, e_inc_num_f15plus &lt;int&gt;,</span>
@@ -158,7 +158,15 @@ tb_burden
 <span class="co">#&gt; #   e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;, e_mort_100k_lo &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;</span>
+<span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,</span>
+<span class="co">#&gt; #   source_drs_year_new &lt;chr&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,</span>
+<span class="co">#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;chr&gt;,</span>
+<span class="co">#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_rr_in_notified_pulm_lo &lt;int&gt;, e_rr_in_notified_pulm_hi &lt;int&gt;</span>
 
 dict
 <span class="co">#&gt; # A tibble: 402 x 4</span>
