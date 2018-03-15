@@ -41,6 +41,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                           retry_download = TRUE) {
 
   g_whoregion <- NULL
+  . <- NULL
   
   trans_burden_data <- function(tb_df) {
     
@@ -55,7 +56,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     )
     
     tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
-    tb_df$iso_numeric <- as.integer(tb_df$iso_numeric)
+    tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
     
     return(tb_df)
   }
@@ -78,7 +79,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
       
       tb_df <- tibble::as_tibble(tb_df)
       tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
-      tb_df$iso_numeric <- as.integer(tb_df$iso_numeric)
+      tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
       
       return(tb_df)
     }
@@ -99,7 +100,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     }
     
     tb_burden <- tb_burden %>% 
-      left_join(mdr_tb, by = c("country", "iso2", "iso3", "iso_numeric", "year"))
+      left_join(mdr_tb, by = c("country", "iso2", "iso3", "year"))
   }
 
   return(tb_burden)
