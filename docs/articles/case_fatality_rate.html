@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">getTBinR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">getTBinR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -98,8 +102,11 @@
       <h1>Exploring Estimates of the Tuberculosis Case Fatality Ratio</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2018-03-14</h4>
-          </div>
+            <h4 class="date">2018-03-23</h4>
+      
+      <small>Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_fatality_rate.Rmd"><code>vignettes/case_fatality_rate.Rmd</code></a></small>
+
+    </div>
 
     
     
@@ -120,26 +127,26 @@
 dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>(<span class="dt">verbose =</span> <span class="ot">FALSE</span>)
 
 tb_burden
-<span class="co">#&gt; # A tibble: 3,651 x 91</span>
-<span class="co">#&gt;    country  iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k</span>
-<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Afghani… AF    AFG             4 Eastern Me…  2000  20093756       190.</span>
-<span class="co">#&gt;  2 Afghani… AF    AFG             4 Eastern Me…  2001  20966463       189.</span>
-<span class="co">#&gt;  3 Afghani… AF    AFG             4 Eastern Me…  2002  21979923       189.</span>
-<span class="co">#&gt;  4 Afghani… AF    AFG             4 Eastern Me…  2003  23064851       189.</span>
-<span class="co">#&gt;  5 Afghani… AF    AFG             4 Eastern Me…  2004  24118979       189.</span>
-<span class="co">#&gt;  6 Afghani… AF    AFG             4 Eastern Me…  2005  25070798       189.</span>
-<span class="co">#&gt;  7 Afghani… AF    AFG             4 Eastern Me…  2006  25893450       189.</span>
-<span class="co">#&gt;  8 Afghani… AF    AFG             4 Eastern Me…  2007  26616792       189.</span>
-<span class="co">#&gt;  9 Afghani… AF    AFG             4 Eastern Me…  2008  27294031       189.</span>
-<span class="co">#&gt; 10 Afghani… AF    AFG             4 Eastern Me…  2009  28004331       189.</span>
-<span class="co">#&gt; # ... with 3,641 more rows, and 83 more variables: e_inc_100k_lo &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;,</span>
-<span class="co">#&gt; #   e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;,</span>
-<span class="co">#&gt; #   e_inc_num_f014_hi &lt;int&gt;, e_inc_num_f15plus &lt;int&gt;,</span>
-<span class="co">#&gt; #   e_inc_num_f15plus_lo &lt;int&gt;, e_inc_num_f15plus_hi &lt;int&gt;,</span>
-<span class="co">#&gt; #   e_inc_num_f &lt;int&gt;, e_inc_num_f_lo &lt;int&gt;, e_inc_num_f_hi &lt;int&gt;,</span>
-<span class="co">#&gt; #   e_inc_num_m014 &lt;int&gt;, e_inc_num_m014_lo &lt;int&gt;,</span>
+<span class="co">#&gt; # A tibble: 3,651 x 92</span>
+<span class="co">#&gt;    country    iso2  iso3  iso_numeric.x g_whoregion         year e_pop_num</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;              &lt;int&gt;     &lt;int&gt;</span>
+<span class="co">#&gt;  1 Afghanist… AF    AFG               4 Eastern Mediterra…  2000  20093756</span>
+<span class="co">#&gt;  2 Afghanist… AF    AFG               4 Eastern Mediterra…  2001  20966463</span>
+<span class="co">#&gt;  3 Afghanist… AF    AFG               4 Eastern Mediterra…  2002  21979923</span>
+<span class="co">#&gt;  4 Afghanist… AF    AFG               4 Eastern Mediterra…  2003  23064851</span>
+<span class="co">#&gt;  5 Afghanist… AF    AFG               4 Eastern Mediterra…  2004  24118979</span>
+<span class="co">#&gt;  6 Afghanist… AF    AFG               4 Eastern Mediterra…  2005  25070798</span>
+<span class="co">#&gt;  7 Afghanist… AF    AFG               4 Eastern Mediterra…  2006  25893450</span>
+<span class="co">#&gt;  8 Afghanist… AF    AFG               4 Eastern Mediterra…  2007  26616792</span>
+<span class="co">#&gt;  9 Afghanist… AF    AFG               4 Eastern Mediterra…  2008  27294031</span>
+<span class="co">#&gt; 10 Afghanist… AF    AFG               4 Eastern Mediterra…  2009  28004331</span>
+<span class="co">#&gt; # ... with 3,641 more rows, and 85 more variables: e_inc_100k &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f15plus &lt;int&gt;, e_inc_num_f15plus_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;, e_inc_num_f_lo &lt;int&gt;,</span>
+<span class="co">#&gt; #   e_inc_num_f_hi &lt;int&gt;, e_inc_num_m014 &lt;int&gt;, e_inc_num_m014_lo &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_m014_hi &lt;int&gt;, e_inc_num_m15plus &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_m15plus_lo &lt;int&gt;, e_inc_num_m15plus_hi &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_m &lt;int&gt;, e_inc_num_m_lo &lt;int&gt;, e_inc_num_m_hi &lt;int&gt;,</span>
@@ -159,9 +166,10 @@ tb_burden
 <span class="co">#&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,</span>
-<span class="co">#&gt; #   source_drs_year_new &lt;chr&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,</span>
+<span class="co">#&gt; #   iso_numeric.y &lt;int&gt;, source_rr_new &lt;chr&gt;,</span>
+<span class="co">#&gt; #   source_drs_coverage_new &lt;chr&gt;, source_drs_year_new &lt;chr&gt;,</span>
+<span class="co">#&gt; #   e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;, e_rr_pct_new_hi &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,</span>
 <span class="co">#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;chr&gt;,</span>
 <span class="co">#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,</span>

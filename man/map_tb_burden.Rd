@@ -89,6 +89,9 @@ Various other options are available for tuning the plot further.
 ## Map raw incidence rates
 map_tb_burden()
 
+#' ## Map raw incidence rates
+map_tb_burden(year = 2012:2015, facet = "year")
+
 ## Map log10 scaled incidence rates
 map_tb_burden(trans = "log10")
 
@@ -100,6 +103,9 @@ search_data_dict(def = "mortality")
 
 ## Map mortality rates (exc HIV) - without progress messages
 map_tb_burden(metric = "e_mort_exc_tbhiv_100k", verbose = FALSE)
+
+## Can also use a discrete metric if one is available
+map_tb_burden(metric = "g_whoregion", metric_label = "WHO world region")
 
 }
 \seealso{

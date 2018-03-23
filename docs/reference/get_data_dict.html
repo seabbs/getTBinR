@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Get the WHO Data Dictionary for TB Data — get_data_dict" />
 
 <meta property="og:description" content="Get the data dictionary for TB burden data from the WHO, see
@@ -34,6 +32,8 @@ here for details. This function will first attempt
 to load the data from the temporary directory (tempdir). If that fails, and download_data = TRUE, it
 will instead download the data." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -56,8 +56,12 @@ will instead download the data." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">getTBinR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">getTBinR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -125,6 +129,7 @@ will instead download the data." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the WHO Data Dictionary for TB Data</h1>
+    <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/get_data_dict.R'><code>R/get_data_dict.R</code></a></small>
     </div>
 
     
@@ -139,7 +144,7 @@ will instead download the data.</p>
   <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -197,7 +202,7 @@ variable_name, dataset, code_list, definition.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmpj2eF7i/TB_data_dict.rds</span></div><div class='input'>
+<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_data_dict.rds</span></div><div class='input'>
 <span class='fu'>head</span>(<span class='no'>dict</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
 #&gt;   variable_name            dataset              code_list   definition         
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;                &lt;chr&gt;       &lt;chr&gt;              

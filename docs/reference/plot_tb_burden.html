@@ -25,14 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Plot TB Burden by Country — plot_tb_burden" />
 
 <meta property="og:description" content="Plot measures of TB burden by country by specifying a metric from the TB burden data.
 Specify a country or vector of countries in order to plot them (by default plots all countries).
 Various other options are available for tuning the plot further." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -55,8 +55,12 @@ Various other options are available for tuning the plot further." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">getTBinR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">getTBinR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -124,6 +128,7 @@ Various other options are available for tuning the plot further." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot TB Burden by Country</h1>
+    <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/plot_tb_burden.R'><code>R/plot_tb_burden.R</code></a></small>
     </div>
 
     
@@ -140,7 +145,7 @@ Various other options are available for tuning the plot further.</p>
   <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>,
   <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -264,18 +269,19 @@ be displayed.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the WHO TB burden data and the data dictionary</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='error'>Error in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y, check_na_matches(na_matches)): Can't join on 'iso_numeric' x 'iso_numeric' because of incompatible types (integer / character)</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/TB_data_dict.rds</span></div><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_data_dict.rds</span></div><div class='input'>
 <span class='co'>## Get a random sample of 9 countries</span>
-<span class='no'>sample_countries</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fu'>unique</span>(<span class='no'>tb_burden</span>$<span class='no'>country</span>), <span class='fl'>9</span>)</div><div class='output co'>#&gt; <span class='error'>Error in unique(tb_burden$country): object 'tb_burden' not found</span></div><div class='input'>
+<span class='no'>sample_countries</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fu'>unique</span>(<span class='no'>tb_burden</span>$<span class='no'>country</span>), <span class='fl'>9</span>)
+
 <span class='co'>## Plot incidence rates in these countries</span>
-<span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_burden</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='no'>dict</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>)</div><div class='output co'>#&gt; <span class='error'>Error in prepare_df_plot(df = df, dict = dict, metric = metric, conf = conf,     metric_label = metric_label, countries = countries, compare_to_region = compare_to_region,     facet = facet, trans = trans, annual_change = annual_change,     download_data = download_data, save = save, burden_save_name = burden_save_name,     dict_save_name = dict_save_name, verbose = verbose): object 'tb_burden' not found</span></div><div class='input'>
+<span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_burden</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='no'>dict</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>)</div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Use data caching to plot incidence rates with free y scales</span>
-<span class='fu'>plot_tb_burden</span>(<span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='error'>Error in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y, check_na_matches(na_matches)): Can't join on 'iso_numeric' x 'iso_numeric' because of incompatible types (integer / character)</span></div><div class='input'>
+<span class='fu'>plot_tb_burden</span>(<span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Plot annual percentage change in incidence rates in selected countries</span>
 <span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_burden</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='no'>dict</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>,
-               <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='error'>Error in prepare_df_plot(df = df, dict = dict, metric = metric, conf = conf,     metric_label = metric_label, countries = countries, compare_to_region = compare_to_region,     facet = facet, trans = trans, annual_change = annual_change,     download_data = download_data, save = save, burden_save_name = burden_save_name,     dict_save_name = dict_save_name, verbose = verbose): object 'tb_burden' not found</span></div><div class='input'>
+               <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Find variables relating to mortality in the WHO dataset</span>
-<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
 #&gt;   variable_name            dataset   code_list definition                      
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                           
 #&gt; 1 e_mort_100k              Estimates ""        Estimated mortality of TB cases…
@@ -288,7 +294,7 @@ be displayed.</p></td>
 #&gt; 8 e_mort_tbhiv_100k_hi     Estimates ""        Estimated mortality of TB cases…
 #&gt; 9 e_mort_tbhiv_100k_lo     Estimates ""        Estimated mortality of TB cases…</div><div class='input'><span class='co'>## Plot mortality rates (exc HIV) - without progress messages</span>
 <span class='fu'>plot_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>,
-               <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y, check_na_matches(na_matches)): Can't join on 'iso_numeric' x 'iso_numeric' because of incompatible types (integer / character)</span></div><div class='input'>               
+               <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plot_tb_burden-4.png' alt='' width='700' height='433' /></div><div class='input'>               
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

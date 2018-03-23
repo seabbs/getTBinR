@@ -25,14 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Generic Get Data Function — get_data" />
 
 <meta property="og:description" content="If the data is found locally in the temporary directory then this function will load the data into R.
 Otherwise if download_data = TRUE then the data will be retrieved from the specified URL. Data can then be
 saved  to the temporary directory by specifying save = TRUE." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -55,8 +55,12 @@ saved  to the temporary directory by specifying save = TRUE." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">getTBinR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">getTBinR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -124,6 +128,7 @@ saved  to the temporary directory by specifying save = TRUE." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Generic Get Data Function</h1>
+    <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/get_data.R'><code>R/get_data.R</code></a></small>
     </div>
 
     
@@ -136,7 +141,7 @@ saved  to the temporary directory by specifying <code>save = TRUE</code>.</p>
   <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use_direct_download</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -203,16 +208,16 @@ to 3 times.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
-<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmpj2eF7i/TB_burden.rds</span></div><div class='input'>
+<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_burden.rds</span></div><div class='input'>
 <span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 71
-#&gt;   country     iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
-#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghanistan AF    AFG   004         EMR          2000  20093756       190.
-#&gt; 2 Afghanistan AF    AFG   004         EMR          2001  20966463       189.
-#&gt; 3 Afghanistan AF    AFG   004         EMR          2002  21979923       189.
-#&gt; 4 Afghanistan AF    AFG   004         EMR          2003  23064851       189.
-#&gt; 5 Afghanistan AF    AFG   004         EMR          2004  24118979       189.
-#&gt; 6 Afghanistan AF    AFG   004         EMR          2005  25070798       189.
+#&gt;   country   iso2  iso3  iso_numeric g_whoregion       year e_pop_num e_inc_100k
+#&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
+#&gt; 1 Afghanis… AF    AFG             4 Eastern Mediter…  2000  20093756       190.
+#&gt; 2 Afghanis… AF    AFG             4 Eastern Mediter…  2001  20966463       189.
+#&gt; 3 Afghanis… AF    AFG             4 Eastern Mediter…  2002  21979923       189.
+#&gt; 4 Afghanis… AF    AFG             4 Eastern Mediter…  2003  23064851       189.
+#&gt; 5 Afghanis… AF    AFG             4 Eastern Mediter…  2004  24118979       189.
+#&gt; 6 Afghanis… AF    AFG             4 Eastern Mediter…  2005  25070798       189.
 #&gt; # ... with 63 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,

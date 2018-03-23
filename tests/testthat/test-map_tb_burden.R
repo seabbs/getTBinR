@@ -63,3 +63,12 @@ test_that("map_tb_burden produces an error when multiple years are mapped with
           interative = FALSE", {
             expect_error(map_tb_burden(year = c(2000, 2001), interactive = FALSE))
           })
+
+
+test_that("map_tb_burden produces a plot when a discrete metric is specified", {
+  
+  plot_dis <- map_tb_burden(metric = "g_whoregion", 
+                            metric_label = "WHO world region")
+            expect_true(!is.null(plot_dis))
+          })
+

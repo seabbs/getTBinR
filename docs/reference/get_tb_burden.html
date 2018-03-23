@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Get the WHO TB Burden Data — get_tb_burden" />
 
 <meta property="og:description" content="Get the TB burden data, and multi-drug resistant TB (MDR-TB) data from the WHO, see
@@ -34,6 +32,8 @@ here for details. This function will first attempt
 to load the data from the temporary directory (tempdir). If that fails, and download_data = TRUE, it
 will instead download the data. The MDR TB data is only available for the latest year of data." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -56,8 +56,12 @@ will instead download the data. The MDR TB data is only available for the latest
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">getTBinR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">getTBinR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -125,6 +129,7 @@ will instead download the data. The MDR TB data is only available for the latest
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the WHO TB Burden Data</h1>
+    <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/get_tb_burden.R'><code>R/get_tb_burden.R</code></a></small>
     </div>
 
     
@@ -141,7 +146,7 @@ will instead download the data. The MDR TB data is only available for the latest
   <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -211,8 +216,47 @@ to 3 times.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpj2eF7i/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmpj2eF7i/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='error'>Error in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y, check_na_matches(na_matches)): Can't join on 'iso_numeric' x 'iso_numeric' because of incompatible types (integer / character)</span></div><div class='input'>
-<span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(tb_burden): object 'tb_burden' not found</span></div><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZX7aWD/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'>
+<span class='fu'>head</span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 92
+#&gt;   country   iso2  iso3  iso_numeric.x g_whoregion     year e_pop_num e_inc_100k
+#&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;          &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
+#&gt; 1 Afghanis… AF    AFG               4 Eastern Medit…  2000  20093756       190.
+#&gt; 2 Afghanis… AF    AFG               4 Eastern Medit…  2001  20966463       189.
+#&gt; 3 Afghanis… AF    AFG               4 Eastern Medit…  2002  21979923       189.
+#&gt; 4 Afghanis… AF    AFG               4 Eastern Medit…  2003  23064851       189.
+#&gt; 5 Afghanis… AF    AFG               4 Eastern Medit…  2004  24118979       189.
+#&gt; 6 Afghanis… AF    AFG               4 Eastern Medit…  2005  25070798       189.
+#&gt; # ... with 84 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
+#&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
+#&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,
+#&gt; #   e_inc_num_f15plus &lt;int&gt;, e_inc_num_f15plus_lo &lt;int&gt;,
+#&gt; #   e_inc_num_f15plus_hi &lt;int&gt;, e_inc_num_f &lt;int&gt;, e_inc_num_f_lo &lt;int&gt;,
+#&gt; #   e_inc_num_f_hi &lt;int&gt;, e_inc_num_m014 &lt;int&gt;, e_inc_num_m014_lo &lt;int&gt;,
+#&gt; #   e_inc_num_m014_hi &lt;int&gt;, e_inc_num_m15plus &lt;int&gt;,
+#&gt; #   e_inc_num_m15plus_lo &lt;int&gt;, e_inc_num_m15plus_hi &lt;int&gt;, e_inc_num_m &lt;int&gt;,
+#&gt; #   e_inc_num_m_lo &lt;int&gt;, e_inc_num_m_hi &lt;int&gt;, e_inc_num_014 &lt;int&gt;,
+#&gt; #   e_inc_num_014_lo &lt;int&gt;, e_inc_num_014_hi &lt;int&gt;, e_inc_num_15plus &lt;int&gt;,
+#&gt; #   e_inc_num_15plus_lo &lt;int&gt;, e_inc_num_15plus_hi &lt;int&gt;, e_tbhiv_prct &lt;dbl&gt;,
+#&gt; #   e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;, e_inc_tbhiv_100k &lt;dbl&gt;,
+#&gt; #   e_inc_tbhiv_100k_lo &lt;dbl&gt;, e_inc_tbhiv_100k_hi &lt;dbl&gt;,
+#&gt; #   e_inc_tbhiv_num &lt;int&gt;, e_inc_tbhiv_num_lo &lt;int&gt;, e_inc_tbhiv_num_hi &lt;int&gt;,
+#&gt; #   e_mort_exc_tbhiv_100k &lt;dbl&gt;, e_mort_exc_tbhiv_100k_lo &lt;dbl&gt;,
+#&gt; #   e_mort_exc_tbhiv_100k_hi &lt;dbl&gt;, e_mort_exc_tbhiv_num &lt;int&gt;,
+#&gt; #   e_mort_exc_tbhiv_num_lo &lt;int&gt;, e_mort_exc_tbhiv_num_hi &lt;int&gt;,
+#&gt; #   e_mort_tbhiv_100k &lt;dbl&gt;, e_mort_tbhiv_100k_lo &lt;dbl&gt;,
+#&gt; #   e_mort_tbhiv_100k_hi &lt;dbl&gt;, e_mort_tbhiv_num &lt;int&gt;,
+#&gt; #   e_mort_tbhiv_num_lo &lt;int&gt;, e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;,
+#&gt; #   e_mort_100k_lo &lt;dbl&gt;, e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;,
+#&gt; #   e_mort_num_lo &lt;int&gt;, e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;,
+#&gt; #   cfr_hi &lt;dbl&gt;, c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;,
+#&gt; #   c_cdr_hi &lt;dbl&gt;, iso_numeric.y &lt;int&gt;, source_rr_new &lt;chr&gt;,
+#&gt; #   source_drs_coverage_new &lt;chr&gt;, source_drs_year_new &lt;chr&gt;,
+#&gt; #   e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;, e_rr_pct_new_hi &lt;dbl&gt;,
+#&gt; #   e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;, source_drs_coverage_ret &lt;chr&gt;,
+#&gt; #   source_drs_year_ret &lt;chr&gt;, e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;,
+#&gt; #   e_rr_pct_ret_hi &lt;dbl&gt;, e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;,
+#&gt; #   e_inc_rr_num_lo &lt;int&gt;, e_inc_rr_num_hi &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,
+#&gt; #   e_rr_in_notified_pulm_lo &lt;int&gt;, e_rr_in_notified_pulm_hi &lt;int&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
