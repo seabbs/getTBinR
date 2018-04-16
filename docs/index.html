@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -97,12 +97,11 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     
 
     
     
-<div class="contents">
 <div id="get-tb-data-in-r" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#get-tb-data-in-r" class="anchor"></a>Get TB Data in R</h1></div>
@@ -124,23 +123,23 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                         <span class="dt">year =</span> <span class="dv">2016</span>)
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpWotShy/TB_burden.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp83B8kJ/TB_burden.rds</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpWotShy/MDR_TB.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp83B8kJ/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpWotShy/TB_data_dict.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp83B8kJ/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
-<p><img src="man/figure/map-tb-incidence-eur-1.png" width="672"></p>
+<p><img src="man/figure/map-tb-incidence-eur-1.png" width="700"></p>
 <p>Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="https://samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                                   <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-1.png" width="960"></p>
 <p>In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change (note that this functionality is currently only available in the development version of the package),</p>
@@ -149,10 +148,10 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
 <span class="co">#&gt; Warning: Removed 16 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-per-1.png" width="960"></p>
@@ -161,12 +160,12 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                          <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                          <span class="dt">facet =</span> <span class="st">"country"</span>,
                          <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpWotShy/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp83B8kJ/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
-<p><img src="man/figure/plot-tb-incidence-uk-1.png" width="672"></p>
+<p><img src="man/figure/plot-tb-incidence-uk-1.png" width="700"></p>
 <p>See <a href="https://www.samabbott.co.uk/getTBinR/reference/index.html">Functions</a> for more details of the functions used (note the fuzzy country matching, <code>map_tb_burden</code>, <code>plot_tb_burden_overview</code> and <code>plot_tb_burden</code> will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying <code>interactive = TRUE</code></p>
 </div>
 <div id="shiny-dashboard" class="section level2">
@@ -184,6 +183,11 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <a href="#additional-functionality" class="anchor"></a>Additional Functionality</h2>
 <p>File an issue <a href="https://github.com/seabbs/getTBinR/issues">here</a> if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!</p>
 </div>
+<div id="package-report" class="section level2">
+<h2 class="hasAnchor">
+<a href="#package-report" class="anchor"></a>Package Report</h2>
+<p>A report on the dependencies and functions of this package has been produced using the <a href="https://uptakeopensource.github.io/pkgnet/"><code>pkgnet</code></a> package. It is available <a href="http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/tree/master/pkgnet/getTBinR_report.html">here</a>.</p>
+</div>
 <div id="docker" class="section level2">
 <h2 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h2>
@@ -191,7 +195,6 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> pull seabbs/gettbinr
 <span class="ex">docker</span> run -d -p 8787:8787 -e USER=getTBinR -e PASSWORD=getTBinR --name getTBinR seabbs/gettbinr</code></pre></div>
 <p>The rstudio client can be accessed on port <code>8787</code> at <code>localhost</code> (or your machines ip). The default username is getTBinR and the default password is getTBinR.</p>
-</div>
 </div>
 </div>
   </div>
@@ -250,6 +253,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

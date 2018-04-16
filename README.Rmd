@@ -92,6 +92,10 @@ Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric 
 
 File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!
 
+## Package Report
+
+A report on the dependencies and functions of this package has been produced using the [`pkgnet`](https://uptakeopensource.github.io/pkgnet/) package. It is available [here]( http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/tree/master/pkgnet/getTBinR_report.html).
+
 ## Docker
 
 This package has been developed in docker based on the `rocker/tidyverse` image, to access the  development environment enter the following at the command line (with an active docker daemon running),

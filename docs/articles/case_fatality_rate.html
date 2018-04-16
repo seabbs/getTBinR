@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -97,20 +97,20 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Exploring Estimates of the Tuberculosis Case Fatality Ratio</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2018-03-23</h4>
+            <h4 class="date">2018-04-16</h4>
       
       <small>Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_fatality_rate.Rmd"><code>vignettes/case_fatality_rate.Rmd</code></a></small>
+      <div class="hidden name"><code>case_fatality_rate.Rmd</code></div>
 
     </div>
 
     
     
-<div class="contents">
 <p>This case study investigates World Health Organisation (WHO) estimates of the case fatality ratio for Tuberculosis (TB) in 2016. It then estimates case fatality rates using a simple approximation and compares the results to the WHO estimates. It was adapted from <a href="https://www.samabbott.co.uk/post/est-cfr-gettbinr/">this</a> blog post.</p>
 <p>It is estimated that in 2016 there was more than 10 million cases of active TB, with 1.3 million deaths (<a href="https://en.wikipedia.org/wiki/Tuberculosis">source</a>). This makes TB the leading cause of death from an infectious disease. Despite the high numbers of cases globally, and high levels of mortality, TB is often considered a historic disease in developed countries. However, in recent years previously declining trends have flattened out and there is increasing concern surrounding multi-drug resistant TB, which has a greatly reduced the rate of successful treatment (<a href="http://www.who.int/mediacentre/factsheets/fs104/en/">source</a>).</p>
 <p>A key component of TB control is reducing the case fatality rate from active TB, this post explores WHO estimates for the TB case fatality rate in 2016 and then estimates the case fatality rates in previous years. The first step is to download and install the required packages.</p>
@@ -127,7 +127,7 @@
 dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>(<span class="dt">verbose =</span> <span class="ot">FALSE</span>)
 
 tb_burden
-<span class="co">#&gt; # A tibble: 3,651 x 92</span>
+<span class="co">#&gt; # A tibble: 3,634 x 92</span>
 <span class="co">#&gt;    country    iso2  iso3  iso_numeric.x g_whoregion         year e_pop_num</span>
 <span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;              &lt;int&gt;     &lt;int&gt;</span>
 <span class="co">#&gt;  1 Afghanist… AF    AFG               4 Eastern Mediterra…  2000  20093756</span>
@@ -140,7 +140,7 @@ tb_burden
 <span class="co">#&gt;  8 Afghanist… AF    AFG               4 Eastern Mediterra…  2007  26616792</span>
 <span class="co">#&gt;  9 Afghanist… AF    AFG               4 Eastern Mediterra…  2008  27294031</span>
 <span class="co">#&gt; 10 Afghanist… AF    AFG               4 Eastern Mediterra…  2009  28004331</span>
-<span class="co">#&gt; # ... with 3,641 more rows, and 85 more variables: e_inc_100k &lt;dbl&gt;,</span>
+<span class="co">#&gt; # ... with 3,624 more rows, and 85 more variables: e_inc_100k &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;, e_inc_num_f014 &lt;int&gt;,</span>
 <span class="co">#&gt; #   e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,</span>
@@ -328,7 +328,7 @@ region_case_fatality
 <span class="co">#&gt;     year g_whoregion        e_inc_num e_inc_num_lo e_inc_num_hi  e_pop_num</span>
 <span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;                  &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt;  1  2000 Africa                 332.         210.         481.      6.59e8</span>
-<span class="co">#&gt;  2  2000 Americas                36.5         28.6         45.6     8.38e8</span>
+<span class="co">#&gt;  2  2000 Americas                36.5         28.6         45.6     8.37e8</span>
 <span class="co">#&gt;  3  2000 Eastern Mediterra…     127.          87.0        175.      4.81e8</span>
 <span class="co">#&gt;  4  2000 Europe                  52.3         38.1         68.8     8.69e8</span>
 <span class="co">#&gt;  5  2000 South-East Asia        305.         175.         473.      1.57e9</span>
@@ -403,7 +403,6 @@ plot_inc_high_cfr </code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/plot-inc-rates-high-cfr-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We see that for some countries on this list (i.e Anguilla, the United Arab Emirates, and Barbados) the high case fatality ratio estimates are likely to be based on a very low sample size and therefore may not be trustworthy. Worryingly however for several countries (Lesotho, Tanzania, Kenya, Mozambique, Guinea-Bissau, and Ghana, and Nigeria) with extremely high case fatality ratios incidence rates are also very high, which will correspond to very high mortality rates. These countries are all in Africa, which as a region also had the highest incidence rates and the highest case fatality ratio. It is clear from these plots that Africa, and these countries in particular should be a particular focus of TB control efforts if TB mortality rates are to be reduced more quickly.</p>
 <p>The WHO TB data contains many more variables not mentioned in this post and getTBinR contains additional features, see the <a href="https://www.samabbott.co.uk/getTBinR/">site for getTBinR</a> for details. See <a href="https://gist.github.com/seabbs">my gists</a> for code snippets to get you started in exploring the data further. Package feature requests are welcome, preferably by filing a <a href="https://github.com/seabbs/getTBinR/issues">GitHub issue</a>, as are suggestions for additional data sources to include.</p>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -422,6 +421,8 @@ plot_inc_high_cfr </code></pre></div>
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>
