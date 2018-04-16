@@ -94,7 +94,7 @@ File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a fe
 
 ## Package Report
 
-A report on the dependencies and functions of this package has been produced using the [`pkgnet`](https://uptakeopensource.github.io/pkgnet/) package. It is available [here]( http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/tree/master/pkgnet/getTBinR_report.html).
+A report on the dependencies and functions of this package has been produced using the [`pkgnet`](https://uptakeopensource.github.io/pkgnet/) package. It is available [here](http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/blob/master/pkgnet/getTBinR_report.html).
 
 ## Docker
 

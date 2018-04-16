@@ -31,12 +31,12 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016)
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/Rtmp1ql6Gx/TB_burden.rds
+#> Saving data to: /tmp/RtmpwW7N7q/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/Rtmp1ql6Gx/MDR_TB.rds
+#> Saving data to: /tmp/RtmpwW7N7q/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/Rtmp1ql6Gx/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpwW7N7q/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -49,10 +49,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmp1ql6Gx/TB_burden.rds
-#> Loading data from: /tmp/Rtmp1ql6Gx/MDR_TB.rds
+#> Loading data from: /tmp/RtmpwW7N7q/TB_burden.rds
+#> Loading data from: /tmp/RtmpwW7N7q/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp1ql6Gx/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpwW7N7q/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -66,10 +66,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmp1ql6Gx/TB_burden.rds
-#> Loading data from: /tmp/Rtmp1ql6Gx/MDR_TB.rds
+#> Loading data from: /tmp/RtmpwW7N7q/TB_burden.rds
+#> Loading data from: /tmp/RtmpwW7N7q/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp1ql6Gx/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpwW7N7q/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Warning: Removed 16 rows containing missing values (geom_point).
 ```
@@ -83,10 +83,10 @@ getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          facet = "country",
                          interactive = FALSE)
-#> Loading data from: /tmp/Rtmp1ql6Gx/TB_burden.rds
-#> Loading data from: /tmp/Rtmp1ql6Gx/MDR_TB.rds
+#> Loading data from: /tmp/RtmpwW7N7q/TB_burden.rds
+#> Loading data from: /tmp/RtmpwW7N7q/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp1ql6Gx/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpwW7N7q/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -115,7 +115,7 @@ File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a fe
 Package Report
 --------------
 
-A report on the dependencies and functions of this package has been produced using the [`pkgnet`](https://uptakeopensource.github.io/pkgnet/) package. It is available [here](http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/tree/master/pkgnet/getTBinR_report.html).
+A report on the dependencies and functions of this package has been produced using the [`pkgnet`](https://uptakeopensource.github.io/pkgnet/) package. It is available [here](http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/blob/master/pkgnet/getTBinR_report.html).
 
 Docker
 ------
