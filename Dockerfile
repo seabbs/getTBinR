@@ -12,8 +12,6 @@ RUN apt-get install -y \
     
 ADD . /home/rstudio/getTBinR
 
-RUN Rscript -e 'install.packages("pkgnet")'
-
 RUN Rscript -e 'devtools::install_github("hadley/pkgdown")'
 
 RUN Rscript -e 'devtools::install_dev_deps("home/rstudio/getTBinR")'

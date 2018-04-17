@@ -8,6 +8,7 @@
 ## Package updates
 
 * Improved data cleaning, converting `Inf` and `NaN` values to `NA` when the data is read in.
+* Added `pgknet` report.
 
 # getTBinR 0.5.3.0
 

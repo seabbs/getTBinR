@@ -2,7 +2,7 @@
 Get TB Data in R
 ================
 
-[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR) [![Rdoc](http://www.rdocumentation.org/badges/version/getTBinR)](http://www.rdocumentation.org/packages/getTBinR) [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR) [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master) [![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR) [![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4)](https://cran.r-project.org/package=getTBinR)
+[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR) [![Rdoc](http://www.rdocumentation.org/badges/version/getTBinR)](http://www.rdocumentation.org/packages/getTBinR) [![](https://img.shields.io/badge/pkgnet-report-yellow.svg?style=flat)](http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/blob/master/pkgnet/getTBinR_report.html) [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR) [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master) [![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR) [![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4)](https://cran.r-project.org/package=getTBinR)
 
 Quickly and easily import analysis ready TB burden data, from the World Health Orgnaisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. This package is inspired by a blog [post](https://incidental-ideas.org/2017/03/03/who-tuberculosis-data-ggplot2/), which looked at WHO TB incidence rates. See [here](http://www.who.int/about/copyright/en/) for the WHO data permissions. For help getting started see the [Getting Started](https://www.samabbott.co.uk/getTBinR/articles/intro.html) vignette and for a case study using the package see the [Exploring Global Trends in Tuberculosis Incidence Rates](https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html) vignette.
 
@@ -31,12 +31,12 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016)
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpwW7N7q/TB_burden.rds
+#> Saving data to: /tmp/RtmpoTlS3M/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmpwW7N7q/MDR_TB.rds
+#> Saving data to: /tmp/RtmpoTlS3M/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpwW7N7q/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpoTlS3M/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -49,10 +49,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpwW7N7q/TB_burden.rds
-#> Loading data from: /tmp/RtmpwW7N7q/MDR_TB.rds
+#> Loading data from: /tmp/RtmpoTlS3M/TB_burden.rds
+#> Loading data from: /tmp/RtmpoTlS3M/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpwW7N7q/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpoTlS3M/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -66,10 +66,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpwW7N7q/TB_burden.rds
-#> Loading data from: /tmp/RtmpwW7N7q/MDR_TB.rds
+#> Loading data from: /tmp/RtmpoTlS3M/TB_burden.rds
+#> Loading data from: /tmp/RtmpoTlS3M/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpwW7N7q/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpoTlS3M/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Warning: Removed 16 rows containing missing values (geom_point).
 ```
@@ -83,10 +83,10 @@ getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          facet = "country",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmpwW7N7q/TB_burden.rds
-#> Loading data from: /tmp/RtmpwW7N7q/MDR_TB.rds
+#> Loading data from: /tmp/RtmpoTlS3M/TB_burden.rds
+#> Loading data from: /tmp/RtmpoTlS3M/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpwW7N7q/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpoTlS3M/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -111,11 +111,6 @@ Additional Functionality
 ------------------------
 
 File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!
-
-Package Report
---------------
-
-A report on the dependencies and functions of this package has been produced using the [`pkgnet`](https://uptakeopensource.github.io/pkgnet/) package. It is available [here](http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/blob/master/pkgnet/getTBinR_report.html).
 
 Docker
 ------

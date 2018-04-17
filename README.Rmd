@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
 [![Rdoc](http://www.rdocumentation.org/badges/version/getTBinR)](http://www.rdocumentation.org/packages/getTBinR)
+[![](https://img.shields.io/badge/pkgnet-report-yellow.svg?style=flat) ]( http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/blob/master/pkgnet/getTBinR_report.html )
 [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR)
 [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master)
@@ -91,10 +92,6 @@ Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric 
 ## Additional Functionality
 
 File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!
-
-## Package Report
-
-A report on the dependencies and functions of this package has been produced using the [`pkgnet`](https://uptakeopensource.github.io/pkgnet/) package. It is available [here](http://htmlpreview.github.io/?https://github.com/seabbs/getTBinR/blob/master/pkgnet/getTBinR_report.html).
 
 ## Docker
 
