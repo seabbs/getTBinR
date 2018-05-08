@@ -18,7 +18,7 @@
 #'
 #' @return The WHO TB burden data as a tibble.
 #' @inheritParams get_data
-#' @importFrom dplyr case_when mutate mutate_if
+#' @importFrom dplyr case_when mutate mutate_if mutate_all
 #' @importFrom tibble as_tibble
 #' @export
 #' @seealso get_data search_data_dict
@@ -42,7 +42,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
 
   g_whoregion <- NULL
   . <- NULL
-  
+
   trans_burden_data <- function(tb_df) {
     
     tb_df <- tibble::as_tibble(tb_df)
@@ -79,6 +79,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     trans_mdr_data <- function(tb_df) {
       
       tb_df <- tibble::as_tibble(tb_df)
+      tb_df <- mutate_all(tb_df, .funs = funs({ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
       tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
       tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
       
@@ -101,7 +102,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     }
     
     tb_burden <- tb_burden %>% 
-      left_join(mdr_tb, by = c("country", "iso2", "iso3", "year"))
+      left_join(mdr_tb)
   }
 
   return(tb_burden)
