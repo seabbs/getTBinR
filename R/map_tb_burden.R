@@ -61,7 +61,6 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            viridis_direction = -1,
                            viridis_end = 0.9,
                            verbose = TRUE, ...) {
-
   if (!is.null(facet) && facet %in% "year") {
     facet <- "Year"
   }
@@ -113,13 +112,6 @@ map_tb_burden <- function(df = NULL, dict = NULL,
   df_prep$df <- df_prep$df %>% 
     left_join(getTBinR::who_shapefile, c("iso3" = "id")) %>% 
     filter(year %in% sel_year)
-  
-  ## Format year
-  df_prep$df <- df_prep$df %>% 
-    rename(Year = year)
-  
-  ## Change metric label
-   names(df_prep$df)[names(df_prep$df) == metric] <- df_prep$metric_label
    
    country <- NULL
   

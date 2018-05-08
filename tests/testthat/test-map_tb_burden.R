@@ -7,6 +7,7 @@ test_that("map_tb_burden produces a plot", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  vdiffr::expect_doppelganger("base-map", plot)
 })
 
 test_that("map_tb_burden produces a plot when a log transform is used", {
@@ -15,6 +16,8 @@ test_that("map_tb_burden produces a plot when a log transform is used", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
+  vdiffr::expect_doppelganger("log-map", suppressWarnings(plot))
 })
 
 test_that("map_tb_burden produces a plot with annual change", {
@@ -23,6 +26,8 @@ test_that("map_tb_burden produces a plot with annual change", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
+  vdiffr::expect_doppelganger("annual-map", plot)
 })
 
 test_that("map_tb_burden produces when no year is specified", {
@@ -31,15 +36,20 @@ test_that("map_tb_burden produces when no year is specified", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
+  vdiffr::expect_doppelganger("no-year-map", plot)
 })
 
-test_that("map_tb_burden produces fill type is manually specified and fails when it is misspecifed", {
+test_that("map_tb_burden produces a map when fill type is 
+          manually specified and fails when it is misspecifed", {
   
   plot <- map_tb_burden(fill_var_type = "continuous")
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
   expect_error(map_tb_burden(fill_var_type = "test"))
+  skip_on_cran()
+  vdiffr::expect_doppelganger("fill-map", plot)
 })
 
 test_that("map_tb_burden can have a custom legend specified.", {
@@ -49,6 +59,8 @@ test_that("map_tb_burden can have a custom legend specified.", {
   
   expect_true(!is.null(plot))
   expect_equal(plot$labels$fill, test_label)
+  skip_on_cran()
+  vdiffr::expect_doppelganger("legend-map", plot)
 })
 
 test_that("map_tb_burden produces an interactive plot", {
@@ -70,5 +82,7 @@ test_that("map_tb_burden produces a plot when a discrete metric is specified", {
   plot_dis <- map_tb_burden(metric = "g_whoregion", 
                             metric_label = "WHO world region")
             expect_true(!is.null(plot_dis))
+            skip_on_cran()
+            vdiffr::expect_doppelganger("metric-map", plot_dis)
           })
 

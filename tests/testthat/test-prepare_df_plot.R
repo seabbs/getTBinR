@@ -37,6 +37,7 @@ test_that("TB burden data is correctly processed ready for plotting", {
   expect_true(1 <= nrow(df_all$df))
   expect_true(1 <= ncol(df_all$df))
   expect_equal(0, sum(is.na(df_all$df$country)))
+  expect_true(!any(duplicated(colnames(df_all$df))))
 })
 
 test_that("TB burden data is correctly proccessed when using local data", {

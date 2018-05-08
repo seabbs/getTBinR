@@ -5,6 +5,8 @@ test_that("plot_tb_burden produces a plot", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
+  vdiffr::expect_doppelganger("base-plot", plot)
 })
 
 test_that("plot_tb_burden produces a plot with a log10 transform", {
@@ -12,6 +14,8 @@ test_that("plot_tb_burden produces a plot with a log10 transform", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
+  vdiffr::expect_doppelganger("log-plot", plot)
 })
 
 test_that("plot_tb_burden produces a plot with the annual_change option", {
@@ -19,6 +23,8 @@ test_that("plot_tb_burden produces a plot with the annual_change option", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
+  vdiffr::expect_doppelganger("annual-plot", plot)
 })
 
 test_that("plot_tb_burden produces an interactive plot", {
