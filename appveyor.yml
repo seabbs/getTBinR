@@ -15,22 +15,6 @@ cache:
 
 # Adapt as necessary starting from here
 
-  matrix:
-  - R_VERSION: devel
-    GCC_PATH: mingw_32
-
-  - R_VERSION: devel
-    R_ARCH: x64
-    GCC_PATH: mingw_64
-
-  - R_VERSION: release
-    R_ARCH: x64
-
-  - R_VERSION: stable
-
-matrix:
-  fast_finish: true
-  
 build_script:
   - travis-tool.sh install_deps
 
