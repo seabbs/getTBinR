@@ -77,6 +77,7 @@ Summarise TB Burden
 }
 \examples{
 
+## Get summary data for the UK 
 summarise_tb_burden(countries = "United Kingdom", 
                     compare_to_world = TRUE, 
                     compare_to_region = TRUE)

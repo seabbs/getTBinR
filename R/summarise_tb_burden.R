@@ -24,9 +24,22 @@
 #' @importFrom stats qnorm sd
 #' @examples
 #' 
-#' summarise_tb_burden(countries = "United Kingdom", 
+#' ## Get summary of the case fatality rate for regions and the world
+#' summarise_tb_burden(metric = "cfr",
+#'                     compare_all_regions = TRUE,
+#'                     compare_to_world = TRUE,
+#'                     verbose = FALSE)
+#' 
+#' 
+#' ## Get summary data for the UK, Europe and the world
+#' ## Bootstrapping CI's and calculating the incidence rate
+#' summarise_tb_burden(metric = "e_inc_num",
+#'                     countries = "United Kingdom", 
 #'                     compare_to_world = TRUE, 
-#'                     compare_to_region = TRUE)
+#'                     compare_to_region = TRUE,
+#'                     compute_rate = TRUE,
+#'                     verbose = FALSE)
+#'                     
 summarise_tb_burden <- function(df = NULL,
                                 dict = NULL, 
                                 metric = "e_inc_100k",
@@ -204,8 +217,10 @@ summarise_tb_burden <- function(df = NULL,
     
     ## If the data comes with confidence intervals attached
     summarised_df <- all_df %>% 
+      mutate_at(.vars = metrics, 
+                .funs = funs(ifelse(is.na(.), all_df[[metric]], .))) %>% 
       group_by(Area, Year) %>% 
-      select_at(.vars = metrics) 
+      select_at(.vars = metrics)
       
     summarised_df$sd <- (summarised_df[[metrics[3]]] - summarised_df[[metrics[2]]]) / (2*1.96)
     
