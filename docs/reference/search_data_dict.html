@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Search the WHO TB Data Dictionary by Variable Name. — search_data_dict" />
 
 <meta property="og:description" content="Searches the WHO data dictionary for TB burden data. When run for the first time
@@ -39,8 +42,6 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -130,14 +131,16 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Search the WHO TB Data Dictionary by Variable Name.</h1>
-    <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/search_data_dict.R'><code>R/search_data_dict.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/search_data_dict.R'><code>R/search_data_dict.R</code></a></small>
     <div class="hidden name"><code>search_data_dict.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Searches the WHO data dictionary for TB burden data. When run for the first time
 it will download the data dictionary, if <code>download_data = TRUE</code>, and save it into the temporary</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>,
@@ -200,12 +203,12 @@ searched for.</p>
     <pre class="examples"><div class='input'>
 <span class='co'>## Search for a known variable</span>
 <span class='co'>## Download and save the dictionary if it is not available locally</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; # A tibble: 1 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; # A tibble: 1 x 4
 #&gt;   variable_name dataset                code_list definition               
 #&gt;   &lt;chr&gt;         &lt;chr&gt;                  &lt;chr&gt;     &lt;chr&gt;                    
 #&gt; 1 country       Country identification ""        Country or territory name</div><div class='input'>
 <span class='co'>## Search for all variables mentioning mortality in their definition</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
 #&gt;   variable_name            dataset   code_list definition                      
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                           
 #&gt; 1 e_mort_100k              Estimates ""        Estimated mortality of TB cases…
@@ -219,7 +222,7 @@ searched for.</p>
 #&gt; 9 e_mort_tbhiv_100k_lo     Estimates ""        Estimated mortality of TB cases…</div><div class='input'>
 <span class='co'>## Search for both a known variable and for mortality being mentioned in there definition</span>
 <span class='co'>## Duplicate entries will be omitted.</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
 #&gt;   variable_name            dataset   code_list definition                      
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                           
 #&gt; 1 e_mort_exc_tbhiv_100k    Estimates ""        Estimated mortality of TB cases…

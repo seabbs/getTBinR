@@ -6,7 +6,8 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figure/"
+  fig.path = "man/figure/",
+  dpi = 330
 )
 ```
 
@@ -42,7 +43,7 @@ devtools::install_github("seabbs/getTBinR")
 
 Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map global TB incidence rates in 2016 (this will also download and save both the TB burden data and its data dictionary, if they are not found locally, to R's temporary directory),
 
-```{r map-tb-incidence-eur}
+```{r map-tb-incidence-eur, fig.height = 5, fig.width = 10}
 getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016)
 ```

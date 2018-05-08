@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Plot an overview of TB Burden for Multiple Countries — plot_tb_burden_overview" />
 
 <meta property="og:description" content="This functions returns a dot plot for a given metric over a specified
@@ -41,8 +44,6 @@ Tuberculosis over time and the progress towards global elimination." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -132,16 +133,18 @@ Tuberculosis over time and the progress towards global elimination." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot an overview of TB Burden for Multiple Countries</h1>
-    <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/plot_tb_burden_overview.R'><code>R/plot_tb_burden_overview.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/plot_tb_burden_overview.R'><code>R/plot_tb_burden_overview.R</code></a></small>
     <div class="hidden name"><code>plot_tb_burden_overview.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This functions returns a dot plot for a given metric over a specified
 list of countries. If <code>compare_to_region</code> is specified then a given country will
 be compared to others in its region. This enables the user to rapidly understand trends in
 Tuberculosis over time and the progress towards global elimination.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
   <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
@@ -269,15 +272,15 @@ be displayed.</p></td>
     <pre class="examples"><div class='input'>
 <span class='co'>## Plot incidence rates over time for both the United Kingdom and Botswana</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-1.png' alt='' width='700' height='433' /></div><div class='input'>
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Plot percentage annual change in incidence rates.</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-2.png' alt='' width='700' height='433' /></div><div class='input'>
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Compare incidence rates in the UK and Botswana to incidence rates in their regions</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-3.png' alt='' width='700' height='433' /></div><div class='input'>
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Find variables relating to mortality in the WHO dataset</span>
-<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
 #&gt;   variable_name            dataset   code_list definition                      
 #&gt;   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                           
 #&gt; 1 e_mort_100k              Estimates ""        Estimated mortality of TB cases…
@@ -293,7 +296,7 @@ be displayed.</p></td>
 <span class='co'>## Do not show progress messages</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>,
                         <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plot_tb_burden_overview-4.png' alt='' width='700' height='433' /></div></pre>
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='img'><img src='plot_tb_burden_overview-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

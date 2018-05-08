@@ -31,13 +31,15 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016)
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpoTlS3M/TB_burden.rds
+#> Saving data to: /tmp/RtmpMete45/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmpoTlS3M/MDR_TB.rds
+#> Saving data to: /tmp/RtmpMete45/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
+#> Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpoTlS3M/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpMete45/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
+#> Warning: Removed 12 rows containing missing values (geom_path).
 ```
 
 ![](man/figure/map-tb-incidence-eur-1.png)
@@ -49,10 +51,11 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpoTlS3M/TB_burden.rds
-#> Loading data from: /tmp/RtmpoTlS3M/MDR_TB.rds
+#> Loading data from: /tmp/RtmpMete45/TB_burden.rds
+#> Loading data from: /tmp/RtmpMete45/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpoTlS3M/TB_data_dict.rds
+#> Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")
+#> Loading data from: /tmp/RtmpMete45/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -66,10 +69,11 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpoTlS3M/TB_burden.rds
-#> Loading data from: /tmp/RtmpoTlS3M/MDR_TB.rds
+#> Loading data from: /tmp/RtmpMete45/TB_burden.rds
+#> Loading data from: /tmp/RtmpMete45/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpoTlS3M/TB_data_dict.rds
+#> Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")
+#> Loading data from: /tmp/RtmpMete45/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Warning: Removed 16 rows containing missing values (geom_point).
 ```
@@ -83,10 +87,11 @@ getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          facet = "country",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmpoTlS3M/TB_burden.rds
-#> Loading data from: /tmp/RtmpoTlS3M/MDR_TB.rds
+#> Loading data from: /tmp/RtmpMete45/TB_burden.rds
+#> Loading data from: /tmp/RtmpMete45/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpoTlS3M/TB_data_dict.rds
+#> Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")
+#> Loading data from: /tmp/RtmpMete45/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
