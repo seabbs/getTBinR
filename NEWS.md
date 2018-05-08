@@ -3,6 +3,7 @@
 ## Feature updates
 
 * Added MDR-TB data for 2016, see [here](http://www.who.int/tb/country/data/download/en/) for the dataset. The MDR-TB data is automatically joined to the WHO TB burden data.
+* Aesthetic updates to `map_tb_burden`.
 
 ## Package updates
 

@@ -4,7 +4,7 @@ author: "Sam Abbott"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting started with getTBinR}
+  %\VignetteIndexEntry{Exploring Global Trends in Tuberculosis Incidence Rates}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

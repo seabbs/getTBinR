@@ -114,7 +114,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
     filter(year %in% sel_year)
    
    country <- NULL
-  
+   group <- NULL
+   
   if (compare_to_region) {
     if (length(countries) == 1) {
       df_prep$facet <- NULL
@@ -130,6 +131,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                             key = "country",
                             frame = "Year")) +
     geom_polygon(aes_string(group = "group")) + 
+    geom_path(aes(group = group), alpha = 0.4, col = "black") +
     coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = "bottom") +

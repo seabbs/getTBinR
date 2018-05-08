@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Generic Function to Prepare TB Burden Data for Plotting — prepare_df_plot" />
 
 <meta property="og:description" content="This function is used internally by plot_tb_burden
@@ -39,8 +42,6 @@ and plot_tb_burden_overview to prepare data for plotting." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -130,14 +131,16 @@ and plot_tb_burden_overview to prepare data for plotting." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Generic Function to Prepare TB Burden Data for Plotting</h1>
-    <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/prepare_df_plot.R'><code>R/prepare_df_plot.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/prepare_df_plot.R'><code>R/prepare_df_plot.R</code></a></small>
     <div class="hidden name"><code>prepare_df_plot.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function is used internally by <code><a href='plot_tb_burden.html'>plot_tb_burden</a></code>
 and <code><a href='plot_tb_burden_overview.html'>plot_tb_burden_overview</a></code> to prepare data for plotting.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>prepare_df_plot</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
   <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -243,28 +246,28 @@ the label to assign to the metric axis.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>prepare_df_plot</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"Guinea"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpdsNC0F/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='output co'>#&gt; $df
-#&gt; # A tibble: 17 x 94
-#&gt;    country iso2  iso3  iso_numeric.x g_whoregion  year e_pop_num e_inc_100k
-#&gt;    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt;  1 Guinea  GN    GIN   324           AFR          2000   8808546       228.
-#&gt;  2 Guinea  GN    GIN   324           AFR          2001   8971139       224.
-#&gt;  3 Guinea  GN    GIN   324           AFR          2002   9137345       221.
-#&gt;  4 Guinea  GN    GIN   324           AFR          2003   9309848       218.
-#&gt;  5 Guinea  GN    GIN   324           AFR          2004   9490229       214.
-#&gt;  6 Guinea  GN    GIN   324           AFR          2005   9679745       210.
-#&gt;  7 Guinea  GN    GIN   324           AFR          2006   9881428       206.
-#&gt;  8 Guinea  GN    GIN   324           AFR          2007  10096727       200.
-#&gt;  9 Guinea  GN    GIN   324           AFR          2008  10323142       195.
-#&gt; 10 Guinea  GN    GIN   324           AFR          2009  10556524       190.
-#&gt; 11 Guinea  GN    GIN   324           AFR          2010  10794170       186.
-#&gt; 12 Guinea  GN    GIN   324           AFR          2011  11035170       183.
-#&gt; 13 Guinea  GN    GIN   324           AFR          2012  11281469       180.
-#&gt; 14 Guinea  GN    GIN   324           AFR          2013  11536615       177.
-#&gt; 15 Guinea  GN    GIN   324           AFR          2014  11805509       177.
-#&gt; 16 Guinea  GN    GIN   324           AFR          2015  12091533       177.
-#&gt; 17 Guinea  GN    GIN   324           AFR          2016  12395924       176.
-#&gt; # ... with 86 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
+<span class='fu'>prepare_df_plot</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"Guinea"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpxxAvN9/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='output co'>#&gt; $df
+#&gt; # A tibble: 17 x 93
+#&gt;    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
+#&gt;    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
+#&gt;  1 Guinea  GN    GIN           324 Africa       2000   8808546        228
+#&gt;  2 Guinea  GN    GIN           324 Africa       2001   8971139        224
+#&gt;  3 Guinea  GN    GIN           324 Africa       2002   9137345        221
+#&gt;  4 Guinea  GN    GIN           324 Africa       2003   9309848        218
+#&gt;  5 Guinea  GN    GIN           324 Africa       2004   9490229        214
+#&gt;  6 Guinea  GN    GIN           324 Africa       2005   9679745        210
+#&gt;  7 Guinea  GN    GIN           324 Africa       2006   9881428        206
+#&gt;  8 Guinea  GN    GIN           324 Africa       2007  10096727        200
+#&gt;  9 Guinea  GN    GIN           324 Africa       2008  10323142        195
+#&gt; 10 Guinea  GN    GIN           324 Africa       2009  10556524        190
+#&gt; 11 Guinea  GN    GIN           324 Africa       2010  10794170        186
+#&gt; 12 Guinea  GN    GIN           324 Africa       2011  11035170        183
+#&gt; 13 Guinea  GN    GIN           324 Africa       2012  11281469        180
+#&gt; 14 Guinea  GN    GIN           324 Africa       2013  11536615        177
+#&gt; 15 Guinea  GN    GIN           324 Africa       2014  11805509        177
+#&gt; 16 Guinea  GN    GIN           324 Africa       2015  12091533        177
+#&gt; 17 Guinea  GN    GIN           324 Africa       2016  12395924        176
+#&gt; # ... with 85 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_inc_num_f014 &lt;int&gt;, e_inc_num_f014_lo &lt;int&gt;, e_inc_num_f014_hi &lt;int&gt;,
 #&gt; #   e_inc_num_f15plus &lt;int&gt;, e_inc_num_f15plus_lo &lt;int&gt;,
@@ -287,13 +290,13 @@ the label to assign to the metric axis.</p>
 #&gt; #   e_mort_100k_lo &lt;dbl&gt;, e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;,
 #&gt; #   e_mort_num_lo &lt;int&gt;, e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;,
 #&gt; #   cfr_hi &lt;dbl&gt;, c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;,
-#&gt; #   c_cdr_hi &lt;dbl&gt;, iso_numeric.y &lt;int&gt;, source_rr_new &lt;chr&gt;,
-#&gt; #   source_drs_coverage_new &lt;chr&gt;, source_drs_year_new &lt;chr&gt;,
-#&gt; #   e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;, e_rr_pct_new_hi &lt;dbl&gt;,
-#&gt; #   e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;, source_drs_coverage_ret &lt;chr&gt;,
-#&gt; #   source_drs_year_ret &lt;chr&gt;, e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;,
-#&gt; #   e_rr_pct_ret_hi &lt;dbl&gt;, e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;,
-#&gt; #   e_inc_rr_num_lo &lt;int&gt;, e_inc_rr_num_hi &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,
+#&gt; #   c_cdr_hi &lt;dbl&gt;, source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,
+#&gt; #   source_drs_year_new &lt;chr&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,
+#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,
+#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;chr&gt;,
+#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,
+#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,
+#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,
 #&gt; #   e_rr_in_notified_pulm_lo &lt;int&gt;, e_rr_in_notified_pulm_hi &lt;int&gt;, `Estimated
 #&gt; #   incidence (all forms) per 100 000 population` &lt;dbl&gt;, Year &lt;int&gt;
 #&gt; 
