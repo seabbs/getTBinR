@@ -33,7 +33,7 @@ test_that("TB burden data is the same when downloaded using utils::read.csv", {
   skip_on_cran()
   expect_equal(tb_data, get_tb_burden(download_data = TRUE,
                                       use_utils = TRUE,
-                                      burden_save_name = "TB_with_utils"))
+                                      burden_save_name = "TB_with_utils2"))
 })
 
 test_that("When TB burden data can be correctly downloaded when MDR is not also downloaded",{

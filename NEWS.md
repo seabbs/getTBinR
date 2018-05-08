@@ -4,11 +4,11 @@
 
 * Added MDR-TB data for 2016, see [here](http://www.who.int/tb/country/data/download/en/) for the dataset. The MDR-TB data is automatically joined to the WHO TB burden data.
 
-
 ## Package updates
 
 * Improved data cleaning, converting `Inf` and `NaN` values to `NA` when the data is read in.
 * Added `pgknet` report.
+* Improved test robustness and scope
 
 # getTBinR 0.5.3.0
 

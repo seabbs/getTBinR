@@ -55,6 +55,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                                               TRUE ~ g_whoregion)
     )
     
+    tb_df <- mutate_all(tb_df, .funs = funs({ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
     tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
     tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
     

@@ -34,10 +34,10 @@ test_that("get_data can download data using utils alternative", {
 
 
 test_that("get_data fails to download the data when an incorrect URL is given.", {
-  expect_error(get_data(url = NA,
+  expect_error(suppressWarnings(get_data(url = NA,
                         download_data = TRUE,
                         retry_download = FALSE,
-                        save_name = "test_no_url"))
+                        save_name = "test_no_url")))
 })
 
 
