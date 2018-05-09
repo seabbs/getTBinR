@@ -144,8 +144,7 @@
   <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>), <span class='kw'>years</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>custom_compare</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>compute_rate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>compute_rate_with</span> <span class='kw'>=</span> <span class='st'>"e_pop_num"</span>, <span class='kw'>rate_scaling</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>,
+  <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"mean"</span>, <span class='kw'>denominator</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>truncate_at_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
   <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
@@ -212,18 +211,14 @@ the metric of interests global value.</p></td>
       <td><p>Logical, defaults to <code>FALSE</code>. Should all regions be compared.</p></td>
     </tr>
     <tr>
-      <th>compute_rate</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Should the rate be calculated using the
-summarised population.</p></td>
+      <th>stat</th>
+      <td><p>Character string, defaults to <code>"mean"</code>. The statistic to use to summarise the metric, currently
+"mean" and "median" are supported. Note "mean" and "median" do not recompute the supplied country levels values.
+Future options will include the weighted proportion and the summarised incidence rate.</p></td>
     </tr>
     <tr>
-      <th>compute_rate_with</th>
-      <td><p>Character, the variable to compute the rate with. Defaults to the
-using the total population (<code>"e_pop_num"</code>).</p></td>
-    </tr>
-    <tr>
-      <th>rate_scaling</th>
-      <td><p>Numeric, scaling to apply to the calculate rate. Defaults to 100,000.</p></td>
+      <th>denominator</th>
+      <td><p>Character string identifying the variable to use as a denominator in any proportion or rate calculation.</p></td>
     </tr>
     <tr>
       <th>truncate_at_zero</th>
@@ -276,56 +271,57 @@ stratified by area and year.</p>
                     <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
                     <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpabTiht/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpabTiht/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpabTiht/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpabTiht/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpabTiht/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpabTiht/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2016</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
-#&gt; <span class='message'>              only based on the point estimate.</span></div><div class='output co'>#&gt; # A tibble: 7 x 5
-#&gt;   area              year e_mdr_pct_rr_new e_mdr_pct_rr_new_… e_mdr_pct_rr_new_…
-#&gt;   &lt;fct&gt;            &lt;int&gt;            &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
-#&gt; 1 Africa            2016             70.0               40.6               99.3
-#&gt; 2 Americas          2016             78.8               35.8              122. 
-#&gt; 3 Eastern Mediter…  2016             76.9               29.8              124. 
-#&gt; 4 Europe            2016             90.0               63.8              116. 
-#&gt; 5 South-East Asia   2016             82.5               45.1              120. 
-#&gt; 6 Western Pacific   2016             69.3               26.7              112. 
-#&gt; 7 Global            2016             77.9               38.6              117. </div><div class='input'>
-<span class='co'>## Get summary of the case fatality rate for regions and the world in 2016</span>
-<span class='co'>## Boostrapping CI's</span>
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpO4itdZ/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpO4itdZ/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpO4itdZ/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpO4itdZ/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpO4itdZ/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpO4itdZ/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2016</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
+#&gt; <span class='message'>                only based on the point estimate.</span></div><div class='output co'>#&gt; # A tibble: 7 x 5
+#&gt;   area                   year e_mdr_pct_rr_new e_mdr_pct_rr_new_lo e_mdr_pct_rr_new_hi
+#&gt;   &lt;fct&gt;                 &lt;int&gt;            &lt;dbl&gt;               &lt;dbl&gt;               &lt;dbl&gt;
+#&gt; 1 Africa                 2016             70.0                40.6                99.3
+#&gt; 2 Americas               2016             78.8                35.8               122. 
+#&gt; 3 Eastern Mediterranean  2016             76.9                29.8               124. 
+#&gt; 4 Europe                 2016             90.0                63.8               116. 
+#&gt; 5 Global                 2016             77.9                38.6               117. 
+#&gt; 6 South-East Asia        2016             82.5                45.1               120. 
+#&gt; 7 Western Pacific        2016             69.3                26.7               112. </div><div class='input'>
+<span class='co'>## Get median (with 95% IQR) of the case fatality rate for regions and the world in 2016</span>
+<span class='co'>## Boostrapping uncertainty in country measures</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"cfr"</span>,
                     <span class='kw'>years</span> <span class='kw'>=</span> <span class='fl'>2016</span>,
                     <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+                    <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"median"</span>,
                     <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; # A tibble: 7 x 5
 #&gt;   area                   year    cfr cfr_lo cfr_hi
 #&gt;   &lt;fct&gt;                 &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 Africa                 2016 0.239  0.0175  0.461
-#&gt; 2 Americas               2016 0.132  0       0.397
-#&gt; 3 Eastern Mediterranean  2016 0.129  0       0.393
-#&gt; 4 Europe                 2016 0.0839 0       0.176
-#&gt; 5 South-East Asia        2016 0.137  0.0286  0.245
-#&gt; 6 Western Pacific        2016 0.0888 0       0.194
-#&gt; 7 Global                 2016 0.137  0       0.361</div><div class='input'>
+#&gt; 1 Africa                 2016 0.232  0.0372  0.494
+#&gt; 2 Americas               2016 0.0946 0.0192  0.665
+#&gt; 3 Eastern Mediterranean  2016 0.0900 0.01    0.546
+#&gt; 4 Europe                 2016 0.0734 0.0160  0.201
+#&gt; 5 Global                 2016 0.0987 0.0136  0.425
+#&gt; 6 South-East Asia        2016 0.130  0.0620  0.265
+#&gt; 7 Western Pacific        2016 0.0802 0.0215  0.228</div><div class='input'>
 
 <span class='co'>## Get summary data for the UK, Europe and the world</span>
-<span class='co'>## Bootstrapping CI's and calculating the incidence rate</span>
+<span class='co'>## Bootstrapping CI's </span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_num"</span>,
                     <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+                    <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"median"</span>,
                     <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"United Kingdom"</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>compute_rate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("Area", "Year")</span></div><div class='output co'>#&gt; # A tibble: 51 x 5
-#&gt;    area                                year e_inc_num e_inc_num_lo e_inc_num_hi
-#&gt;    &lt;fct&gt;                              &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
-#&gt;  1 United Kingdom of Great Britain a…  2000      12.0         10.7         13.2
-#&gt;  2 United Kingdom of Great Britain a…  2001      11.5         10.2         12.8
-#&gt;  3 United Kingdom of Great Britain a…  2002      13.2         12.1         14.3
-#&gt;  4 United Kingdom of Great Britain a…  2003      13.3         12.0         14.6
-#&gt;  5 United Kingdom of Great Britain a…  2004      13.2         11.8         14.6
-#&gt;  6 United Kingdom of Great Britain a…  2005      15.2         13.6         16.8
-#&gt;  7 United Kingdom of Great Britain a…  2006      15.3         14.0         16.5
-#&gt;  8 United Kingdom of Great Britain a…  2007      14.7         13.0         16.3
-#&gt;  9 United Kingdom of Great Britain a…  2008      15.0         13.7         16.2
-#&gt; 10 United Kingdom of Great Britain a…  2009      14.5         12.9         16.1
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; # A tibble: 51 x 5
+#&gt;    area                                           year e_inc_num e_inc_num_lo e_inc_num_hi
+#&gt;    &lt;fct&gt;                                         &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+#&gt;  1 United Kingdom of Great Britain and Northern…  2000      7000         6300         7700
+#&gt;  2 United Kingdom of Great Britain and Northern…  2001      6800         6100         7500
+#&gt;  3 United Kingdom of Great Britain and Northern…  2002      7800         7000         8500
+#&gt;  4 United Kingdom of Great Britain and Northern…  2003      8000         7200         8800
+#&gt;  5 United Kingdom of Great Britain and Northern…  2004      7900         7100         8700
+#&gt;  6 United Kingdom of Great Britain and Northern…  2005      9200         8300        10000
+#&gt;  7 United Kingdom of Great Britain and Northern…  2006      9300         8400        10000
+#&gt;  8 United Kingdom of Great Britain and Northern…  2007      9000         8100         9900
+#&gt;  9 United Kingdom of Great Britain and Northern…  2008      9300         8400        10000
+#&gt; 10 United Kingdom of Great Britain and Northern…  2009      9100         8200        10000
 #&gt; # ... with 41 more rows</div><div class='input'>                    
 </div></pre>
   </div>

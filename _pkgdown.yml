@@ -38,6 +38,10 @@ reference:
       desc:  Retrieve or load the WHO data into R
       contents:
       - starts_with("get_")
+    - title: Summarise WHO Tuberculosis Data
+      desc: Get useful regional and global summaries of TB metrics
+      contents:
+      - starts_with("summarise_")
     - title: Map WHO Tuberculosis Data
       desc: Make maps of the WHO tuberculois data
       contents:
