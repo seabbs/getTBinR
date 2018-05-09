@@ -102,7 +102,7 @@
       <h1>Exploring Estimates of the Tuberculosis Case Fatality Ratio</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2018-05-08</h4>
+            <h4 class="date">2018-05-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_fatality_rate.Rmd"><code>vignettes/case_fatality_rate.Rmd</code></a></small>
       <div class="hidden name"><code>case_fatality_rate.Rmd</code></div>
@@ -217,8 +217,7 @@ mp1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Incidence Rates - 2016"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Incidence rates are per 100,000 population"</span>)
 
-mp1 
-<span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_path).</span></code></pre></div>
+mp1 </code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/make-inc-map-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Map TB case fatality ratio -2016</span>
 mp2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"cfr"</span>, <span class="dt">year =</span> <span class="dv">2016</span>, 
@@ -228,8 +227,7 @@ mp2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Case Fatality Ratio - 2016"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Case fatality rate estimated by the WHO"</span>)
 
-mp2
-<span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_path).</span></code></pre></div>
+mp2</code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/make-cfr-map-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>Whilst quantitative insights are hard to glean from the above maps we can see that incidence rates appear to be highest in Africa and Asia. It also looks like the case fatality ratios are highest in these regions as well.</p>
 <p>The WHO have only provided estimates for the case fatality ratio for 2016, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted. The first step is to write a function to summarise rates on regional levels, we do this using <code><a href="http://dplyr.tidyverse.org/reference/summarise_all.html">dplyr::summarise_at</a></code>.</p>
@@ -354,6 +352,9 @@ region_case_fatality
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> region_case_fat, <span class="kw">aes</span>(<span class="dt">y =</span> mean, <span class="dt">x =</span> year, <span class="dt">fill =</span> g_whoregion), <span class="dt">shape =</span> <span class="dv">2</span>, <span class="dt">size =</span> <span class="fl">1.3</span>, <span class="dt">col =</span> <span class="st">"black"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_linerange</span>(<span class="dt">data =</span> region_case_fat, <span class="kw">aes</span>(<span class="dt">ymin =</span> ll, <span class="dt">ymax =</span> hh, <span class="dt">y =</span> <span class="ot">NULL</span>), <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">size =</span> <span class="fl">1.2</span>, <span class="dt">col =</span> <span class="st">"black"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_linerange</span>(<span class="dt">data =</span> region_case_fat, <span class="kw">aes</span>(<span class="dt">ymin =</span> lll, <span class="dt">ymax =</span> hhh, <span class="dt">y =</span> <span class="ot">NULL</span>), <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">size =</span> <span class="fl">1.2</span>, <span class="dt">col =</span> <span class="st">"black"</span>)
+<span class="co">#&gt; Warning: Ignoring unknown aesthetics: y</span>
+
+<span class="co">#&gt; Warning: Ignoring unknown aesthetics: y</span>
   
 plot_region_case_fatality <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</code></pre></div>
