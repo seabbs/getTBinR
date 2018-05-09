@@ -8,9 +8,9 @@ summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, conf = c("_lo", "_hi"), years = NULL,
   samples = 1000, countries = NULL, compare_to_region = FALSE,
   compare_to_world = FALSE, custom_compare = NULL,
-  compare_all_regions = FALSE, compute_rate = FALSE, compute_prop = FALSE,
-  denominator = NULL, truncate_at_zero = TRUE, annual_change = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
+  compare_all_regions = FALSE, stat = "mean", denominator = NULL,
+  truncate_at_zero = TRUE, annual_change = FALSE, download_data = TRUE,
+  save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", verbose = TRUE)
 }
 \arguments{
@@ -48,11 +48,9 @@ the metric of interests global value.}
 
 \item{compare_all_regions}{Logical, defaults to \code{FALSE}. Should all regions be compared.}
 
-\item{compute_rate}{Logical defaults to \code{FALSE}. Should an incidence rate (per 100,000) be computed
-for the metric of interst combined with the specified denominator. Not yet implemented.}
-
-\item{compute_prop}{Logical defaults to code{FALSE}. Should a proportion be computed for the summarised metric of interest
-divided by the demoninator.}
+\item{stat}{Character string, defaults to \code{"mean"}. The statistic to use to summarise the metric, currently
+"mean" and "median" are supported. Note "mean" and "median" do not recompute the supplied country levels values.
+Future options will include the weighted proportion and the summarised incidence rate.}
 
 \item{denominator}{Character string identifying the variable to use as a denominator in any proportion or rate calculation.}
 
@@ -94,11 +92,12 @@ summarise_tb_burden(metric = "e_mdr_pct_rr_new",
                     compare_to_world = TRUE,
                     verbose = TRUE)
 
-## Get summary of the case fatality rate for regions and the world in 2016
-## Boostrapping CI's
+## Get median (with 95\% IQR) of the case fatality rate for regions and the world in 2016
+## Boostrapping uncertainty in country measures
 summarise_tb_burden(metric = "cfr",
                     years = 2016,
                     samples = 100,
+                    stat = "median",
                     compare_all_regions = TRUE,
                     compare_to_world = TRUE,
                     verbose = FALSE)
@@ -108,6 +107,7 @@ summarise_tb_burden(metric = "cfr",
 ## Bootstrapping CI's 
 summarise_tb_burden(metric = "e_inc_num",
                     samples = 100,
+                    stat = "median",
                     countries = "United Kingdom", 
                     compare_to_world = TRUE, 
                     compare_to_region = TRUE,

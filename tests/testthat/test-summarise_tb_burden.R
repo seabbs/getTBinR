@@ -126,5 +126,18 @@ test_that("summarise_tb_burden can summarise a variable
           })
 
 
+test_that("summarise_tb_burden can summarise a variable using the median", {
+            sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           countries = NULL,
+                                           stat = "median",
+                                           conf = NULL,
+                                           compare_all_regions = TRUE,
+                                           compare_to_world = TRUE,
+                                           years = test_year + 4)
+            
+            expect_known_output(sum_tab, 
+                                file = "../../tests/test-files/summarise_tb_burden/test-09.rds")
+          })
+
 
 
