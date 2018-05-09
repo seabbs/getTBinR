@@ -1,4 +1,3 @@
-
 #' Summarise TB Burden
 #'
 #' @param years Numeric vector of years. Defaults to \code{NULL} which includes all years in the data. 
@@ -8,19 +7,19 @@
 #' the metric of interests global value.
 #' @param custom_compare Logical, defaults to \code{NULL}. A named list of custom countries.
 #' @param compare_all_regions Logical, defaults to \code{FALSE}. Should all regions be compared.
-#' @param compute_rate Logical, defaults to \code{FALSE}. Should the rate be calculated using the 
-#' summarised population.
-#' @param compute_rate_with Character, the variable to compute the rate with. Defaults to the 
-#' using the total population (\code{"e_pop_num"}).
-#' @param rate_scaling Numeric, scaling to apply to the calculate rate. Defaults to 100,000.
 #' @param truncate_at_zero Logical, defaults to \code{TRUE}. Should lower bounds be truncated at zero?
+#' @param compute_rate Logical defaults to \code{FALSE}. Should an incidence rate (per 100,000) be computed
+#' for the metric of interst combined with the specified denominator.
+#' @param denominator Character string identifying the variable to use as a denominator in any proportion or rate calculation.
+#' @param compute_prop Logical defaults to code{FALSE}. Should a proportion be computed for the summarised metric of interest
+#' divided by the demoninator.
 #' @inheritParams prepare_df_plot
 #' @return A tibble containing summarised values (with 95% confidence intervals) for the metric of choice
 #' stratified by area and year.
 #' @export
 #'
 #' @import magrittr
-#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at funs left_join bind_rows summarise summarise_at
+#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at funs left_join bind_rows summarise summarise_at one_of
 #' @importFrom purrr map map2_dfr compact reduce map_lgl
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr nest unnest
@@ -47,13 +46,12 @@
 #' 
 #' 
 #' ## Get summary data for the UK, Europe and the world
-#' ## Bootstrapping CI's and calculating the incidence rate
+#' ## Bootstrapping CI's 
 #' summarise_tb_burden(metric = "e_inc_num",
 #'                     samples = 100,
 #'                     countries = "United Kingdom", 
 #'                     compare_to_world = TRUE, 
 #'                     compare_to_region = TRUE,
-#'                     compute_rate = TRUE,
 #'                     verbose = FALSE)
 #'                     
 summarise_tb_burden <- function(df = NULL,
@@ -69,7 +67,8 @@ summarise_tb_burden <- function(df = NULL,
                                 custom_compare = NULL,
                                 compare_all_regions = FALSE,
                                 compute_rate = FALSE,
-                                compute_rate_with = "e_pop_num",
+                                compute_prop = FALSE,
+                                denominator = NULL,
                                 rate_scaling = 100000,
                                 truncate_at_zero = TRUE,
                                 annual_change = FALSE,
@@ -78,7 +77,7 @@ summarise_tb_burden <- function(df = NULL,
                                 burden_save_name = "TB_burden",
                                 dict_save_name = "TB_data_dict",
                                 verbose = TRUE) {
-
+  
   ## Deal with undefined global function notes
   . <- NULL; Area <- NULL; Year <- NULL; country <- NULL; data <- NULL; e_pop_num <- NULL;
   g_whoregion <- NULL; id <- NULL; mean_hi <- NULL; mean_lo <- NULL; n <- NULL; pop <- NULL;
@@ -105,11 +104,11 @@ summarise_tb_burden <- function(df = NULL,
     
     countries_df <- mutate(countries_df, Area = as.character(country))
   }else{
-  countries_df <- NULL
+    countries_df <- NULL
   }
   
   if (compare_to_region | compare_all_regions) {
-  
+    
     if (compare_all_regions) {
       countries_region <- NULL
     }else{
@@ -134,7 +133,7 @@ summarise_tb_burden <- function(df = NULL,
   }else{
     regions_df <- NULL
   }
-
+  
   if (compare_to_world) {
     
     world_df <- prepare_df_plot(df = df,
@@ -185,126 +184,151 @@ summarise_tb_burden <- function(df = NULL,
                                                         dict_save_name = dict_save_name,
                                                         verbose = verbose)$df %>% 
                  mutate(Area = .y)
-               )
+      )
     )
     
   }else{
     custom_group_df <- NULL
   }
   
-  
-  
-  ## Combine into a single data-set
-  all_df <- list(countries_df, regions_df, custom_group_df, world_df) 
-  all_df <- compact(all_df)
-  all_df <- suppressWarnings(reduce(all_df, bind_rows))
-  
-  ## Filter for require years
-  if (!is.null(years)) {
-    if (verbose) {
-      message("Filtering to use only data from: ", paste(years, collapse = ", "))
-    }
-    all_df <- filter(all_df, year %in% years)
-  }
-  ## Get list of areas
-  area_list <- c(unique(countries_df$Area),
-                 names(custom_compare),
-                 unique(regions_df$Area)[order(unique(regions_df$Area))],
-                 "Global")
-  
-  
-  all_df <- mutate(all_df, Area = factor(Area,
-                                         levels = area_list)) 
-  ## Get summarised estimate for points values
-  
-  sim_to_metric <- names(all_df)[grepl(metric, names(all_df))]
-  
-  conf_present <- map_lgl(conf, ~ any(grepl(., sim_to_metric))) %>% 
-    all
-  
-  if (!conf_present) {
-    if (verbose) {
-      message("Confidence intervals were not found using your specified conf, so defaulting to estimating
-              only based on the point estimate.")
-    }
-    conf <- NULL
-  }
-  
-  if (is.null(conf)) {
-    summarised_df <- all_df %>% 
-      group_by(Area, Year) %>% 
-      summarise_at(.vars = metric, 
-                   .funs = funs(mean = mean(., na.rm = TRUE),
-                                sd = sd(., na.rm =TRUE))) %>% 
-      ungroup()
-  }else{
+ 
+  if (compare_to_region | compare_all_regions | !is.null(custom_group_df) | compare_to_world) {
+    ## Combine into a single data-set
+    all_df <- list(regions_df, custom_group_df, world_df) 
+    all_df <- compact(all_df)
+    all_df <- suppressWarnings(reduce(all_df, bind_rows))
     
-    metrics <- c(metric, paste0(metric, conf))
+    ## Filter for require years
+    if (!is.null(years)) {
+      if (verbose) {
+        message("Filtering to use only data from: ", paste(years, collapse = ", "))
+      }
+      all_df <- filter(all_df, year %in% years)
+    }
+  
+    ## Get summarised estimate for points values
     
-    ## If the data comes with confidence intervals attached
-    summarised_df <- all_df %>% 
-      mutate_at(.vars = metrics, 
-                .funs = funs(ifelse(is.na(.), all_df[[metric]], .))) %>% 
-      group_by(Area, Year) %>% 
-      select_at(.vars = metrics)
+    sim_to_metric <- names(all_df)[grepl(metric, names(all_df))]
+    
+    conf_present <- map_lgl(conf, ~ any(grepl(., sim_to_metric))) %>% 
+      all
+    
+    if (!conf_present) {
+      if (verbose) {
+        message("Confidence intervals were not found using your specified conf, so defaulting to estimating
+                only based on the point estimate.")
+      }
+      conf <- NULL
+      }
+    
+    if (is.null(conf)) {
+      summarised_df <- all_df %>% 
+        group_by(Area, Year)
       
-    summarised_df$sd <- (summarised_df[[metrics[3]]] - summarised_df[[metrics[2]]]) / (2*1.96)
+      if (!compute_rate & !compute_prop) {
+        summarised_df <- summarised_df %>% 
+          summarise_at(.vars = metric, 
+                       .funs = funs(mean = mean(., na.rm = TRUE),
+                                    sd = sd(., na.rm =TRUE)))
+      }
+      
+      summarised_df <- summarised_df %>% 
+        ungroup()
+      
+    }else{
+      
+      metrics <- c(metric, paste0(metric, conf))
+      
+      ## If the data comes with confidence intervals attached
+      summarised_df <- all_df %>% 
+        mutate_at(.vars = metrics, 
+                  .funs = funs(ifelse(is.na(.), all_df[[metric]], .))) %>% 
+        group_by(Area, Year) %>% 
+        select_at(.vars = metrics)
+      
+      summarised_df$sd <- (summarised_df[[metrics[3]]] - summarised_df[[metrics[2]]]) / (2*1.96)
+      
+      summarised_df <- summarised_df %>%
+        ungroup %>% 
+        mutate(id = 1:n()) %>% 
+        group_by(Area, Year, id) %>% 
+        tidyr::nest() %>% 
+        mutate(sample = map(data, ~ data.frame(samples = suppressWarnings(
+          rnorm(samples,
+                .[[metrics[1]]],
+                .$sd)
+        )
+        ) %>% 
+          as_tibble
+        )
+        ) %>% 
+        tidyr::unnest(sample) %>% 
+        group_by(Area, Year) %>% 
+        summarise(mean = mean(samples, na.rm = TRUE),
+                  sd = sd(samples, na.rm = TRUE)) %>% 
+        ungroup
+    }
     
-    summarised_df <- summarised_df %>%
-      ungroup %>% 
-      mutate(id = 1:n()) %>% 
-      group_by(Area, Year, id) %>% 
-      tidyr::nest() %>% 
-      mutate(sample = map(data, ~ data.frame(samples = suppressWarnings(
-                                                          rnorm(samples,
-                                                                .[[metrics[1]]],
-                                                                .$sd)
-                                                         )
-                                                       ) %>% 
-                                   as_tibble
-                                 )
-                    ) %>% 
-      tidyr::unnest(sample) %>% 
-      group_by(Area, Year) %>% 
-      summarise(mean = mean(samples, na.rm = TRUE),
-                sd = sd(samples, na.rm = TRUE)) %>% 
-      ungroup
-  }
+    if (!compute_rate & !compute_prop) {
+      get_upper_lower_bounds <- function(summarised_df) {
+        summarised_df <- summarised_df %>% 
+          mutate(mean_lo = qnorm(0.025, mean, sd),
+                 mean_hi = qnorm(0.975, mean, sd)) %>% 
+          mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
+                    .funs = funs(ifelse(. %in% NaN, NA, .)))
+      }
+    }
+    
+    ## Get upper and lower confidence intervals
+    summarised_df <- summarised_df %>% 
+      get_upper_lower_bounds()
 
-  ## Get upper and lower confidence intervals
-  summarised_df <- summarised_df %>% 
-    mutate(mean_lo = qnorm(0.025, mean, sd),
-           mean_hi = qnorm(0.975, mean, sd)) %>% 
-    mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
-              .funs = funs(ifelse(. %in% NaN, NA, .)))
-  
-  if (compute_rate) {
     
-   area_pop <- all_df %>% 
-      group_by(Area, Year) %>% 
-      summarise_at(.vars = compute_rate_with, 
-                   .funs = funs(pop = sum(as.numeric(.), na.rm = TRUE)))
+    ## Clean up summarised results
+    summarised_df <- summarised_df %>% 
+      select(Area, Year, mean, mean_lo, mean_hi)
+    
+    if (truncate_at_zero) {
+      summarised_df <- summarised_df %>% 
+        mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
+                  .funs = funs(ifelse(. < 0, 0, .)))
+    }
+    
+    colnames(summarised_df) <- c("area", "year", paste0(metric, c("", "_lo", "_hi")))
+  }else{
+    summarised_df <- NULL
+  }
+  
+  ## Get list of areas
+  area_list <- names(custom_compare)
+  
+  if (!is.null(regions_df)) {
+    area_list <- c(area_list,  unique(regions_df$Area)[order(unique(regions_df$Area))])
+  }
+  
+  area_list <- c(area_list, "Global")
+  
+ if (!is.null(countries_df)) {
+   output_df <- countries_df %>% 
+     select(area = Area, year, one_of(paste0(metric, c("", "_lo", "_hi")))) 
    
-    summarised_df <- summarised_df %>% 
-      left_join(area_pop) %>% 
-      mutate_at(.vars = c("mean", "mean_lo", "mean_hi"), .funs = funs(. / pop * rate_scaling))
-  }
+   if (!is.null(years)) {
+     output_df <- filter(output_df, year %in% years)
+   }
+   
+   if (!is.null(summarised_df)) {
+     output_df <- output_df%>% 
+       bind_rows(summarised_df)
+   }
+   
+   area_list <- c(unique(countries_df$Area), area_list)
+   
+ }else{
+   output_df <- summarised_df
+ }
+     
+   
+  output_df <- mutate(output_df, area = factor(area, levels = area_list)) 
   
-  ## Clean up summarised results
-  summarised_df <- summarised_df %>% 
-    select(Area, Year, mean, mean_lo, mean_hi)
-  
-  if (truncate_at_zero) {
-    summarised_df <- summarised_df %>% 
-      mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
-                .funs = funs(ifelse(. < 0, 0, .)))
-  }
-  
-  colnames(summarised_df) <- c("area", "year", paste0(metric, c("", "_lo", "_hi")))
-  
-  return(summarised_df)
+  return(output_df)
 }
-  
-  
-  
-  
