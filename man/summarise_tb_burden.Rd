@@ -9,10 +9,9 @@ summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   samples = 1000, countries = NULL, compare_to_region = FALSE,
   compare_to_world = FALSE, custom_compare = NULL,
   compare_all_regions = FALSE, compute_rate = FALSE, compute_prop = FALSE,
-  denominator = NULL, rate_scaling = 1e+05, truncate_at_zero = TRUE,
-  annual_change = FALSE, download_data = TRUE, save = TRUE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  verbose = TRUE)
+  denominator = NULL, truncate_at_zero = TRUE, annual_change = FALSE,
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
+  dict_save_name = "TB_data_dict", verbose = TRUE)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -50,7 +49,7 @@ the metric of interests global value.}
 \item{compare_all_regions}{Logical, defaults to \code{FALSE}. Should all regions be compared.}
 
 \item{compute_rate}{Logical defaults to \code{FALSE}. Should an incidence rate (per 100,000) be computed
-for the metric of interst combined with the specified denominator.}
+for the metric of interst combined with the specified denominator. Not yet implemented.}
 
 \item{compute_prop}{Logical defaults to code{FALSE}. Should a proportion be computed for the summarised metric of interest
 divided by the demoninator.}

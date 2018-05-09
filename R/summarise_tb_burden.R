@@ -9,7 +9,7 @@
 #' @param compare_all_regions Logical, defaults to \code{FALSE}. Should all regions be compared.
 #' @param truncate_at_zero Logical, defaults to \code{TRUE}. Should lower bounds be truncated at zero?
 #' @param compute_rate Logical defaults to \code{FALSE}. Should an incidence rate (per 100,000) be computed
-#' for the metric of interst combined with the specified denominator.
+#' for the metric of interst combined with the specified denominator. Not yet implemented.
 #' @param denominator Character string identifying the variable to use as a denominator in any proportion or rate calculation.
 #' @param compute_prop Logical defaults to code{FALSE}. Should a proportion be computed for the summarised metric of interest
 #' divided by the demoninator.
@@ -69,7 +69,6 @@ summarise_tb_burden <- function(df = NULL,
                                 compute_rate = FALSE,
                                 compute_prop = FALSE,
                                 denominator = NULL,
-                                rate_scaling = 100000,
                                 truncate_at_zero = TRUE,
                                 annual_change = FALSE,
                                 download_data = TRUE,
@@ -78,9 +77,13 @@ summarise_tb_burden <- function(df = NULL,
                                 dict_save_name = "TB_data_dict",
                                 verbose = TRUE) {
   
+  if (compute_rate) {
+    stop("Calculating incidence rates is not yet implemented")
+  }
   ## Deal with undefined global function notes
   . <- NULL; Area <- NULL; Year <- NULL; country <- NULL; data <- NULL; e_pop_num <- NULL;
   g_whoregion <- NULL; id <- NULL; mean_hi <- NULL; mean_lo <- NULL; n <- NULL; pop <- NULL;
+  year <- NULL; area <- NULL;
   
   if (!is.null(countries)) {
     
