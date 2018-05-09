@@ -33,4 +33,5 @@ build_report:
 .PHONY: site
 site: 
 		 cp -r man/img docs/man/img
+		 cp -r man/figure docs/man/figure
      Rscript -e 'pkgdown::build_site()'

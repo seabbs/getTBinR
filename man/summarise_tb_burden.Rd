@@ -5,11 +5,13 @@
 \title{Summarise TB Burden}
 \usage{
 summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
-  metric_label = NULL, conf = c("_lo", "_hi"), samples = 1000,
-  countries = NULL, compare_to_region = FALSE, compare_to_world = FALSE,
-  custom_compare = NULL, compare_all_regions = FALSE,
-  compute_rate = FALSE, rate_scaling = 1e+05, annual_change = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
+  metric_label = NULL, conf = c("_lo", "_hi"), years = NULL,
+  samples = 1000, countries = NULL, compare_to_region = FALSE,
+  compare_to_world = FALSE, custom_compare = NULL,
+  compare_all_regions = FALSE, compute_rate = FALSE,
+  compute_rate_with = "e_pop_num", rate_scaling = 1e+05,
+  truncate_at_zero = TRUE, annual_change = FALSE, download_data = TRUE,
+  save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", verbose = TRUE)
 }
 \arguments{
@@ -28,6 +30,8 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 \item{conf}{Character vector specifying the name variations to use to specify the upper
 and lower confidence intervals. Defaults to \code{NULL} for which no confidence intervals
 are used. Used by \code{annual_change}.}
+
+\item{years}{Numeric vector of years. Defaults to \code{NULL} which includes all years in the data.}
 
 \item{samples}{Numeric, the number of samples to use to generate confidence
 intervals (only used when \code{conf} are present)}
@@ -48,7 +52,12 @@ the metric of interests global value.}
 \item{compute_rate}{Logical, defaults to \code{FALSE}. Should the rate be calculated using the
 summarised population.}
 
+\item{compute_rate_with}{Character, the variable to compute the rate with. Defaults to the
+using the total population (\code{"e_pop_num"}).}
+
 \item{rate_scaling}{Numeric, scaling to apply to the calculate rate. Defaults to 100,000.}
+
+\item{truncate_at_zero}{Logical, defaults to \code{TRUE}. Should lower bounds be truncated at zero?}
 
 \item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
 percentage annual change is computed for the specified metric.}
@@ -77,8 +86,33 @@ Summarise TB Burden
 }
 \examples{
 
-## Get summary data for the UK 
-summarise_tb_burden(countries = "United Kingdom", 
+
+## Get summary of the e_mdr_pct_rr_new cases in 2016
+summarise_tb_burden(metric = "e_mdr_pct_rr_new",
+                    years = 2016,
+                    samples = 100,
+                    compare_all_regions = TRUE,
+                    compare_to_world = TRUE,
+                    verbose = TRUE)
+
+## Get summary of the case fatality rate for regions and the world in 2016
+## Boostrapping CI's
+summarise_tb_burden(metric = "cfr",
+                    years = 2016,
+                    samples = 100,
+                    compare_all_regions = TRUE,
+                    compare_to_world = TRUE,
+                    verbose = FALSE)
+
+
+## Get summary data for the UK, Europe and the world
+## Bootstrapping CI's and calculating the incidence rate
+summarise_tb_burden(metric = "e_inc_num",
+                    samples = 100,
+                    countries = "United Kingdom", 
                     compare_to_world = TRUE, 
-                    compare_to_region = TRUE)
+                    compare_to_region = TRUE,
+                    compute_rate = TRUE,
+                    verbose = FALSE)
+                    
 }
