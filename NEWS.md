@@ -1,4 +1,4 @@
-# getTBinR 0.5.4.0
+# getTBinR 0.5.4
 
 ## Feature updates
 
@@ -14,7 +14,7 @@
 * Added `vdiffr` to test plots when not on CRAN.
 * Fixed bug for `map_tb_burden` which was adding duplicate variables which caused map build to fail.
 
-# getTBinR 0.5.3.0
+# getTBinR 0.5.3
 
 ## Feature updates
 
@@ -31,7 +31,7 @@ on CRAN. See [here](https://github.com/seabbs/getTBinR/issues/29)
 * Added `Makefile` at top level and for `data-raw` to build the package.
 
 
-# getTBinR 0.5.2.0
+# getTBinR 0.5.2
 
 ## Feature updates
 
@@ -44,7 +44,7 @@ on CRAN. See [here](https://github.com/seabbs/getTBinR/issues/29)
 * Added downloads badge to readme.
 
 
-# getTBinR 0.5.1.0
+# getTBinR 0.5.1
 
 ## Feature updates
 
@@ -64,7 +64,7 @@ directory when `get_data` functions are called.
 * Added a case study exploring global trends in Tuberculosis incidence rates
 * Added a work around using `utils::read.csv` for downloading the data when `fread::data.table` fails. Related to this [issue](https://github.com/seabbs/getTBinR/issues/18).
 
-# getTBinR 0.5.0.0
+# getTBinR 0.5.0
 
 ## Feature updates
 
@@ -80,7 +80,7 @@ directory when `get_data` functions are called.
 * Switched Imported packages from github versions to CRAN versions.
 * Switched to saving data only to temporary directory (`tempdir()`)
 
-# getTBinR 0.1.0.0
+# getTBinR 0.1.0
 
 ## Feature updates
 
@@ -90,7 +90,7 @@ directory when `get_data` functions are called.
 
 * Added a `NEWS.md` file to track changes to the package.
 
-# getTBinR 0.0.5.0
+# getTBinR 0.0.5
 
 ## Feature updates
 
@@ -101,7 +101,7 @@ directory when `get_data` functions are called.
 * Updated the package site.
 * Refactored plotting code.
 
-# getTBinR 0.0.1.0
+# getTBinR 0.0.1
 
 ## Feature updates
 

@@ -1,5 +1,11 @@
 #' Summarise TB Burden
 #'
+#'
+#' @description Summarise TB burden metrics by region, globally, and for custom groupings. For variables with 
+#' uncertainty represented by confidence intervals boostrapping can be used (assuming a normal distribution) to 
+#' include this in any estimated summary measures. Currently two statistics are supported; the mean (with 
+#' 95\% confidence intervals) and the median (with 95\% interquartile range). An incidence rate and weighted proportion
+#' statistic are in development.
 #' @param years Numeric vector of years. Defaults to \code{NULL} which includes all years in the data. 
 #' @param samples Numeric, the number of samples to use to generate confidence 
 #' intervals (only used when \code{conf} are present)
@@ -22,7 +28,7 @@
 #' @importFrom purrr map map2_dfr compact reduce map_lgl
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr nest unnest
-#' @importFrom stats qnorm sd
+#' @importFrom stats qnorm sd median quantile
 #' @examples
 #' 
 #' 
