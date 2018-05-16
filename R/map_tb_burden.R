@@ -27,7 +27,7 @@
 #' 
 #' #' ## Map raw incidence rates
 #' map_tb_burden(year = 2012:2015, facet = "year")
-#' 
+#' \dontrun{
 #' ## Map log10 scaled incidence rates
 #' map_tb_burden(trans = "log10")
 #' 
@@ -42,7 +42,7 @@
 #' 
 #' ## Can also use a discrete metric if one is available
 #' map_tb_burden(metric = "g_whoregion", metric_label = "WHO world region")
-#' 
+#' }
 map_tb_burden <- function(df = NULL, dict = NULL,
                            metric = "e_inc_100k",
                            metric_label = NULL,
