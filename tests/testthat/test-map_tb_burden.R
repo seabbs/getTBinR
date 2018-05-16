@@ -7,6 +7,7 @@ test_that("map_tb_burden produces a plot", {
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
   vdiffr::expect_doppelganger("base-map", plot)
 })
 
