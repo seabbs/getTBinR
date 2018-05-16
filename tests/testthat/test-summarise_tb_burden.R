@@ -10,7 +10,7 @@ test_that("summarise_tb_burden can summarise a variable
                                            countries = test_countries,
                                            years = test_year,
                                            conf = NULL)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, file = "../../tests/test-files/summarise_tb_burden/test-01.rds")
 })
 
@@ -22,7 +22,7 @@ test_that("summarise_tb_burden can summarise a variable
                                            compare_to_region = TRUE,
                                            years = test_year + 1,
                                            conf = NULL)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, file = "../../tests/test-files/summarise_tb_burden/test-02.rds")
           })
 
@@ -34,7 +34,7 @@ test_that("summarise_tb_burden can summarise a variable
                                            compare_all_regions = TRUE,
                                            years = test_year + 2,
                                            conf = NULL)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, file = "../../tests/test-files/summarise_tb_burden/test-03.rds")
           })
 
@@ -47,7 +47,7 @@ test_that("summarise_tb_burden can summarise a variable
                                                               hi = c("Nigeria", "India")),
                                            years = test_year + 3,
                                            conf = NULL)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, file = "../../tests/test-files/summarise_tb_burden/test-04.rds")
             expect_error(
               summarise_tb_burden(metric = "e_inc_num",
@@ -75,7 +75,7 @@ test_that("summarise_tb_burden can summarise a variable
                                            compare_to_world = TRUE,
                                            years = test_year + 4,
                                            conf = NULL)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, file = "../../tests/test-files/summarise_tb_burden/test-05.rds")
           })
 
@@ -89,7 +89,7 @@ test_that("summarise_tb_burden can summarise a variable
                                            truncate_at_zero = FALSE,
                                            years = test_year + 4,
                                            conf = NULL)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, file = "../../tests/test-files/summarise_tb_burden/test-06.rds")
           })
 
@@ -103,7 +103,7 @@ test_that("summarise_tb_burden can summarise a variable
                                            compare_all_regions = TRUE,
                                            compare_to_world = TRUE,
                                            years = test_year + 4)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, 
                                 file = "../../tests/test-files/summarise_tb_burden/test-07.rds", 
                                 tolerance = 10)
@@ -119,7 +119,7 @@ test_that("summarise_tb_burden can summarise a variable
                                            compare_all_regions = TRUE,
                                            compare_to_world = TRUE,
                                            years = test_year + 4)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, 
                                 file = "../../tests/test-files/summarise_tb_burden/test-08.rds", 
                                 tolerance = 10)
@@ -134,7 +134,7 @@ test_that("summarise_tb_burden can summarise a variable using the median", {
                                            compare_all_regions = TRUE,
                                            compare_to_world = TRUE,
                                            years = test_year + 4)
-            
+            skip_on_cran()
             expect_known_output(sum_tab, 
                                 file = "../../tests/test-files/summarise_tb_burden/test-09.rds")
           })
