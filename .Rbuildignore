@@ -13,6 +13,4 @@
 ^cran-comments\.md$
 ^Makefile$
 ^pkgnet$
-^man/figure$
-^man/img$
 ^tests/figs$
