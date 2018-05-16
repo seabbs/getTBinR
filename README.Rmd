@@ -42,14 +42,14 @@ devtools::install_github("seabbs/getTBinR")
 
 Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map global TB incidence rates in 2016 (this will also download and save both the TB burden data and its data dictionary, if they are not found locally, to R's temporary directory),
 
-```{r map-tb-incidence-eur, fig.height = 5, fig.width = 10}
+```{r map-tb-incidence-eur, fig.height = 4, fig.width = 8}
 getTBinR::map_tb_burden(metric = "e_inc_100k",
                         year = 2016)
 ```
 
 Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,
 
-```{r plot-tb-incidence-eur, fig.height=10, fig.width = 10}
+```{r plot-tb-incidence-eur, fig.height = 8}
 getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
@@ -58,7 +58,7 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
 
 In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change (note that this functionality is currently only available in the development version of the package),
 
-```{r plot-tb-incidence-eur-per, fig.height=10, fig.width = 10}
+```{r plot-tb-incidence-eur-per, fig.height = 8}
 getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
