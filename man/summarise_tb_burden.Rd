@@ -79,7 +79,11 @@ A tibble containing summarised values (with 95% confidence intervals) for the me
 stratified by area and year.
 }
 \description{
-Summarise TB Burden
+Summarise TB burden metrics by region, globally, and for custom groupings. For variables with
+uncertainty represented by confidence intervals bootstrapping can be used (assuming a normal distribution) to
+include this in any estimated summary measures. Currently two statistics are supported; the mean (with
+95\% confidence intervals) and the median (with 95\% interquartile range). An incidence rate and weighted proportion
+statistic are in development.
 }
 \examples{
 

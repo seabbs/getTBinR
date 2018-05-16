@@ -3,7 +3,7 @@ title: Get WHO Tuberculosis Data in R
 url: https://samabbott.co.uk/getTBinR/
 template:
   params:
-    bootswatch: flatly
+    bootswatch: lumen
 
 navbar:
   type: inverse

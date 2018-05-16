@@ -3,7 +3,8 @@ Type: Package
 Version: 0.5.4
 Title: Get WHO Tuberculosis Data
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
-                     email = "contact@samabbott.co.uk"))
+                     email = "contact@samabbott.co.uk",
+                     comment = c(ORCID = "0000-0001-8057-8037")))
 Description: Facilitates easy import of analysis ready World Health Organisation Tuberculosis data and provides plotting functions for exploratory data analysis.
 License: GPL-3 | file LICENSE
 VignetteBuilder: knitr
