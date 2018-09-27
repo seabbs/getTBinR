@@ -6,10 +6,11 @@
 
 ## Package updates
 
-* Updated docs to reflect new year of data
-* Updated examples to use the new year of data
-* Updated README
+* Updated docs to reflect new year of data.
+* Updated examples to use the new year of data as standard.
+* Updated README to always use the current year of data.
 * Updated all vignettes to reflect new data or be fixed to historic data as appropriate.
+* Update site with links out to blog posts using the newest version of [`pkgdown`](http://pkgdown.r-lib.org).
 
 # getTBinR 0.5.4
 

@@ -123,7 +123,7 @@ statistic are in development." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="https://www.samabbott.co.uk/tags/gettbinr/">Blog posts</a>
+      <a href="https://www.samabbott.co.uk/tags/who/">Blog posts</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -182,6 +182,12 @@ statistic are in development.</p>
       <td><p>Dataframe of TB burden data, as sourced by <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.
 If not specified then will source the WHO TB burden data, either locally if available
 or directly from the WHO (if <code>download_data = TRUE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>dict</th>
+      <td><p>A tibble of the data dictionary. See <code><a href='get_data_dict.html'>get_data_dict</a></code>
+for details. If not supplied the function will attempt to load a saved version of the
+dictionary. If this fails and <code>download_data = TRUE</code> then the dictionary will be downloaded.</p></td>
     </tr>
     <tr>
       <th>metric</th>
@@ -248,6 +254,31 @@ Future options will include the weighted proportion and the summarised incidence
       <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> then the
 percentage annual change is computed for the specified metric.</p></td>
     </tr>
+    <tr>
+      <th>download_data</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. If not found locally should the data be
+downloaded from the specified URL?</p></td>
+    </tr>
+    <tr>
+      <th>save</th>
+      <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
+<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>burden_save_name</th>
+      <td><p>Character string, name to save the data under. Defaults to
+"TB_burden".</p></td>
+    </tr>
+    <tr>
+      <th>dict_save_name</th>
+      <td><p>Character string, name to save dictionary under. Defaults to
+<code>TB_data_dict</code>.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Should additional status and progress messages
+be displayed.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -259,7 +290,7 @@ stratified by area and year.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the most recent year of data</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'>max</span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'>max</span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
 
 <span class='co'>## Get summary of the e_mdr_pct_rr_new cases</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mdr_pct_rr_new"</span>,
@@ -267,7 +298,7 @@ stratified by area and year.</p>
                     <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
                     <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp6oIrUV/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2017</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp84wfNu/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2017</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
 #&gt; <span class='message'>                only based on the point estimate.</span></div><div class='output co'>#&gt; [90m# A tibble: 7 x 5[39m
 #&gt;   area    year e_mdr_pct_rr_new e_mdr_pct_rr_new_lo e_mdr_pct_rr_new_hi
 #&gt;   [3m[90m&lt;fct&gt;[39m[23m  [3m[90m&lt;int&gt;[39m[23m            [3m[90m&lt;dbl&gt;[39m[23m               [3m[90m&lt;dbl&gt;[39m[23m               [3m[90m&lt;dbl&gt;[39m[23m
