@@ -209,8 +209,7 @@ mp1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Incidence Rates"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Incidence rates are per 100,000 population"</span>)
 
-mp1 
-<span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_path).</span></code></pre></div>
+mp1 </code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/make-inc-map-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Map TB case fatality ratio -2016</span>
 mp2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"cfr"</span>, 
@@ -220,8 +219,7 @@ mp2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Case Fatality Ratio"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Case fatality rate estimated by the WHO"</span>)
 
-mp2
-<span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_path).</span></code></pre></div>
+mp2</code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/make-cfr-map-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>Whilst quantitative insights are hard to glean from the above maps we can see that incidence rates appear to be highest in Africa and Asia (interpretation based on data from 2016). It also looks like the case fatality ratios are highest in these regions as well.</p>
 <p>The WHO have only provided estimates for the case fatality ratio from the most recent year of data, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted. The first step is to write a function to summarise rates on regional levels, we do this using <code><a href="http://dplyr.tidyverse.org/reference/summarise_all.html">dplyr::summarise_at</a></code>.</p>

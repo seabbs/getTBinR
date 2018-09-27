@@ -6,11 +6,12 @@
 \usage{
 plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, conf = c("_lo", "_hi"), countries = NULL,
-  compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
-  trans = "identity", scales = "fixed", interactive = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", viridis_palette = "viridis",
-  viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
+  years = NULL, compare_to_region = FALSE, facet = NULL,
+  annual_change = FALSE, trans = "identity", scales = "fixed",
+  interactive = FALSE, download_data = TRUE, save = TRUE,
+  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
+  viridis_palette = "viridis", viridis_direction = -1,
+  viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -31,6 +32,8 @@ then no confidence intervals are shown. When \code{annual_change = TRUE} the con
 intervals represent the annual percentage change in the metrics confidence intervals.}
 
 \item{countries}{A character string specifying the countries to plot.}
+
+\item{years}{Numeric vector of years. Defaults to \code{NULL} which includes all years in the data.}
 
 \item{compare_to_region}{Logical, defaults to \code{FALSE}. If \code{TRUE} all
 countries that share a region with those listed in \code{countries} will be plotted.

@@ -6,11 +6,12 @@
 \usage{
 plot_tb_burden_overview(df = NULL, dict = NULL,
   metric = "e_inc_100k", metric_label = NULL, countries = NULL,
-  compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
-  trans = "identity", scales = "free_y", interactive = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", viridis_palette = "viridis",
-  viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
+  years = NULL, compare_to_region = FALSE, facet = NULL,
+  annual_change = FALSE, trans = "identity", scales = "free_y",
+  interactive = FALSE, download_data = TRUE, save = TRUE,
+  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
+  viridis_palette = "viridis", viridis_direction = -1,
+  viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -26,6 +27,8 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 \item{metric_label}{Character string specifying the metric label to use.}
 
 \item{countries}{A character string specifying the countries to plot.}
+
+\item{years}{Numeric vector of years. Defaults to \code{NULL} which includes all years in the data.}
 
 \item{compare_to_region}{Logical, defaults to \code{FALSE}. If \code{TRUE} all
 countries that share a region with those listed in \code{countries} will be plotted.

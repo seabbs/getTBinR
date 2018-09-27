@@ -211,8 +211,7 @@ dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_da
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">df =</span> tb_burden, <span class="dt">dict =</span> dict, <span class="dt">year =</span> <span class="dv">2016</span>,
               <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Global Tuberculosis Incidence Rates - 2016"</span>,
-       <span class="dt">subtitle =</span> <span class="st">""</span>, <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)
-<span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_path).</span></code></pre></div>
+       <span class="dt">subtitle =</span> <span class="st">""</span>, <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/map-tb-2016-inc-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>This shows that incidence rates are highly heterogeneous between regions. To get an better understanding of this lets plot incidence rates by WHO region,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_inc_region &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
@@ -325,8 +324,7 @@ high_inc_up_countries &lt;-<span class="st"> </span><span class="kw">intersect</
                <span class="dt">facet =</span> <span class="st">"country"</span>, <span class="dt">scales =</span> <span class="st">"free_y"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Tuberculosis Detection Rates"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Showing countries with the highest incidence rates in which incidence rates are increasing"</span>,
-       <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)
-<span class="co">#&gt; Warning: Removed 1 rows containing missing values (geom_path).</span></code></pre></div>
+       <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/plot-tb-inc-high-case-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>The plot above shows that for some countries such as Mozambique and South Africa the increases in incidence rates may be linked to increases in the cases detection rate. However, it is clear that this is not the case for all countries, in particular the Congo which has seen increasing incidence rates and falling case detection rates.</p>
 <p>This case study has highlighted the fact that whilst Tuberculosis is declining globally this is not the case in all countries. In order for the global eradication of Tuberculosis to be a success it is vital that resources are targeted at those countries which are struggling to reduce their incidence rates.</p>

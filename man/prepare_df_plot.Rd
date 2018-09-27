@@ -5,7 +5,7 @@
 \title{Generic Function to Prepare TB Burden Data for Plotting}
 \usage{
 prepare_df_plot(df = NULL, dict = NULL, metric = "e_inc_100k",
-  conf = NULL, metric_label = NULL, countries = NULL,
+  conf = NULL, metric_label = NULL, countries = NULL, years = NULL,
   compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
   trans = "identity", download_data = TRUE, save = TRUE,
   burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
@@ -29,6 +29,8 @@ are used. Used by \code{annual_change}.}
 \item{metric_label}{Character string specifying the metric label to use.}
 
 \item{countries}{A character string specifying the countries to plot.}
+
+\item{years}{Numeric vector of years. Defaults to \code{NULL} which includes all years in the data.}
 
 \item{compare_to_region}{Logical, defaults to \code{FALSE}. If \code{TRUE} all
 countries that share a region with those listed in \code{countries} will be plotted.
