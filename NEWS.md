@@ -2,6 +2,7 @@
 
 ## Feature updates
 
+* Added a years filter to `plot_tb_burden` and `plot_tb_burden_overview`. This allows a range of years to be plotted. The default is all years which was the previous de facto default.  
 
 ## Package updates
 

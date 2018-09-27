@@ -18,7 +18,7 @@
 #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
 #' @param viridis_end Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
 #' #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
-#' @inheritParams prepare_df_plot
+#' @inheritParams prepare_df_plot 
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
 #' @export
@@ -58,6 +58,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            metric = "e_inc_100k",
                            metric_label = NULL,
                            conf = c("_lo", "_hi"), countries = NULL,
+                           years = NULL,
                            compare_to_region = FALSE,
                            facet = NULL, annual_change = FALSE,
                            trans = "identity",
@@ -78,6 +79,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                              conf = conf,
                              metric_label = metric_label,
                              countries = countries,
+                             years = years,
                              compare_to_region = compare_to_region,
                              facet = facet,
                              trans = trans,
@@ -93,13 +95,13 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   plot <- ggplot(df_prep$df, aes_string(x = "year", 
                                         y = paste0("`", df_prep$metric_label, "`"),
                                         col = "country", fill = "country")) +
-    geom_line()
+    geom_line(na.rm = TRUE)
   
   if (!is.null(conf)) {
     plot <- plot +
       geom_ribbon(aes_string(ymin = paste0(metric, conf[1]),
                              ymax =  paste0(metric, conf[2]), 
-                             col = NULL), alpha = 0.2) 
+                             col = NULL), alpha = 0.2, na.rm = TRUE) 
   }
   
   plot <- plot +

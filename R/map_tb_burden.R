@@ -74,6 +74,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                              metric = metric,
                              metric_label = metric_label,
                              countries = countries,
+                             years = year,
                              compare_to_region = compare_to_region,
                              facet = facet,
                              download_data = download_data,
@@ -131,7 +132,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                             key = "country",
                             frame = "Year")) +
     geom_polygon(aes_string(group = "group")) + 
-    geom_path(aes(group = group), alpha = 0.4, col = "black") +
+    geom_path(aes(group = group), alpha = 0.4, col = "black", na.rm=TRUE) +
     coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = "bottom") +

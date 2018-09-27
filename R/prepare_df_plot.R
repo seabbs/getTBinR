@@ -23,6 +23,7 @@
 #' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
 #' @inheritParams get_tb_burden
 #' @inheritParams search_data_dict
+#' @inheritParams summarise_tb_burden
 #' @import magrittr
 #' @importFrom dplyr filter arrange_at mutate mutate_at pull funs lag group_by ungroup arrange slice
 #' @importFrom purrr map
@@ -41,6 +42,7 @@ prepare_df_plot <- function(df = NULL,
                             conf = NULL,
                             metric_label = NULL,
                             countries = NULL,
+                            years = NULL,
                             compare_to_region = FALSE,
                             facet = NULL,
                             annual_change = FALSE,
@@ -88,7 +90,7 @@ prepare_df_plot <- function(df = NULL,
     df_filt <- df %>% 
       filter(g_whoregion %in% unique(df_filt$g_whoregion))
   }
-  
+
   if(is.null(metric_label)) {
     metric_label <- search_data_dict(var = metric, 
                                      dict = dict,
@@ -135,6 +137,13 @@ prepare_df_plot <- function(df = NULL,
                       unique)) %>% 
     mutate(Year = year)
   
+  ## Filter for require years
+  if (!is.null(years)) {
+    if (verbose) {
+      message("Filtering to use only data from: ", paste(years, collapse = ", "))
+    }
+    df_filt <- filter(df_filt, year %in% years)
+  }
   
   df_prep_list <- list(df_filt, facet, metric_label)
   names(df_prep_list) <- c("df", "facet", "metric_label")
