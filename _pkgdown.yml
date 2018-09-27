@@ -28,11 +28,16 @@ navbar:
       text: "Functions"
       href: reference/index.html
     - text: News
-      href: news/index.html
+      menu:
+      - text: "Blog posts"
+        href: https://www.samabbott.co.uk/tags/gettbinr/
+      - text: "------------------"
+      - text: "Change log"
+        href: news/index.html  
     - icon: fa-github fa-lg
       text: "Github"
       href: https://github.com/seabbs/getTBinR
-      
+ 
 reference:
     - title: Get WHO Tuberculosis Data
       desc:  Retrieve or load the WHO data into R
