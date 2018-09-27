@@ -5,6 +5,8 @@
 
 ## Package updates
 
+* Updated docs to reflect new year of data
+* Updated examples to use the new year of data
 
 # getTBinR 0.5.4
 

@@ -26,7 +26,7 @@
 #' map_tb_burden()
 #' 
 #' #' ## Map raw incidence rates
-#' map_tb_burden(year = 2012:2015, facet = "year")
+#' map_tb_burden(year = 2014:2017, facet = "year")
 #' \dontrun{
 #' ## Map log10 scaled incidence rates
 #' map_tb_burden(trans = "log10")
