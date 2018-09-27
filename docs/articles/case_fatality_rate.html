@@ -112,9 +112,9 @@
 
     
     
-<p>This case study investigates World Health Organisation (WHO) estimates of the case fatality ratio for Tuberculosis (TB) in 2016. It then estimates case fatality rates using a simple approximation and compares the results to the WHO estimates. It was adapted from <a href="https://www.samabbott.co.uk/post/est-cfr-gettbinr/">this</a> blog post.</p>
+<p>This case study investigates World Health Organisation (WHO) estimates of the case fatality ratio for Tuberculosis (TB). It then estimates case fatality rates using a simple approximation and compares the results to the WHO estimates. It was adapted from <a href="https://www.samabbott.co.uk/post/est-cfr-gettbinr/">this</a> blog post.</p>
 <p>It is estimated that in 2016 there was more than 10 million cases of active TB, with 1.3 million deaths (<a href="https://en.wikipedia.org/wiki/Tuberculosis">source</a>). This makes TB the leading cause of death from an infectious disease. Despite the high numbers of cases globally, and high levels of mortality, TB is often considered a historic disease in developed countries. However, in recent years previously declining trends have flattened out and there is increasing concern surrounding multi-drug resistant TB, which has a greatly reduced the rate of successful treatment (<a href="http://www.who.int/mediacentre/factsheets/fs104/en/">source</a>).</p>
-<p>A key component of TB control is reducing the case fatality rate from active TB, this post explores WHO estimates for the TB case fatality rate in 2016 and then estimates the case fatality rates in previous years. The first step is to download and install the required packages.</p>
+<p>A key component of TB control is reducing the case fatality rate from active TB, this post explores WHO estimates for the TB case fatality rate in the most recent year of data and then estimates the case fatality rates in previous years. The first step is to download and install the required packages.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("getTBinR")</span>
 <span class="kw">library</span>(getTBinR)
 <span class="co">#  install.packages("tidyverse")</span>
@@ -200,31 +200,31 @@ dict
 <td align="left">Estimated TB case fatality ratio</td>
 </tr></tbody>
 </table>
-<p>Maps can be a useful first visualisation for summarising spatial data, although they can also be misleading for more complex comparisons. Lets look at global TB incidence rates (per 100,000 population) in 2016, and the WHO estimate of the case fatality ratio in the same year.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Map TB incidence rates - 2016</span>
-mp1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">year =</span> <span class="dv">2016</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>, 
+<p>Maps can be a useful first visualisation for summarising spatial data, although they can also be misleading for more complex comparisons. Lets look at global TB incidence rates (per 100,000 population) in the most recent year of data (when written 2016), and the WHO estimate of the case fatality ratio in the same year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Map TB incidence rates</span>
+mp1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">verbose =</span> <span class="ot">FALSE</span>, 
                      <span class="dt">viridis_palette =</span> <span class="st">"cividis"</span>, 
                      <span class="dt">viridis_direction =</span> <span class="op">-</span><span class="dv">1</span>
                      ) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Incidence Rates - 2016"</span>,
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Incidence Rates"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Incidence rates are per 100,000 population"</span>)
 
 mp1 
 <span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_path).</span></code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/make-inc-map-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Map TB case fatality ratio -2016</span>
-mp2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"cfr"</span>, <span class="dt">year =</span> <span class="dv">2016</span>, 
+mp2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"cfr"</span>, 
                      <span class="dt">viridis_palette =</span> <span class="st">"cividis"</span>, 
                      <span class="dt">viridis_direction =</span> <span class="op">-</span><span class="dv">1</span>,
                      <span class="dt">verbose=</span> <span class="ot">FALSE</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Case Fatality Ratio - 2016"</span>,
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Tuberculosis Case Fatality Ratio"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Case fatality rate estimated by the WHO"</span>)
 
 mp2
 <span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_path).</span></code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/make-cfr-map-1.png" width="672" style="display: block; margin: auto;"></p>
-<p>Whilst quantitative insights are hard to glean from the above maps we can see that incidence rates appear to be highest in Africa and Asia. It also looks like the case fatality ratios are highest in these regions as well.</p>
-<p>The WHO have only provided estimates for the case fatality ratio for 2016, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted. The first step is to write a function to summarise rates on regional levels, we do this using <code><a href="http://dplyr.tidyverse.org/reference/summarise_all.html">dplyr::summarise_at</a></code>.</p>
+<p>Whilst quantitative insights are hard to glean from the above maps we can see that incidence rates appear to be highest in Africa and Asia (interpretation based on data from 2016). It also looks like the case fatality ratios are highest in these regions as well.</p>
+<p>The WHO have only provided estimates for the case fatality ratio from the most recent year of data, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted. The first step is to write a function to summarise rates on regional levels, we do this using <code><a href="http://dplyr.tidyverse.org/reference/summarise_all.html">dplyr::summarise_at</a></code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Make function to summarise rates in a given region
 rate_region &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">df =</span> <span class="ot">NULL</span>, <span class="dt">metric =</span> <span class="ot">NULL</span>) {
   
@@ -265,7 +265,7 @@ plot_rate_region &lt;-<span class="st"> </span><span class="cf">function</span>(
 <span class="st">  </span><span class="kw">rate_region</span>(<span class="dt">metric =</span> <span class="st">"e_inc_num"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot_rate_region</span>(<span class="dt">metric =</span> <span class="st">"e_inc_num"</span>,
                    <span class="dt">title =</span> <span class="st">"Tuberculosis Incidence Rates"</span>,
-                   <span class="dt">subtitle =</span> <span class="st">"By region: 2000 to 2016"</span>,
+                   <span class="dt">subtitle =</span> <span class="st">"By region and year"</span>,
                    <span class="dt">scales =</span> <span class="st">"free_y"</span>,
                    <span class="dt">y_lab =</span> <span class="st">"Tuberculosis Incidence Rates (per 100,000 population)"</span>)
 
@@ -276,18 +276,18 @@ plot_inc_region <span class="op">+</span>
 <span class="st">  </span><span class="kw">rate_region</span>(<span class="dt">metric =</span> <span class="st">"e_mort_num"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot_rate_region</span>(<span class="dt">metric =</span> <span class="st">"e_mort_num"</span>,
                    <span class="dt">title =</span> <span class="st">"Tuberculosis Mortality Rates"</span>,
-                   <span class="dt">subtitle =</span> <span class="st">"By region: 2000 to 2016"</span>,
+                   <span class="dt">subtitle =</span> <span class="st">"By region and year"</span>,
                    <span class="dt">scales =</span> <span class="st">"free_y"</span>,
                    <span class="dt">y_lab =</span> <span class="st">"Tuberculosis Mortality Rates (per 100,000 population)"</span>)
 
 plot_mort_region <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/plot-tb-mort-reg-1.png" width="672" style="display: block; margin: auto;"></p>
-<p>This gives an encouraging picture with both incidence rates and mortality rates declining in all regions. As we observed from the maps above incidence rates (and mortality rates) are highest in Africa, and South-East Asia. We also see that the rate of decline in incidence rates varies across regions, with South-East Asia and the Eastern Mediterranean experiencing the slowest decreases. Interestingly it also appears that mortality rates in some areas are decreasing more quickly than incidence rates, this is most notable for Europe. As mortality rates and incidence rates are highly correlated to explore in more depth we need to estimate the case fatality ratio for all years in the data.</p>
+<p>This gives an encouraging picture with both incidence rates and mortality rates declining in all regions (as of 2016). As we observed from the maps above incidence rates (and mortality rates) are highest in Africa, and South-East Asia. We also see that the rate of decline in incidence rates varies across regions, with South-East Asia and the Eastern Mediterranean experiencing the slowest decreases. Interestingly it also appears that mortality rates in some areas are decreasing more quickly than incidence rates, this is most notable for Europe. As mortality rates and incidence rates are highly correlated to explore in more depth we need to estimate the case fatality ratio for all years in the data.</p>
 <p>To validate our estimates we first extract the regional estimates for the case fatality ratio based on the WHO estimates, by taking the mean (and standard deviation) of case fatality ratios by country in each region. This gives an estimate for case fatality rates at the regional level as well as the between country variation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Summarise Case fatality rate by region - only availble for 2016
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Summarise Case fatality rate by region - only availble for most recent year
 region_case_fat &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw">max</span>(year)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(year, g_whoregion) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(cfr, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
             <span class="dt">sd =</span> <span class="kw">sd</span>(cfr, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -299,14 +299,14 @@ region_case_fat &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%<
 region_case_fat
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt; # Groups:   year [1]</span>
-<span class="co">#&gt;    year g_whoregion            mean    sd    ll   lll    hh   hhh</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  2016 Africa                  NaN   NaN   NaN   NaN   NaN   NaN</span>
-<span class="co">#&gt; 2  2016 Americas                NaN   NaN   NaN   NaN   NaN   NaN</span>
-<span class="co">#&gt; 3  2016 Eastern Mediterranean   NaN   NaN   NaN   NaN   NaN   NaN</span>
-<span class="co">#&gt; 4  2016 Europe                  NaN   NaN   NaN   NaN   NaN   NaN</span>
-<span class="co">#&gt; 5  2016 South-East Asia         NaN   NaN   NaN   NaN   NaN   NaN</span>
-<span class="co">#&gt; 6  2016 Western Pacific         NaN   NaN   NaN   NaN   NaN   NaN</span></code></pre></div>
+<span class="co">#&gt;    year g_whoregion             mean     sd      ll      lll    hh   hhh</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1  2017 Africa                0.237  0.0797  0.157   0.0773  0.317 0.396</span>
+<span class="co">#&gt; 2  2017 Americas              0.134  0.147  -0.0131 -0.160   0.281 0.428</span>
+<span class="co">#&gt; 3  2017 Eastern Mediterranean 0.143  0.185  -0.0415 -0.226   0.328 0.512</span>
+<span class="co">#&gt; 4  2017 Europe                0.0788 0.0438  0.0350 -0.00887 0.123 0.167</span>
+<span class="co">#&gt; 5  2017 South-East Asia       0.137  0.0456  0.0916  0.0460  0.183 0.229</span>
+<span class="co">#&gt; 6  2017 Western Pacific       0.0847 0.0440  0.0407 -0.00327 0.129 0.173</span></code></pre></div>
 <p>We then estimate the regional case fatality ratio by taking the regional mortality rate and dividing it by the regional incidence rate for each year. We also do this for the high and low mortality rate estimates (using the lowest estimate for TB mortality and the highest estimate for incidence rates to get the lower bound, and vice versa for the high bound). This gives,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">region_case_fatality &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">rate_region</span>(<span class="dt">metric =</span> <span class="st">"e_inc_num"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -338,35 +338,32 @@ region_case_fatality
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot_region_case_fatality &lt;-<span class="st"> </span>region_case_fatality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">plot_rate_region</span>(<span class="dt">metric =</span> <span class="st">"case_fat_rate"</span>,
                    <span class="dt">title =</span> <span class="st">"Tuberculosis Case Fatality Rate"</span>,
-                   <span class="dt">subtitle =</span> <span class="st">"By WHO region: 2000 to 2016"</span>,
+                   <span class="dt">subtitle =</span> <span class="st">"By WHO region abd year"</span>,
                    <span class="dt">scales =</span> <span class="st">"free_y"</span>,
                    <span class="dt">y_lab =</span> <span class="st">"Estimated TB Case Fatality Ratio"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Case fatality ratio estimated by taking the ratio of TB mortality rates and TB incidence rates each year in all years. For 2016 </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Case fatality ratio estimated by taking the ratio of TB mortality rates and TB incidence rates each year in all years. For the most recent year </span>
 <span class="st">       the mean regional case fatality ratio estimated by the WHO is also shown (along with one and two standard deviations)"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> region_case_fat, <span class="kw">aes</span>(<span class="dt">y =</span> mean, <span class="dt">x =</span> year, <span class="dt">fill =</span> g_whoregion), <span class="dt">shape =</span> <span class="dv">2</span>, <span class="dt">size =</span> <span class="fl">1.3</span>, <span class="dt">col =</span> <span class="st">"black"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_linerange</span>(<span class="dt">data =</span> region_case_fat, <span class="kw">aes</span>(<span class="dt">ymin =</span> ll, <span class="dt">ymax =</span> hh, <span class="dt">y =</span> <span class="ot">NULL</span>), <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">size =</span> <span class="fl">1.2</span>, <span class="dt">col =</span> <span class="st">"black"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_linerange</span>(<span class="dt">data =</span> region_case_fat, <span class="kw">aes</span>(<span class="dt">ymin =</span> lll, <span class="dt">ymax =</span> hhh, <span class="dt">y =</span> <span class="ot">NULL</span>), <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">size =</span> <span class="fl">1.2</span>, <span class="dt">col =</span> <span class="st">"black"</span>)
   
 plot_region_case_fatality <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)
-<span class="co">#&gt; Warning: Removed 6 rows containing missing values (geom_point).</span>
-<span class="co">#&gt; Warning: Removed 6 rows containing missing values (geom_linerange).</span>
-
-<span class="co">#&gt; Warning: Removed 6 rows containing missing values (geom_linerange).</span></code></pre></div>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/plot-regional-cfr-1.png" width="672" style="display: block; margin: auto;"></p>
-<p>We see that the estimate using mortality rates / incidence rates compares well to the estimate published for 2016 by the WHO, although there is substantial within country variation. For all regions our estimate has substantial uncertainty. The plot suggests that the TB case fatality ratio is decreasing over time in all regions, although this reduction appears to be very minimal in some regions (such as the Americas, Africa, and the Eastern Mediterranean). It is likely that this trend does not hold across all countries, but this is beyond the scope of this post (watch this space).</p>
-<p>As a first look at the case fatality ratios in individual countries we can quickly pull out the 10 countries with the highest case fatality ratio in 2016. These are,</p>
+<p>We see that the estimate using mortality rates / incidence rates compares well to the estimate published for the most recent year by the WHO, although there is substantial within country variation. For all regions our estimate has substantial uncertainty. The plot suggests that the TB case fatality ratio is decreasing over time in all regions (as of 2016), although this reduction appears to be very minimal in some regions (such as the Americas, Africa, and the Eastern Mediterranean). It is likely that this trend does not hold across all countries, but this is beyond the scope of this post (watch this space).</p>
+<p>As a first look at the case fatality ratios in individual countries we can quickly pull out the 10 countries with the highest case fatality ratio in the most recent year of data. These are,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">highest_case_fataltity_countries &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw">max</span>(year)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(cfr)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">pull</span>(country)
 
 highest_case_fataltity_countries
-<span class="co">#&gt;  [1] "Afghanistan"         "Albania"             "Algeria"            </span>
-<span class="co">#&gt;  [4] "American Samoa"      "Andorra"             "Angola"             </span>
-<span class="co">#&gt;  [7] "Anguilla"            "Antigua and Barbuda" "Argentina"          </span>
-<span class="co">#&gt; [10] "Armenia"</span></code></pre></div>
+<span class="co">#&gt;  [1] "Saint Vincent and the Grenadines" "United Arab Emirates"            </span>
+<span class="co">#&gt;  [3] "Anguilla"                         "Guinea-Bissau"                   </span>
+<span class="co">#&gt;  [5] "Dominica"                         "Ghana"                           </span>
+<span class="co">#&gt;  [7] "Lesotho"                          "Nigeria"                         </span>
+<span class="co">#&gt;  [9] "United Republic of Tanzania"      "Saudi Arabia"</span></code></pre></div>
 <p>We can then plot the TB case fatality ratio in these countries, as well as the TB incidence rates over time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Plot overview of cases fatality ratios
 plot_high_cfr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"cfr"</span>, 
@@ -389,13 +386,13 @@ plot_high_cfr</code></pre></div>
                                              <span class="dt">viridis_end =</span> <span class="fl">0.9</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Tuberculosis Incidence Rates - 2000:2016"</span>,
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"right"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Tuberculosis Incidence Rate"</span>,
        <span class="dt">subtitle =</span> <span class="st">"In the countries with the 10 highest TB case fatality ratios"</span>)
 
 plot_inc_high_cfr </code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/plot-inc-rates-high-cfr-1.png" width="672" style="display: block; margin: auto;"></p>
-<p>We see that for some countries on this list (i.e Anguilla, the United Arab Emirates, and Barbados) the high case fatality ratio estimates are likely to be based on a very low sample size and therefore may not be trustworthy. Worryingly however for several countries (Lesotho, Tanzania, Kenya, Mozambique, Guinea-Bissau, and Ghana, and Nigeria) with extremely high case fatality ratios incidence rates are also very high, which will correspond to very high mortality rates. These countries are all in Africa, which as a region also had the highest incidence rates and the highest case fatality ratio. It is clear from these plots that Africa, and these countries in particular should be a particular focus of TB control efforts if TB mortality rates are to be reduced more quickly.</p>
+<p>We see that for some countries on this list (i.e Anguilla, the United Arab Emirates, and Dominica) the high case fatality ratio estimates are likely to be based on a very low sample size and therefore may not be trustworthy. Worryingly however for several countries (Lesotho, Tanzania, Guinea-Bissau, and Ghana, and Nigeria) with extremely high case fatality ratios incidence rates are also very high, which will correspond to very high mortality rates. These countries are all in Africa, which as a region also had the highest incidence rates and the highest case fatality ratio. It is clear from these plots that Africa, and these countries in particular should be a particular focus of TB control efforts if TB mortality rates are to be reduced more quickly.</p>
 <p>The WHO TB data contains many more variables not mentioned in this post and getTBinR contains additional features, see the <a href="https://www.samabbott.co.uk/getTBinR/">site for getTBinR</a> for details. See <a href="https://gist.github.com/seabbs">my gists</a> for code snippets to get you started in exploring the data further. Package feature requests are welcome, preferably by filing a <a href="https://github.com/seabbs/getTBinR/issues">GitHub issue</a>, as are suggestions for additional data sources to include.</p>
   </div>
 

@@ -7,6 +7,8 @@
 
 * Updated docs to reflect new year of data
 * Updated examples to use the new year of data
+* Updated README
+* Updated all vignettes to reflect new data or be fixed to historic data as appropriate.
 
 # getTBinR 0.5.4
 
