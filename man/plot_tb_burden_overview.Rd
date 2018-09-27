@@ -4,11 +4,11 @@
 \alias{plot_tb_burden_overview}
 \title{Plot an overview of TB Burden for Multiple Countries}
 \usage{
-plot_tb_burden_overview(df = NULL, dict = NULL, metric = "e_inc_100k",
-  metric_label = NULL, countries = NULL, compare_to_region = FALSE,
-  facet = NULL, annual_change = FALSE, trans = "identity",
-  scales = "free_y", interactive = FALSE, download_data = TRUE,
-  save = TRUE, burden_save_name = "TB_burden",
+plot_tb_burden_overview(df = NULL, dict = NULL,
+  metric = "e_inc_100k", metric_label = NULL, countries = NULL,
+  compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
+  trans = "identity", scales = "free_y", interactive = FALSE,
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", viridis_palette = "viridis",
   viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
 }

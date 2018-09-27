@@ -6,7 +6,8 @@
 \usage{
 get_data(url = NULL, data_trans_fn = NULL, download_data = TRUE,
   save = TRUE, save_name = NULL, return = TRUE, verbose = TRUE,
-  use_utils = FALSE, use_direct_download = FALSE, retry_download = TRUE)
+  use_utils = FALSE, use_direct_download = FALSE,
+  retry_download = TRUE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data to download.}

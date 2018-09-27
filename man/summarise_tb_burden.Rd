@@ -9,8 +9,8 @@ summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   samples = 1000, countries = NULL, compare_to_region = FALSE,
   compare_to_world = FALSE, custom_compare = NULL,
   compare_all_regions = FALSE, stat = "mean", denominator = NULL,
-  truncate_at_zero = TRUE, annual_change = FALSE, download_data = TRUE,
-  save = TRUE, burden_save_name = "TB_burden",
+  truncate_at_zero = TRUE, annual_change = FALSE,
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", verbose = TRUE)
 }
 \arguments{
