@@ -17,11 +17,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-This case study investigates World Health Organisation (WHO) estimates of the case fatality ratio for Tuberculosis (TB) in 2016. It then estimates case fatality rates using a simple approximation and compares the results to the WHO estimates. It was adapted from [this](https://www.samabbott.co.uk/post/est-cfr-gettbinr/) blog post. 
+This case study investigates World Health Organisation (WHO) estimates of the case fatality ratio for Tuberculosis (TB). It then estimates case fatality rates using a simple approximation and compares the results to the WHO estimates. It was adapted from [this](https://www.samabbott.co.uk/post/est-cfr-gettbinr/) blog post. 
 
 It is estimated that in 2016 there was more than 10 million cases of active TB, with 1.3 million deaths ([source](https://en.wikipedia.org/wiki/Tuberculosis)). This makes TB the leading cause of death from an infectious disease. Despite the high numbers of cases globally, and high levels of mortality, TB is often considered a historic disease in developed countries. However, in recent years previously declining trends have flattened out and there is increasing concern surrounding multi-drug resistant TB, which has a greatly reduced the rate of successful treatment ([source](http://www.who.int/mediacentre/factsheets/fs104/en/)).
 
-A key component of TB control is reducing the case fatality rate from active TB, this post explores WHO estimates for the TB case fatality rate in 2016 and then estimates the case fatality rates in previous years. The first step is to download and install the required packages.
+A key component of TB control is reducing the case fatality rate from active TB, this post explores WHO estimates for the TB case fatality rate in the most recent year of data and then estimates the case fatality rates in previous years. The first step is to download and install the required packages.
 
 ```{r get-packages, message = FALSE}
 # install.packages("getTBinR")
@@ -52,15 +52,15 @@ search_data_dict("cfr", verbose = FALSE) %>%
   knitr::kable()
 ```
 
-Maps can be a useful first visualisation for summarising spatial data, although they can also be misleading for more complex comparisons. Lets look at global TB incidence rates (per 100,000 population) in 2016, and the WHO estimate of the case fatality ratio in the same year.
+Maps can be a useful first visualisation for summarising spatial data, although they can also be misleading for more complex comparisons. Lets look at global TB incidence rates (per 100,000 population) in the most recent year of data (when written 2016), and the WHO estimate of the case fatality ratio in the same year.
 
 ```{r make-inc-map, message = FALSE}
-# Map TB incidence rates - 2016
-mp1 <- map_tb_burden(year = 2016, verbose = FALSE, 
+# Map TB incidence rates
+mp1 <- map_tb_burden(verbose = FALSE, 
                      viridis_palette = "cividis", 
                      viridis_direction = -1
                      ) +
-  labs(title = "Map of Tuberculosis Incidence Rates - 2016",
+  labs(title = "Map of Tuberculosis Incidence Rates",
        subtitle = "Incidence rates are per 100,000 population")
 
 mp1 
@@ -68,20 +68,20 @@ mp1
 
 ```{r make-cfr-map, message = FALSE}
 # Map TB case fatality ratio -2016
-mp2 <- map_tb_burden(metric = "cfr", year = 2016, 
+mp2 <- map_tb_burden(metric = "cfr", 
                      viridis_palette = "cividis", 
                      viridis_direction = -1,
                      verbose= FALSE) +
-  labs(title = "Map of Tuberculosis Case Fatality Ratio - 2016",
+  labs(title = "Map of Tuberculosis Case Fatality Ratio",
        subtitle = "Case fatality rate estimated by the WHO")
 
 mp2
 ```
 
-Whilst quantitative insights are hard to glean from the above maps we can see that incidence rates appear to be highest in Africa and Asia. It also looks like the case fatality ratios are highest in these regions as well.
+Whilst quantitative insights are hard to glean from the above maps we can see that incidence rates appear to be highest in Africa and Asia (interpretation based on data from 2016). It also looks like the case fatality ratios are highest in these regions as well.
 
 
-The WHO have only provided estimates for the case fatality ratio for 2016, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted. The first step is to write a function to summarise rates on regional levels, we do this using `dplyr::summarise_at`.
+The WHO have only provided estimates for the case fatality ratio from the most recent year of data, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted. The first step is to write a function to summarise rates on regional levels, we do this using `dplyr::summarise_at`.
 
 ```{r fn-sum-rates}
 ## Make function to summarise rates in a given region
@@ -132,7 +132,7 @@ plot_inc_region <- tb_burden %>%
   rate_region(metric = "e_inc_num") %>% 
   plot_rate_region(metric = "e_inc_num",
                    title = "Tuberculosis Incidence Rates",
-                   subtitle = "By region: 2000 to 2016",
+                   subtitle = "By region and year",
                    scales = "free_y",
                    y_lab = "Tuberculosis Incidence Rates (per 100,000 population)")
 
@@ -146,7 +146,7 @@ plot_mort_region <- tb_burden %>%
   rate_region(metric = "e_mort_num") %>% 
   plot_rate_region(metric = "e_mort_num",
                    title = "Tuberculosis Mortality Rates",
-                   subtitle = "By region: 2000 to 2016",
+                   subtitle = "By region and year",
                    scales = "free_y",
                    y_lab = "Tuberculosis Mortality Rates (per 100,000 population)")
 
@@ -154,14 +154,14 @@ plot_mort_region +
   labs(caption = "Source: World Health Organisation")
 ```
 
-This gives an encouraging picture with both incidence rates and mortality rates declining in all regions. As we observed from the maps above incidence rates (and mortality rates) are highest in Africa, and South-East Asia. We also see that the rate of decline in incidence rates varies across regions, with South-East Asia and the Eastern Mediterranean experiencing the slowest decreases. Interestingly it also appears that mortality rates in some areas are decreasing more quickly than incidence rates, this is most notable for Europe. As mortality rates and incidence rates are highly correlated to explore in more depth we need to estimate the case fatality ratio for all years in the data. 
+This gives an encouraging picture with both incidence rates and mortality rates declining in all regions (as of 2016). As we observed from the maps above incidence rates (and mortality rates) are highest in Africa, and South-East Asia. We also see that the rate of decline in incidence rates varies across regions, with South-East Asia and the Eastern Mediterranean experiencing the slowest decreases. Interestingly it also appears that mortality rates in some areas are decreasing more quickly than incidence rates, this is most notable for Europe. As mortality rates and incidence rates are highly correlated to explore in more depth we need to estimate the case fatality ratio for all years in the data. 
 
 To validate our estimates we first extract the regional estimates for the case fatality ratio based on the WHO estimates, by taking the mean (and standard deviation) of case fatality ratios by country in each region. This gives an estimate for case fatality rates at the regional level as well as the between country variation.
 
 ```{r sum-cfr-region}
-## Summarise Case fatality rate by region - only availble for 2016
+## Summarise Case fatality rate by region - only availble for most recent year
 region_case_fat <- tb_burden %>% 
-  filter(year %in% 2016) %>% 
+  filter(year %in% max(year)) %>% 
   group_by(year, g_whoregion) %>% 
   summarise(mean = mean(cfr, na.rm = TRUE),
             sd = sd(cfr, na.rm = TRUE)) %>% 
@@ -193,10 +193,10 @@ We can then plot this using the `plot_rate_region` function outlined above, comb
 plot_region_case_fatality <- region_case_fatality %>%
   plot_rate_region(metric = "case_fat_rate",
                    title = "Tuberculosis Case Fatality Rate",
-                   subtitle = "By WHO region: 2000 to 2016",
+                   subtitle = "By WHO region abd year",
                    scales = "free_y",
                    y_lab = "Estimated TB Case Fatality Ratio") +
-  labs(caption = "Case fatality ratio estimated by taking the ratio of TB mortality rates and TB incidence rates each year in all years. For 2016 
+  labs(caption = "Case fatality ratio estimated by taking the ratio of TB mortality rates and TB incidence rates each year in all years. For the most recent year 
        the mean regional case fatality ratio estimated by the WHO is also shown (along with one and two standard deviations)") +
   geom_point(data = region_case_fat, aes(y = mean, x = year, fill = g_whoregion), shape = 2, size = 1.3, col = "black") +
   geom_linerange(data = region_case_fat, aes(ymin = ll, ymax = hh, y = NULL), alpha = 0.4, size = 1.2, col = "black") +
@@ -206,13 +206,13 @@ plot_region_case_fatality +
   labs(caption = "Source: World Health Organisation")
 ```
 
-We see that the estimate using mortality rates / incidence rates compares well to the estimate published for 2016 by the WHO, although there is substantial within country variation. For all regions our estimate has substantial uncertainty. The plot suggests that the TB case fatality ratio is decreasing over time in all regions, although this reduction appears to be very minimal in some regions (such as the Americas, Africa, and the Eastern Mediterranean). It is likely that this trend does not hold across all countries, but this is beyond the scope of this post (watch this space). 
+We see that the estimate using mortality rates / incidence rates compares well to the estimate published for the most recent year by the WHO, although there is substantial within country variation. For all regions our estimate has substantial uncertainty. The plot suggests that the TB case fatality ratio is decreasing over time in all regions (as of 2016), although this reduction appears to be very minimal in some regions (such as the Americas, Africa, and the Eastern Mediterranean). It is likely that this trend does not hold across all countries, but this is beyond the scope of this post (watch this space). 
 
-As a first look at the case fatality ratios in individual countries we can quickly pull out the 10 countries with the highest case fatality ratio in 2016. These are,
+As a first look at the case fatality ratios in individual countries we can quickly pull out the 10 countries with the highest case fatality ratio in the most recent year of data. These are,
 
 ```{r pull-highest-cfr-countries}
 highest_case_fataltity_countries <- tb_burden %>% 
-  filter(year %in% 2016) %>% 
+  filter(year %in% max(year)) %>% 
   arrange(desc(cfr)) %>% 
   slice(1:10) %>% 
   pull(country)
@@ -247,14 +247,14 @@ plot_inc_high_cfr <- plot_tb_burden_overview(countries = highest_case_fataltity_
                                              viridis_end = 0.9) +
   theme(legend.position = "none") +
   theme_minimal() +
-  theme(legend.position = "bottom") +
-  labs(title = "Tuberculosis Incidence Rates - 2000:2016",
+  theme(legend.position = "right") +
+  labs(title = "Tuberculosis Incidence Rate",
        subtitle = "In the countries with the 10 highest TB case fatality ratios")
 
 plot_inc_high_cfr 
 ```
 
-We see that for some countries on this list (i.e Anguilla, the United Arab Emirates, and Barbados) the high case fatality ratio estimates are likely to be based on a very low sample size and therefore may not be trustworthy. Worryingly however for several countries (Lesotho, Tanzania, Kenya, Mozambique, Guinea-Bissau, and Ghana, and Nigeria) with extremely high case fatality ratios incidence rates are also very high, which will correspond to very high mortality rates. These countries are all in Africa, which as a region also had the highest incidence rates and the highest case fatality ratio. It is clear from these plots that Africa, and these countries in particular should be a particular focus of TB control efforts if TB mortality rates are to be reduced more quickly.
+We see that for some countries on this list (i.e Anguilla, the United Arab Emirates, and Dominica) the high case fatality ratio estimates are likely to be based on a very low sample size and therefore may not be trustworthy. Worryingly however for several countries (Lesotho, Tanzania, Guinea-Bissau, and Ghana, and Nigeria) with extremely high case fatality ratios incidence rates are also very high, which will correspond to very high mortality rates. These countries are all in Africa, which as a region also had the highest incidence rates and the highest case fatality ratio. It is clear from these plots that Africa, and these countries in particular should be a particular focus of TB control efforts if TB mortality rates are to be reduced more quickly.
 
 
 The WHO TB data contains many more variables not mentioned in this post and getTBinR contains additional features, see the [site for getTBinR](https://www.samabbott.co.uk/getTBinR/) for details. See [my gists](https://gist.github.com/seabbs) for code snippets to get you started in exploring the data further. Package feature requests are welcome, preferably by filing a [GitHub issue](https://github.com/seabbs/getTBinR/issues), as are suggestions for additional data sources to include.

@@ -6,6 +6,7 @@
 #' If not specified then will source the WHO TB burden data, either locally if available
 #' or directly from the WHO (if \code{download_data = TRUE}).
 #' @param countries A character string specifying the countries to plot.
+#' @param years Numeric vector of years. Defaults to \code{NULL} which includes all years in the data. 
 #' @param metric Character string specifying the metric to plot
 #' @param metric_label Character string specifying the metric label to use. 
 #' @param facet Character string, the name of the variable to facet by.
@@ -41,6 +42,7 @@ prepare_df_plot <- function(df = NULL,
                             conf = NULL,
                             metric_label = NULL,
                             countries = NULL,
+                            years = NULL,
                             compare_to_region = FALSE,
                             facet = NULL,
                             annual_change = FALSE,
@@ -88,7 +90,7 @@ prepare_df_plot <- function(df = NULL,
     df_filt <- df %>% 
       filter(g_whoregion %in% unique(df_filt$g_whoregion))
   }
-  
+
   if(is.null(metric_label)) {
     metric_label <- search_data_dict(var = metric, 
                                      dict = dict,
@@ -135,6 +137,13 @@ prepare_df_plot <- function(df = NULL,
                       unique)) %>% 
     mutate(Year = year)
   
+  ## Filter for require years
+  if (!is.null(years)) {
+    if (verbose) {
+      message("Filtering to use only data from: ", paste(years, collapse = ", "))
+    }
+    df_filt <- filter(df_filt, year %in% years)
+  }
   
   df_prep_list <- list(df_filt, facet, metric_label)
   names(df_prep_list) <- c("df", "facet", "metric_label")

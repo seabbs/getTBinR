@@ -21,7 +21,7 @@ docs:
 
 #update readme
 README.md: README.Rmd
-		Rscript -e 'rmarkdown::render("README.Rmd")'
+		Rscript -e 'rmarkdown::render("README.Rmd")' && \
 		rm README.html
 
 #generate pknet report
@@ -32,6 +32,6 @@ build_report:
 #build pkgdown site
 .PHONY: site
 site: 
-		 cp -r man/img docs/man/
-		 cp -r man/figure docs/man/
+		 cp -r man/img docs/man/ && \
+		 cp -r man/figure docs/man/ && \
      Rscript -e 'pkgdown::build_site()'

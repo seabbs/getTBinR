@@ -2,7 +2,7 @@ context("plot_tb_burden_overview")
 
 test_that("plot_tb_burden_overview produces a plot", {
   
-  plot <- plot_tb_burden_overview(download_data = TRUE, save = TRUE)
+  plot <- plot_tb_burden_overview(download_data = TRUE, save = TRUE, years = NULL)
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])

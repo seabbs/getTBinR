@@ -6,7 +6,6 @@
 #' include this in any estimated summary measures. Currently two statistics are supported; the mean (with 
 #' 95\% confidence intervals) and the median (with 95\% interquartile range). An incidence rate and weighted proportion
 #' statistic are in development.
-#' @param years Numeric vector of years. Defaults to \code{NULL} which includes all years in the data. 
 #' @param samples Numeric, the number of samples to use to generate confidence 
 #' intervals (only used when \code{conf} are present)
 #' @param compare_to_world Logical, defaults to \code{FALSE}. Should a comparision be made to 
@@ -31,19 +30,22 @@
 #' @importFrom stats qnorm sd median quantile
 #' @examples
 #' 
+#' ## Get the most recent year of data
+#' tb_burden <- get_tb_burden()
+#' most_recent_year <- max(tb_burden$year)
 #' 
-#' ## Get summary of the e_mdr_pct_rr_new cases in 2016
+#' ## Get summary of the e_mdr_pct_rr_new cases
 #' summarise_tb_burden(metric = "e_mdr_pct_rr_new",
-#'                     years = 2016,
+#'                     years =  most_recent_year,
 #'                     samples = 100,
 #'                     compare_all_regions = TRUE,
 #'                     compare_to_world = TRUE,
 #'                     verbose = TRUE)
 #' 
-#' ## Get median (with 95% IQR) of the case fatality rate for regions and the world in 2016
+#' ## Get median (with 95% IQR) of the case fatality rate for regions and the world
 #' ## Boostrapping uncertainty in country measures
 #' summarise_tb_burden(metric = "cfr",
-#'                     years = 2016,
+#'                     years =  most_recent_year,
 #'                     samples = 100,
 #'                     stat = "median",
 #'                     compare_all_regions = TRUE,

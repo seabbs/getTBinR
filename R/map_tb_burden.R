@@ -6,7 +6,7 @@
 #' @param year Numeric, indicating the year of data to map. Defaults to the latest year in the data.
 #' If \code{interactive = TRUE} then multiple years may be passed as a vector, the result will then be animated over years.
 #' @param fill_var_type A character string, defaults to \code{NULL}. To set the fill variable type to be
-#' discrete use "discrete" and to be continous use "continous".
+#' discrete use "discrete" and to be continuous use "continuous".
 #' @inheritParams plot_tb_burden
 #' @seealso plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -26,7 +26,7 @@
 #' map_tb_burden()
 #' 
 #' #' ## Map raw incidence rates
-#' map_tb_burden(year = 2012:2015, facet = "year")
+#' map_tb_burden(year = 2014:2017, facet = "year")
 #' \dontrun{
 #' ## Map log10 scaled incidence rates
 #' map_tb_burden(trans = "log10")
@@ -74,6 +74,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                              metric = metric,
                              metric_label = metric_label,
                              countries = countries,
+                             years = year,
                              compare_to_region = compare_to_region,
                              facet = facet,
                              download_data = download_data,
@@ -131,7 +132,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                             key = "country",
                             frame = "Year")) +
     geom_polygon(aes_string(group = "group")) + 
-    geom_path(aes(group = group), alpha = 0.4, col = "black") +
+    geom_path(aes(group = group), alpha = 0.4, col = "black", na.rm=TRUE) +
     coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = "bottom") +

@@ -9,8 +9,8 @@ summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   samples = 1000, countries = NULL, compare_to_region = FALSE,
   compare_to_world = FALSE, custom_compare = NULL,
   compare_all_regions = FALSE, stat = "mean", denominator = NULL,
-  truncate_at_zero = TRUE, annual_change = FALSE, download_data = TRUE,
-  save = TRUE, burden_save_name = "TB_burden",
+  truncate_at_zero = TRUE, annual_change = FALSE,
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", verbose = TRUE)
 }
 \arguments{
@@ -87,19 +87,22 @@ statistic are in development.
 }
 \examples{
 
+## Get the most recent year of data
+tb_burden <- get_tb_burden()
+most_recent_year <- max(tb_burden$year)
 
-## Get summary of the e_mdr_pct_rr_new cases in 2016
+## Get summary of the e_mdr_pct_rr_new cases
 summarise_tb_burden(metric = "e_mdr_pct_rr_new",
-                    years = 2016,
+                    years =  most_recent_year,
                     samples = 100,
                     compare_all_regions = TRUE,
                     compare_to_world = TRUE,
                     verbose = TRUE)
 
-## Get median (with 95\% IQR) of the case fatality rate for regions and the world in 2016
+## Get median (with 95\% IQR) of the case fatality rate for regions and the world
 ## Boostrapping uncertainty in country measures
 summarise_tb_burden(metric = "cfr",
-                    years = 2016,
+                    years =  most_recent_year,
                     samples = 100,
                     stat = "median",
                     compare_all_regions = TRUE,

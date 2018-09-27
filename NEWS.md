@@ -1,3 +1,17 @@
+# getTBinR 0.5.5
+
+## Feature updates
+
+* Added a years filter to `plot_tb_burden` and `plot_tb_burden_overview`. This allows a range of years to be plotted. The default is all years which was the previous de facto default.  
+
+## Package updates
+
+* Updated docs to reflect new year of data.
+* Updated examples to use the new year of data as standard.
+* Updated README to always use the current year of data.
+* Updated all vignettes to reflect new data or be fixed to historic data as appropriate.
+* Update site with links out to blog posts using the newest version of [`pkgdown`](http://pkgdown.r-lib.org).
+
 # getTBinR 0.5.4
 
 ## Feature updates
