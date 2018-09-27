@@ -7,9 +7,6 @@
 
 ## Comment
 
-- Fixed large image files sizes in README.
-- Removed test images from built package as tests only run not on CRAN.
-
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note

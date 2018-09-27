@@ -6,7 +6,7 @@
 #' @param year Numeric, indicating the year of data to map. Defaults to the latest year in the data.
 #' If \code{interactive = TRUE} then multiple years may be passed as a vector, the result will then be animated over years.
 #' @param fill_var_type A character string, defaults to \code{NULL}. To set the fill variable type to be
-#' discrete use "discrete" and to be continous use "continous".
+#' discrete use "discrete" and to be continuous use "continuous".
 #' @inheritParams plot_tb_burden
 #' @seealso plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country

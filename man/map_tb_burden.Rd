@@ -26,7 +26,7 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 \item{metric_label}{Character string specifying the metric label to use.}
 
 \item{fill_var_type}{A character string, defaults to \code{NULL}. To set the fill variable type to be
-discrete use "discrete" and to be continous use "continous".}
+discrete use "discrete" and to be continuous use "continuous".}
 
 \item{countries}{A character string specifying the countries to plot.}
 
