@@ -126,3 +126,16 @@ test_that("annual_change correctly transforms metric and confidence intervals", 
                                           df = test_df, 
                                           annual_change = TRUE)$df)
 })
+
+test_that("years are correctly filtered for.", {
+  
+  result_df <- dplyr::filter(result_df, year == 2000)
+  
+  skip_on_cran()
+  expect_equal(result_df, prepare_df_plot(metric = "e_inc_100k", 
+                                          conf = c("_lo", "_hi"),
+                                          years = 2000,
+                                          df = test_df, 
+                                          annual_change = FALSE)$df)
+})
+
