@@ -6,6 +6,7 @@
 #' If not specified then will source the WHO TB burden data, either locally if available
 #' or directly from the WHO (if \code{download_data = TRUE}).
 #' @param countries A character string specifying the countries to plot.
+#' @param years Numeric vector of years. Defaults to \code{NULL} which includes all years in the data. 
 #' @param metric Character string specifying the metric to plot
 #' @param metric_label Character string specifying the metric label to use. 
 #' @param facet Character string, the name of the variable to facet by.
@@ -23,7 +24,6 @@
 #' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
 #' @inheritParams get_tb_burden
 #' @inheritParams search_data_dict
-#' @inheritParams summarise_tb_burden
 #' @import magrittr
 #' @importFrom dplyr filter arrange_at mutate mutate_at pull funs lag group_by ungroup arrange slice
 #' @importFrom purrr map

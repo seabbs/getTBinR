@@ -30,7 +30,7 @@ navbar:
     - text: News
       menu:
       - text: "Blog posts"
-        href: https://www.samabbott.co.uk/tags/gettbinr/
+        href: https://www.samabbott.co.uk/tags/who/
       - text: "------------------"
       - text: "Change log"
         href: news/index.html  

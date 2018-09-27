@@ -18,6 +18,10 @@ summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
 If not specified then will source the WHO TB burden data, either locally if available
 or directly from the WHO (if \code{download_data = TRUE}).}
 
+\item{dict}{A tibble of the data dictionary. See \code{\link[getTBinR]{get_data_dict}}
+for details. If not supplied the function will attempt to load a saved version of the
+dictionary. If this fails and \code{download_data = TRUE} then the dictionary will be downloaded.}
+
 \item{metric}{Character string specifying the metric to plot}
 
 \item{metric_label}{Character string specifying the metric label to use.}
@@ -54,6 +58,21 @@ Future options will include the weighted proportion and the summarised incidence
 
 \item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
 percentage annual change is computed for the specified metric.}
+
+\item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
+downloaded from the specified URL?}
+
+\item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
+\code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
+
+\item{burden_save_name}{Character string, name to save the data under. Defaults to
+"TB_burden".}
+
+\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
+\code{TB_data_dict}.}
+
+\item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
+be displayed.}
 }
 \value{
 A tibble containing summarised values (with 95% confidence intervals) for the metric of choice
