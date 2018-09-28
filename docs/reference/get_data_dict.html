@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the WHO Data Dictionary for TB Data — get_data_dict • Get WHO Tuberculosis Data in R</title>
+<title>Get the WHO Data Dictionary for TB Data — get_data_dict • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,6 +28,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
 <meta property="og:title" content="Get the WHO Data Dictionary for TB Data — get_data_dict" />
@@ -64,8 +70,8 @@ will instead download the data." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">Get WHO Tuberculosis Data in R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
+        <a class="navbar-link" href="../index.html">getTBinR</a>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.5</span>
       </span>
     </div>
 
@@ -104,16 +110,6 @@ will instead download the data." />
     </li>
   </ul>
 </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
-     
-    Functions
-  </a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     News
@@ -131,13 +127,28 @@ will instead download the data." />
   </ul>
 </li>
 <li>
-  <a href="https://github.com/seabbs/getTBinR">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
      
-    Github
+    Functions
   </a>
 </li>
       </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/seabbs/getTBinR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -226,7 +237,7 @@ variable_name, dataset, code_list, definition.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmp2ODvyx/TB_data_dict.rds</span></div><div class='input'>
+<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpDlJkb2/TB_data_dict.rds</span></div><div class='input'>
 <span class='fu'>head</span>(<span class='no'>dict</span>)</div><div class='output co'>#&gt; [90m# A tibble: 6 x 4[39m
 #&gt;   variable_name  dataset code_list definition                                  
 #&gt;   [3m[90m&lt;chr&gt;[39m[23m          [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;chr&gt;[39m[23m     [3m[90m&lt;chr&gt;[39m[23m                                       
@@ -266,6 +277,23 @@ variable_name, dataset, code_list, definition.</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '6c737a6c632ea7eab75c912a6b07b5f1',
+    indexName: 'gettbinr',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

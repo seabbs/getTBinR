@@ -11,7 +11,7 @@ Facilitates easy import of analysis ready World Health Organisation Tuberculosis
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://www.samabbott.co.uk/getTBinR}
+  \item \url{https://www.samabbott.co.uk/getTBinR}
   \item \url{https://github.com/seabbs/getTBinR}
   \item Report bugs at \url{https://github.com/seabbs/getTBinR/issues}
 }

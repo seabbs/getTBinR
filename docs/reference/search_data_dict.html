@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Search the WHO TB Data Dictionary by Variable Name. — search_data_dict • Get WHO Tuberculosis Data in R</title>
+<title>Search the WHO TB Data Dictionary by Variable Name. — search_data_dict • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,6 +28,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
 <meta property="og:title" content="Search the WHO TB Data Dictionary by Variable Name. — search_data_dict" />
@@ -62,8 +68,8 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">Get WHO Tuberculosis Data in R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
+        <a class="navbar-link" href="../index.html">getTBinR</a>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.5</span>
       </span>
     </div>
 
@@ -102,16 +108,6 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
     </li>
   </ul>
 </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
-     
-    Functions
-  </a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     News
@@ -129,13 +125,28 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
   </ul>
 </li>
 <li>
-  <a href="https://github.com/seabbs/getTBinR">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
      
-    Github
+    Functions
   </a>
 </li>
       </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/seabbs/getTBinR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -220,12 +231,12 @@ searched for.</p>
     <pre class="examples"><div class='input'>
 <span class='co'>## Search for a known variable</span>
 <span class='co'>## Download and save the dictionary if it is not available locally</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp2ODvyx/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; [90m# A tibble: 1 x 4[39m
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpDlJkb2/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; [90m# A tibble: 1 x 4[39m
 #&gt;   variable_name dataset                code_list definition               
 #&gt;   [3m[90m&lt;chr&gt;[39m[23m         [3m[90m&lt;chr&gt;[39m[23m                  [3m[90m&lt;chr&gt;[39m[23m     [3m[90m&lt;chr&gt;[39m[23m                    
 #&gt; [90m1[39m country       Country identification [90m"[39m[90m"[39m        Country or territory name</div><div class='input'>
 <span class='co'>## Search for all variables mentioning mortality in their definition</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp2ODvyx/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; [90m# A tibble: 9 x 4[39m
+<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpDlJkb2/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; [90m# A tibble: 9 x 4[39m
 #&gt;   variable_name      dataset  code_list definition                             
 #&gt;   [3m[90m&lt;chr&gt;[39m[23m              [3m[90m&lt;chr&gt;[39m[23m    [3m[90m&lt;chr&gt;[39m[23m     [3m[90m&lt;chr&gt;[39m[23m                                  
 #&gt; [90m1[39m e_mort_100k        Estimat… [90m"[39m[90m"[39m        Estimated mortality of TB cases (all f…
@@ -239,7 +250,7 @@ searched for.</p>
 #&gt; [90m9[39m e_mort_tbhiv_100k… Estimat… [90m"[39m[90m"[39m        Estimated mortality of TB cases who ar…</div><div class='input'>
 <span class='co'>## Search for both a known variable and for mortality being mentioned in there definition</span>
 <span class='co'>## Duplicate entries will be omitted.</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp2ODvyx/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; [90m# A tibble: 9 x 4[39m
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpDlJkb2/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; [90m# A tibble: 9 x 4[39m
 #&gt;   variable_name      dataset  code_list definition                             
 #&gt;   [3m[90m&lt;chr&gt;[39m[23m              [3m[90m&lt;chr&gt;[39m[23m    [3m[90m&lt;chr&gt;[39m[23m     [3m[90m&lt;chr&gt;[39m[23m                                  
 #&gt; [90m1[39m e_mort_exc_tbhiv_… Estimat… [90m"[39m[90m"[39m        Estimated mortality of TB cases (all f…
@@ -281,6 +292,23 @@ searched for.</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '6c737a6c632ea7eab75c912a6b07b5f1',
+    indexName: 'gettbinr',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

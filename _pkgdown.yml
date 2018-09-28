@@ -1,10 +1,14 @@
-
-title: Get WHO Tuberculosis Data in R
 url: samabbott.co.uk/getTBinR/
 template:
   params:
     bootswatch: lumen
+    docsearch:
+      api_key: 6c737a6c632ea7eab75c912a6b07b5f1
+      index_name: gettbinr
 
+development:
+  mode: unreleased
+  
 navbar:
   type: inverse
   left:
@@ -22,22 +26,17 @@ navbar:
       menu:
       - text: Explore Global Tuberculosis
         href: http://www.seabbs.co.uk/shiny/ExploreGlobalTB/
- 
-  right:
-    - icon: fa-file-code-o 
-      text: "Functions"
-      href: reference/index.html
     - text: News
       menu:
       - text: "Blog posts"
         href: https://www.samabbott.co.uk/tags/who/
       - text: "------------------"
       - text: "Change log"
-        href: news/index.html  
-    - icon: fa-github fa-lg
-      text: "Github"
-      href: https://github.com/seabbs/getTBinR
- 
+        href: news/index.html
+    - icon: fa-file-code-o 
+      text: "Functions"
+      href: reference/index.html
+        
 reference:
     - title: Get WHO Tuberculosis Data
       desc:  Retrieve or load the WHO data into R

@@ -8,7 +8,7 @@ Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
 Description: Facilitates easy import of analysis ready World Health Organisation Tuberculosis data and provides plotting functions for exploratory data analysis.
 License: GPL-3 | file LICENSE
 VignetteBuilder: knitr
-URL: http://www.samabbott.co.uk/getTBinR, 
+URL: https://www.samabbott.co.uk/getTBinR, 
      https://github.com/seabbs/getTBinR
 BugReports: https://github.com/seabbs/getTBinR/issues
 Encoding: UTF-8
