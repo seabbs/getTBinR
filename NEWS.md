@@ -1,3 +1,14 @@
+# getTBinR 0.5.6
+
+## Feature updates
+
+
+## Package updates
+
+* Updated custom legend setting in `map_tb_burden` to work with new version of rlang.
+* Updated `map_tb_burden` tests to work with new version of R lang.
+* Added dev to pkgdown site yml for docs prior to release.
+
 # getTBinR 0.5.5
 
 ## Feature updates
