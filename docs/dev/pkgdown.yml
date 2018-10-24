@@ -1,0 +1,11 @@
+pandoc: 1.19.2.1
+pkgdown: 1.1.0.9000
+pkgdown_sha: 8ede1b57ad5e044bf0860bc9b15764c2d28bc4d2
+articles:
+  case_fatality_rate: case_fatality_rate.html
+  case_study_global_trends: case_study_global_trends.html
+  intro: intro.html
+urls:
+  reference: samabbott.co.uk/getTBinR//reference
+  article: samabbott.co.uk/getTBinR//articles
+
