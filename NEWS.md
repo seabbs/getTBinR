@@ -2,6 +2,7 @@
 
 ## Feature updates
 
+* No new features in this release
 
 ## Package updates
 

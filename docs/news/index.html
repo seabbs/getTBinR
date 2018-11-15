@@ -9,7 +9,7 @@
 <title>Changelog • getTBinR</title>
 
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -19,7 +19,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -41,7 +41,7 @@
 
 
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.6</span>
       </span>
     </div>
 
@@ -158,20 +158,41 @@
       <small>Source: <a href='https://github.com/seabbs/getTBinR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="gettbinr-0-5-5" class="section level1">
+    <div id="gettbinr-0-5-6" class="section level1">
 <h1 class="page-header">
-<a href="#gettbinr-0-5-5" class="anchor"></a>getTBinR 0.5.5<small> Unreleased </small>
+<a href="#gettbinr-0-5-6" class="anchor"></a>getTBinR 0.5.6<small> Unreleased </small>
 </h1>
 <div id="feature-updates" class="section level2">
 <h2 class="hasAnchor">
 <a href="#feature-updates" class="anchor"></a>Feature updates</h2>
 <ul>
-<li>Added a years filter to <code>plot_tb_burden</code> and <code>plot_tb_burden_overview</code>. This allows a range of years to be plotted. The default is all years which was the previous de facto default.</li>
+<li>No new features in this release</li>
 </ul>
 </div>
 <div id="package-updates" class="section level2">
 <h2 class="hasAnchor">
 <a href="#package-updates" class="anchor"></a>Package updates</h2>
+<ul>
+<li>Updated custom legend setting in <code>map_tb_burden</code> to work with new version of rlang.</li>
+<li>Updated <code>map_tb_burden</code> tests to work with new version of R lang.</li>
+<li>Added dev to pkgdown site yml for docs prior to release.</li>
+</ul>
+</div>
+</div>
+    <div id="gettbinr-0-5-5" class="section level1">
+<h1 class="page-header">
+<a href="#gettbinr-0-5-5" class="anchor"></a>getTBinR 0.5.5<small> 2018-09-28 </small>
+</h1>
+<div id="feature-updates-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#feature-updates-1" class="anchor"></a>Feature updates</h2>
+<ul>
+<li>Added a years filter to <code>plot_tb_burden</code> and <code>plot_tb_burden_overview</code>. This allows a range of years to be plotted. The default is all years which was the previous de facto default.</li>
+</ul>
+</div>
+<div id="package-updates-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#package-updates-1" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Updated docs to reflect new year of data.</li>
 <li>Updated examples to use the new year of data as standard.</li>
@@ -185,18 +206,18 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-5-4" class="anchor"></a>getTBinR 0.5.4<small> 2018-05-16 </small>
 </h1>
-<div id="feature-updates-1" class="section level2">
+<div id="feature-updates-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-1" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-2" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Added MDR-TB data for 2016, see <a href="http://www.who.int/tb/country/data/download/en/">here</a> for the dataset. The MDR-TB data is automatically joined to the WHO TB burden data.</li>
 <li>Aesthetic updates to <code>map_tb_burden</code>.</li>
 <li>Added new <code>summarise_tb_burden</code> function for summarising metrics across regions, across custom groups and globally.</li>
 </ul>
 </div>
-<div id="package-updates-1" class="section level2">
+<div id="package-updates-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-1" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-2" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Improved data cleaning, converting <code>Inf</code> and <code>NaN</code> values to <code>NA</code> when the data is read in.</li>
 <li>Added <code>pgknet</code> report.</li>
@@ -210,9 +231,9 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-5-3" class="anchor"></a>getTBinR 0.5.3<small> 2018-03-10 </small>
 </h1>
-<div id="feature-updates-2" class="section level2">
+<div id="feature-updates-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-2" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-3" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Added <code>viridis_palette</code> option to all plotting functions to allow the colour scheme to be set by the user.</li>
 <li>Added ability to handle categories in the legend for <code>map_tb_burden</code>
@@ -220,16 +241,16 @@
 <li>Added new case study exploring case fatality rates.</li>
 </ul>
 </div>
-<div id="package-updates-2" class="section level2">
+<div id="package-updates-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-2" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-3" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Added improved tests in response to WHO data updates. See <a href="https://github.com/seabbs/getTBinR/issues/28">here</a>
 </li>
 <li>Added an additional method for downloading data in reponse to test failures on CRAN. See <a href="https://github.com/seabbs/getTBinR/issues/29">here</a>
 </li>
 <li>Added skip on CRAN for data backend related tests.</li>
-<li>Added <code>Makefile</code> at top level and for <code>data-raw</code> to build the package.</li>
+<li>Added <code>Makefile</code> at top level and for <code><a href="https://www.rdocumentation.org/packages/base/topics/Arithmetic">data-raw</a></code> to build the package.</li>
 </ul>
 </div>
 </div>
@@ -237,17 +258,17 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-5-2" class="anchor"></a>getTBinR 0.5.2<small> 2018-02-13 </small>
 </h1>
-<div id="feature-updates-3" class="section level2">
+<div id="feature-updates-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-3" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-4" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Improved plotly tool tips in all interactive plots.</li>
 <li>Added option to pass multiple years for interactive maps using the built in plotly frame functionality.</li>
 </ul>
 </div>
-<div id="package-updates-3" class="section level2">
+<div id="package-updates-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-3" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-4" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Added retry download option to deal with possible API rate limits in response to <a href="https://github.com/seabbs/getTBinR/issues/24">this issue</a>.</li>
 <li>Added downloads badge to readme.</li>
@@ -258,9 +279,9 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-5-1" class="anchor"></a>getTBinR 0.5.1<small> 2018-01-26 </small>
 </h1>
-<div id="feature-updates-4" class="section level2">
+<div id="feature-updates-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-4" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-5" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Added <code>annual_change</code> arguement to all plotting/mapping functions. Passed to <code>prepare_df_plot</code>. Returns the percentage annual change for the supplied metric.</li>
 <li>Added <code>trans</code> arguement to all plotting functions to allow scaling using any <code>ggplot2::continous_scale</code> <code>trans</code> arguement.</li>
@@ -269,16 +290,16 @@
 <li>Changed function defaults so that data is automatically downloaded and saved into the temporary directory when <code>get_data</code> functions are called.</li>
 </ul>
 </div>
-<div id="package-updates-4" class="section level2">
+<div id="package-updates-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-4" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-5" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Added new examples to display new functionality</li>
 <li>Updated readme with new functionality</li>
 <li>Updated intro vignette with new functionality</li>
 <li>Added a new case studies vignette section</li>
 <li>Added a case study exploring global trends in Tuberculosis incidence rates</li>
-<li>Added a work around using <code><a href="http://www.rdocumentation.org/packages/utils/topics/read.table">utils::read.csv</a></code> for downloading the data when <code>fread::data.table</code> fails. Related to this <a href="https://github.com/seabbs/getTBinR/issues/18">issue</a>.</li>
+<li>Added a work around using <code><a href="https://www.rdocumentation.org/packages/utils/topics/read.table">utils::read.csv</a></code> for downloading the data when <code>fread::data.table</code> fails. Related to this <a href="https://github.com/seabbs/getTBinR/issues/18">issue</a>.</li>
 </ul>
 </div>
 </div>
@@ -286,24 +307,24 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-5-0" class="anchor"></a>getTBinR 0.5.0<small> 2018-01-05 </small>
 </h1>
-<div id="feature-updates-5" class="section level2">
+<div id="feature-updates-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-5" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-6" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Added <code>download_data</code> arguement to all functions to make downloading data explicit.</li>
 <li>Added <code>save</code> arguement to all functions to make saving the data explicit.</li>
 <li>Added <code>save_name</code> and <code>path</code> arguements to all functions to make location of saving explicit.</li>
 </ul>
 </div>
-<div id="package-updates-5" class="section level2">
+<div id="package-updates-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-5" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-6" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Updated documentation to reflect above changes.</li>
 <li>Updated tests to reflect changes.</li>
 <li>Doc improvements ready for CRAN.</li>
 <li>Switched Imported packages from github versions to CRAN versions.</li>
-<li>Switched to saving data only to temporary directory (<code>tempdir()</code>)</li>
+<li>Switched to saving data only to temporary directory (<code><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir()</a></code>)</li>
 </ul>
 </div>
 </div>
@@ -311,16 +332,16 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-1-0" class="anchor"></a>getTBinR 0.1.0<small> Unreleased </small>
 </h1>
-<div id="feature-updates-6" class="section level2">
+<div id="feature-updates-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-6" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-7" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Added <code>map_tb_burden</code> function to map TB metrics.</li>
 </ul>
 </div>
-<div id="package-updates-6" class="section level2">
+<div id="package-updates-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-6" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-7" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
 </ul>
@@ -330,16 +351,16 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-0-5" class="anchor"></a>getTBinR 0.0.5<small> Unreleased </small>
 </h1>
-<div id="feature-updates-7" class="section level2">
+<div id="feature-updates-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-7" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-8" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Added <code>plot_tb_burden_overview</code> function to plot an overview of the TB burden.</li>
 </ul>
 </div>
-<div id="package-updates-7" class="section level2">
+<div id="package-updates-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-7" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-8" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Updated the package site.</li>
 <li>Refactored plotting code.</li>
@@ -350,16 +371,16 @@
 <h1 class="page-header">
 <a href="#gettbinr-0-0-1" class="anchor"></a>getTBinR 0.0.1<small> Unreleased </small>
 </h1>
-<div id="feature-updates-8" class="section level2">
+<div id="feature-updates-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#feature-updates-8" class="anchor"></a>Feature updates</h2>
+<a href="#feature-updates-9" class="anchor"></a>Feature updates</h2>
 <ul>
 <li>Added <code>plot_tb_burden</code> function to plot TB burden</li>
 </ul>
 </div>
-<div id="package-updates-8" class="section level2">
+<div id="package-updates-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#package-updates-8" class="anchor"></a>Package updates</h2>
+<a href="#package-updates-9" class="anchor"></a>Package updates</h2>
 <ul>
 <li>Set up package infractstructure</li>
 </ul>
@@ -371,6 +392,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#gettbinr-0-5-6">0.5.6</a></li>
         <li><a href="#gettbinr-0-5-5">0.5.5</a></li>
         <li><a href="#gettbinr-0-5-4">0.5.4</a></li>
         <li><a href="#gettbinr-0-5-3">0.5.3</a></li>
@@ -392,7 +414,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
