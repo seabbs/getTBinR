@@ -88,10 +88,10 @@ Various other options are available for tuning the plot further.
 
 ## Map raw incidence rates
 map_tb_burden()
-
+\dontrun{
 #' ## Map raw incidence rates
 map_tb_burden(year = 2014:2017, facet = "year")
-\dontrun{
+
 ## Map log10 scaled incidence rates
 map_tb_burden(trans = "log10")
 

@@ -100,7 +100,7 @@ sample_countries <- sample(unique(tb_burden$country), 9)
 
 ## Plot incidence rates in these countries
 plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
- 
+\dontrun{
 ## Use data caching to plot incidence rates with free y scales
 plot_tb_burden(facet = "country", countries = sample_countries, scales = "free_y")
  
@@ -113,7 +113,7 @@ search_data_dict(def = "mortality")
 ## Plot mortality rates (exc HIV) - without progress messages
 plot_tb_burden(metric = "e_mort_exc_tbhiv_100k", facet = "country", 
                countries = sample_countries, scales = "free_y", verbose = FALSE)
-               
+}  
 }
 \seealso{
 get_tb_burden search_data_dict

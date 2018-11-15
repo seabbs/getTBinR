@@ -41,7 +41,7 @@
 #'                     compare_all_regions = TRUE,
 #'                     compare_to_world = TRUE,
 #'                     verbose = TRUE)
-#' 
+#' \dontrun{
 #' ## Get median (with 95% IQR) of the case fatality rate for regions and the world
 #' ## Boostrapping uncertainty in country measures
 #' summarise_tb_burden(metric = "cfr",
@@ -62,7 +62,7 @@
 #'                     compare_to_world = TRUE, 
 #'                     compare_to_region = TRUE,
 #'                     verbose = FALSE)
-#'                     
+#'}                     
 summarise_tb_burden <- function(df = NULL,
                                 dict = NULL, 
                                 metric = "e_inc_100k",
