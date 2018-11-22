@@ -8,8 +8,6 @@
 
 <title>Plot an overview of TB Burden for Multiple Countries — plot_tb_burden_overview • getTBinR</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -73,7 +71,7 @@ Tuberculosis over time and the progress towards global elimination." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.6</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.7</span>
       </span>
     </div>
 
@@ -192,13 +190,13 @@ Tuberculosis over time and the progress towards global elimination.</p>
       <th>df</th>
       <td><p>Dataframe of TB burden data, as sourced by <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.
 If not specified then will source the WHO TB burden data, either locally if available
-or directly from the WHO (if <code>download_data = TRUE</code>).</p></td>
+or directly from the WHO (if <code><a href='https://www.rdocumentation.org/packages/base/topics/assignOps'>download_data = TRUE</a></code>).</p></td>
     </tr>
     <tr>
       <th>dict</th>
       <td><p>A tibble of the data dictionary. See <code><a href='get_data_dict.html'>get_data_dict</a></code>
 for details. If not supplied the function will attempt to load a saved version of the
-dictionary. If this fails and <code>download_data = TRUE</code> then the dictionary will be downloaded.</p></td>
+dictionary. If this fails and <code><a href='https://www.rdocumentation.org/packages/base/topics/assignOps'>download_data = TRUE</a></code> then the dictionary will be downloaded.</p></td>
     </tr>
     <tr>
       <th>metric</th>
@@ -255,7 +253,7 @@ downloaded from the specified URL?</p></td>
     <tr>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
-<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
+<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>burden_save_name</th>
@@ -271,17 +269,17 @@ downloaded from the specified URL?</p></td>
       <th>viridis_palette</th>
       <td><p>Character string indicating the <code>viridis</code> colour palette to use. Defaults
 to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
-see <code><a href='http://www.rdocumentation.org/packages/viridis/topics/viridis_pal'>viridis_pal</a></code> for additional details.</p></td>
+see <code><a href='https://www.rdocumentation.org/packages/viridis/topics/viridis_pal'>viridis_pal</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>viridis_direction</th>
       <td><p>Numeric, indicating the direction for the colour palette (1 or -1), defaults to -1.
-See <code><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
+See <code><a href='https://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>viridis_end</th>
       <td><p>Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
-#' See <code><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
+#' See <code><a href='https://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -306,16 +304,16 @@ be displayed.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Plot incidence rates over time for both the United Kingdom and Botswana</span>
-<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Plot percentage annual change in incidence rates.</span>
-<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Compare incidence rates in the UK and Botswana to incidence rates in their regions</span>
-<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
-                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
+                        <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden_overview-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Find variables relating to mortality in the WHO dataset</span>
-<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; [90m# A tibble: 9 x 4[39m
+<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; [90m# A tibble: 9 x 4[39m
 #&gt;   variable_name      dataset  code_list definition                             
 #&gt;   [3m[90m&lt;chr&gt;[39m[23m              [3m[90m&lt;chr&gt;[39m[23m    [3m[90m&lt;chr&gt;[39m[23m     [3m[90m&lt;chr&gt;[39m[23m                                  
 #&gt; [90m1[39m e_mort_100k        Estimat… [90m"[39m[90m"[39m        Estimated mortality of TB cases (all f…
@@ -330,7 +328,7 @@ be displayed.</p></td>
 <span class='co'>## Compare mortality rates (exc HIV) in the UK and Botswana to mortality rates in their regions</span>
 <span class='co'>## Do not show progress messages</span>
 <span class='fu'>plot_tb_burden_overview</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>,
-                        <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
+                        <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Botswana"</span>),
                         <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='img'><img src='plot_tb_burden_overview-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -354,7 +352,7 @@ be displayed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

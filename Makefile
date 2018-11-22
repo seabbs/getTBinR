@@ -3,7 +3,7 @@
 default: all
 
 
-all: build_data package docs README.md build_report site
+all: build_data package docs man/figures/logo.png README.md build_report site
 
 #Update data
 .PHONY: build_data
@@ -19,6 +19,10 @@ package:
 docs:
      Rscript -e 'devtools::document(roclets=c('rd', 'collate', 'namespace'))'
 
+#update logo
+man/figures/logo.png: inst/scripts/generate_hex_sticker.R
+		Rscript inst/scripts/generate_hex_sticker.R
+		
 #update readme
 README.md: README.Rmd
 		Rscript -e 'rmarkdown::render("README.Rmd")' && \
@@ -34,4 +38,6 @@ build_report:
 site: 
 		 cp -r man/img docs/man/ && \
 		 cp -r man/figure docs/man/ && \
+		 cp -r man/img docs/dev/man/ && \
+		 cp -r man/figure docs/dev/man/ && \
      Rscript -e 'pkgdown::build_site()'

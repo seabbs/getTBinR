@@ -8,8 +8,6 @@
 
 <title>Map TB Burden — map_tb_burden • getTBinR</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -72,7 +70,7 @@ Various other options are available for tuning the plot further." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.6</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.7</span>
       </span>
     </div>
 
@@ -189,13 +187,13 @@ Various other options are available for tuning the plot further.</p>
       <th>df</th>
       <td><p>Dataframe of TB burden data, as sourced by <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.
 If not specified then will source the WHO TB burden data, either locally if available
-or directly from the WHO (if <code>download_data = TRUE</code>).</p></td>
+or directly from the WHO (if <code><a href='https://www.rdocumentation.org/packages/base/topics/assignOps'>download_data = TRUE</a></code>).</p></td>
     </tr>
     <tr>
       <th>dict</th>
       <td><p>A tibble of the data dictionary. See <code><a href='get_data_dict.html'>get_data_dict</a></code>
 for details. If not supplied the function will attempt to load a saved version of the
-dictionary. If this fails and <code>download_data = TRUE</code> then the dictionary will be downloaded.</p></td>
+dictionary. If this fails and <code><a href='https://www.rdocumentation.org/packages/base/topics/assignOps'>download_data = TRUE</a></code> then the dictionary will be downloaded.</p></td>
     </tr>
     <tr>
       <th>metric</th>
@@ -227,7 +225,7 @@ Note that this will override settings for <code>facet</code>, unless it is set t
     <tr>
       <th>year</th>
       <td><p>Numeric, indicating the year of data to map. Defaults to the latest year in the data.
-If <code>interactive = TRUE</code> then multiple years may be passed as a vector, the result will then be animated over years.</p></td>
+If <code><a href='https://www.rdocumentation.org/packages/base/topics/assignOps'>interactive = TRUE</a></code> then multiple years may be passed as a vector, the result will then be animated over years.</p></td>
     </tr>
     <tr>
       <th>annual_change</th>
@@ -253,7 +251,7 @@ downloaded from the specified URL?</p></td>
     <tr>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
-<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
+<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>burden_save_name</th>
@@ -269,17 +267,17 @@ downloaded from the specified URL?</p></td>
       <th>viridis_palette</th>
       <td><p>Character string indicating the <code>viridis</code> colour palette to use. Defaults
 to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
-see <code><a href='http://www.rdocumentation.org/packages/viridis/topics/viridis_pal'>viridis_pal</a></code> for additional details.</p></td>
+see <code><a href='https://www.rdocumentation.org/packages/viridis/topics/viridis_pal'>viridis_pal</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>viridis_direction</th>
       <td><p>Numeric, indicating the direction for the colour palette (1 or -1), defaults to -1.
-See <code><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
+See <code><a href='https://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>viridis_end</th>
       <td><p>Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
-#' See <code><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
+#' See <code><a href='https://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -304,9 +302,10 @@ be displayed.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Map raw incidence rates</span>
-<span class='fu'>map_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='map_tb_burden-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>map_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGUGIj7/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='map_tb_burden-1.png' alt='' width='700' height='433' /></div><span class='co'># NOT RUN {</span>
 <span class='co'>#' ## Map raw incidence rates</span>
-<span class='fu'>map_tb_burden</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2014</span>:<span class='fl'>2017</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"year"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp1f2R1p/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2014, 2015, 2016, 2017</span></div><div class='img'><img src='map_tb_burden-2.png' alt='' width='700' height='433' /></div><span class='co'># NOT RUN {</span>
+<span class='fu'>map_tb_burden</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2014</span>:<span class='fl'>2017</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
+
 <span class='co'>## Map log10 scaled incidence rates</span>
 <span class='fu'>map_tb_burden</span>(<span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"log10"</span>)
 
@@ -344,7 +343,7 @@ be displayed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

@@ -72,7 +72,7 @@ statistic are in development." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.7</span>
       </span>
     </div>
 
@@ -301,7 +301,7 @@ stratified by area and year.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the most recent year of data</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Extremes'>max</a></span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Extremes'>max</a></span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
 
 <span class='co'>## Get summary of the e_mdr_pct_rr_new cases</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mdr_pct_rr_new"</span>,
@@ -309,7 +309,7 @@ stratified by area and year.</p>
                     <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
                     <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJ3NOwP/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2017</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpEVOOg3/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2017</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
 #&gt; <span class='message'>                only based on the point estimate.</span></div><div class='output co'>#&gt; [90m# A tibble: 7 x 5[39m
 #&gt;   area    year e_mdr_pct_rr_new e_mdr_pct_rr_new_lo e_mdr_pct_rr_new_hi
 #&gt;   [3m[90m&lt;fct&gt;[39m[23m  [3m[90m&lt;int&gt;[39m[23m            [3m[90m&lt;dbl&gt;[39m[23m               [3m[90m&lt;dbl&gt;[39m[23m               [3m[90m&lt;dbl&gt;[39m[23m
@@ -319,7 +319,7 @@ stratified by area and year.</p>
 #&gt; [90m4[39m EUR     [4m2[24m017             95.2                77.6               113. 
 #&gt; [90m5[39m Global  [4m2[24m017             81.4                49.3               113. 
 #&gt; [90m6[39m SEA     [4m2[24m017             85.5                42.2               129. 
-#&gt; [90m7[39m WPR     [4m2[24m017             79.3                59.7                98.9</div><div class='input'>
+#&gt; [90m7[39m WPR     [4m2[24m017             79.3                59.7                98.9</div><span class='co'># NOT RUN {</span>
 <span class='co'>## Get median (with 95% IQR) of the case fatality rate for regions and the world</span>
 <span class='co'>## Boostrapping uncertainty in country measures</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"cfr"</span>,
@@ -328,16 +328,8 @@ stratified by area and year.</p>
                     <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"median"</span>,
                     <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; [90m# A tibble: 7 x 5[39m
-#&gt;   area    year    cfr  cfr_lo cfr_hi
-#&gt;   [3m[90m&lt;fct&gt;[39m[23m  [3m[90m&lt;int&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m
-#&gt; [90m1[39m AFR     [4m2[24m017 0.226  0.056[4m6[24m   0.474
-#&gt; [90m2[39m AMR     [4m2[24m017 0.096[4m8[24m 0.021[4m5[24m   0.606
-#&gt; [90m3[39m EMR     [4m2[24m017 0.088[4m5[24m 0.007[4m5[24m[4m8[24m  0.881
-#&gt; [90m4[39m EUR     [4m2[24m017 0.072[4m3[24m 0.008[4m2[24m[4m9[24m  0.194
-#&gt; [90m5[39m Global  [4m2[24m017 0.100[4m0[24m 0.010[4m7[24m   0.429
-#&gt; [90m6[39m SEA     [4m2[24m017 0.137  0.041[4m7[24m   0.263
-#&gt; [90m7[39m WPR     [4m2[24m017 0.077[4m5[24m 0.021[4m2[24m   0.221</div><div class='input'>
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
 
 <span class='co'>## Get summary data for the UK, Europe and the world</span>
 <span class='co'>## Bootstrapping CI's </span>
@@ -347,21 +339,8 @@ stratified by area and year.</p>
                     <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"United Kingdom"</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; [90m# A tibble: 54 x 5[39m
-#&gt;    area                                year e_inc_num e_inc_num_lo e_inc_num_hi
-#&gt;    [3m[90m&lt;fct&gt;[39m[23m                              [3m[90m&lt;int&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m        [3m[90m&lt;dbl&gt;[39m[23m        [3m[90m&lt;dbl&gt;[39m[23m
-#&gt; [90m 1[39m United Kingdom of Great Britain a…  [4m2[24m000      [4m7[24m000         [4m6[24m300         [4m7[24m700
-#&gt; [90m 2[39m United Kingdom of Great Britain a…  [4m2[24m001      [4m6[24m800         [4m6[24m100         [4m7[24m500
-#&gt; [90m 3[39m United Kingdom of Great Britain a…  [4m2[24m002      [4m7[24m800         [4m7[24m000         [4m8[24m500
-#&gt; [90m 4[39m United Kingdom of Great Britain a…  [4m2[24m003      [4m8[24m000         [4m7[24m200         [4m8[24m800
-#&gt; [90m 5[39m United Kingdom of Great Britain a…  [4m2[24m004      [4m7[24m900         [4m7[24m100         [4m8[24m700
-#&gt; [90m 6[39m United Kingdom of Great Britain a…  [4m2[24m005      [4m9[24m200         [4m8[24m300        [4m1[24m[4m0[24m000
-#&gt; [90m 7[39m United Kingdom of Great Britain a…  [4m2[24m006      [4m9[24m300         [4m8[24m400        [4m1[24m[4m0[24m000
-#&gt; [90m 8[39m United Kingdom of Great Britain a…  [4m2[24m007      [4m9[24m000         [4m8[24m100         [4m9[24m900
-#&gt; [90m 9[39m United Kingdom of Great Britain a…  [4m2[24m008      [4m9[24m300         [4m8[24m400        [4m1[24m[4m0[24m000
-#&gt; [90m10[39m United Kingdom of Great Britain a…  [4m2[24m009      [4m9[24m100         [4m8[24m200        [4m1[24m[4m0[24m000
-#&gt; [90m# ... with 44 more rows[39m</div><div class='input'>                    
-</div></pre>
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

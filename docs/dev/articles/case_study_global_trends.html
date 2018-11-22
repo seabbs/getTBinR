@@ -6,7 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exploring Global Trends in Tuberculosis Incidence Rates • getTBinR</title>
-<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -34,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.6</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.7</span>
       </span>
     </div>
 
@@ -125,9 +124,9 @@
       <h1>Exploring Global Trends in Tuberculosis Incidence Rates</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2018-10-24</h4>
+            <h4 class="date">2018-11-22</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_study_global_trends.Rmd"><code>vignettes/case_study_global_trends.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_study_global_trends.Rmd"><code><a href="https://www.rdocumentation.org/packages/base/topics/Arithmetic">vignettes/case_study_global_trends.Rmd</a></code></a></small>
       <div class="hidden name"><code>case_study_global_trends.Rmd</code></div>
 
     </div>
@@ -136,17 +135,17 @@
     
 <p>This case study investigates global trends in Tuberculosis incidence rates and explores whether Tuberculosis eradication is on the horizon. It was adapted from <a href="https://www.samabbott.co.uk/post/intro-gettbinr/">this</a> blog post. To get started the first step is to get the package, as well as loading other packages required for the analysis.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("getTBinR")</span>
-<span class="kw">library</span>(getTBinR)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(getTBinR)
 <span class="co">#  install.packages("tidyverse")</span>
-<span class="kw">library</span>(tidyverse)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)
 <span class="co"># install.packages("viridis")</span>
-<span class="kw">library</span>(viridis)</code></pre></div>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(viridis)</code></pre></div>
 <p>The package is loaded, time to get the data. We download both the data itself and it’s accompanying data dictionary.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>()
 dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>()</code></pre></div>
 <p>We want to explore incidence rates so we need to find them in the data. We can do this using the <code><a href="../reference/search_data_dict.html">getTBinR::search_data_dict</a></code> function,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">dict =</span> dict, <span class="dt">def =</span> <span class="st">"incidence"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">variable_name</th>
@@ -239,7 +238,7 @@ dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_da
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_inc_region &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(year, g_whoregion) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">summarise_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(e_inc_num, e_inc_num_lo, e_inc_num_hi, e_pop_num),
-               <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="kw">sum</span>(<span class="kw">as.numeric</span>(.), <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span>
+               <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(.), <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(e_inc_num, e_inc_num_lo, e_inc_num_hi),
             <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="dt">inc_rate =</span> . <span class="op">/</span><span class="st"> </span>e_pop_num <span class="op">*</span><span class="st"> </span><span class="fl">1e5</span>))
 
@@ -249,7 +248,7 @@ plot_tb_inc_region &lt;-<span class="st"> </span><span class="cf">function</span
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> e_inc_num_lo_inc_rate, <span class="dt">ymax =</span> e_inc_num_hi_inc_rate)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/viridis/topics/scale_viridis">scale_colour_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/viridis/topics/scale_viridis">scale_colour_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> title, <span class="dt">subtitle =</span> subtitle, 
        <span class="dt">x =</span> <span class="st">"Year"</span>, <span class="dt">y =</span> <span class="st">"Tuberculosis Incidence Rates (per 100,000 population)"</span>,
        <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>) <span class="op">+</span>
@@ -271,24 +270,24 @@ tb_inc_region <span class="op">%&gt;%</span><span class="st"> </span>
 <p><img src="case_study_global_trends_files/figure-html/plot-region-tb-inc-free-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>This plot shows that Tuberculosis incidence rates are decreasing in all regions, which is a great sign for the elimination of Tuberculosis. However whilst this is true on the regional level it may not be true for all countries in the data set, something that is required to truly eradicate Tuberculosis. To explore this we find the countries that had higher incidence rates in 2016 than in 2000.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countries_inc_up &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2000</span>, <span class="dv">2016</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2000</span>, <span class="dv">2016</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">pull</span>(country)
 
 high_inc_countries &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">e_inc_100k =</span> <span class="kw">max</span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">e_inc_100k =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">pull</span>(country) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>unique
 
-high_inc_up_countries &lt;-<span class="st"> </span><span class="kw">intersect</span>(countries_inc_up, high_inc_countries)</code></pre></div>
+high_inc_up_countries &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sets">intersect</a></span>(countries_inc_up, high_inc_countries)</code></pre></div>
 <p>This results in a list of 47 countries all of which had higher incidence rates in 2016 than in 2000. Of these countries 9 were in the top 20 countries by incidence rate in 2016. This can plotted below using <code><a href="../reference/plot_tb_burden_overview.html">getTBinR::plot_tb_burden_overview</a></code>,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">df =</span> tb_burden,
                         <span class="dt">dict =</span> dict, 
@@ -310,7 +309,7 @@ high_inc_up_countries &lt;-<span class="st"> </span><span class="kw">intersect</
 <p><img src="case_study_global_trends_files/figure-html/plot-tb-inc-high-inc-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>A possible cause of this may be that reporting of Tuberculosis notifications has improved over time, to understand this we first find the required variable in the data,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">dict =</span> dict, <span class="dt">def =</span> <span class="st">"detection"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">variable_name</th>
@@ -363,7 +362,7 @@ high_inc_up_countries &lt;-<span class="st"> </span><span class="kw">intersect</
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

@@ -131,8 +131,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                             fill = metric,
                             key = "country",
                             frame = "Year")) +
-    geom_polygon(aes_string(group = "group")) + 
-    geom_path(aes(group = group), alpha = 0.4, col = "black", na.rm=TRUE) +
+    geom_polygon(aes_string(group = "group"),
+                 color = "black", size = 0.3) +
     coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = "bottom") +

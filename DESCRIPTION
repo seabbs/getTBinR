@@ -1,6 +1,6 @@
 Package: getTBinR
 Type: Package
-Version: 0.5.6
+Version: 0.5.7
 Title: Get WHO Tuberculosis Data
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk",
@@ -27,7 +27,8 @@ Suggests: devtools,
     shiny,
     shinydashboard,
     shinyWidgets,
-    shinycssloaders
+    shinycssloaders,
+    hexSticker
 Imports: data.table,
     tibble,
     dplyr,

@@ -1,3 +1,15 @@
+# getTBinR 0.5.7
+
+## Feature updates
+
+* Tweaked `map_tb_burden` to not use `geom_path` for country outlines.
+
+## Package updates
+
+* Added script to generate hexsticker
+* Added hexsticker to README
+* Added DOI link to Zenodo. (to do on CRAN release).
+
 # getTBinR 0.5.6
 
 ## Feature updates

@@ -8,6 +8,7 @@ RUN apt-get install -y \
     texlive-fonts-extra \
     texinfo \
     libqpdf-dev \
+    libmagick++-dev \
     && apt-get clean
     
 ADD . /home/rstudio/getTBinR
