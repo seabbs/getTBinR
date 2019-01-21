@@ -22,16 +22,10 @@ dict <- get_data_dict()
 ```{r}
 country <- "United Kingdom"
 
-sum_uk_inc <- summarise_tb_burden(countries = country,
-                                  compare_to_world = TRUE, 
-                                  compare_to_region = TRUE,
-                                  annual_change = FALSE)
-```
-
-
-```{r}
-sum_uk_inc %>% 
-  ggplot(aes(year, e_inc_100k, col = area)) +
-  geom_line() +
-  theme(legend.position = "none")
+plot_tb_burden_summary(countries = country,
+                       compare_to_world = TRUE, 
+                       compare_to_region = TRUE,
+                       annual_change = FALSE,
+                       facet = "Area",
+                       scales = "free_y")
 ```

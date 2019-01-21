@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the WHO Data Dictionary for TB Data — get_data_dict • getTBinR</title>
+<title>Render a Country Level TB Report — render_country_report • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,12 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Get the WHO Data Dictionary for TB Data — get_data_dict" />
+<meta property="og:title" content="Render a Country Level TB Report — render_country_report" />
 
-<meta property="og:description" content="Get the data dictionary for TB burden data from the WHO, see
-here for details. This function will first attempt
-to load the data from the temporary directory (tempdir). If that fails, and download_data = TRUE, it
-will instead download the data." />
+<meta property="og:description" content="This function renders a country level TB report." />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -161,94 +158,56 @@ will instead download the data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the WHO Data Dictionary for TB Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/get_data_dict.R'><code>R/get_data_dict.R</code></a></small>
-    <div class="hidden name"><code>get_data_dict.Rd</code></div>
+    <h1>Render a Country Level TB Report</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/render_country_report.R'><code>R/render_country_report.R</code></a></small>
+    <div class="hidden name"><code>render_country_report.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get the data dictionary for TB burden data from the WHO, see
-<a href='http://www.who.int/tb/country/data/download/en/'>here</a> for details. This function will first attempt
-to load the data from the temporary directory (<code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>). If that fails, and <code>download_data = TRUE</code>, it
-will instead download the data.</p>
+    <p>This function renders a country level TB report.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_data_dict</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=dictionary"</span>,
-  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>,
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>render_country_report</span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"United Kingdom"</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html_document"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>url</th>
-      <td><p>Character string, indicating  the url of the data
-dictionary. Default is current url.</p></td>
+      <th>country</th>
+      <td><p>Character string, defaults to <code>"United Kingdom"</code>. Specify the country to
+report on.</p></td>
     </tr>
     <tr>
-      <th>download_data</th>
-      <td><p>Logical, defaults to <code>TRUE</code>. If not found locally should the data be
-downloaded from the specified URL?</p></td>
+      <th>format</th>
+      <td><p>Character string, defaults to <code>"html_document"</code>. The format to render the report to.
+See <code><a href='https://www.rdocumentation.org/packages/rmarkdown/topics/render'>?rmarkdown::render</a></code> for details.</p></td>
     </tr>
     <tr>
-      <th>save</th>
-      <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
-<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
+      <th>save_dir</th>
+      <td><p>Character string, defaults to <code>NULL</code>.
+If not given then the report is rendered to a temporary directory.</p></td>
     </tr>
     <tr>
-      <th>dict_save_name</th>
-      <td><p>Character string, name to save dictionary under. Defaults to
-<code>TB_data_dict</code>.</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>Logical, should the data  dictionary be returned as a dataframe.
-Defaults to <code>TRUE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>Logical, defaults to <code>TRUE</code>. Should additional status and progress messages
-be displayed.</p></td>
-    </tr>
-    <tr>
-      <th>use_utils</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Used for testing alternative
-data download function. When <code>TRUE</code> data is downloaded using <code>read.csv</code>.</p></td>
-    </tr>
-    <tr>
-      <th>retry_download</th>
-      <td><p>Logical defaults to <code>TRUE</code>. When <code>TRUE</code>, if downloading
-fails, the function will try repeatedly to download the data within 3 seconds, up
-to 3 times.</p></td>
+      <th>Interactive</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. When the format allows should graphs be interactive.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The WHO TB data dictionary as a tibble with 4 variables:
-variable_name, dataset, code_list, definition.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>get_data search_data_dict</p></div>
+    <p>Renders a country level TB report</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmp2UEIpA/TB_data_dict.rds</span></div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>dict</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 4</span><span>
-#&gt;   variable_name   dataset code_list definition                                  
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                       
-#&gt; </span><span style='color: #555555;'>1</span><span> budget_cpp_dstb Budget  </span><span style='color: #555555;'>""</span><span>        Average cost of drugs budgeted per patient …
-#&gt; </span><span style='color: #555555;'>2</span><span> budget_cpp_mdr  Budget  </span><span style='color: #555555;'>""</span><span>        Average cost of drugs budgeted per patient …
-#&gt; </span><span style='color: #555555;'>3</span><span> budget_cpp_xdr  Budget  </span><span style='color: #555555;'>""</span><span>        Average cost of drugs budgeted per patient …
-#&gt; </span><span style='color: #555555;'>4</span><span> budget_fld      Budget  </span><span style='color: #555555;'>""</span><span>        Budget required for drugs to treat drug-sus…
-#&gt; </span><span style='color: #555555;'>5</span><span> budget_lab      Budget  </span><span style='color: #555555;'>""</span><span>        Budget required for laboratory infrastructu…
-#&gt; </span><span style='color: #555555;'>6</span><span> budget_mdrmgt   Budget  </span><span style='color: #555555;'>""</span><span>        Budget required for programme costs to trea…</div><div class='input'>
-</div></span></pre>
+## Only run the example if in an interative session
+</div><span class='co'># NOT RUN {</span>
+<span class='co'>## Run the TB dashboard</span>
+<span class='fu'>render_country_report</span>()
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -256,8 +215,6 @@ variable_name, dataset, code_list, definition.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

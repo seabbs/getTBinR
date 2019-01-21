@@ -98,7 +98,7 @@ most_recent_year <- max(tb_burden$year)
 ## Get summary of the e_mdr_pct_rr_new cases
 summarise_tb_burden(metric = "e_mdr_pct_rr_new",
                     years =  most_recent_year,
-                    state = "mean",
+                    stat = "mean",
                     samples = 100,
                     compare_all_regions = TRUE,
                     compare_to_world = TRUE,
