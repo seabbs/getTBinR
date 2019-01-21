@@ -1,11 +1,10 @@
-#' Summarise TB Burden
+#' Summarise TB Burden - By Region, Globally and for Custom Groups
 #'
 #'
 #' @description Summarise TB burden metrics by region, globally, and for custom groupings. For variables with 
 #' uncertainty represented by confidence intervals bootstrapping can be used (assuming a normal distribution) to 
 #' include this in any estimated summary measures. Currently two statistics are supported; the mean (with 
-#' 95\% confidence intervals) and the median (with 95\% interquartile range). An incidence rate and weighted proportion
-#' statistic are in development.
+#' 95\% confidence intervals) and the median (with 95\% interquartile range), rates and proportions.
 #' @param samples Numeric, the number of samples to use to generate confidence 
 #' intervals (only used when \code{conf} are present)
 #' @param compare_to_world Logical, defaults to \code{FALSE}. Should a comparision be made to 

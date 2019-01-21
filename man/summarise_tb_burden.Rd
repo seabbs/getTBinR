@@ -2,7 +2,7 @@
 % Please edit documentation in R/summarise_tb_burden.R
 \name{summarise_tb_burden}
 \alias{summarise_tb_burden}
-\title{Summarise TB Burden}
+\title{Summarise TB Burden - By Region, Globally and for Custom Groups}
 \usage{
 summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, conf = c("_lo", "_hi"), years = NULL,
@@ -88,8 +88,7 @@ stratified by area and year.
 Summarise TB burden metrics by region, globally, and for custom groupings. For variables with
 uncertainty represented by confidence intervals bootstrapping can be used (assuming a normal distribution) to
 include this in any estimated summary measures. Currently two statistics are supported; the mean (with
-95\% confidence intervals) and the median (with 95\% interquartile range). An incidence rate and weighted proportion
-statistic are in development.
+95\% confidence intervals) and the median (with 95\% interquartile range), rates and proportions.
 }
 \examples{
 
