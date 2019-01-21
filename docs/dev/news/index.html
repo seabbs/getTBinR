@@ -167,10 +167,12 @@
 <h2 class="hasAnchor">
 <a href="#feature-updates" class="anchor"></a>Feature updates</h2>
 <ul>
-<li>Tweaked <code>map_tb_burden</code> to not use <code>geom_path</code> for country outlines.</li>
 <li>Added support for <code>annual_change</code> to <code>summarise_tb_burden</code> and added validating tests.</li>
+<li>Added support for rates and proportions to <code>summarise_tb_burden</code> and added validating tests.</li>
+<li>Added a new function - <code>plot_tb_burden_summary</code>. Function wraps <code>summarise_tb_burden</code> and allows all in one summary plotting. Inspired by <a href="https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html">this</a> case study.</li>
+<li>Tweaked <code>map_tb_burden</code> to not use <code>geom_path</code> for country outlines.</li>
 <li>Added a <code>smooth</code> arguement to <code>plot_tb_burden</code> to allow smooth trend lines to be plotted (derived using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth</a></code>).</li>
-<li>Tweak line thickness in <code>plot_tb_burden</code> to improve plot appearance.</li>
+<li>Tweaked line thickness in <code>plot_tb_burden</code> to improve plot appearance.</li>
 </ul>
 </div>
 <div id="package-updates" class="section level2">

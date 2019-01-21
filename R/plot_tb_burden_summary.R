@@ -5,6 +5,9 @@
 #' uncertainty represented by confidence intervals bootstrapping can be used (assuming a normal distribution) to 
 #' include this in any estimated summary measures. Currently four statistics are supported; the mean (with 
 #' 95\% confidence intervals) and the median (with 95\% interquartile range), rates and proportions.
+#' @param metric_to_use_as_label Character string defaulting to `NULL`. If supplied this metric will be looked up
+#' using the WHO data dictionary to provide a label. A use case would be when calculating incidence rates using `e_inc_100k` 
+#' to get the WHO TB incidence rate label.
 #' @inherit  plot_tb_burden
 #' @inheritParams summarise_tb_burden
 #' @seealso search_data_dict plot_tb_burden summarise_tb_burden
@@ -55,7 +58,6 @@ plot_tb_burden_summary <- function(df = NULL,
                                    stat = "mean",
                                    denom = "e_pop_num",
                                    rate_scale = 1e5,
-                                   denominator = NULL,
                                    truncate_at_zero = TRUE,
                                    annual_change = FALSE,
                                    smooth = FALSE,
@@ -103,7 +105,6 @@ plot_tb_burden_summary <- function(df = NULL,
                                 stat = stat,
                                 denom = denom,
                                 rate_scale = rate_scale,
-                                denominator = denominator,
                                 truncate_at_zero = truncate_at_zero,
                                 annual_change = annual_change,
                                 download_data = download_data,

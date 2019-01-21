@@ -9,13 +9,13 @@ plot_tb_burden_summary(df = NULL, dict = NULL, metric = "e_inc_100k",
   "_hi"), years = NULL, samples = 1000, countries = NULL,
   compare_to_region = FALSE, compare_to_world = FALSE,
   custom_compare = NULL, compare_all_regions = FALSE, stat = "mean",
-  denom = "e_pop_num", rate_scale = 1e+05, denominator = NULL,
-  truncate_at_zero = TRUE, annual_change = FALSE, smooth = FALSE,
-  facet = NULL, trans = "identity", scales = "fixed",
-  interactive = FALSE, viridis_palette = "viridis",
-  viridis_direction = -1, viridis_end = 0.9, download_data = TRUE,
-  save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", verbose = TRUE)
+  denom = "e_pop_num", rate_scale = 1e+05, truncate_at_zero = TRUE,
+  annual_change = FALSE, smooth = FALSE, facet = NULL,
+  trans = "identity", scales = "fixed", interactive = FALSE,
+  viridis_palette = "viridis", viridis_direction = -1,
+  viridis_end = 0.9, download_data = TRUE, save = TRUE,
+  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
+  verbose = TRUE)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -27,6 +27,10 @@ for details. If not supplied the function will attempt to load a saved version o
 dictionary. If this fails and \code{download_data = TRUE} then the dictionary will be downloaded.}
 
 \item{metric}{Character string specifying the metric to plot}
+
+\item{metric_to_use_as_label}{Character string defaulting to \code{NULL}. If supplied this metric will be looked up
+using the WHO data dictionary to provide a label. A use case would be when calculating incidence rates using \code{e_inc_100k}
+to get the WHO TB incidence rate label.}
 
 \item{metric_label}{Character string specifying the metric label to use.}
 
