@@ -7,6 +7,7 @@ test_year <- 2000
 test_that("summarise_tb_burden can summarise a variable
           without confidence intervals for a group of countries", {
             sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "mean",
                                            countries = test_countries,
                                            years = test_year,
                                            conf = NULL)
@@ -18,6 +19,7 @@ test_that("summarise_tb_burden can summarise a variable
 test_that("summarise_tb_burden can summarise a variable
           without confidence intervals for a group of countries, comparing within regions", {
             sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "mean",
                                            countries = test_countries,
                                            compare_to_region = TRUE,
                                            years = test_year + 1,
@@ -30,6 +32,7 @@ test_that("summarise_tb_burden can summarise a variable
 test_that("summarise_tb_burden can summarise a variable
           across to all regions", {
             sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "mean",
                                            countries = NULL,
                                            compare_all_regions = TRUE,
                                            years = test_year + 2,

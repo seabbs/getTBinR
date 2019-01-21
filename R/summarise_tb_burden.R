@@ -7,12 +7,12 @@
 #' 95\% confidence intervals) and the median (with 95\% interquartile range), rates and proportions.
 #' @param samples Numeric, the number of samples to use to generate confidence 
 #' intervals (only used when \code{conf} are present)
-#' @param compare_to_world Logical, defaults to \code{FALSE}. Should a comparision be made to 
+#' @param compare_to_world Logical, defaults to \code{TRUE}. Should a comparision be made to 
 #' the metric of interests global value.
 #' @param custom_compare Logical, defaults to \code{NULL}. A named list of custom countries.
-#' @param compare_all_regions Logical, defaults to \code{FALSE}. Should all regions be compared.
+#' @param compare_all_regions Logical, defaults to \code{TRUE}. Should all regions be compared.
 #' @param truncate_at_zero Logical, defaults to \code{TRUE}. Should lower bounds be truncated at zero?
-#' @param stat Character string, defaults to \code{"mean"}. The statistic to use to summarise the metric, currently
+#' @param stat Character string, defaults to \code{"rate"}. The statistic to use to summarise the metric, currently
 #' `"mean"`, `"median"`, `"rate"` and `"prop"` are supported. Note "mean" and "median" do not recompute the supplied 
 #' country levels values but can be used to summarise the distribution of region or global metrics. `"prop"` and`"rate"`
 #' compute the overall incidence rate for a given grouping (i.e the sum of the metric divided by the sum of the denominator).
@@ -40,6 +40,7 @@
 #' ## Get summary of the e_mdr_pct_rr_new cases
 #' summarise_tb_burden(metric = "e_mdr_pct_rr_new",
 #'                     years =  most_recent_year,
+#'                     state = "mean",
 #'                     samples = 100,
 #'                     compare_all_regions = TRUE,
 #'                     compare_to_world = TRUE,
@@ -76,17 +77,17 @@
 #'}                     
 summarise_tb_burden <- function(df = NULL,
                                 dict = NULL, 
-                                metric = "e_inc_100k",
+                                metric = "e_inc_num",
                                 metric_label = NULL,
                                 conf = c("_lo", "_hi"),
                                 years = NULL,
                                 samples = 1000,
                                 countries = NULL,
                                 compare_to_region = FALSE,
-                                compare_to_world = FALSE,
+                                compare_to_world = TRUE,
                                 custom_compare = NULL,
-                                compare_all_regions = FALSE,
-                                stat = "mean",
+                                compare_all_regions = TRUE,
+                                stat = "rate",
                                 denom = "e_pop_num",
                                 rate_scale = 1e5,
                                 truncate_at_zero = TRUE,
@@ -252,7 +253,6 @@ summarise_tb_burden <- function(df = NULL,
     custom_group_df <- NULL
   }
   
- 
   if (compare_to_region | compare_all_regions | !is.null(custom_group_df) | compare_to_world) {
     ## Combine into a single data-set
     all_df <- list(regions_df, custom_group_df, world_df) 
@@ -287,7 +287,8 @@ summarise_tb_burden <- function(df = NULL,
       if (!is.null(conf)) {
         metrics <- c(metric, paste0(metric, conf))
       }else{
-        metrics <- rep(metric, 3)
+        metrics <- c(metric, paste0(metric, 1:2))
+        all_df[metrics] <- all_df[[metric]]
       }
 
       

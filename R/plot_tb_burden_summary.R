@@ -5,13 +5,17 @@
 #' uncertainty represented by confidence intervals bootstrapping can be used (assuming a normal distribution) to 
 #' include this in any estimated summary measures. Currently four statistics are supported; the mean (with 
 #' 95\% confidence intervals) and the median (with 95\% interquartile range), rates and proportions.
-#' @param metric_to_use_as_label Character string defaulting to `NULL`. If supplied this metric will be looked up
+#' @param metric_label Character string defaulting to `NULL`. If supplied this metric will be looked up
 #' using the WHO data dictionary to provide a label. A use case would be when calculating incidence rates using `e_inc_100k` 
 #' to get the WHO TB incidence rate label.
-#' @inherit  plot_tb_burden
+#' @inheritParams  plot_tb_burden
 #' @inheritParams summarise_tb_burden
 #' @seealso search_data_dict plot_tb_burden summarise_tb_burden
+#' @importFrom purrr possibly
+#' @importFrom plotly ggplotly style
+#' @importFrom viridis  scale_fill_viridis  scale_colour_viridis
 #' @return A plot of TB Incidence Rates by Country
+#' @seealso summarise_tb_burden get_tb_burden search_data_dict
 #' @export
 #'
 #' @examples
@@ -44,18 +48,17 @@
 #'}                     
 plot_tb_burden_summary <- function(df = NULL,
                                    dict = NULL, 
-                                   metric = "e_inc_100k",
-                                   metric_to_use_as_label = NULL,
+                                   metric = "e_inc_num",
                                    metric_label = NULL,
                                    conf = c("_lo", "_hi"),
                                    years = NULL,
                                    samples = 1000,
                                    countries = NULL,
                                    compare_to_region = FALSE,
-                                   compare_to_world = FALSE,
+                                   compare_to_world = TRUE,
                                    custom_compare = NULL,
-                                   compare_all_regions = FALSE,
-                                   stat = "mean",
+                                   compare_all_regions = TRUE,
+                                   stat = "rate",
                                    denom = "e_pop_num",
                                    rate_scale = 1e5,
                                    truncate_at_zero = TRUE,
@@ -75,25 +78,30 @@ plot_tb_burden_summary <- function(df = NULL,
                                    verbose = TRUE){
   
   
-  if (is.null(metric_to_use_as_label)) {
-    metric_to_use_as_label <- metric
+  if (is.null(metric_label)) {
+    metric_label <- metric
   }
   
-  if (is.null(metric_label)) {
-    metric_label <- getTBinR::search_data_dict(var = metric_to_use_as_label, 
-                                     dict = dict,
-                                     download_data = download_data,
-                                     save = save,
-                                     dict_save_name = dict_save_name,
-                                     verbose = verbose)
+  safe_search <- possibly(search_data_dict, otherwise = NULL)
+  metric_label_lk <- safe_search(var = metric_label, 
+                              dict = dict,
+                              download_data = download_data,
+                              save = save,
+                              dict_save_name = dict_save_name,
+                              verbose = verbose)
     
-    metric_label <- metric_label$definition
+    if (!is.null(metric_label_lk)) {
+      metric_label <- metric_label_lk$definition
+    }
+
+  if(annual_change) {
+    metric_label <- paste0("Percentage annual change: ", metric_label)
   }
 
   sum_df <- summarise_tb_burden(df = df,
                                 dict = dict, 
                                 metric = metric,
-                                metric_label = metric_label,
+                                metric_label = NULL,
                                 conf = conf,
                                 years = years,
                                 samples = samples,
@@ -165,7 +173,7 @@ plot_tb_burden_summary <- function(df = NULL,
   }
   
   if (interactive) {
-    plot <- ggplotly(plot)  %>% 
+    plot <- ggplotly(plot) %>% 
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
   }
   

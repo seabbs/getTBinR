@@ -4,11 +4,11 @@
 \alias{summarise_tb_burden}
 \title{Summarise TB Burden - By Region, Globally and for Custom Groups}
 \usage{
-summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
+summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_num",
   metric_label = NULL, conf = c("_lo", "_hi"), years = NULL,
   samples = 1000, countries = NULL, compare_to_region = FALSE,
-  compare_to_world = FALSE, custom_compare = NULL,
-  compare_all_regions = FALSE, stat = "mean", denom = "e_pop_num",
+  compare_to_world = TRUE, custom_compare = NULL,
+  compare_all_regions = TRUE, stat = "rate", denom = "e_pop_num",
   rate_scale = 1e+05, truncate_at_zero = TRUE, annual_change = FALSE,
   download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", verbose = TRUE)
@@ -41,14 +41,14 @@ intervals (only used when \code{conf} are present)}
 countries that share a region with those listed in \code{countries} will be plotted.
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
-\item{compare_to_world}{Logical, defaults to \code{FALSE}. Should a comparision be made to
+\item{compare_to_world}{Logical, defaults to \code{TRUE}. Should a comparision be made to
 the metric of interests global value.}
 
 \item{custom_compare}{Logical, defaults to \code{NULL}. A named list of custom countries.}
 
-\item{compare_all_regions}{Logical, defaults to \code{FALSE}. Should all regions be compared.}
+\item{compare_all_regions}{Logical, defaults to \code{TRUE}. Should all regions be compared.}
 
-\item{stat}{Character string, defaults to \code{"mean"}. The statistic to use to summarise the metric, currently
+\item{stat}{Character string, defaults to \code{"rate"}. The statistic to use to summarise the metric, currently
 \code{"mean"}, \code{"median"}, \code{"rate"} and \code{"prop"} are supported. Note "mean" and "median" do not recompute the supplied
 country levels values but can be used to summarise the distribution of region or global metrics. \code{"prop"} and\code{"rate"}
 compute the overall incidence rate for a given grouping (i.e the sum of the metric divided by the sum of the denominator).}
@@ -98,6 +98,7 @@ most_recent_year <- max(tb_burden$year)
 ## Get summary of the e_mdr_pct_rr_new cases
 summarise_tb_burden(metric = "e_mdr_pct_rr_new",
                     years =  most_recent_year,
+                    state = "mean",
                     samples = 100,
                     compare_all_regions = TRUE,
                     compare_to_world = TRUE,

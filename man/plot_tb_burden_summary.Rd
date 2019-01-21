@@ -4,18 +4,17 @@
 \alias{plot_tb_burden_summary}
 \title{Plot Summaries of TB Burden - By Region, Globally and for Custom Groups}
 \usage{
-plot_tb_burden_summary(df = NULL, dict = NULL, metric = "e_inc_100k",
-  metric_to_use_as_label = NULL, metric_label = NULL, conf = c("_lo",
-  "_hi"), years = NULL, samples = 1000, countries = NULL,
-  compare_to_region = FALSE, compare_to_world = FALSE,
-  custom_compare = NULL, compare_all_regions = FALSE, stat = "mean",
-  denom = "e_pop_num", rate_scale = 1e+05, truncate_at_zero = TRUE,
-  annual_change = FALSE, smooth = FALSE, facet = NULL,
-  trans = "identity", scales = "fixed", interactive = FALSE,
-  viridis_palette = "viridis", viridis_direction = -1,
-  viridis_end = 0.9, download_data = TRUE, save = TRUE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  verbose = TRUE)
+plot_tb_burden_summary(df = NULL, dict = NULL, metric = "e_inc_num",
+  metric_label = NULL, conf = c("_lo", "_hi"), years = NULL,
+  samples = 1000, countries = NULL, compare_to_region = FALSE,
+  compare_to_world = TRUE, custom_compare = NULL,
+  compare_all_regions = TRUE, stat = "rate", denom = "e_pop_num",
+  rate_scale = 1e+05, truncate_at_zero = TRUE, annual_change = FALSE,
+  smooth = FALSE, facet = NULL, trans = "identity",
+  scales = "fixed", interactive = FALSE, viridis_palette = "viridis",
+  viridis_direction = -1, viridis_end = 0.9, download_data = TRUE,
+  save = TRUE, burden_save_name = "TB_burden",
+  dict_save_name = "TB_data_dict", verbose = TRUE)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -28,11 +27,9 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 
 \item{metric}{Character string specifying the metric to plot}
 
-\item{metric_to_use_as_label}{Character string defaulting to \code{NULL}. If supplied this metric will be looked up
+\item{metric_label}{Character string defaulting to \code{NULL}. If supplied this metric will be looked up
 using the WHO data dictionary to provide a label. A use case would be when calculating incidence rates using \code{e_inc_100k}
 to get the WHO TB incidence rate label.}
-
-\item{metric_label}{Character string specifying the metric label to use.}
 
 \item{conf}{Character vector specifying the name variations to use to specify the upper
 and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
@@ -50,14 +47,14 @@ intervals (only used when \code{conf} are present)}
 countries that share a region with those listed in \code{countries} will be plotted.
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
-\item{compare_to_world}{Logical, defaults to \code{FALSE}. Should a comparision be made to
+\item{compare_to_world}{Logical, defaults to \code{TRUE}. Should a comparision be made to
 the metric of interests global value.}
 
 \item{custom_compare}{Logical, defaults to \code{NULL}. A named list of custom countries.}
 
-\item{compare_all_regions}{Logical, defaults to \code{FALSE}. Should all regions be compared.}
+\item{compare_all_regions}{Logical, defaults to \code{TRUE}. Should all regions be compared.}
 
-\item{stat}{Character string, defaults to \code{"mean"}. The statistic to use to summarise the metric, currently
+\item{stat}{Character string, defaults to \code{"rate"}. The statistic to use to summarise the metric, currently
 \code{"mean"}, \code{"median"}, \code{"rate"} and \code{"prop"} are supported. Note "mean" and "median" do not recompute the supplied
 country levels values but can be used to summarise the distribution of region or global metrics. \code{"prop"} and\code{"rate"}
 compute the overall incidence rate for a given grouping (i.e the sum of the metric divided by the sum of the denominator).}
@@ -154,4 +151,6 @@ plot_tb_burden_summary(metric = "e_inc_num",
 }
 \seealso{
 search_data_dict plot_tb_burden summarise_tb_burden
+
+summarise_tb_burden get_tb_burden search_data_dict
 }
