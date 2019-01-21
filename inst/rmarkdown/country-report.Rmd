@@ -1,0 +1,37 @@
+---
+title: "Tuberculosis Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r report-setup}
+## Load the package
+library(getTBinR)
+
+## Get the data
+tb <- get_tb_burden()
+
+## Get the data dictionary
+dict <- get_data_dict()
+```
+
+```{r}
+country <- "United Kingdom"
+
+sum_uk_inc <- summarise_tb_burden(countries = country,
+                                  compare_to_world = TRUE, 
+                                  compare_to_region = TRUE,
+                                  annual_change = FALSE)
+```
+
+
+```{r}
+sum_uk_inc %>% 
+  ggplot(aes(year, e_inc_100k, col = area)) +
+  geom_line() +
+  theme(legend.position = "none")
+```

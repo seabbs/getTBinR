@@ -141,3 +141,17 @@ test_that("summarise_tb_burden can summarise a variable using the median", {
 
 
 
+test_that("summarise_tb_burden can summarise the annual change of a variable
+          with confidence intervals for all regions and globally then compare to a
+          shortlist of countries", {
+            sum_tab <- summarise_tb_burden(metric = "e_inc_100k",
+                                           samples = 1000,
+                                           countries = test_countries,
+                                           compare_all_regions = TRUE,
+                                           compare_to_world = TRUE,
+                                           annual_change = TRUE)
+            skip_on_cran()
+            expect_known_output(sum_tab, 
+                                file = "../../tests/test-files/summarise_tb_burden/test-10.rds")
+          })
+

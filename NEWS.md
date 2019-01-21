@@ -3,6 +3,7 @@
 ## Feature updates
 
 * Tweaked `map_tb_burden` to not use `geom_path` for country outlines.
+* Added support for `annual_change` to `summarise_tb_burden` and added validating tests.
 
 ## Package updates
 

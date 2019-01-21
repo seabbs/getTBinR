@@ -23,7 +23,7 @@
 #' @export
 #'
 #' @import magrittr
-#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at funs left_join bind_rows summarise summarise_at one_of rename_at n
+#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at funs left_join lag bind_rows summarise summarise_at one_of rename_at arrange n
 #' @importFrom purrr map map2_dfr compact reduce map_lgl
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr nest unnest
@@ -125,7 +125,7 @@ summarise_tb_burden <- function(df = NULL,
                                     conf = conf,
                                     countries = countries,
                                     compare_to_region = FALSE,
-                                    annual_change = annual_change,
+                                    annual_change = FALSE,
                                     download_data = download_data,
                                     save = save,
                                     burden_save_name = burden_save_name,
@@ -152,7 +152,7 @@ summarise_tb_burden <- function(df = NULL,
                                   conf = conf,
                                   countries = countries_region,
                                   compare_to_region = TRUE,
-                                  annual_change = annual_change,
+                                  annual_change = FALSE,
                                   download_data = download_data,
                                   save = save,
                                   burden_save_name = burden_save_name,
@@ -173,7 +173,7 @@ summarise_tb_burden <- function(df = NULL,
                                 conf = conf,
                                 countries = NULL,
                                 compare_to_region = FALSE,
-                                annual_change = annual_change,
+                                annual_change = FALSE,
                                 download_data = download_data,
                                 save = save,
                                 burden_save_name = burden_save_name,
@@ -207,7 +207,7 @@ summarise_tb_burden <- function(df = NULL,
                                                         conf = conf,
                                                         countries = .x,
                                                         compare_to_region = FALSE,
-                                                        annual_change = annual_change,
+                                                        annual_change = FALSE,
                                                         download_data = download_data,
                                                         save = save,
                                                         burden_save_name = burden_save_name,
@@ -329,7 +329,7 @@ summarise_tb_burden <- function(df = NULL,
    }
    
    if (!is.null(summarised_df)) {
-     output_df <- output_df%>% 
+     output_df <- output_df %>% 
        bind_rows(summarised_df)
    }
    
@@ -341,6 +341,24 @@ summarise_tb_burden <- function(df = NULL,
      
    
   output_df <- mutate(output_df, area = factor(area, levels = area_list)) 
+  
+  ## Estimate annual change
+  if (annual_change) {
+    
+    if (is.null(metrics)) {
+      metrics <- metric
+    }
+    
+    output_df <- output_df %>% 
+      group_by(area) %>% 
+      arrange(year) %>% 
+      mutate_at(.vars = metrics, .funs = funs((. - lag(.)) / lag(.))) %>%
+      arrange(year) %>% 
+      slice(-1) %>% 
+      ungroup %>% 
+      mutate_at(.vars = metrics,
+                .funs = funs(replace(., is.nan(.), NA)))
+  }
   
   return(output_df)
 }
