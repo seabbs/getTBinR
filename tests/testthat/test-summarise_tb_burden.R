@@ -155,3 +155,30 @@ test_that("summarise_tb_burden can summarise the annual change of a variable
                                 file = "../../tests/test-files/summarise_tb_burden/test-10.rds")
           })
 
+
+test_that("summarise_tb_burden can generate summarised incidence rates for regions and globally", {
+            sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "rate",
+                                           countries = test_countries,
+                                           compare_all_regions = TRUE,
+                                           compare_to_world = TRUE,
+                                           annual_change = FALSE)
+            skip_on_cran()
+            expect_known_output(sum_tab, 
+                                file = "../../tests/test-files/summarise_tb_burden/test-11.rds")
+          })
+
+test_that("summarise_tb_burden can generate summarised proportions for regions and globally", {
+  sum_tab <- summarise_tb_burden(metric = "e_mort_exc_tbhiv_num",
+                                 stat = "prop",
+                                 denom = "e_inc_num",
+                                 countries = test_countries,
+                                 compare_all_regions = TRUE,
+                                 compare_to_world = TRUE,
+                                 annual_change = FALSE)
+  skip_on_cran()
+  expect_known_output(sum_tab, 
+                      file = "../../tests/test-files/summarise_tb_burden/test-12.rds")
+})
+
+

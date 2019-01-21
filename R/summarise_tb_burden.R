@@ -14,16 +14,20 @@
 #' @param compare_all_regions Logical, defaults to \code{FALSE}. Should all regions be compared.
 #' @param truncate_at_zero Logical, defaults to \code{TRUE}. Should lower bounds be truncated at zero?
 #' @param stat Character string, defaults to \code{"mean"}. The statistic to use to summarise the metric, currently
-#' "mean" and "median" are supported. Note "mean" and "median" do not recompute the supplied country levels values.
-#' Future options will include the weighted proportion and the summarised incidence rate.
-#' @param denominator Character string identifying the variable to use as a denominator in any proportion or rate calculation.
+#' `"mean"`, `"median"`, `"rate"` and `"prop"` are supported. Note "mean" and "median" do not recompute the supplied 
+#' country levels values but can be used to summarise the distribution of region or global metrics. `"prop"` and`"rate"`
+#' compute the overall incidence rate for a given grouping (i.e the sum of the metric divided by the sum of the denominator).
+#' @param denom Character string defaulting to `e_pop_num` (country level population). If `stat` is set to `rate` or 
+#' `prop` then this is the parameter to use as the denominator.
+#' @param rate_scale Numeric defaults to 100,000. The scaling to use for rates. If `stat` is to set to `prop` then this defaults
+#' to 1.
 #' @inheritParams prepare_df_plot
 #' @return A tibble containing summarised values (with 95% confidence intervals) for the metric of choice
 #' stratified by area and year.
 #' @export
 #'
 #' @import magrittr
-#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at funs left_join lag bind_rows summarise summarise_at one_of rename_at arrange n
+#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at funs left_join lag bind_rows summarise summarise_at one_of rename_at arrange n contains
 #' @importFrom purrr map map2_dfr compact reduce map_lgl
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr nest unnest
@@ -62,6 +66,14 @@
 #'                     compare_to_world = TRUE, 
 #'                     compare_to_region = TRUE,
 #'                     verbose = FALSE)
+#'                     
+#'  ## Get an overview of incidence rates regionally and globally compared to the UK
+#' summarise_tb_burden(metric = "e_inc_num",
+#'                     stat = "rate",
+#'                     countries = "United Kingdom", 
+#'                     compare_to_world = TRUE, 
+#'                     compare_to_region = TRUE,
+#'                     verbose = FALSE) 
 #'}                     
 summarise_tb_burden <- function(df = NULL,
                                 dict = NULL, 
@@ -76,6 +88,8 @@ summarise_tb_burden <- function(df = NULL,
                                 custom_compare = NULL,
                                 compare_all_regions = FALSE,
                                 stat = "mean",
+                                denom = "e_pop_num",
+                                rate_scale = 1e5,
                                 denominator = NULL,
                                 truncate_at_zero = TRUE,
                                 annual_change = FALSE,
@@ -90,6 +104,11 @@ summarise_tb_burden <- function(df = NULL,
   g_whoregion <- NULL; id <- NULL; mean_hi <- NULL; mean_lo <- NULL; n <- NULL; pop <- NULL;
   year <- NULL; area <- NULL;
   
+  ## Set rate scale to be 1 if computing proportion
+  if (stat == "prop") {
+    rate_scale <- 1
+  }
+  
   ## Set up function to compute variable summary
   if (stat == "mean") {
     get_summary <- function(summarised_df) {
@@ -100,16 +119,30 @@ summarise_tb_burden <- function(df = NULL,
                mean_hi = qnorm(0.975, mean, sd))
     }
     
-  }else if (stat == "median") {
+  } else if (stat == "median") {
     get_summary <- function(summarised_df) {
       summarised_df <- summarised_df %>% 
         summarise(mean = median(samples, na.rm = TRUE),
                   mean_lo = quantile(samples, 0.025, na.rm = TRUE),
                   mean_hi = quantile(samples, 0.975, na.rm = TRUE))
-    }
-    
-  }else{
-    stop("This statistic is not currently supported.")
+    } 
+    } else if (stat %in% c("rate", "prop")) {
+      get_summary <- function(summarised_df, int_rate_scale = rate_scale,
+                              int_metrics = metrics) {
+        summarised_df <- summarised_df %>% 
+          summarise_at(.vars = c(metrics, "denom"),
+                     funs(sum(as.numeric(.), na.rm = T))) %>% 
+          mutate_at(.vars = int_metrics,
+                    .funs = funs(. / denom * int_rate_scale)) %>% 
+          select(-denom)
+        
+        
+        colnames(summarised_df) <- c("Area", "Year", paste0("mean", c("", "_lo", "_hi")))
+        
+        return(summarised_df)
+      }
+    }else{
+      stop("This statistic is not currently supported.")
   }
   
   if (!is.null(countries)) {
@@ -251,7 +284,19 @@ summarise_tb_burden <- function(df = NULL,
       conf <- NULL
       }
     
-    if (is.null(conf)) {
+    if (stat %in% c("prop", "rate")) {
+      
+      if (!is.null(conf)) {
+        metrics <- c(metric, paste0(metric, conf))
+      }else{
+        metrics <- rep(metric, 3)
+      }
+
+      
+      summarised_df <- all_df %>% 
+        rename_at(.vars = denom, ~ "denom")
+     
+    } else if (is.null(conf)) {
 
       summarised_df <-  all_df %>% 
         rename_at(.vars = metric, .funs = funs(paste0("samples")))
@@ -267,7 +312,7 @@ summarise_tb_burden <- function(df = NULL,
                   .funs = funs(ifelse(is.na(.), all_df[[metric]], .))) %>% 
         group_by(Area, Year)
       
-      summarised_df$sd <- (summarised_df[[metrics[3]]] - summarised_df[[metrics[2]]]) / (2*1.96)
+      summarised_df$sd <- (summarised_df[[metrics[3]]] - summarised_df[[metrics[2]]]) / (2 * 1.96)
       
       summarised_df <- summarised_df %>%
         ungroup %>% 
@@ -307,6 +352,7 @@ summarise_tb_burden <- function(df = NULL,
     }
     
     colnames(summarised_df) <- c("area", "year", paste0(metric, c("", "_lo", "_hi")))
+    
   }else{
     summarised_df <- NULL
   }
@@ -322,10 +368,23 @@ summarise_tb_burden <- function(df = NULL,
   
  if (!is.null(countries_df)) {
    output_df <- countries_df %>% 
-     select(area = Area, year, one_of(paste0(metric, c("", "_lo", "_hi")))) 
+     select(area = Area, year, one_of(paste0(metric, c("", "_lo", "_hi"))), contains(denom)) 
    
    if (!is.null(years)) {
      output_df <- filter(output_df, year %in% years)
+   }
+   
+   ## Estimate rate/proportions for countries specified.
+   if (stat %in% c("rate", "prop")) {
+     output_df <- output_df %>% 
+       rename_at(.vars = denom, .funs = ~ "denom") %>% 
+       group_by(area, year) %>% 
+       get_summary() %>% 
+       ungroup %>% 
+       mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
+                 .funs = funs(ifelse(. %in% NaN, NA, .)))
+     
+     colnames(output_df) <- c("area", "year", paste0(metric, c("", "_lo", "_hi")))
    }
    
    if (!is.null(summarised_df)) {

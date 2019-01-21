@@ -8,10 +8,11 @@ summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, conf = c("_lo", "_hi"), years = NULL,
   samples = 1000, countries = NULL, compare_to_region = FALSE,
   compare_to_world = FALSE, custom_compare = NULL,
-  compare_all_regions = FALSE, stat = "mean", denominator = NULL,
-  truncate_at_zero = TRUE, annual_change = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", verbose = TRUE)
+  compare_all_regions = FALSE, stat = "mean", denom = "e_pop_num",
+  rate_scale = 1e+05, denominator = NULL, truncate_at_zero = TRUE,
+  annual_change = FALSE, download_data = TRUE, save = TRUE,
+  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
+  verbose = TRUE)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -49,10 +50,15 @@ the metric of interests global value.}
 \item{compare_all_regions}{Logical, defaults to \code{FALSE}. Should all regions be compared.}
 
 \item{stat}{Character string, defaults to \code{"mean"}. The statistic to use to summarise the metric, currently
-"mean" and "median" are supported. Note "mean" and "median" do not recompute the supplied country levels values.
-Future options will include the weighted proportion and the summarised incidence rate.}
+\code{"mean"}, \code{"median"}, \code{"rate"} and \code{"prop"} are supported. Note "mean" and "median" do not recompute the supplied
+country levels values but can be used to summarise the distribution of region or global metrics. \code{"prop"} and\code{"rate"}
+compute the overall incidence rate for a given grouping (i.e the sum of the metric divided by the sum of the denominator).}
 
-\item{denominator}{Character string identifying the variable to use as a denominator in any proportion or rate calculation.}
+\item{denom}{Character string defaulting to \code{e_pop_num} (country level population). If \code{stat} is set to \code{rate} or
+\code{prop} then this is the parameter to use as the denominator.}
+
+\item{rate_scale}{Numeric defaults to 100,000. The scaling to use for rates. If \code{stat} is to set to \code{prop} then this defaults
+to 1.}
 
 \item{truncate_at_zero}{Logical, defaults to \code{TRUE}. Should lower bounds be truncated at zero?}
 
@@ -119,5 +125,13 @@ summarise_tb_burden(metric = "e_inc_num",
                     compare_to_world = TRUE, 
                     compare_to_region = TRUE,
                     verbose = FALSE)
+                    
+ ## Get an overview of incidence rates regionally and globally compared to the UK
+summarise_tb_burden(metric = "e_inc_num",
+                    stat = "rate",
+                    countries = "United Kingdom", 
+                    compare_to_world = TRUE, 
+                    compare_to_region = TRUE,
+                    verbose = FALSE) 
 }                     
 }
