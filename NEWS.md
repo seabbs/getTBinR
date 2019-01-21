@@ -9,6 +9,7 @@
 * Added script to generate hexsticker
 * Added hexsticker to README
 * Added DOI link to Zenodo. (to do on CRAN release).
+* Updated tests to account for `dplyr` 8.0 release and `vdiffr` updates.
 
 # getTBinR 0.5.6
 
