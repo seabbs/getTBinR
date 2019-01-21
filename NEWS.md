@@ -4,6 +4,8 @@
 
 * Tweaked `map_tb_burden` to not use `geom_path` for country outlines.
 * Added support for `annual_change` to `summarise_tb_burden` and added validating tests.
+* Added a `smooth` arguement to `plot_tb_burden` to allow smooth trend lines to be plotted (derived using `ggplot2::geom_smooth`).
+* Tweak line thickness in `plot_tb_burden` to improve plot appearance.
 
 ## Package updates
 

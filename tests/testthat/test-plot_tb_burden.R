@@ -9,6 +9,15 @@ test_that("plot_tb_burden produces a plot", {
   vdiffr::expect_doppelganger("base-plot", plot)
 })
 
+test_that("plot_tb_burden produces a plot with smoothed data", {
+  plot <- plot_tb_burden(download_data = TRUE, save = TRUE, smooth = TRUE)
+  
+  expect_true(!is.null(plot))
+  expect_equal("ggplot", class(plot)[2])
+  skip_on_cran()
+  vdiffr::expect_doppelganger("smooth-plot", plot)
+})
+
 test_that("plot_tb_burden produces a plot with a log10 transform", {
   plot <- plot_tb_burden(trans = "log10")
   
