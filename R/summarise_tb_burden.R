@@ -109,28 +109,24 @@ summarise_tb_burden <- function(df = NULL,
   }
   
   ## Set up function to compute variable summary
-  if (stat == "mean") {
-    get_summary <- function(summarised_df) {
-      summarised_df <- summarised_df %>% 
-        summarise(mean = mean(samples, na.rm = TRUE),
-                  sd = sd(samples, na.rm = TRUE)) %>% 
-        mutate(mean_lo = qnorm(0.025, mean, sd),
-               mean_hi = qnorm(0.975, mean, sd))
-    }
-    
-  } else if (stat == "median") {
-    get_summary <- function(summarised_df) {
-      summarised_df <- summarised_df %>% 
-        summarise(mean = median(samples, na.rm = TRUE),
-                  mean_lo = quantile(samples, 0.025, na.rm = TRUE),
-                  mean_hi = quantile(samples, 0.975, na.rm = TRUE))
-    } 
-    } else if (stat %in% c("rate", "prop")) {
-      get_summary <- function(summarised_df, int_rate_scale = rate_scale,
-                              int_metrics = metrics) {
+  get_summary <- function(summarised_df,
+                            int_rate_scale = rate_scale,
+                            int_metrics = metrics) {
+      if (stat == "mean") {
+        summarised_df <- summarised_df %>% 
+          summarise(mean = mean(samples, na.rm = TRUE),
+                    sd = sd(samples, na.rm = TRUE)) %>% 
+          mutate(mean_lo = qnorm(0.025, mean, sd),
+                 mean_hi = qnorm(0.975, mean, sd))
+       }else if (stat == "median") {
+        summarised_df <- summarised_df %>% 
+          summarise(mean = median(samples, na.rm = TRUE),
+                    mean_lo = quantile(samples, 0.025, na.rm = TRUE),
+                    mean_hi = quantile(samples, 0.975, na.rm = TRUE))
+      } else if (stat %in% c("rate", "prop")) {
         summarised_df <- summarised_df %>% 
           summarise_at(.vars = c(metrics, "denom"),
-                     funs(sum(as.numeric(.), na.rm = T))) %>% 
+                       funs(sum(as.numeric(.), na.rm = T))) %>% 
           mutate_at(.vars = int_metrics,
                     .funs = funs(. / denom * int_rate_scale)) %>% 
           select(-denom)
@@ -138,11 +134,11 @@ summarise_tb_burden <- function(df = NULL,
         
         colnames(summarised_df) <- c("Area", "Year", paste0("mean", c("", "_lo", "_hi")))
         
-        return(summarised_df)
+      } else {
+        stop("This statistic is not currently supported.")
       }
-    }else{
-      stop("This statistic is not currently supported.")
-  }
+      return(summarised_df)
+    }
   
   if (!is.null(countries)) {
     
