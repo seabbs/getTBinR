@@ -7,8 +7,6 @@
 
 ## Comment
 
-- Removed README dpi setting to reduce fig size.
-
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
