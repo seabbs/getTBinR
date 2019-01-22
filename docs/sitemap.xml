@@ -25,7 +25,13 @@
     <loc>samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html</loc>
   </url>
   <url>
+    <loc>samabbott.co.uk/getTBinR//reference/plot_tb_burden_summary.html</loc>
+  </url>
+  <url>
     <loc>samabbott.co.uk/getTBinR//reference/prepare_df_plot.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/getTBinR//reference/render_country_report.html</loc>
   </url>
   <url>
     <loc>samabbott.co.uk/getTBinR//reference/run_tb_dashboard.html</loc>

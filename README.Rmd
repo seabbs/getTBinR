@@ -97,7 +97,7 @@ getTBinR::run_tb_dashboard()
 
 Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.
 
-![](man/img/ExploreGlobalTB.png)
+![Snapshot of the integrated dashboard.](man/img/ExploreGlobalTB.png)
 
 
 ## Country Report
@@ -108,6 +108,8 @@ To get a detailed overview of TB in a country of your choice run the following, 
 ## Code saves report into your current working directory
 render_country_report(country = "United Kingdom", save_dir = ".")
 ```
+
+![Example report for the United Kingdom.](man/img/ExampleCountryReport.png)
 
 
 ## Additional Functionality

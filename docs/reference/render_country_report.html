@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • getTBinR</title>
+<title>Render a Country Level TB Report — render_country_report • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,7 +36,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Render a Country Level TB Report — render_country_report" />
+
+<meta property="og:description" content="This function renders a country level TB report." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -53,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -155,19 +158,72 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Render a Country Level TB Report</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/render_country_report.R'><code>R/render_country_report.R</code></a></small>
+    <div class="hidden name"><code>render_country_report.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="case_fatality_rate.html">Exploring Estimates of the Tuberculosis Case Fatality Ratio</a></li>
-        <li><a href="case_study_global_trends.html">Exploring Global Trends in Tuberculosis Incidence Rates</a></li>
-        <li><a href="intro.html">Getting started with getTBinR</a></li>
-      </ul>
+    <div class="ref-description">
+    
+    <p>This function renders a country level TB report.</p>
+    
     </div>
+
+    <pre class="usage"><span class='fu'>render_country_report</span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"United Kingdom"</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html_document"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>country</th>
+      <td><p>Character string, defaults to <code>"United Kingdom"</code>. Specify the country to
+report on.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>Character string, defaults to <code>"html_document"</code>. The format to render the report to.
+See <code><a href='https://www.rdocumentation.org/packages/rmarkdown/topics/render'>?rmarkdown::render</a></code> for details.</p></td>
+    </tr>
+    <tr>
+      <th>interactive</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. When the format allows should graphs be interactive.</p></td>
+    </tr>
+    <tr>
+      <th>save_dir</th>
+      <td><p>Character string, defaults to <code>NULL</code>.
+If not given then the report is rendered to a temporary directory (although only if <code>filename</code> is also not given).</p></td>
+    </tr>
+    <tr>
+      <th>filename</th>
+      <td><p>Character string defaults <code>NULL</code>. Name to save the report under, defaults to <code>"country_report"</code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Renders a country level TB report</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+## Only run the example if in an interative session
+</div><span class='co'># NOT RUN {</span>
+<span class='co'>## Run the TB dashboard</span>
+<span class='fu'>render_country_report</span>()
+<span class='co'># }</span></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 

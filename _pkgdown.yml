@@ -7,7 +7,7 @@ template:
       index_name: gettbinr
 
 development:
-  mode: devel
+  mode: release
   
 navbar:
   type: inverse
