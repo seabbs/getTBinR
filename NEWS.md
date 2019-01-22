@@ -8,7 +8,7 @@
 summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html) case study.
 * Added `render_country_report` to generate a TB report for a given country.
 * Tweaked `map_tb_burden` to not use `geom_path` for country outlines.
-* Added a `smooth` arguement to `plot_tb_burden` to allow smooth trend lines to be plotted (derived using `ggplot2::geom_smooth`).
+* Added a `smooth` argument to `plot_tb_burden` to allow smooth trend lines to be plotted (derived using `ggplot2::geom_smooth`).
 * Tweaked line thickness in `plot_tb_burden` to improve plot appearance.
 
 ## Package updates
@@ -71,7 +71,7 @@ summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articl
 ## Package updates
 
 * Added improved tests in response to WHO data updates. See [here](https://github.com/seabbs/getTBinR/issues/28)
-* Added an additional method for downloading data in reponse to test failures
+* Added an additional method for downloading data in response to test failures
 on CRAN. See [here](https://github.com/seabbs/getTBinR/issues/29)
 * Added skip on CRAN for data backend related tests.
 * Added `Makefile` at top level and for `data-raw` to build the package.
@@ -94,8 +94,8 @@ on CRAN. See [here](https://github.com/seabbs/getTBinR/issues/29)
 
 ## Feature updates
 
-* Added `annual_change` arguement to all plotting/mapping functions. Passed to `prepare_df_plot`. Returns the percentage annual change for the supplied metric.
-* Added `trans` arguement to all plotting functions to allow scaling using any `ggplot2::continous_scale` `trans` arguement.
+* Added `annual_change` argument to all plotting/mapping functions. Passed to `prepare_df_plot`. Returns the percentage annual change for the supplied metric.
+* Added `trans` argument to all plotting functions to allow scaling using any `ggplot2::continous_scale` `trans` argument.
 * Added adaptive axis and legend labels to properly show annual percentage change.
 * Added `run_tb_dashboard` to launch a shiny dashboard for exploring global tuberculosis
 * Changed function defaults so that data is automatically downloaded and saved into the temporary
@@ -114,9 +114,9 @@ directory when `get_data` functions are called.
 
 ## Feature updates
 
-* Added `download_data` arguement to all functions to make downloading data explicit.
-* Added `save` arguement to all functions to make saving the data explicit.
-* Added `save_name` and `path` arguements to all functions to make location of saving explicit.
+* Added `download_data` argument to all functions to make downloading data explicit.
+* Added `save` argument to all functions to make saving the data explicit.
+* Added `save_name` and `path` arguments to all functions to make location of saving explicit.
 
 ## Package updates
 

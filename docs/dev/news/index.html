@@ -170,8 +170,9 @@
 <li>Added support for <code>annual_change</code> to <code>summarise_tb_burden</code> and added validating tests.</li>
 <li>Added support for rates and proportions to <code>summarise_tb_burden</code> and added validating tests.</li>
 <li>Added a new function - <code>plot_tb_burden_summary</code>. Function wraps <code>summarise_tb_burden</code> and allows all in one summary plotting. Inspired by <a href="https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html">this</a> case study.</li>
+<li>Added <code>render_country_report</code> to generate a TB report for a given country.</li>
 <li>Tweaked <code>map_tb_burden</code> to not use <code>geom_path</code> for country outlines.</li>
-<li>Added a <code>smooth</code> arguement to <code>plot_tb_burden</code> to allow smooth trend lines to be plotted (derived using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth</a></code>).</li>
+<li>Added a <code>smooth</code> argument to <code>plot_tb_burden</code> to allow smooth trend lines to be plotted (derived using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth</a></code>).</li>
 <li>Tweaked line thickness in <code>plot_tb_burden</code> to improve plot appearance.</li>
 </ul>
 </div>
@@ -275,7 +276,7 @@
 <ul>
 <li>Added improved tests in response to WHO data updates. See <a href="https://github.com/seabbs/getTBinR/issues/28">here</a>
 </li>
-<li>Added an additional method for downloading data in reponse to test failures on CRAN. See <a href="https://github.com/seabbs/getTBinR/issues/29">here</a>
+<li>Added an additional method for downloading data in response to test failures on CRAN. See <a href="https://github.com/seabbs/getTBinR/issues/29">here</a>
 </li>
 <li>Added skip on CRAN for data backend related tests.</li>
 <li>Added <code>Makefile</code> at top level and for <code>data-raw</code> to build the package.</li>
@@ -311,8 +312,8 @@
 <h2 class="hasAnchor">
 <a href="#feature-updates-6" class="anchor"></a>Feature updates</h2>
 <ul>
-<li>Added <code>annual_change</code> arguement to all plotting/mapping functions. Passed to <code>prepare_df_plot</code>. Returns the percentage annual change for the supplied metric.</li>
-<li>Added <code>trans</code> arguement to all plotting functions to allow scaling using any <code>ggplot2::continous_scale</code> <code>trans</code> arguement.</li>
+<li>Added <code>annual_change</code> argument to all plotting/mapping functions. Passed to <code>prepare_df_plot</code>. Returns the percentage annual change for the supplied metric.</li>
+<li>Added <code>trans</code> argument to all plotting functions to allow scaling using any <code>ggplot2::continous_scale</code> <code>trans</code> argument.</li>
 <li>Added adaptive axis and legend labels to properly show annual percentage change.</li>
 <li>Added <code>run_tb_dashboard</code> to launch a shiny dashboard for exploring global tuberculosis</li>
 <li>Changed function defaults so that data is automatically downloaded and saved into the temporary directory when <code>get_data</code> functions are called.</li>
@@ -339,9 +340,9 @@
 <h2 class="hasAnchor">
 <a href="#feature-updates-7" class="anchor"></a>Feature updates</h2>
 <ul>
-<li>Added <code>download_data</code> arguement to all functions to make downloading data explicit.</li>
-<li>Added <code>save</code> arguement to all functions to make saving the data explicit.</li>
-<li>Added <code>save_name</code> and <code>path</code> arguements to all functions to make location of saving explicit.</li>
+<li>Added <code>download_data</code> argument to all functions to make downloading data explicit.</li>
+<li>Added <code>save</code> argument to all functions to make saving the data explicit.</li>
+<li>Added <code>save_name</code> and <code>path</code> arguments to all functions to make location of saving explicit.</li>
 </ul>
 </div>
 <div id="package-updates-7" class="section level2">

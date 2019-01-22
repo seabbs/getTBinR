@@ -47,7 +47,7 @@ intervals (only used when \code{conf} are present)}
 countries that share a region with those listed in \code{countries} will be plotted.
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
-\item{compare_to_world}{Logical, defaults to \code{TRUE}. Should a comparision be made to
+\item{compare_to_world}{Logical, defaults to \code{TRUE}. Should a comparison be made to
 the metric of interests global value.}
 
 \item{custom_compare}{Logical, defaults to \code{NULL}. A named list of custom countries.}

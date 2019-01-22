@@ -7,7 +7,7 @@
 #' 95\% confidence intervals) and the median (with 95\% interquartile range), rates and proportions.
 #' @param samples Numeric, the number of samples to use to generate confidence 
 #' intervals (only used when \code{conf} are present)
-#' @param compare_to_world Logical, defaults to \code{TRUE}. Should a comparision be made to 
+#' @param compare_to_world Logical, defaults to \code{TRUE}. Should a comparison be made to 
 #' the metric of interests global value.
 #' @param custom_compare Logical, defaults to \code{NULL}. A named list of custom countries.
 #' @param compare_all_regions Logical, defaults to \code{TRUE}. Should all regions be compared.

@@ -170,7 +170,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>render_country_report</span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"United Kingdom"</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html_document"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html_document"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,13 +187,17 @@ report on.</p></td>
 See <code><a href='https://www.rdocumentation.org/packages/rmarkdown/topics/render'>?rmarkdown::render</a></code> for details.</p></td>
     </tr>
     <tr>
-      <th>save_dir</th>
-      <td><p>Character string, defaults to <code>NULL</code>.
-If not given then the report is rendered to a temporary directory.</p></td>
+      <th>interactive</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. When the format allows should graphs be interactive.</p></td>
     </tr>
     <tr>
-      <th>Interactive</th>
-      <td><p>Logical, defaults to <code>TRUE</code>. When the format allows should graphs be interactive.</p></td>
+      <th>save_dir</th>
+      <td><p>Character string, defaults to <code>NULL</code>.
+If not given then the report is rendered to a temporary directory (although only if <code>filename</code> is also not given).</p></td>
+    </tr>
+    <tr>
+      <th>filename</th>
+      <td><p>Character string defaults <code>NULL</code>. Name to save the report under, defaults to <code>"country_report"</code>.</p></td>
     </tr>
     </table>
     
