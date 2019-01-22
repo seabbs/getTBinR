@@ -60,6 +60,9 @@ render_country_report <- function(country = "United Kingdom", format = "html_doc
   rmarkdown::render(report, output_format = format,
                     output_file = filename,
                     output_dir = save_dir, 
-                    intermediates_dir = save_dir, 
+                    intermediates_dir = save_dir,
+                    params = list("country" = country, 
+                                  "interactive" = interactive),
+                    envir = new.env(),
                     clean = TRUE)
 }

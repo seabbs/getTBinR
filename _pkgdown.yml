@@ -58,6 +58,10 @@ reference:
       desc: Launch interactive dashboards showcasing package functionality. These dashboards require the shiny package.
       contents:
       - starts_with("run_")
+    - title: Reports
+      desc: Render parameterised reports showcasing package functionality. These reports require the rmarkdown package.
+      contents:
+      - starts_with("render_")
     - title: Helpers
       contents:
       - search_data_dict

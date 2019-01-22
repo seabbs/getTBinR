@@ -1,16 +1,16 @@
 ---
 title: "Tuberculosis Report"
 output: html_document
-params:
-  country: "United kingdom"
+params: 
+  country: "United Kingdom"
   interactive: FALSE
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE,
-                      warnings = FALSE)
+                      warnings = FALSE,
+                      eval = TRUE)
 ```
-
 
 ```{r report-setup, include = FALSE, results = "hide"}
 ## Load the package
@@ -27,6 +27,10 @@ tb <- get_tb_burden(verbose = FALSE)
 
 ## Get the data dictionary
 dict <- get_data_dict(verbose = FALSE)
+
+##Assign parameters
+country <- params$country
+interactive <- params$interactive
 ```
 
 ## TB incidence rates
