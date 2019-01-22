@@ -87,11 +87,11 @@ plot_tb_burden_summary <- function(df = NULL,
   
   safe_search <- possibly(search_data_dict, otherwise = NULL)
   metric_label_lk <- safe_search(var = metric_label, 
-                              dict = dict,
-                              download_data = download_data,
-                              save = save,
-                              dict_save_name = dict_save_name,
-                              verbose = verbose)
+                                 dict = dict,
+                                 download_data = download_data,
+                                 save = save,
+                                 dict_save_name = dict_save_name,
+                                 verbose = verbose)
     
     if (!is.null(metric_label_lk)) {
       metric_label <- metric_label_lk$definition
@@ -153,9 +153,11 @@ plot_tb_burden_summary <- function(df = NULL,
   }
   
   plot <- plot +
-    scale_colour_viridis(end = viridis_end, direction = viridis_direction, discrete = TRUE,
+    scale_colour_viridis(end = viridis_end, direction = viridis_direction,
+                         discrete = TRUE,
                          option = viridis_palette) +
-    scale_fill_viridis(end = viridis_end, direction = viridis_direction, discrete = TRUE,
+    scale_fill_viridis(end = viridis_end, direction = viridis_direction,
+                       discrete = TRUE,
                        option = viridis_palette) +
     theme_minimal() +
     theme(legend.position = legend) +

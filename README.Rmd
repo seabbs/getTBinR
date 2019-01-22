@@ -102,11 +102,14 @@ Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric 
 
 ## Country Report
 
-To get a detailed overview of TB in a country of your choice run the following (alternatively available from the built in dashboard.),
+To get a detailed overview of TB in a country of your choice run the following, alternatively available from the built in dashboard above.
 
 ```{r, eval = FALSE}
-render_country_report(country = "United Kingdom")
+## Code saves report into your current working directory
+render_country_report(country = "United Kingdom", save_dir = ".")
 ```
+
+
 ## Additional Functionality
 
 File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!

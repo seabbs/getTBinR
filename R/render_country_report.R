@@ -5,7 +5,7 @@
 #' report on.
 #' @param format Character string, defaults to `"html_document"`. The format to render the report to. 
 #' See `?rmarkdown::render` for details.
-#' @param interactive Logical, defaults to `TRUE`. When the format allows should graphs be interactive.
+#' @param interactive Logical, defaults to `FALSE`. When the format allows should graphs be interactive.
 #' @param save_dir Character string, defaults to `NULL`.
 #'  If not given then the report is rendered to a temporary directory (although only if `filename` is also not given).
 #' @param filename Character string defaults `NULL`. Name to save the report under, defaults to `"country_report"`.
@@ -21,10 +21,11 @@
 #' render_country_report()
 #' }
 render_country_report <- function(country = "United Kingdom", format = "html_document",
-                                  interactive = TRUE, save_dir = NULL,
+                                  interactive = FALSE, save_dir = NULL,
                                   filename = NULL) {
   
-  required_packages <- c("rmarkdown", "magrittr", "dplyr", "tibble", "getTBinR")
+  required_packages <- c("rmarkdown", "magrittr", "dplyr", "tibble",
+                         "ggplot2", "tidyr", "rlang", "getTBinR")
   
   not_present <- sapply(required_packages, function(package) {
     
@@ -54,10 +55,6 @@ render_country_report <- function(country = "United Kingdom", format = "html_doc
     save_dir <- tempdir()
     
     message("Rendering report to ", save_dir)
-  }
-  
-  if (is.null(filename)) {
-    filename <- "country-report"
   }
   
   rmarkdown::render(report, output_format = format,

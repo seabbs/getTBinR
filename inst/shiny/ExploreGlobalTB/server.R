@@ -190,7 +190,7 @@ shinyServer(function(input, output, session) {
     filename = "country-report.html",
     content = function(file) {
       
-      render_country_report(filename = file)
+      render_country_report(country = country(), filename = file)
     })
   
 })

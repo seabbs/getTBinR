@@ -101,7 +101,7 @@ summarise_tb_burden <- function(df = NULL,
   ## Deal with undefined global function notes
   . <- NULL; Area <- NULL; Year <- NULL; country <- NULL; data <- NULL; e_pop_num <- NULL;
   g_whoregion <- NULL; id <- NULL; mean_hi <- NULL; mean_lo <- NULL; n <- NULL; pop <- NULL;
-  year <- NULL; area <- NULL;
+  year <- NULL; area <- NULL; metrics <- NULL;
   
   ## Set rate scale to be 1 if computing proportion
   if (stat == "prop") {
@@ -399,8 +399,10 @@ summarise_tb_burden <- function(df = NULL,
   ## Estimate annual change
   if (annual_change) {
     
-    if (is.null(metrics)) {
+    if (is.null(conf)) {
       metrics <- metric
+    }else{
+      metrics <- c(metric, paste0(metric, conf))
     }
     
     output_df <- output_df %>% 

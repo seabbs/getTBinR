@@ -5,7 +5,7 @@
 \title{Render a Country Level TB Report}
 \usage{
 render_country_report(country = "United Kingdom",
-  format = "html_document", interactive = TRUE, save_dir = NULL,
+  format = "html_document", interactive = FALSE, save_dir = NULL,
   filename = NULL)
 }
 \arguments{
@@ -15,7 +15,7 @@ report on.}
 \item{format}{Character string, defaults to \code{"html_document"}. The format to render the report to.
 See \code{?rmarkdown::render} for details.}
 
-\item{interactive}{Logical, defaults to \code{TRUE}. When the format allows should graphs be interactive.}
+\item{interactive}{Logical, defaults to \code{FALSE}. When the format allows should graphs be interactive.}
 
 \item{save_dir}{Character string, defaults to \code{NULL}.
 If not given then the report is rendered to a temporary directory (although only if \code{filename} is also not given).}
