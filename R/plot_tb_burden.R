@@ -9,6 +9,9 @@
 #' intervals represent the annual percentage change in the metrics confidence intervals.
 #' @param scales Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 #' alternatives are "free_y", "free_x", or "free".
+#' @param smooth Logical, defaults to \code{FALSE}. Should the data be smoothed (using `ggplot2::geom_smooth`)
+#' prior to plotting. If set to \code{TRUE} then the confidence intervals shown are derived from the smooth
+#' and do not represent the underlying uncertainty in the data.
 #' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} then an interactive plot is 
 #' returned.
 #' @param viridis_palette Character string indicating the \code{viridis} colour palette to use. Defaults
@@ -18,6 +21,8 @@
 #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
 #' @param viridis_end Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
 #' #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
+#' @param legend Character string, defaults to `"none"`. Position of the legend see `?ggplot2::theme` for defaults but known 
+#' options are: `"none"`, `"top"`, `"right"` and `"bottom"`.
 #' @inheritParams prepare_df_plot 
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -40,7 +45,11 @@
 #' 
 #' ## Plot incidence rates in these countries
 #' plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
+#' 
 #'\dontrun{
+#' ## Plot smoothed incidence rates in these countries
+#' plot_tb_burden(df = tb_burden, dict = dict, facet = "country", smooth = TRUE,
+#'                countries = sample_countries)
 #' ## Use data caching to plot incidence rates with free y scales
 #' plot_tb_burden(facet = "country", countries = sample_countries, scales = "free_y")
 #'  
@@ -57,10 +66,14 @@
 plot_tb_burden <- function(df = NULL, dict = NULL, 
                            metric = "e_inc_100k",
                            metric_label = NULL,
-                           conf = c("_lo", "_hi"), countries = NULL,
+                           smooth = FALSE,
+                           conf = c("_lo", "_hi"), 
+                           countries = NULL,
                            years = NULL,
                            compare_to_region = FALSE,
-                           facet = NULL, annual_change = FALSE,
+                           facet = NULL,
+                           legend = "none",
+                           annual_change = FALSE,
                            trans = "identity",
                            scales = "fixed",
                            interactive = FALSE,
@@ -94,8 +107,19 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   
   plot <- ggplot(df_prep$df, aes_string(x = "year", 
                                         y = paste0("`", df_prep$metric_label, "`"),
-                                        col = "country", fill = "country")) +
-    geom_line(na.rm = TRUE)
+                                        col = "country", fill = "country"))
+  
+  if (smooth) {
+    plot <- plot + 
+      geom_smooth(se = !is.null(conf), size = 1.2)
+    
+    conf <- NULL
+    
+  }else{
+    plot <- plot + 
+      geom_line(na.rm = TRUE, size = 1.1)
+  }
+
   
   if (!is.null(conf)) {
     plot <- plot +
@@ -110,7 +134,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
     scale_fill_viridis(end = viridis_end, direction = viridis_direction, discrete = TRUE,
                        option = viridis_palette) +
     theme_minimal() +
-    theme(legend.position = "none") +
+    theme(legend.position = legend) +
     labs(x = "Year", y = df_prep$metric_label,
          caption = "Source: World Health Organisation")
   

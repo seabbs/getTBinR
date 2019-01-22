@@ -7,6 +7,7 @@ test_year <- 2000
 test_that("summarise_tb_burden can summarise a variable
           without confidence intervals for a group of countries", {
             sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "mean",
                                            countries = test_countries,
                                            years = test_year,
                                            conf = NULL)
@@ -18,6 +19,7 @@ test_that("summarise_tb_burden can summarise a variable
 test_that("summarise_tb_burden can summarise a variable
           without confidence intervals for a group of countries, comparing within regions", {
             sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "mean",
                                            countries = test_countries,
                                            compare_to_region = TRUE,
                                            years = test_year + 1,
@@ -30,6 +32,7 @@ test_that("summarise_tb_burden can summarise a variable
 test_that("summarise_tb_burden can summarise a variable
           across to all regions", {
             sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "mean",
                                            countries = NULL,
                                            compare_all_regions = TRUE,
                                            years = test_year + 2,
@@ -139,5 +142,46 @@ test_that("summarise_tb_burden can summarise a variable using the median", {
                                 file = "../../tests/test-files/summarise_tb_burden/test-09.rds")
           })
 
+
+
+test_that("summarise_tb_burden can summarise the annual change of a variable
+          with confidence intervals for all regions and globally then compare to a
+          shortlist of countries", {
+            sum_tab <- summarise_tb_burden(metric = "e_inc_100k",
+                                           samples = 1000,
+                                           countries = test_countries,
+                                           compare_all_regions = TRUE,
+                                           compare_to_world = TRUE,
+                                           annual_change = TRUE)
+            skip_on_cran()
+            expect_known_output(sum_tab, 
+                                file = "../../tests/test-files/summarise_tb_burden/test-10.rds")
+          })
+
+
+test_that("summarise_tb_burden can generate summarised incidence rates for regions and globally", {
+            sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "rate",
+                                           countries = test_countries,
+                                           compare_all_regions = TRUE,
+                                           compare_to_world = TRUE,
+                                           annual_change = FALSE)
+            skip_on_cran()
+            expect_known_output(sum_tab, 
+                                file = "../../tests/test-files/summarise_tb_burden/test-11.rds")
+          })
+
+test_that("summarise_tb_burden can generate summarised proportions for regions and globally", {
+  sum_tab <- summarise_tb_burden(metric = "e_mort_exc_tbhiv_num",
+                                 stat = "prop",
+                                 denom = "e_inc_num",
+                                 countries = test_countries,
+                                 compare_all_regions = TRUE,
+                                 compare_to_world = TRUE,
+                                 annual_change = FALSE)
+  skip_on_cran()
+  expect_known_output(sum_tab, 
+                      file = "../../tests/test-files/summarise_tb_burden/test-12.rds")
+})
 
 

@@ -4,6 +4,8 @@
 #' list of countries. If \code{compare_to_region} is specified then a given country will
 #' be compared to others in its region. This enables the user to rapidly understand trends in
 #' Tuberculosis over time and the progress towards global elimination.
+#' @param legend Character string, defaults to `"right"`. Position of the legend see `?ggplot2::theme` for defaults but known 
+#' options are: `"none"`, `"top"`, `"right"` and `"bottom"`.
 #' @inheritParams plot_tb_burden
 #' @seealso get_tb_burden search_data_dict
 #' @return A dot plot of any numeric metric by country.
@@ -42,6 +44,7 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                     compare_to_region = FALSE,
                                     facet = NULL, annual_change = FALSE,
                                     trans = "identity",
+                                    legend = "right",
                                     scales = "free_y",
                                     interactive = FALSE, 
                                     download_data = TRUE,
@@ -74,13 +77,14 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
   plot <- ggplot(df_prep$df, aes_string(x = "country", 
                                         y = paste0("`", df_prep$metric_label, "`"),
                                         col = "Year")) +
-    geom_point(alpha = 0.6, size = 1.5)
+    geom_point(alpha = 0.6, size = 1.5, na.rm = TRUE)
   
   plot <- plot +
     scale_colour_viridis(end = viridis_end, direction = viridis_direction,
                          discrete = FALSE, trans = trans,
                          option = viridis_palette) +
     theme_minimal() +
+    theme(legend.position = legend) +
     labs(x = "Country", y = df_prep$metric_label,
          caption = "Source: World Health Organisation") + 
     coord_flip()

@@ -184,4 +184,13 @@ shinyServer(function(input, output, session) {
                    compare_to_region = TRUE, facet = "country", scales = "free_y")
   })
   
+  # Generate Country Level Report
+  output$report <- downloadHandler(
+    # For PDF output, change this to "report.pdf"
+    filename = "country-report.html",
+    content = function(file) {
+      
+      render_country_report(country = country(), filename = file)
+    })
+  
 })

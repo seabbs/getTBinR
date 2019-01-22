@@ -6,11 +6,12 @@
 \usage{
 map_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, fill_var_type = NULL, countries = NULL,
-  compare_to_region = FALSE, facet = NULL, year = NULL,
-  annual_change = FALSE, trans = "identity", interactive = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", viridis_palette = "viridis",
-  viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
+  compare_to_region = FALSE, facet = NULL, legend = "bottom",
+  year = NULL, annual_change = FALSE, trans = "identity",
+  interactive = FALSE, download_data = TRUE, save = TRUE,
+  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
+  viridis_palette = "viridis", viridis_direction = -1,
+  viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -35,6 +36,9 @@ countries that share a region with those listed in \code{countries} will be plot
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
 \item{facet}{Character string, the name of the variable to facet by.}
+
+\item{legend}{Character string, defaults to \code{"bottom"}. Position of the legend see \code{?ggplot2::theme} for defaults but known
+options are: \code{"none"}, \code{"top"}, \code{"right"} and \code{"bottom"}.}
 
 \item{year}{Numeric, indicating the year of data to map. Defaults to the latest year in the data.
 If \code{interactive = TRUE} then multiple years may be passed as a vector, the result will then be animated over years.}

@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 inst/doc
+inst/shiny/ExploreGlobalTB/rsconnect/
+country-report.html

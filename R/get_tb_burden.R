@@ -101,8 +101,7 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
       message("Joining TB burden data and MDR TB data.")
     }
     
-    tb_burden <- tb_burden %>% 
-      left_join(mdr_tb)
+    tb_burden <- suppressMessages(left_join(tb_burden, mdr_tb))
   }
 
   return(tb_burden)

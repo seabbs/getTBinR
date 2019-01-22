@@ -51,7 +51,7 @@ map_tb_burden(df = tb_burden, dict = dict, year = 2016,
        subtitle = "", caption = "Source: World Health Organisation")
 ```
 
-This shows that incidence rates are highly heterogeneous between regions. To get an better understanding of this lets plot incidence rates by WHO region, 
+This shows that incidence rates are highly heterogeneous between regions. To get an better understanding of this lets plot incidence rates by WHO region (**Note: This functionality has now been implemented into the `getTBinR` using `getTBinR::plot_tb_burden_summary(metric_label = "e_inc_100k", legend = "none", facet = "Area", scales = "free_y", compare_to_world = FALSE)`**), 
 
 ```{r plot-region-tb-inc}
 tb_inc_region <- tb_burden %>% 

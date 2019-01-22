@@ -7,6 +7,8 @@
 #' If \code{interactive = TRUE} then multiple years may be passed as a vector, the result will then be animated over years.
 #' @param fill_var_type A character string, defaults to \code{NULL}. To set the fill variable type to be
 #' discrete use "discrete" and to be continuous use "continuous".
+#' @param legend Character string, defaults to `"bottom"`. Position of the legend see `?ggplot2::theme` for defaults but known 
+#' options are: `"none"`, `"top"`, `"right"` and `"bottom"`.
 #' @inheritParams plot_tb_burden
 #' @seealso plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -49,7 +51,9 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            fill_var_type = NULL,
                            countries = NULL,
                            compare_to_region = FALSE,
-                           facet = NULL, year = NULL,
+                           facet = NULL,
+                           legend = "bottom", 
+                           year = NULL,
                            annual_change = FALSE,
                            trans = "identity",
                            interactive = FALSE, 
@@ -132,10 +136,10 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                             key = "country",
                             frame = "Year")) +
     geom_polygon(aes_string(group = "group"),
-                 color = "black", size = 0.3) +
+                 color = "black", size = 0.3, na.rm = TRUE) +
     coord_equal() +
     ggthemes::theme_map() +
-    theme(legend.position = "bottom") +
+    theme(legend.position = legend) +
     guides(fill = guide_legend(title = df_prep$metric_label)) +
     labs(caption = "Source: World Health Organisation")
   

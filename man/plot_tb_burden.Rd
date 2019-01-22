@@ -5,13 +5,13 @@
 \title{Plot TB Burden by Country}
 \usage{
 plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
-  metric_label = NULL, conf = c("_lo", "_hi"), countries = NULL,
-  years = NULL, compare_to_region = FALSE, facet = NULL,
-  annual_change = FALSE, trans = "identity", scales = "fixed",
-  interactive = FALSE, download_data = TRUE, save = TRUE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  viridis_palette = "viridis", viridis_direction = -1,
-  viridis_end = 0.9, verbose = TRUE, ...)
+  metric_label = NULL, smooth = FALSE, conf = c("_lo", "_hi"),
+  countries = NULL, years = NULL, compare_to_region = FALSE,
+  facet = NULL, legend = "none", annual_change = FALSE,
+  trans = "identity", scales = "fixed", interactive = FALSE,
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
+  dict_save_name = "TB_data_dict", viridis_palette = "viridis",
+  viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -25,6 +25,10 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 \item{metric}{Character string specifying the metric to plot}
 
 \item{metric_label}{Character string specifying the metric label to use.}
+
+\item{smooth}{Logical, defaults to \code{FALSE}. Should the data be smoothed (using \code{ggplot2::geom_smooth})
+prior to plotting. If set to \code{TRUE} then the confidence intervals shown are derived from the smooth
+and do not represent the underlying uncertainty in the data.}
 
 \item{conf}{Character vector specifying the name variations to use to specify the upper
 and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NULL}
@@ -40,6 +44,9 @@ countries that share a region with those listed in \code{countries} will be plot
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
 \item{facet}{Character string, the name of the variable to facet by.}
+
+\item{legend}{Character string, defaults to \code{"none"}. Position of the legend see \code{?ggplot2::theme} for defaults but known
+options are: \code{"none"}, \code{"top"}, \code{"right"} and \code{"bottom"}.}
 
 \item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
 percentage annual change is computed for the specified metric.}
@@ -100,7 +107,11 @@ sample_countries <- sample(unique(tb_burden$country), 9)
 
 ## Plot incidence rates in these countries
 plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
+
 \dontrun{
+## Plot smoothed incidence rates in these countries
+plot_tb_burden(df = tb_burden, dict = dict, facet = "country", smooth = TRUE,
+               countries = sample_countries)
 ## Use data caching to plot incidence rates with free y scales
 plot_tb_burden(facet = "country", countries = sample_countries, scales = "free_y")
  

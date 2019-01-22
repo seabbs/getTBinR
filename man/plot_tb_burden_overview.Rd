@@ -7,11 +7,11 @@
 plot_tb_burden_overview(df = NULL, dict = NULL,
   metric = "e_inc_100k", metric_label = NULL, countries = NULL,
   years = NULL, compare_to_region = FALSE, facet = NULL,
-  annual_change = FALSE, trans = "identity", scales = "free_y",
-  interactive = FALSE, download_data = TRUE, save = TRUE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  viridis_palette = "viridis", viridis_direction = -1,
-  viridis_end = 0.9, verbose = TRUE, ...)
+  annual_change = FALSE, trans = "identity", legend = "right",
+  scales = "free_y", interactive = FALSE, download_data = TRUE,
+  save = TRUE, burden_save_name = "TB_burden",
+  dict_save_name = "TB_data_dict", viridis_palette = "viridis",
+  viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -42,6 +42,9 @@ percentage annual change is computed for the specified metric.}
 \item{trans}{A character string specifying the transform to use on the specified metric. Defaults to no
 transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
 ("log10"). For a complete list of options see \code{ggplot2::continous_scale}.}
+
+\item{legend}{Character string, defaults to \code{"right"}. Position of the legend see \code{?ggplot2::theme} for defaults but known
+options are: \code{"none"}, \code{"top"}, \code{"right"} and \code{"bottom"}.}
 
 \item{scales}{Character string, see ?ggplot2::facet_wrap for details. Defaults to "fixed",
 alternatives are "free_y", "free_x", or "free".}

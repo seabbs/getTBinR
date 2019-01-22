@@ -24,14 +24,14 @@ body <- dashboardBody(
                    circle = FALSE, icon = icon("gear"), size = "sm",
                    width = "400px", tooltip = tooltipOptions(title = "Dashboard options")
                  ),
-                 plotlyOutput("map_tb_burden",  width = "100%") %>% withSpinner(),
-                 textOutput("country")
+                 plotlyOutput("map_tb_burden",  width = "100%", height = "360px") %>% withSpinner(),
+                 textOutput("country"), downloadButton("report", "Generate country report")
                  
              ),
              box(width = NULL,
                  title = "Trend over Time",
                  solidHeader = FALSE,
-                 plotlyOutput("plot_country_metric", width = "100%", height = "358px") %>% withSpinner()
+                 plotlyOutput("plot_country_metric", width = "95%", height = "360px") %>% withSpinner()
              )
       ),
       column(width = 5,
@@ -39,10 +39,10 @@ body <- dashboardBody(
                  title = "Regional Comparision",
                  side = "right",
                  tabPanel(title = "Overview",
-                          plotlyOutput("plot_region_com", width = "100%", height = "890px") %>% withSpinner()
+                          plotlyOutput("plot_region_com", width = "95%", height = "885px") %>% withSpinner()
                           ),
                  tabPanel(title = "Trend over time",
-                          plotlyOutput("plot_region_trend", width = "100%", height = "890px") %>% withSpinner()
+                          plotlyOutput("plot_region_trend", width = "95%", height = "885px") %>% withSpinner()
                  )
                 
              )
