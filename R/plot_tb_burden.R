@@ -21,6 +21,8 @@
 #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
 #' @param viridis_end Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
 #' #' See \code{\link[viridis]{scale_color_viridis}} for additional details.
+#' @param legend Character string, defaults to `"none"`. Position of the legend see `?ggplot2::theme` for defaults but known 
+#' options are: `"none"`, `"top"`, `"right"` and `"bottom"`.
 #' @inheritParams prepare_df_plot 
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
@@ -69,7 +71,9 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            countries = NULL,
                            years = NULL,
                            compare_to_region = FALSE,
-                           facet = NULL, annual_change = FALSE,
+                           facet = NULL,
+                           legend = "none",
+                           annual_change = FALSE,
                            trans = "identity",
                            scales = "fixed",
                            interactive = FALSE,
@@ -130,7 +134,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
     scale_fill_viridis(end = viridis_end, direction = viridis_direction, discrete = TRUE,
                        option = viridis_palette) +
     theme_minimal() +
-    theme(legend.position = "none") +
+    theme(legend.position = legend) +
     labs(x = "Year", y = df_prep$metric_label,
          caption = "Source: World Health Organisation")
   

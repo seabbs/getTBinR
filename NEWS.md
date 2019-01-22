@@ -10,13 +10,14 @@ summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articl
 * Tweaked `map_tb_burden` to not use `geom_path` for country outlines.
 * Added a `smooth` argument to `plot_tb_burden` to allow smooth trend lines to be plotted (derived using `ggplot2::geom_smooth`).
 * Tweaked line thickness in `plot_tb_burden` to improve plot appearance.
-
+* Added `legend` argument to all plotting functions to allow control of the legend appearance.
 ## Package updates
 
 * Added script to generate hexsticker
 * Added hexsticker to README
 * Added DOI link to Zenodo. (to do on CRAN release).
 * Updated tests to account for `dplyr` 8.0 release and `vdiffr` updates.
+* Added `itdepends` to package report functionality.
 
 # getTBinR 0.5.6
 

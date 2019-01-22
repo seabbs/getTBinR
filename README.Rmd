@@ -54,7 +54,7 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   interactive = FALSE)
 ```
 
-In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change (note that this functionality is currently only available in the development version of the package),
+In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change,
 
 ```{r plot-tb-incidence-eur-per, fig.height = 8}
 getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
@@ -64,16 +64,28 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   interactive = FALSE)
 ```
 
-Finally plot TB incidence rates over time in the United Kingdom. 
+Now plot TB incidence rates over time in the United Kingdom, compared to TB incidence rates in Europe and globally. 
+
+```{r plot-tb-incidence-uk-compare}
+getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
+                                 metric_label = "e_inc_100k",
+                                 countries = "United Kingdom",
+                                 legend = "top",
+                                 compare_all_regions = FALSE,
+                                 compare_to_region = TRUE,
+                                 compare_to_world = TRUE,
+                                 interactive = FALSE)
+```
+
+Finally we repeat the above plot but this time only for the UK - this allows us to get a clear picture of trends in TB incidence rates in the UK.
 
 ```{r plot-tb-incidence-uk}
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
-                         facet = "country",
                          interactive = FALSE)
 ```
 
-See [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for more details of the functions used (note the fuzzy country matching, `map_tb_burden`, `plot_tb_burden_overview` and `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying `interactive = TRUE`
+See [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for more details of the functions used (note the fuzzy country matching, `map_tb_burden`, `plot_tb_burden_overview`, `plot_tb_burden_summary` and `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying `interactive = TRUE`
 
 ## Shiny Dashboard
 

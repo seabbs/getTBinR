@@ -10,7 +10,7 @@ plot_tb_burden_summary(df = NULL, dict = NULL, metric = "e_inc_num",
   compare_to_world = TRUE, custom_compare = NULL,
   compare_all_regions = TRUE, stat = "rate", denom = "e_pop_num",
   rate_scale = 1e+05, truncate_at_zero = TRUE, annual_change = FALSE,
-  smooth = FALSE, facet = NULL, trans = "identity",
+  smooth = FALSE, facet = NULL, legend = "top", trans = "identity",
   scales = "fixed", interactive = FALSE, viridis_palette = "viridis",
   viridis_direction = -1, viridis_end = 0.9, download_data = TRUE,
   save = TRUE, burden_save_name = "TB_burden",
@@ -75,6 +75,9 @@ prior to plotting. If set to \code{TRUE} then the confidence intervals shown are
 and do not represent the underlying uncertainty in the data.}
 
 \item{facet}{Character string, the name of the variable to facet by.}
+
+\item{legend}{Character string, defaults to \code{"top"}. Position of the legend see \code{?ggplot2::theme} for defaults but known
+options are: \code{"none"}, \code{"top"}, \code{"right"} and \code{"bottom"}.}
 
 \item{trans}{A character string specifying the transform to use on the specified metric. Defaults to no
 transform ("identity"). Other options include log scaling ("log") and log base 10 scaling

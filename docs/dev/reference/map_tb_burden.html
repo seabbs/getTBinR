@@ -175,11 +175,12 @@ Various other options are available for tuning the plot further.</p>
 
     <pre class="usage"><span class='fu'>map_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
   <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fill_var_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
-  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>,
-  <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='st'>"bottom"</span>,
+  <span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
+  <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>, <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>,
+  <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>, <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
+  <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -222,6 +223,11 @@ Note that this will override settings for <code>facet</code>, unless it is set t
     <tr>
       <th>facet</th>
       <td><p>Character string, the name of the variable to facet by.</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>Character string, defaults to <code>"bottom"</code>. Position of the legend see <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>?ggplot2::theme</a></code> for defaults but known
+options are: <code>"none"</code>, <code>"top"</code>, <code>"right"</code> and <code>"bottom"</code>.</p></td>
     </tr>
     <tr>
       <th>year</th>
@@ -303,7 +309,7 @@ be displayed.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Map raw incidence rates</span>
-<span class='fu'>map_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJs3EWU/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJs3EWU/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpJs3EWU/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='map_tb_burden-1.png' alt='' width='700' height='433' /></div><span class='co'># NOT RUN {</span>
+<span class='fu'>map_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpgbDWXb/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpgbDWXb/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("country", "iso2", "iso3", "iso_numeric", "year")</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpgbDWXb/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='map_tb_burden-1.png' alt='' width='700' height='433' /></div><span class='co'># NOT RUN {</span>
 <span class='co'>#' ## Map raw incidence rates</span>
 <span class='fu'>map_tb_burden</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2014</span>:<span class='fl'>2017</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
 

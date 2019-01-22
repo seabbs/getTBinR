@@ -7,9 +7,9 @@
 plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   metric_label = NULL, smooth = FALSE, conf = c("_lo", "_hi"),
   countries = NULL, years = NULL, compare_to_region = FALSE,
-  facet = NULL, annual_change = FALSE, trans = "identity",
-  scales = "fixed", interactive = FALSE, download_data = TRUE,
-  save = TRUE, burden_save_name = "TB_burden",
+  facet = NULL, legend = "none", annual_change = FALSE,
+  trans = "identity", scales = "fixed", interactive = FALSE,
+  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
   dict_save_name = "TB_data_dict", viridis_palette = "viridis",
   viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
 }
@@ -44,6 +44,9 @@ countries that share a region with those listed in \code{countries} will be plot
 Note that this will override settings for \code{facet}, unless it is set to "country".}
 
 \item{facet}{Character string, the name of the variable to facet by.}
+
+\item{legend}{Character string, defaults to \code{"none"}. Position of the legend see \code{?ggplot2::theme} for defaults but known
+options are: \code{"none"}, \code{"top"}, \code{"right"} and \code{"bottom"}.}
 
 \item{annual_change}{Logical, defaults to \code{FALSE}. If \code{TRUE} then the
 percentage annual change is computed for the specified metric.}

@@ -234,7 +234,7 @@ dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_da
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Global Tuberculosis Incidence Rates - 2016"</span>,
        <span class="dt">subtitle =</span> <span class="st">""</span>, <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/map-tb-2016-inc-1.png" width="672" style="display: block; margin: auto;"></p>
-<p>This shows that incidence rates are highly heterogeneous between regions. To get an better understanding of this lets plot incidence rates by WHO region,</p>
+<p>This shows that incidence rates are highly heterogeneous between regions. To get an better understanding of this lets plot incidence rates by WHO region (<strong>Note: This functionality has now been implemented into the <code>getTBinR</code> using <code><a href="../reference/plot_tb_burden_summary.html">getTBinR::plot_tb_burden_summary(metric_label = "e_inc_100k", legend = "none", facet = "Area", scales = "free_y", compare_to_world = FALSE)</a></code></strong>),</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_inc_region &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(year, g_whoregion) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">summarise_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(e_inc_num, e_inc_num_lo, e_inc_num_hi, e_pop_num),

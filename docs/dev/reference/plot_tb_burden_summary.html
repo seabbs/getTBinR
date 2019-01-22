@@ -181,7 +181,7 @@ include this in any estimated summary measures. Currently four statistics are su
   <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>custom_compare</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"rate"</span>, <span class='kw'>denom</span> <span class='kw'>=</span> <span class='st'>"e_pop_num"</span>,
   <span class='kw'>rate_scale</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>truncate_at_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>smooth</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
+  <span class='kw'>smooth</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='st'>"top"</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
   <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>,
   <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
@@ -240,7 +240,7 @@ Note that this will override settings for <code>facet</code>, unless it is set t
     </tr>
     <tr>
       <th>compare_to_world</th>
-      <td><p>Logical, defaults to <code>TRUE</code>. Should a comparision be made to
+      <td><p>Logical, defaults to <code>TRUE</code>. Should a comparison be made to
 the metric of interests global value.</p></td>
     </tr>
     <tr>
@@ -286,6 +286,11 @@ and do not represent the underlying uncertainty in the data.</p></td>
     <tr>
       <th>facet</th>
       <td><p>Character string, the name of the variable to facet by.</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>Character string, defaults to <code>"top"</code>. Position of the legend see <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>?ggplot2::theme</a></code> for defaults but known
+options are: <code>"none"</code>, <code>"top"</code>, <code>"right"</code> and <code>"bottom"</code>.</p></td>
     </tr>
     <tr>
       <th>trans</th>

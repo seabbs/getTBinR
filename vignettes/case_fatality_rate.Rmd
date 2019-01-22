@@ -81,7 +81,7 @@ mp2
 Whilst quantitative insights are hard to glean from the above maps we can see that incidence rates appear to be highest in Africa and Asia (interpretation based on data from 2016). It also looks like the case fatality ratios are highest in these regions as well.
 
 
-The WHO have only provided estimates for the case fatality ratio from the most recent year of data, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted. The first step is to write a function to summarise rates on regional levels, we do this using `dplyr::summarise_at`.
+The WHO have only provided estimates for the case fatality ratio from the most recent year of data, estimating the case fatality ratio for other years will allow trends over time to be explored. We do this by first summarising TB incidence rates, and mortality rates by region. This allows insights into the general global picture to be more easily extracted (**Note: This functionality has now been implemented into the `getTBinR` using `getTBinR::plot_tb_burden_summary(metric_label = "e_inc_100k", legend = "none", facet = "Area", scales = "free_y", compare_to_world = FALSE)` - can be customised to plot all metrics see `?getTBinR::plot_tb_burden_summary` for details**). The first step is to write a function to summarise rates on regional levels, we do this using `dplyr::summarise_at`.
 
 ```{r fn-sum-rates}
 ## Make function to summarise rates in a given region
@@ -173,7 +173,7 @@ region_case_fat <- tb_burden %>%
 region_case_fat
 ```
 
-We then estimate the regional case fatality ratio by taking the regional mortality rate and dividing it by the regional incidence rate for each year. We also do this for the high and low mortality rate estimates (using the lowest estimate for TB mortality and the highest estimate for incidence rates to get the lower bound, and vice versa for the high bound). This gives,
+We then estimate the regional case fatality ratio by taking the regional mortality rate and dividing it by the regional incidence rate for each year (**Note: Again this is now possible using `plot_tb_burden_summary` - by changing the `metric` and `denom` arguments**). We also do this for the high and low mortality rate estimates (using the lowest estimate for TB mortality and the highest estimate for incidence rates to get the lower bound, and vice versa for the high bound). This gives,
 
 ```{r est-regional-cfc-all-years}
 region_case_fatality <- tb_burden %>% 

@@ -8,6 +8,8 @@
 #' @param metric_label Character string defaulting to `NULL`. If supplied this metric will be looked up
 #' using the WHO data dictionary to provide a label. A use case would be when calculating incidence rates using `e_inc_100k` 
 #' to get the WHO TB incidence rate label.
+#' @param legend Character string, defaults to `"top"`. Position of the legend see `?ggplot2::theme` for defaults but known 
+#' options are: `"none"`, `"top"`, `"right"` and `"bottom"`.
 #' @inheritParams  plot_tb_burden
 #' @inheritParams summarise_tb_burden
 #' @seealso search_data_dict plot_tb_burden summarise_tb_burden
@@ -65,6 +67,7 @@ plot_tb_burden_summary <- function(df = NULL,
                                    annual_change = FALSE,
                                    smooth = FALSE,
                                    facet = NULL, 
+                                   legend = "top",
                                    trans = "identity",
                                    scales = "fixed",
                                    interactive = FALSE,
@@ -155,7 +158,7 @@ plot_tb_burden_summary <- function(df = NULL,
     scale_fill_viridis(end = viridis_end, direction = viridis_direction, discrete = TRUE,
                        option = viridis_palette) +
     theme_minimal() +
-    theme(legend.position = "top") +
+    theme(legend.position = legend) +
     labs(x = "Year", y = metric_label,
          caption = "Source: World Health Organisation")
   
