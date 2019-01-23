@@ -18,7 +18,7 @@ summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articl
 
 * Added script to generate hexsticker
 * Added hexsticker to README
-* Added DOI link to Zenodo. (to do on CRAN release).
+* Added DOI link to Zenodo.
 * Updated tests to account for `dplyr` 8.0 release and `vdiffr` updates.
 * Added `itdepends` to package report functionality.
 

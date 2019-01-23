@@ -145,12 +145,12 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <p>Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map the most recently available global TB incidence rates (this will also download and save both the TB burden data and its data dictionary, if they are not found locally, to R’s temporary directory),</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>)
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpK2EC6w/TB_burden.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp6977eW/TB_burden.rds</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpK2EC6w/MDR_TB.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp6977eW/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span>
-<span class="co">#&gt; Saving data to: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/map-tb-incidence-eur-1.png" width="768"></p>
 <p>Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,</p>
@@ -158,10 +158,10 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
                                   <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-1.png" width="700"></p>
 <p>In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change,</p>
@@ -170,10 +170,10 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-per-1.png" width="700"></p>
 <p>Now plot TB incidence rates over time in the United Kingdom, compared to TB incidence rates in Europe and globally.</p>
@@ -185,33 +185,33 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
                                  <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                  <span class="dt">compare_to_world =</span> <span class="ot">TRUE</span>,
                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
 <span class="co">#&gt; Extracting data for specified countries</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_num</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_num</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-uk-compare-1.png" width="700"></p>
 <p>Finally we repeat the above plot but this time only for the UK - this allows us to get a clear picture of trends in TB incidence rates in the UK.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                          <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                          <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/RtmpK2EC6w/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/Rtmp6977eW/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-uk-1.png" width="700"></p>
 <p>See <a href="https://www.samabbott.co.uk/getTBinR/reference/index.html">Functions</a> for more details of the functions used (note the fuzzy country matching, <code>map_tb_burden</code>, <code>plot_tb_burden_overview</code>, <code>plot_tb_burden_summary</code> and <code>plot_tb_burden</code> will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying <code>interactive = TRUE</code></p>
@@ -289,6 +289,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <li><a href="https://codecov.io/github/seabbs/getTBinR?branch=master"><img src="https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=getTBinR"><img src="http://cranlogs.r-pkg.org/badges/getTBinR" alt="metacran monthly downloads"></a></li>
 <li><a href="https://cran.r-project.org/package=getTBinR"><img src="http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4" alt="metacran downloads"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/112591837"><img src="https://zenodo.org/badge/112591837.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>

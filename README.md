@@ -2,7 +2,7 @@
 Get TB Data in R <img src="man/figure/logo.png" align="right" alt="" width="120" />
 ===================================================================================
 
-[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR) [![develVersion](https://img.shields.io/badge/devel%20version-0.5.7-blue.svg?style=flat)](https://github.com/getTBinR) [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR) [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master) [![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR) [![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4)](https://cran.r-project.org/package=getTBinR)
+[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR) [![develVersion](https://img.shields.io/badge/devel%20version-0.5.7-blue.svg?style=flat)](https://github.com/getTBinR) [![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR) [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master) [![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR) [![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4)](https://cran.r-project.org/package=getTBinR) [![DOI](https://zenodo.org/badge/112591837.svg)](https://zenodo.org/badge/latestdoi/112591837)
 
 Quickly and easily import analysis ready TB burden data, from the World Health Organisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. See [here](http://www.who.int/about/copyright/en/) for the WHO data permissions. For help getting started see the [Getting Started](https://www.samabbott.co.uk/getTBinR/articles/intro.html) vignette and for a case study using the package see the [Exploring Global Trends in Tuberculosis Incidence Rates](https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html) vignette. See [here](https://www.samabbott.co.uk/getTBinR/dev) for the development documentation.
 
@@ -30,12 +30,14 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 ``` r
 getTBinR::map_tb_burden(metric = "e_inc_100k")
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpdWPpNq/TB_burden.rds
+#> Downloading the data using fread::data.table has failed. Trying
+#>                 again using utils::read.csv
+#> Saving data to: /tmp/RtmpZlk3Kc/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmpdWPpNq/MDR_TB.rds
+#> Saving data to: /tmp/RtmpZlk3Kc/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -48,10 +50,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpdWPpNq/TB_burden.rds
-#> Loading data from: /tmp/RtmpdWPpNq/MDR_TB.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_burden.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -65,10 +67,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpdWPpNq/TB_burden.rds
-#> Loading data from: /tmp/RtmpdWPpNq/MDR_TB.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_burden.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -85,23 +87,23 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  compare_to_region = TRUE,
                                  compare_to_world = TRUE,
                                  interactive = FALSE)
-#> Loading data from: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Extracting data for specified countries
-#> Loading data from: /tmp/RtmpdWPpNq/TB_burden.rds
-#> Loading data from: /tmp/RtmpdWPpNq/MDR_TB.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_burden.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpdWPpNq/TB_burden.rds
-#> Loading data from: /tmp/RtmpdWPpNq/MDR_TB.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_burden.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpdWPpNq/TB_burden.rds
-#> Loading data from: /tmp/RtmpdWPpNq/MDR_TB.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_burden.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
 ```
 
@@ -113,10 +115,10 @@ Finally we repeat the above plot but this time only for the UK - this allows us 
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmpdWPpNq/TB_burden.rds
-#> Loading data from: /tmp/RtmpdWPpNq/MDR_TB.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_burden.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpdWPpNq/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpZlk3Kc/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
