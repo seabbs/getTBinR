@@ -10,11 +10,11 @@ tags:
   - Tuberculosis
 authors:
   - name: Sam Abbott
-orcid: 0000-0001-8057-8037
-affiliation: "1"
+    orcid: 0000-0001-8057-8037
+    affiliation: "1"
 affiliations:
- - name:  Bristol Medical School: Population Health, University of Bristol, Bristol, UK
-   index: 1
+  - name:  Bristol Medical School: Population Health, University of Bristol, Bristol, UK
+    index: 1
 date: 29 January 2019
 bibliography: paper.bib
 ---
