@@ -30,12 +30,12 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 ``` r
 getTBinR::map_tb_burden(metric = "e_inc_100k")
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpYsWEjz/TB_burden.rds
+#> Saving data to: /tmp/RtmpEiR5m2/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmpYsWEjz/MDR_TB.rds
+#> Saving data to: /tmp/RtmpEiR5m2/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -48,10 +48,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpYsWEjz/TB_burden.rds
-#> Loading data from: /tmp/RtmpYsWEjz/MDR_TB.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_burden.rds
+#> Loading data from: /tmp/RtmpEiR5m2/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -65,10 +65,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpYsWEjz/TB_burden.rds
-#> Loading data from: /tmp/RtmpYsWEjz/MDR_TB.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_burden.rds
+#> Loading data from: /tmp/RtmpEiR5m2/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -85,23 +85,23 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  compare_to_region = TRUE,
                                  compare_to_world = TRUE,
                                  interactive = FALSE)
-#> Loading data from: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Extracting data for specified countries
-#> Loading data from: /tmp/RtmpYsWEjz/TB_burden.rds
-#> Loading data from: /tmp/RtmpYsWEjz/MDR_TB.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_burden.rds
+#> Loading data from: /tmp/RtmpEiR5m2/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpYsWEjz/TB_burden.rds
-#> Loading data from: /tmp/RtmpYsWEjz/MDR_TB.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_burden.rds
+#> Loading data from: /tmp/RtmpEiR5m2/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpYsWEjz/TB_burden.rds
-#> Loading data from: /tmp/RtmpYsWEjz/MDR_TB.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_burden.rds
+#> Loading data from: /tmp/RtmpEiR5m2/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
 ```
 
@@ -113,10 +113,10 @@ Finally we repeat the above plot but this time only for the UK - this allows us 
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmpYsWEjz/TB_burden.rds
-#> Loading data from: /tmp/RtmpYsWEjz/MDR_TB.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_burden.rds
+#> Loading data from: /tmp/RtmpEiR5m2/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpYsWEjz/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpEiR5m2/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -166,4 +166,4 @@ docker pull seabbs/gettbinr
 docker run -d -p 8787:8787 -e USER=getTBinR -e PASSWORD=getTBinR --name getTBinR seabbs/gettbinr
 ```
 
-The rstudio client can be accessed on port `8787` at `localhost` (or your machines ip). The default username is getTBinR and the default password is getTBinR.
+The rstudio client can be accessed on port `8787` at `localhost` (or your machines ip). The default username is getTBinR and the default password is getTBinR. Alternatively, access the development environment via [binder](https://mybinder.org/v2/gh/seabbs/getTBinR/master?filepath=vignettes%2Fintro.Rmd?urlpath=rstudio).
