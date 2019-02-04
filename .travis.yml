@@ -6,7 +6,7 @@ cache: packages
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y libmagick++-dev
+  - sudo apt-get install -y libmagick++-dev wget
   
 r:
   - oldrel
@@ -18,3 +18,4 @@ r_packages:
 
 after_success:
   - Rscript -e 'covr::codecov()'
+  - wget https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio
