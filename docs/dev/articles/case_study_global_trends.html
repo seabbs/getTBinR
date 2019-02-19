@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.7</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.8</span>
       </span>
     </div>
 
@@ -124,7 +124,7 @@
       <h1>Exploring Global Trends in Tuberculosis Incidence Rates</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-01-22</h4>
+            <h4 class="date">2019-02-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_study_global_trends.Rmd"><code>vignettes/case_study_global_trends.Rmd</code></a></small>
       <div class="hidden name"><code>case_study_global_trends.Rmd</code></div>
@@ -241,15 +241,6 @@ dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_da
                <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(.), <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(e_inc_num, e_inc_num_lo, e_inc_num_hi),
             <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="dt">inc_rate =</span> . <span class="op">/</span><span class="st"> </span>e_pop_num <span class="op">*</span><span class="st"> </span><span class="fl">1e5</span>))
-<span class="co">#&gt; Warning: funs() is soft deprecated as of dplyr 0.8.0</span>
-<span class="co">#&gt; please use list() instead</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; # Before:</span>
-<span class="co">#&gt; funs(name = f(.)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; # After: </span>
-<span class="co">#&gt; list(name = ~f(.))</span>
-<span class="co">#&gt; This warning is displayed once per session.</span>
 
 plot_tb_inc_region &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">df =</span> <span class="ot">NULL</span>, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">subtitle =</span> <span class="ot">NULL</span>, <span class="dt">scales =</span> <span class="ot">NULL</span>) {
   df <span class="op">%&gt;%</span><span class="st"> </span>
@@ -331,19 +322,19 @@ high_inc_up_countries &lt;-<span class="st"> </span><span class="kw"><a href="ht
 <td align="left">c_cdr</td>
 <td align="left">Estimates</td>
 <td align="left"></td>
-<td align="left">Case detection rate (all forms), percent</td>
+<td align="left">Case detection rate (all forms) [also known as TB treatment coverage], percent</td>
 </tr>
 <tr class="even">
 <td align="left">c_cdr_hi</td>
 <td align="left">Estimates</td>
 <td align="left"></td>
-<td align="left">Case detection rate (all forms), percent, high bound</td>
+<td align="left">Case detection rate (all forms) [also known as TB treatment coverage], percent, high bound</td>
 </tr>
 <tr class="odd">
 <td align="left">c_cdr_lo</td>
 <td align="left">Estimates</td>
 <td align="left"></td>
-<td align="left">Case detection rate (all forms), percent, low bound</td>
+<td align="left">Case detection rate (all forms) [also known as TB treatment coverage], percent, low bound</td>
 </tr>
 </tbody>
 </table>

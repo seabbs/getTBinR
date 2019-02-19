@@ -12,7 +12,7 @@
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Get WHO Tuberculosis Data">
-<meta property="og:description" content="Facilitates easy import of analysis ready World Health Organisation Tuberculosis data and provides plotting functions for exploratory data analysis.">
+<meta property="og:description" content="Quickly and easily import analysis ready Tuberculosis (TB) burden data, from the World Health Organisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. An automated report allows country level TB burden to be summarised.">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">getTBinR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.7</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.8</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@
 <a href="#get-tb-data-in-r" class="anchor"></a>Get TB Data in R <img src="man/figure/logo.png" align="right" alt="" width="120">
 </h1></div>
 
-<p>Quickly and easily import analysis ready TB burden data, from the World Health Organisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. See <a href="http://www.who.int/about/copyright/en/">here</a> for the WHO data permissions. For help getting started see the <a href="https://www.samabbott.co.uk/getTBinR/articles/intro.html">Getting Started</a> vignette and for a case study using the package see the <a href="https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html">Exploring Global Trends in Tuberculosis Incidence Rates</a> vignette. See <a href="https://www.samabbott.co.uk/getTBinR/dev">here</a> for the development documentation.</p>
+<p>Quickly and easily import analysis ready TB burden data, from the World Health Organisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. An automated report allows country level TB burden to be summarised. See <a href="http://www.who.int/about/copyright/en/">here</a> for the WHO data permissions. For help getting started see the <a href="https://www.samabbott.co.uk/getTBinR/articles/intro.html">Getting Started</a> vignette and for a case study using the package see the <a href="https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html">Exploring Global Trends in Tuberculosis Incidence Rates</a> vignette. See <a href="https://www.samabbott.co.uk/getTBinR/dev">here</a> for the development documentation.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -146,12 +146,12 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <p>Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map the most recently available global TB incidence rates (this will also download and save both the TB burden data and its data dictionary, if they are not found locally, to R’s temporary directory),</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>)
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/Rtmpw5zfxD/TB_burden.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/RtmpmU3GPM/TB_burden.rds</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span>
-<span class="co">#&gt; Saving data to: /tmp/Rtmpw5zfxD/MDR_TB.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/RtmpmU3GPM/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
 <span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span>
-<span class="co">#&gt; Saving data to: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Saving data to: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/map-tb-incidence-eur-1.png" width="768"></p>
 <p>Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,</p>
@@ -159,10 +159,10 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
                                   <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-1.png" width="700"></p>
 <p>In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change,</p>
@@ -171,10 +171,10 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
                                   <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,
                                   <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-eur-per-1.png" width="700"></p>
 <p>Now plot TB incidence rates over time in the United Kingdom, compared to TB incidence rates in Europe and globally.</p>
@@ -186,33 +186,33 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
                                  <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
                                  <span class="dt">compare_to_world =</span> <span class="ot">TRUE</span>,
                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span>
 <span class="co">#&gt; Extracting data for specified countries</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_num</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_num</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-uk-compare-1.png" width="700"></p>
 <p>Finally we repeat the above plot but this time only for the UK - this allows us to get a clear picture of trends in TB incidence rates in the UK.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,
                          <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,
                          <span class="dt">interactive =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_burden.rds</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/MDR_TB.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_burden.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/MDR_TB.rds</span>
 <span class="co">#&gt; Joining TB burden data and MDR TB data.</span>
-<span class="co">#&gt; Loading data from: /tmp/Rtmpw5zfxD/TB_data_dict.rds</span>
+<span class="co">#&gt; Loading data from: /tmp/RtmpmU3GPM/TB_data_dict.rds</span>
 <span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></code></pre></div>
 <p><img src="man/figure/plot-tb-incidence-uk-1.png" width="700"></p>
 <p>See <a href="https://www.samabbott.co.uk/getTBinR/reference/index.html">Functions</a> for more details of the functions used (note the fuzzy country matching, <code>map_tb_burden</code>, <code>plot_tb_burden_overview</code>, <code>plot_tb_burden_summary</code> and <code>plot_tb_burden</code> will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying <code>interactive = TRUE</code></p>
@@ -224,7 +224,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/run_tb_dashboard.html">run_tb_dashboard</a></span>()</code></pre></div>
 <p>Or accessed <a href="http://www.seabbs.co.uk/shiny/ExploreGlobalTB">online</a>. Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.</p>
 <div class="figure">
-<img src="man/img/ExploreGlobalTB.png">
+<img src="man/img/ExploreGlobalTB.png" alt="Snapshot of the integrated dashboard."><p class="caption">Snapshot of the integrated dashboard.</p>
 </div>
 </div>
 <div id="country-report" class="section level2">
@@ -233,11 +233,15 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <p>To get a detailed overview of TB in a country of your choice run the following, alternatively available from the built in dashboard above.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Code saves report into your current working directory
 <span class="kw"><a href="reference/render_country_report.html">render_country_report</a></span>(<span class="dt">country =</span> <span class="st">"United Kingdom"</span>, <span class="dt">save_dir =</span> <span class="st">"."</span>)</code></pre></div>
+<div class="figure">
+<img src="man/img/ExampleCountryReport.png" alt="Example report for the United Kingdom."><p class="caption">Example report for the United Kingdom.</p>
 </div>
-<div id="additional-functionality" class="section level2">
+</div>
+<div id="contributing" class="section level2">
 <h2 class="hasAnchor">
-<a href="#additional-functionality" class="anchor"></a>Additional Functionality</h2>
+<a href="#contributing" class="anchor"></a>Contributing</h2>
 <p>File an issue <a href="https://github.com/seabbs/getTBinR/issues">here</a> if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!</p>
+<p>Please note that the <code>getTBinR</code> project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 <div id="docker" class="section level2">
 <h2 class="hasAnchor">
@@ -245,7 +249,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <p>This package has been developed in docker based on the <code>rocker/tidyverse</code> image, to access the development environment enter the following at the command line (with an active docker daemon running),</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> pull seabbs/gettbinr
 <span class="ex">docker</span> run -d -p 8787:8787 -e USER=getTBinR -e PASSWORD=getTBinR --name getTBinR seabbs/gettbinr</code></pre></div>
-<p>The rstudio client can be accessed on port <code>8787</code> at <code>localhost</code> (or your machines ip). The default username is getTBinR and the default password is getTBinR.</p>
+<p>The rstudio client can be accessed on port <code>8787</code> at <code>localhost</code> (or your machines ip). The default username is getTBinR and the default password is getTBinR. Alternatively, access the development environment via <a href="https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio">binder</a>.</p>
 </div>
 </div>
   </div>
@@ -281,12 +285,15 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=getTBinR"><img src="http://www.r-pkg.org/badges/version-ago/getTBinR" alt="CRAN_Release_Badge"></a></li>
-<li><a href="https://github.com/getTBinR"><img src="https://img.shields.io/badge/devel%20version-0.5.7-blue.svg?style=flat" alt="develVersion"></a></li>
+<li><a href="https://github.com/getTBinR"><img src="https://img.shields.io/badge/devel%20version-0.5.8-blue.svg?style=flat" alt="develVersion"></a></li>
+<li><a href="https://www.samabbott.co.uk/getTBinR/"><img src="https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat" alt="Documentation via pkgdown"></a></li>
+<li><a href="https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio"><img src="https://img.shields.io/badge/launch-getTBinR-579ACA.svg?logo=data:image/png;base64,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" alt="badge"></a></li>
 <li><a href="https://travis-ci.org/seabbs/getTBinR"><img src="https://travis-ci.org/seabbs/getTBinR.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/seabbs/getTBinR"><img src="https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/github/seabbs/getTBinR?branch=master"><img src="https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=getTBinR"><img src="http://cranlogs.r-pkg.org/badges/getTBinR" alt="metacran monthly downloads"></a></li>
 <li><a href="https://cran.r-project.org/package=getTBinR"><img src="http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4" alt="metacran downloads"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/112591837"><img src="https://zenodo.org/badge/112591837.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>

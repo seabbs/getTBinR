@@ -1,3 +1,12 @@
+# getTBinR 0.5.8
+
+## Feature updates
+
+## Package updates
+
+* Added package information to license file - suggested during review for JOSS submission by @[rrrlw](/rrrlw).
+* Improved package DESCRIPTION for CRAN only users - suggested during review for JOSS submission by [rrrlw](/rrrlw).
+
 # getTBinR 0.5.7
 
 ## Feature updates
