@@ -1,49 +1,60 @@
-Package: getTBinR
 Type: Package
-Version: 0.5.8
+Package: getTBinR
 Title: Get WHO Tuberculosis Data
-Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
-                     email = "contact@samabbott.co.uk",
-                     comment = c(ORCID = "0000-0001-8057-8037")))
-Description: Quickly and easily import analysis ready Tuberculosis (TB) burden data, 
-    from the World Health Organisation (WHO), into R. The aim of the package is to speed 
-    up access to high quality TB burden data, using a simple R interface. Generic plotting
-    functions are provided to allow for rapid graphical exploration of the WHO TB data. 
-    A shiny dashboard is built in to showcase package functionality. An automated report
-    allows country level TB burden to be summarised.
+Version: 0.5.8
+Authors@R: 
+    person(given = "Sam Abbott",
+           role = c("aut", "cre"),
+           email = "contact@samabbott.co.uk",
+           comment = c(ORCID = "0000-0001-8057-8037"))
+Description: Quickly and easily import analysis ready
+    Tuberculosis (TB) burden data, from the World Health Organisation
+    (WHO), into R. The aim of getTBinR is to allow researchers, and other
+    interested individuals, to quickly and easily gain access to a
+    detailed TB data set and to start using it to derive key insights. It
+    provides a consistent set of tools that can be used to rapidly
+    evaluate hypotheses on a widely used data set before they are explored
+    further using more complex methods or more detailed data. These tools
+    include: generic plotting and mapping functions; a data dictionary
+    search tool; an interactive shiny dashboard; and an automated, country
+    level, TB report. For newer R users, this package reduces the barrier
+    to entry by handling data import, munging, and visualisation. All
+    plotting and mapping functions are built with ggplot2 so can be
+    readily extended.
 License: GPL-3 | file LICENSE
-VignetteBuilder: knitr
-URL: https://www.samabbott.co.uk/getTBinR, 
-     https://github.com/seabbs/getTBinR
+URL: https://www.samabbott.co.uk/getTBinR,
+    https://github.com/seabbs/getTBinR
 BugReports: https://github.com/seabbs/getTBinR/issues
-Encoding: UTF-8
-RoxygenNote: 6.1.1
-Roxygen: list(markdown = TRUE)
-LazyData: true
-Depends: R (>= 3.1.2)
-Suggests: 
-    devtools (>= 2.0.1),
-    testthat (>= 2.0.1),
-    vdiffr (>= 0.3.0),
-    covr (>= 3.2.1),
-    pkgnet (>= 0.3.2),
-    rmarkdown (>= 1.11),
-    knitr (>= 1.21),
-    tidyverse (>= 1.2.1),
-    shiny (>= 1.2.0),
-    shinydashboard (>= 0.7.1),
-    shinyWidgets (>= 0.4.4),
-    shinycssloaders (>= 0.2.0),
-    hexSticker (>= 0.4.5)
+Depends: 
+    R (>= 3.2.0)
 Imports: 
     data.table (>= 1.12.0),
-    tibble (>= 2.0.1),
     dplyr (>= 0.7.8),
-    tidyr (>= 0.8.2),
-    purrr (>= 0.3.0),
     ggplot2 (>= 3.1.0),
+    ggthemes (>= 4.0.1),
     magrittr (>= 1.5),
     plotly (>= 4.8.0),
-    ggthemes (>= 4.0.1),
-    viridis (>= 0.5.1),
-    scales (>= 1.0.0)
+    purrr (>= 0.3.0),
+    scales (>= 1.0.0),
+    tibble (>= 2.0.1),
+    tidyr (>= 0.8.2),
+    viridis (>= 0.5.1)
+Suggests: 
+    covr (>= 3.2.1),
+    devtools (>= 2.0.1),
+    knitr (>= 1.21),
+    pkgnet (>= 0.3.2),
+    rmarkdown (>= 1.11),
+    shiny (>= 1.2.0),
+    shinycssloaders (>= 0.2.0),
+    shinydashboard (>= 0.7.1),
+    shinyWidgets (>= 0.4.4),
+    testthat (>= 2.0.1),
+    tidyverse (>= 1.2.1),
+    vdiffr (>= 0.3.0)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1

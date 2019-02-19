@@ -5,13 +5,11 @@ sudo: false
 dist: trusty
 cache: packages
 latex: false
-fortran: false
+fortran: true
 
 jobs:
   include:
   - r: devel
-  - r: 3.1
-    warnings_are_errors: false
   - os: osx
   - r: release
     after_success:
