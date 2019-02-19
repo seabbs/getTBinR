@@ -6,6 +6,7 @@
 
 * Added package information to license file - suggested during review for JOSS submission by @[rrrlw](/rrrlw).
 * Improved package DESCRIPTION for CRAN only users - suggested during review for JOSS submission by [rrrlw](/rrrlw).
+* Added development documentation badge to the README + website.
 
 # getTBinR 0.5.7
 

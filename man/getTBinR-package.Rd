@@ -6,7 +6,12 @@
 \alias{getTBinR-package}
 \title{getTBinR: Get WHO Tuberculosis Data}
 \description{
-Quickly and easily import analysis ready Tuberculosis (TB) burden data, from the World Health Organisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. An automated report allows country level TB burden to be summarised.
+Quickly and easily import analysis ready Tuberculosis (TB) burden data, 
+    from the World Health Organisation (WHO), into R. The aim of the package is to speed 
+    up access to high quality TB burden data, using a simple R interface. Generic plotting
+    functions are provided to allow for rapid graphical exploration of the WHO TB data. 
+    A shiny dashboard is built in to showcase package functionality. An automated report
+    allows country level TB burden to be summarised.
 }
 \seealso{
 Useful links:
