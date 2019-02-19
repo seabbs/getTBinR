@@ -16,6 +16,10 @@ ADD . /home/rstudio/getTBinR
 
 RUN Rscript -e 'devtools::install_github("r-lib/pkgdown")'
 
+## Install hexsticker to generate package badge.
+RUN Rscript -e 'install.packages("hexSticker")'
+
+
 RUN Rscript -e 'devtools::install_dev_deps("home/rstudio/getTBinR")'
 
 RUN Rscript -e 'devtools::install("home/rstudio/getTBinR")'
