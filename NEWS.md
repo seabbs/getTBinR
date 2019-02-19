@@ -11,6 +11,7 @@
 * Expanded travis testing grid based on [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
 * Updated earliest supported R version based on travis testing - now `3.1.2`. 
 * Used `usethis::use_tidy_versions()` to set package to dependent on package versions used during development work. Added this to makefile to make automated.
+* Added a git commit step to the `Makefile` use with `make message="your commit message". This will automatically run all build steps that are required and then commit any changes. 
 
 # getTBinR 0.5.7
 

@@ -3,7 +3,7 @@
 default: all
 
 
-all: build_data update_deps package docs man/figures/logo.png README.md build_report
+all: build_data update_deps package docs man/figures/logo.png README.md build_report git_commit
 
 #Update data
 .PHONY: build_data
@@ -37,3 +37,9 @@ README.md: README.Rmd
 .PHONY: build_report
 build_report:
 		cd pkgnet && make
+		
+#Commit updates
+.PHONY: git_commit
+git_commit:
+		git add --all
+		git commit -m "\"$(message)\""
