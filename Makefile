@@ -42,5 +42,5 @@ build_report:
 .PHONY: git_commit
 git_commit:
 		git add --all
-		git commit -m "\"$(message)\""
+		git commit -m "$(message)"
 		git push
