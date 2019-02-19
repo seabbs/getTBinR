@@ -133,7 +133,7 @@
     
 <div id="get-tb-data-in-r" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#get-tb-data-in-r" class="anchor"></a>Get TB Data in R <img src="man/figure/logo.png" align="right" alt="" width="120">
+<a href="#get-tb-data-in-r" class="anchor"></a>Get TB Data in R <img src="reference/figures/logo.png" align="right" alt="" width="120">
 </h1></div>
 
 <p>Quickly and easily import analysis ready TB burden data, from the World Health Organisation (WHO), into R. The aim of the package is to speed up access to high quality TB burden data, using a simple R interface. Generic plotting functions are provided to allow for rapid graphical exploration of the WHO TB data. A shiny dashboard is built in to showcase package functionality. An automated report allows country level TB burden to be summarised. See <a href="http://www.who.int/about/copyright/en/">here</a> for the WHO data permissions. For help getting started see the <a href="https://www.samabbott.co.uk/getTBinR/articles/intro.html">Getting Started</a> vignette and for a case study using the package see the <a href="https://www.samabbott.co.uk/getTBinR/articles/case_study_global_trends.html">Exploring Global Trends in Tuberculosis Incidence Rates</a> vignette.</p>
@@ -152,37 +152,37 @@
 <p>Lets get started quickly by mapping and then plotting TB incidence rates in the United Kingdom. First map the most recently available global TB incidence rates (this will also download and save both the TB burden data and its data dictionary, if they are not found locally, to R’s temporary directory),</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; Saving data to: /tmp/RtmpCpjgwB/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; Saving data to: /tmp/Rtmp49cvFg/TB_burden.rds</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Saving data to: /tmp/RtmpCpjgwB/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Saving data to: /tmp/Rtmp49cvFg/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Saving data to: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Saving data to: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
-<p><img src="man/figure/map-tb-incidence-eur-1.png" width="768"></p>
+<p><img src="reference/figures/map-tb-incidence-eur-1.png" width="768"></p>
 <p>Then compare TB incidence rates in the UK to TB incidence rates in other countries in the region,</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">                                  <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">                                  <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
-<p><img src="man/figure/plot-tb-incidence-eur-1.png" width="700"></p>
+<p><img src="reference/figures/plot-tb-incidence-eur-1.png" width="700"></p>
 <p>In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change,</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">                                  <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">                                  <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">                                  <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5">                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
-<p><img src="man/figure/plot-tb-incidence-eur-per-1.png" width="700"></p>
+<p><img src="reference/figures/plot-tb-incidence-eur-per-1.png" width="700"></p>
 <p>Now plot TB incidence rates over time in the United Kingdom, compared to TB incidence rates in Europe and globally.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden_summary.html">plot_tb_burden_summary</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_num"</span>,</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">                                 <span class="dt">metric_label =</span> <span class="st">"e_inc_100k"</span>,</a>
@@ -192,35 +192,35 @@
 <a class="sourceLine" id="cb6-6" data-line-number="6">                                 <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb6-7" data-line-number="7">                                 <span class="dt">compare_to_world =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb6-8" data-line-number="8">                                 <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; Extracting data for specified countries</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></a></code></pre></div>
-<p><img src="man/figure/plot-tb-incidence-uk-compare-1.png" width="700"></p>
+<p><img src="reference/figures/plot-tb-incidence-uk-compare-1.png" width="700"></p>
 <p>Finally we repeat the above plot but this time only for the UK - this allows us to get a clear picture of trends in TB incidence rates in the UK.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">                         <span class="dt">countries =</span> <span class="st">"United Kingdom"</span>,</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3">                         <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/RtmpCpjgwB/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/Rtmp49cvFg/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
-<p><img src="man/figure/plot-tb-incidence-uk-1.png" width="700"></p>
+<p><img src="reference/figures/plot-tb-incidence-uk-1.png" width="700"></p>
 <p>See <a href="https://www.samabbott.co.uk/getTBinR/reference/index.html">Functions</a> for more details of the functions used (note the fuzzy country matching, <code>map_tb_burden</code>, <code>plot_tb_burden_overview</code>, <code>plot_tb_burden_summary</code> and <code>plot_tb_burden</code> will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying <code>interactive = TRUE</code></p>
 </div>
 <div id="shiny-dashboard" class="section level2">
@@ -230,7 +230,7 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/run_tb_dashboard.html">run_tb_dashboard</a></span>()</a></code></pre></div>
 <p>Or accessed <a href="http://www.seabbs.co.uk/shiny/ExploreGlobalTB">online</a>. Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.</p>
 <div class="figure">
-<img src="man/img/ExploreGlobalTB.png" alt="Snapshot of the integrated dashboard."><p class="caption">Snapshot of the integrated dashboard.</p>
+<img src="reference/figures/ExploreGlobalTB.png" alt="Snapshot of the integrated dashboard."><p class="caption">Snapshot of the integrated dashboard.</p>
 </div>
 </div>
 <div id="country-report" class="section level2">
@@ -240,7 +240,7 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">## Code saves report into your current working directory</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="reference/render_country_report.html">render_country_report</a></span>(<span class="dt">country =</span> <span class="st">"United Kingdom"</span>, <span class="dt">save_dir =</span> <span class="st">"."</span>)</a></code></pre></div>
 <div class="figure">
-<img src="man/img/ExampleCountryReport.png" alt="Example report for the United Kingdom."><p class="caption">Example report for the United Kingdom.</p>
+<img src="reference/figures/ExampleCountryReport.png" alt="Example report for the United Kingdom."><p class="caption">Example report for the United Kingdom.</p>
 </div>
 </div>
 <div id="contributing" class="section level2">

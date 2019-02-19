@@ -177,6 +177,11 @@
 <li>Added package information to license file - suggested during review for JOSS submission by @<a href="/rrrlw">rrrlw</a>.</li>
 <li>Improved package DESCRIPTION for CRAN only users - suggested during review for JOSS submission by <a href="/rrrlw">rrrlw</a>.</li>
 <li>Added development documentation badge to the README + website.</li>
+<li>Moved to automated pkgdown deployment using travis. Based on <a href="https://pkgdown.r-lib.org/reference/deploy_site_github.html">this</a> and the <a href="https://github.com/tidyverse/dplyr/blob/master/.travis.yml">dplyr</a> implementation.</li>
+<li>Expanded travis testing grid based on <a href="https://github.com/tidyverse/dplyr/blob/master/.travis.yml">dplyr</a> implementation.</li>
+<li>Updated earliest supported R version based on travis testing - now <code>3.1.2</code>.</li>
+<li>Used <code><a href="https://www.rdocumentation.org/packages/usethis/topics/tidyverse">usethis::use_tidy_versions()</a></code> to set package to dependent on package versions used during development work. Added this to makefile to make automated.</li>
+<li>Added a git commit step to the <code>Makefile</code> use with `make message=“your commit message”. This will automatically run all build steps that are required and then commit any changes.</li>
 </ul>
 </div>
 </div>
