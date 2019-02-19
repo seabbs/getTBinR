@@ -14,7 +14,7 @@ RUN apt-get update -y && \
 
 ADD . /home/rstudio/getTBinR
 
-RUN Rscript -e 'devtools::install_github("hadley/pkgdown")'
+RUN Rscript -e 'devtools::install_github("r-lib/pkgdown")'
 
 RUN Rscript -e 'devtools::install_dev_deps("home/rstudio/getTBinR")'
 
