@@ -43,3 +43,4 @@ build_report:
 git_commit:
 		git add --all
 		git commit -m "\"$(message)\""
+		git push
