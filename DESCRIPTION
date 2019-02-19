@@ -21,27 +21,29 @@ RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 LazyData: true
 Depends: R (>= 3.1.2)
-Suggests: devtools,
-    testthat,
-    vdiffr,
-    covr,
-    pkgnet,
-    rmarkdown,
-    knitr,
-    tidyverse,
-    shiny,
-    shinydashboard,
-    shinyWidgets,
-    shinycssloaders,
-    hexSticker
-Imports: data.table,
-    tibble,
-    dplyr,
-    tidyr,
-    purrr,
-    ggplot2,
-    magrittr,
-    plotly,
-    ggthemes,
-    viridis,
-    scales
+Suggests: 
+    devtools (>= 2.0.1),
+    testthat (>= 2.0.1),
+    vdiffr (>= 0.3.0),
+    covr (>= 3.2.1),
+    pkgnet (>= 0.3.2),
+    rmarkdown (>= 1.11),
+    knitr (>= 1.21),
+    tidyverse (>= 1.2.1),
+    shiny (>= 1.2.0),
+    shinydashboard (>= 0.7.1),
+    shinyWidgets (>= 0.4.4),
+    shinycssloaders (>= 0.2.0),
+    hexSticker (>= 0.4.5)
+Imports: 
+    data.table (>= 1.12.0),
+    tibble (>= 2.0.1),
+    dplyr (>= 0.7.8),
+    tidyr (>= 0.8.2),
+    purrr (>= 0.3.0),
+    ggplot2 (>= 3.1.0),
+    magrittr (>= 1.5),
+    plotly (>= 4.8.0),
+    ggthemes (>= 4.0.1),
+    viridis (>= 0.5.1),
+    scales (>= 1.0.0)

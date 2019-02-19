@@ -39,7 +39,7 @@ sticker(map_tb,
         s_height=0.8,
         h_fill = "#b3ccff",
         h_color = "#646770",
-        filename="./man/figure/logo.png",
+        filename="./man/figures/logo.png",
         url = "https://samabbott.co.uk/getTBinR",
         u_color = "#FFFFFFDD",
         u_size = 3.5)

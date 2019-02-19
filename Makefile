@@ -3,13 +3,18 @@
 default: all
 
 
-all: build_data package docs man/figures/logo.png README.md build_report site
+all: build_data update_deps package docs man/figures/logo.png README.md build_report
 
 #Update data
 .PHONY: build_data
 build_data:
 		cd data-raw && make
 
+## Update dependencies based on those installed
+.PHONY: update_deps
+update_deps:
+		 Rscript -e "usethis::use_tidy_versions(overwrite = TRUE)"
+		 
 #build update documents and build package
 .PHONY: package
 package:
@@ -32,12 +37,3 @@ README.md: README.Rmd
 .PHONY: build_report
 build_report:
 		cd pkgnet && make
-		
-#build pkgdown site
-.PHONY: site
-site: 
-		 cp -r man/img docs/man/ && \
-		 cp -r man/figure docs/man/ && \
-		 cp -r man/img docs/dev/man/ && \
-		 cp -r man/figure docs/dev/man/ && \
-     Rscript -e 'pkgdown::build_site()'
