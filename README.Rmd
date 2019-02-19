@@ -6,11 +6,11 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figure/"
+  fig.path = "man/figures/"
 )
 ```
 
-# Get TB Data in R  <img src="man/figure/logo.png" align="right" alt="" width="120" />
+# Get TB Data in R  <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.5.8-blue.svg?style=flat)](https://github.com/getTBinR)
@@ -101,7 +101,7 @@ getTBinR::run_tb_dashboard()
 
 Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric in the WHO data can be explored, with country selection using the built in map, and animation possible by year.
 
-![Snapshot of the integrated dashboard.](man/img/ExploreGlobalTB.png)
+![Snapshot of the integrated dashboard.](man/figures/ExploreGlobalTB.png)
 
 
 ## Country Report
@@ -113,7 +113,7 @@ To get a detailed overview of TB in a country of your choice run the following, 
 render_country_report(country = "United Kingdom", save_dir = ".")
 ```
 
-![Example report for the United Kingdom.](man/img/ExampleCountryReport.png)
+![Example report for the United Kingdom.](man/figures/ExampleCountryReport.png)
 
 
 ## Contributing
