@@ -4,7 +4,7 @@
 \name{getTBinR-package}
 \alias{getTBinR}
 \alias{getTBinR-package}
-\title{getTBinR: Get WHO Tuberculosis Data}
+\title{getTBinR: Access and Summarise World Health Organisation Tuberculosis data}
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 

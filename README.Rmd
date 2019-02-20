@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Get WHO Tuberculosis Data in R  <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# getTBinR: Access and Summarise World Health Organisation Tuberculosis Data  <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.5.8-blue.svg?style=flat)](https://github.com/getTBinR)
@@ -121,6 +121,14 @@ render_country_report(country = "United Kingdom", save_dir = ".")
 File an issue [here](https://github.com/seabbs/getTBinR/issues) if there is a feature, or a dataset, that you think is missing from the package, or better yet submit a pull request!
 
 Please note that the `getTBinR` project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+
+## Citing 
+
+If using `getTBinR` please consider citing the package in the relevant work. Citation information can be generated in R using the following (after installing the package),
+
+```{r}
+citation("getTBinR")
+```
 
 ## Docker
 
