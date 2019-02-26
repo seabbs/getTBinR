@@ -30,12 +30,12 @@ Lets get started quickly by mapping and then plotting TB incidence rates in the 
 ``` r
 getTBinR::map_tb_burden(metric = "e_inc_100k")
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmprTp7We/TB_burden.rds
+#> Saving data to: /tmp/RtmpT6Onwf/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmprTp7We/MDR_TB.rds
+#> Saving data to: /tmp/RtmpT6Onwf/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -48,10 +48,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmprTp7We/TB_burden.rds
-#> Loading data from: /tmp/RtmprTp7We/MDR_TB.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_burden.rds
+#> Loading data from: /tmp/RtmpT6Onwf/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -65,10 +65,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmprTp7We/TB_burden.rds
-#> Loading data from: /tmp/RtmprTp7We/MDR_TB.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_burden.rds
+#> Loading data from: /tmp/RtmpT6Onwf/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -85,23 +85,23 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  compare_to_region = TRUE,
                                  compare_to_world = TRUE,
                                  interactive = FALSE)
-#> Loading data from: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Extracting data for specified countries
-#> Loading data from: /tmp/RtmprTp7We/TB_burden.rds
-#> Loading data from: /tmp/RtmprTp7We/MDR_TB.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_burden.rds
+#> Loading data from: /tmp/RtmpT6Onwf/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmprTp7We/TB_burden.rds
-#> Loading data from: /tmp/RtmprTp7We/MDR_TB.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_burden.rds
+#> Loading data from: /tmp/RtmpT6Onwf/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmprTp7We/TB_burden.rds
-#> Loading data from: /tmp/RtmprTp7We/MDR_TB.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_burden.rds
+#> Loading data from: /tmp/RtmpT6Onwf/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
 ```
 
@@ -113,10 +113,10 @@ Finally we repeat the above plot but this time only for the UK - this allows us 
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmprTp7We/TB_burden.rds
-#> Loading data from: /tmp/RtmprTp7We/MDR_TB.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_burden.rds
+#> Loading data from: /tmp/RtmpT6Onwf/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmprTp7We/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpT6Onwf/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -168,7 +168,8 @@ citation("getTBinR")
 #> 
 #>   Sam Abbott (2019). getTBinR: an R package for accessing and
 #>   summarising the World Health Organisation Tuberculosis data
-#>   Journal of Open Source Software, 40(3), 1-25. doi:
+#>   Journal of Open Source Software, 4(34), 1260. doi:
+#>   10.21105/joss.01260
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -177,9 +178,10 @@ citation("getTBinR")
 #>     author = {Sam Abbott},
 #>     journal = {Journal of Open Source Software},
 #>     year = {2019},
-#>     volume = {40},
-#>     number = {3},
-#>     pages = {1--25},
+#>     volume = {4},
+#>     number = {34},
+#>     pages = {1260},
+#>     doi = {10.21105/joss.01260},
 #>   }
 ```
 
