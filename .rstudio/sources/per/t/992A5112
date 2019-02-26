@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1551198071459.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "965503315",
+    "id" : "992A5112",
+    "lastKnownWriteTime" : 1551198110,
+    "last_content_update" : 1551198110134,
+    "path" : "~/README.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "25,106",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
