@@ -210,7 +210,7 @@ dictionary. If this fails and <code>download_data = TRUE</code> then the diction
     </tr>
     <tr>
       <th>smooth</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Should the data be smoothed (using <code><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>ggplot2::geom_smooth</a></code>)
+      <td><p>Logical, defaults to <code>FALSE</code>. Should the data be smoothed (using <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_smooth'>ggplot2::geom_smooth</a></code>)
 prior to plotting. If set to <code>TRUE</code> then the confidence intervals shown are derived from the smooth
 and do not represent the underlying uncertainty in the data.</p></td>
     </tr>
@@ -241,7 +241,7 @@ Note that this will override settings for <code>facet</code>, unless it is set t
     </tr>
     <tr>
       <th>legend</th>
-      <td><p>Character string, defaults to <code>"none"</code>. Position of the legend see <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>?ggplot2::theme</a></code> for defaults but known
+      <td><p>Character string, defaults to <code>"none"</code>. Position of the legend see <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/theme'>?ggplot2::theme</a></code> for defaults but known
 options are: <code>"none"</code>, <code>"top"</code>, <code>"right"</code> and <code>"bottom"</code>.</p></td>
     </tr>
     <tr>
@@ -324,7 +324,7 @@ be displayed.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the WHO TB burden data and the data dictionary</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGygvD2/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGygvD2/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGygvD2/TB_data_dict.rds</span></div><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpCuDEDX/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpCuDEDX/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpCuDEDX/TB_data_dict.rds</span></div><div class='input'>
 <span class='co'>## Get a random sample of 9 countries</span>
 <span class='no'>sample_countries</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='no'>tb_burden</span>$<span class='no'>country</span>), <span class='fl'>9</span>)
 
