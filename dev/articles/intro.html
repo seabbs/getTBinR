@@ -126,7 +126,7 @@
       <h1>Getting started with getTBinR</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-03-27</h4>
+            <h4 class="date">2019-04-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -151,9 +151,9 @@
 <p>Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy to R’s temporary directory (see <code><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir()</a></code>). If a local copy exists from the current session then this will be loaded instead.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>()</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Saving data to: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Saving data to: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Saving data to: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Saving data to: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">tb_burden</a>
@@ -205,7 +205,7 @@
 <a class="sourceLine" id="cb3-3" data-line-number="3">                                             <span class="st">"e_inc_100k_lo"</span>,</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">                                             <span class="st">"e_inc_100k_hi"</span>))</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; Saving data to: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; Saving data to: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 4 results found for your variable search for country, e_inc_100k, e_inc_100k_lo, e_inc_100k_hi</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(vars_of_interest)</a></code></pre></div>
@@ -245,7 +245,7 @@
 </table>
 <p>We might also want to search the variable definitions for key phrases, for example mortality.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">def =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"mortality"</span>))</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; 9 results found for your definition search for mortality</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(defs_of_interest)</a></code></pre></div>
@@ -316,7 +316,7 @@
 <p>Finally we could both search for a known variable and for key phrases in variable definitions.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">vars_defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">var =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"country"</span>),</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">                                     <span class="dt">def =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"mortality"</span>))</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; 1 results found for your variable search for country</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 9 results found for your definition search for mortality</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"></a>
@@ -397,10 +397,10 @@
 <a href="#mapping-global-incidence-rates" class="anchor"></a>Mapping Global Incidence Rates</h2>
 <p>To start exploring the WHO TB data we map, the most recently available, global TB incidence rates. Mapping data can help identify spatial patterns.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/map-tb-incidence-eur-1.png" width="1440" style="display: block; margin: auto;"></p>
 </div>
@@ -410,10 +410,10 @@
 <p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates for all countries in the WHO data.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-tb-all-1.png" width="960" style="display: block; margin: auto;"></p>
 <p>Another way to compare incidence rates in countries is to look at the annual percentage change. The plot below only shows countries with a maximum incidence rate above 5 per 100,000.</p>
@@ -428,10 +428,10 @@
 <a class="sourceLine" id="cb8-9" data-line-number="9">                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>,</a>
 <a class="sourceLine" id="cb8-10" data-line-number="10">                                  <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb8-11" data-line-number="11">                                  <span class="dt">countries =</span> higher_burden_countries)</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-tb-al-per-1.png" width="960" style="display: block; margin: auto;"></p>
 </div>
@@ -440,17 +440,17 @@
 <a href="#summarising-regional-and-global-incidence-rates" class="anchor"></a>Summarising Regional and Global Incidence Rates</h2>
 <p>We might also be interested in getting a regional/global overview of TB incidence rates (<em>Hint: Use <code>search_data_dict</code> to look up <code>e_inc_100k</code> to see what role this is playing here</em>). See <code><a href="../reference/plot_tb_burden_summary.html">?plot_tb_burden_summary</a></code> for more ways to summarise TB metrics.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden_summary.html">plot_tb_burden_summary</a></span>(<span class="dt">conf =</span> <span class="ot">NULL</span>, <span class="dt">metric_label =</span> <span class="st">"e_inc_100k"</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-regional-summary-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
@@ -463,14 +463,14 @@
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb10-4" data-line-number="4">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb10-5" data-line-number="5">               <span class="dt">legend =</span> <span class="st">"top"</span>)</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb11-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>)</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-facet-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>To explore within country variation we need to change the scale of the y axis.</p>
@@ -478,7 +478,7 @@
 <a class="sourceLine" id="cb12-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>,</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4">               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-facet-free-y-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using <code>plot_tb_burden</code> as follows. Note we can do this without specifying the TB burden data, the plotting function will automatically find it either locally or remotely.</p>
@@ -486,20 +486,20 @@
 <a class="sourceLine" id="cb13-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb13-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>,</a>
 <a class="sourceLine" id="cb13-4" data-line-number="4">               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; 1 results found for your variable search for e_mort_exc_tbhiv_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-mortality-excluding-hiv-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_mort_tbhiv_100k"</span>,</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>,</a>
 <a class="sourceLine" id="cb14-4" data-line-number="4">               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_burden.rds</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/MDR_TB.rds</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_burden.rds</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/MDR_TB.rds</span></a>
 <a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/RtmpBEFP40/TB_data_dict.rds</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/RtmpNeTCwj/TB_data_dict.rds</span></a>
 <a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; 1 results found for your variable search for e_mort_tbhiv_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-mortality-including-hiv-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
