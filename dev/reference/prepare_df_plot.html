@@ -247,7 +247,7 @@ downloaded from the specified URL?</p></td>
     <tr>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
-<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
+<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>burden_save_name</th>
@@ -282,7 +282,7 @@ the label to assign to the metric axis.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>prepare_df_plot</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"Guinea"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5gZe1x/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5gZe1x/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5gZe1x/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='output co'>#&gt; $df
+<span class='fu'>prepare_df_plot</span>(<span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"Guinea"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZw5v7R/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZw5v7R/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZw5v7R/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='output co'>#&gt; $df
 #&gt; # A tibble: 18 x 70
 #&gt;    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #&gt;    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;

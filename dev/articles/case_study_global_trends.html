@@ -126,7 +126,7 @@
       <h1>Exploring Global Trends in Tuberculosis Incidence Rates</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-04-17</h4>
+            <h4 class="date">2019-04-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_study_global_trends.Rmd"><code>vignettes/case_study_global_trends.Rmd</code></a></small>
       <div class="hidden name"><code>case_study_global_trends.Rmd</code></div>
@@ -137,17 +137,17 @@
     
 <p>This case study investigates global trends in Tuberculosis incidence rates and explores whether Tuberculosis eradication is on the horizon. It was adapted from <a href="https://www.samabbott.co.uk/post/intro-gettbinr/">this</a> blog post. To get started the first step is to get the package, as well as loading other packages required for the analysis.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("getTBinR")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(getTBinR)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(getTBinR)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#  install.packages("tidyverse")</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># install.packages("viridis")</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(viridis)</a></code></pre></div>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(viridis)</a></code></pre></div>
 <p>The package is loaded, time to get the data. We download both the data itself and it’s accompanying data dictionary.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>()</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>()</a></code></pre></div>
 <p>We want to explore incidence rates so we need to find them in the data. We can do this using the <code><a href="../reference/search_data_dict.html">getTBinR::search_data_dict</a></code> function,</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">dict =</span> dict, <span class="dt">def =</span> <span class="st">"incidence"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">variable_name</th>
@@ -240,7 +240,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">tb_inc_region &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(year, g_whoregion) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(e_inc_num, e_inc_num_lo, e_inc_num_hi, e_pop_num),</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">               <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(.), <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">               <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(.), <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(e_inc_num, e_inc_num_lo, e_inc_num_hi),</a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">            <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="dt">inc_rate =</span> . <span class="op">/</span><span class="st"> </span>e_pop_num <span class="op">*</span><span class="st"> </span><span class="fl">1e5</span>))</a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Warning: funs() is soft deprecated as of dplyr 0.8.0</span></a>
@@ -259,7 +259,7 @@
 <a class="sourceLine" id="cb5-20" data-line-number="20"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-21" data-line-number="21"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> e_inc_num_lo_inc_rate, <span class="dt">ymax =</span> e_inc_num_hi_inc_rate)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-22" data-line-number="22"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/viridis/topics/scale_viridis">scale_colour_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/viridis/man/scale_viridis.html">scale_colour_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-24" data-line-number="24"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> title, <span class="dt">subtitle =</span> subtitle, </a>
 <a class="sourceLine" id="cb5-25" data-line-number="25">       <span class="dt">x =</span> <span class="st">"Year"</span>, <span class="dt">y =</span> <span class="st">"Tuberculosis Incidence Rates (per 100,000 population)"</span>,</a>
 <a class="sourceLine" id="cb5-26" data-line-number="26">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>) <span class="op">+</span></a>
@@ -281,24 +281,24 @@
 <p><img src="case_study_global_trends_files/figure-html/plot-region-tb-inc-free-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>This plot shows that Tuberculosis incidence rates are decreasing in all regions, which is a great sign for the elimination of Tuberculosis. However whilst this is true on the regional level it may not be true for all countries in the data set, something that is required to truly eradicate Tuberculosis. To explore this we find the countries that had higher incidence rates in 2016 than in 2000.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">countries_inc_up &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2000</span>, <span class="dv">2016</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2000</span>, <span class="dv">2016</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">  </span><span class="kw">pull</span>(country)</a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb7-9" data-line-number="9">high_inc_countries &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">e_inc_100k =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">e_inc_100k =</span> <span class="kw"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-14" data-line-number="14"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(e_inc_100k)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-15" data-line-number="15"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-16" data-line-number="16"><span class="st">  </span><span class="kw">pull</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-17" data-line-number="17"><span class="st">  </span>unique</a>
 <a class="sourceLine" id="cb7-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19">high_inc_up_countries &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sets">intersect</a></span>(countries_inc_up, high_inc_countries)</a></code></pre></div>
+<a class="sourceLine" id="cb7-19" data-line-number="19">high_inc_up_countries &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/sets.html">intersect</a></span>(countries_inc_up, high_inc_countries)</a></code></pre></div>
 <p>This results in a list of 47 countries all of which had higher incidence rates in 2016 than in 2000. Of these countries 9 were in the top 20 countries by incidence rate in 2016. This can plotted below using <code><a href="../reference/plot_tb_burden_overview.html">getTBinR::plot_tb_burden_overview</a></code>,</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">df =</span> tb_burden,</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">                        <span class="dt">dict =</span> dict, </a>
@@ -320,7 +320,7 @@
 <p><img src="case_study_global_trends_files/figure-html/plot-tb-inc-high-inc-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>A possible cause of this may be that reporting of Tuberculosis notifications has improved over time, to understand this we first find the required variable in the data,</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">dict =</span> dict, <span class="dt">def =</span> <span class="st">"detection"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">variable_name</th>
