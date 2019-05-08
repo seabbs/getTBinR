@@ -1,6 +1,6 @@
 pandoc: '2.2'
 pkgdown: 1.3.0.9000
-pkgdown_sha: 95491ed474038bed02f70b05e710b3277a66b205
+pkgdown_sha: 83f2afb5d2ec85abe29bfd8d67408cdf2bb55f03
 articles:
   case_fatality_rate: case_fatality_rate.html
   case_study_global_trends: case_study_global_trends.html
