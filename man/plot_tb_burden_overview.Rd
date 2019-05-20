@@ -26,7 +26,7 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 
 \item{metric_label}{Character string specifying the metric label to use.}
 
-\item{countries}{A character string specifying the countries to plot.}
+\item{countries}{A character string specifying the countries to target.}
 
 \item{years}{Numeric vector of years. Defaults to \code{NULL} which includes all years in the data.}
 

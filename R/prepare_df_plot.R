@@ -5,7 +5,7 @@
 #' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
 #' If not specified then will source the WHO TB burden data, either locally if available
 #' or directly from the WHO (if \code{download_data = TRUE}).
-#' @param countries A character string specifying the countries to plot.
+#' @param countries A character string specifying the countries to target.
 #' @param years Numeric vector of years. Defaults to \code{NULL} which includes all years in the data. 
 #' @param metric Character string specifying the metric to plot
 #' @param metric_label Character string specifying the metric label to use. 

@@ -29,7 +29,7 @@ dictionary. If this fails and \code{download_data = TRUE} then the dictionary wi
 \item{fill_var_type}{A character string, defaults to \code{NULL}. To set the fill variable type to be
 discrete use "discrete" and to be continuous use "continuous".}
 
-\item{countries}{A character string specifying the countries to plot.}
+\item{countries}{A character string specifying the countries to target.}
 
 \item{compare_to_region}{Logical, defaults to \code{FALSE}. If \code{TRUE} all
 countries that share a region with those listed in \code{countries} will be plotted.

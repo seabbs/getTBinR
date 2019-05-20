@@ -114,6 +114,15 @@ We might also be interested in getting a regional/global overview of TB incidenc
 getTBinR::plot_tb_burden_summary(conf = NULL, metric_label = "e_inc_100k")
 ```
 
+## Summarising Recent Incidence Rates in a Subset of Countries
+
+We could also get a quick overview of TB in a given group of countries in comparision to regional and global trends by looking at the most recent data using `summarise_metric`. This is used extensively in the supplied TB report (`render_tb_report`) to provide summary statistics. 
+
+```{r summarise_metric}
+## Get a summary of TB incidence rates for the united kingdom and germany
+summarise_metric(metric = "e_inc_100k", countries = c("United Kingdom", "Germany")) %>% 
+  kable
+```
 ## Plotting Incidence Rates over Time in 9 Randomly Sampled Countries
 
 Diving deeper into the data lets plot a sample of 9 countries using the inbuilt `plot_tb_burden` function. Again plotting incidence rates, but this time with 95% confidence intervals. As you can see this isn't a hugely informative graph. Lets improve it!

@@ -3,6 +3,7 @@
 ## Feature updates
 
 
+* Added a new `summarise_metric` function to the package. This function was previously used internally by the TB report. For a given year it returns the value of given metric, along with the regional and global rankings. The average change over the last decade is also supplied. Linked to #57.
 * `search_data_dict` can now be used to search for a dataset by name. All variables in this dataset are then returned.
 
 ## Package updates
@@ -10,6 +11,7 @@
 * `search_data_dict` has improved messaging and no longer returns an error when nothing is found in the data dictionary. From #65.
 * `search_data_dict` has expanded testing to account for new dataset searching and for failing to find results. Linked to #60.
 * Dropped usage of `dplyr::funs` as soft deprecated.
+* Added tests for `summarise_metric` and added to documentation.
 
 
 # getTBinR 0.5.8

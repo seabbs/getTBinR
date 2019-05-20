@@ -35,7 +35,7 @@ are used. Used by \code{annual_change}.}
 \item{samples}{Numeric, the number of samples to use to generate confidence
 intervals (only used when \code{conf} are present)}
 
-\item{countries}{A character string specifying the countries to plot.}
+\item{countries}{A character string specifying the countries to target.}
 
 \item{compare_to_region}{Logical, defaults to \code{FALSE}. If \code{TRUE} all
 countries that share a region with those listed in \code{countries} will be plotted.

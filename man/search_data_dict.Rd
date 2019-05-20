@@ -12,7 +12,10 @@ search_data_dict(var = NULL, def = NULL, dataset = NULL,
 \item{var}{A character vector of variable names.}
 
 \item{def}{A character vector of terms to use to search the variable definitions
-for partial matches}
+for partial matches.}
+
+\item{dataset}{A character vector of terms to use to search the dataset names
+for partial matches.}
 
 \item{dict}{A tibble of the data dictionary. See \code{\link[getTBinR]{get_data_dict}}
 for details. If not supplied the function will attempt to load a saved version of the

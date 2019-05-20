@@ -35,7 +35,7 @@ and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NUL
 then no confidence intervals are shown. When \code{annual_change = TRUE} the confidence
 intervals represent the annual percentage change in the metrics confidence intervals.}
 
-\item{countries}{A character string specifying the countries to plot.}
+\item{countries}{A character string specifying the countries to target.}
 
 \item{years}{Numeric vector of years. Defaults to \code{NULL} which includes all years in the data.}
 

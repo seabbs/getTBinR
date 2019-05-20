@@ -17,9 +17,6 @@ knitr::opts_chunk$set(echo = FALSE,
 library(getTBinR)
 
 ## Load additional packages
-library(dplyr) # For data munging 
-library(tidyr)
-library(rlang)
 library(ggplot2)
 
 ## Get the data
@@ -36,74 +33,7 @@ interactive <- params$interactive
 ## TB incidence rates
 
 ```{r get country-stats, include = FALSE, results = "hide"}
-metric_summary <- function(df = NULL, target_country = NULL, metric = NULL) {
-  
-  target_country <- df$country[grepl(target_country, df$country)] %>% 
-    unique %>% 
-    first
-    
-  ##  Set up metric with confidence intervals
-  metric <- enquo(metric)
-  metric_lo <- sym(paste0(quo_name(metric), "_lo"))
-  metric_hi <- sym(paste0(quo_name(metric), "_hi"))
-  
-  ## Filter for the country of interest
-  country_df <- df %>% 
-  filter(country %in% target_country)
-  
-## Most up to date year of incidence data
-recent_inc <- country_df %>% 
-  drop_na(!!metric) %>% 
-  filter(year == max(year)) %>% 
-  select(!!metric, !!metric_lo, !!metric_hi, year, g_whoregion) %>% 
-  mutate(inc_rate = paste0(!!metric, " (", !!metric_lo, " - ", !!metric_hi, ")"))
-
-## Country rank
-ranked_countries_inc <- df %>% 
-  filter(year == recent_inc$year) %>% 
-  arrange(desc(!!metric)) %>% 
-  mutate(rank = 1:n())
-
-## World rank
-target_rank_world <- ranked_countries_inc %>% 
-  filter(country == target_country) %>% 
-  pull(rank)
-
-## Region rank
-target_rank_region <- ranked_countries_inc %>% 
-  filter(g_whoregion %in% recent_inc$g_whoregion) %>% 
-  mutate(rank = 1:n()) %>% 
-  filter(country == target_country) %>%
-  pull(rank)
-
-
-## Summarise annual change
-country_change <- summarise_tb_burden(metric = quo_name(metric),
-                                      stat = "mean",
-                                      countries = target_country,
-                                      compare_to_region = FALSE,
-                                      compare_to_world = FALSE,
-                                      compare_all_regions = FALSE,
-                                      annual_change = TRUE,
-                                      verbose = FALSE) %>% 
-  filter(year > (max(year) - 10)) %>% 
-  summarise(change = mean(!!metric, na.rm = FALSE)) %>%
-  mutate(change = round(change * 100, 1) %>% 
-           paste0(., "%")) %>% 
-  pull(change)
-
-out <- list(recent_inc$year[1], recent_inc$inc_rate[1],
-            target_rank_world, target_rank_region,
-            country_change)
-
-names(out) <- c("year", "metric", "world_rank", "region_rank", "avg_change")
-
-out <- ifelse(is.na(out), "(Missing)", out)
-return(out)
-}
-  
-  
-inc_sum <- metric_summary(tb, country, e_inc_100k)
+inc_sum <- summarise_metric(tb, "e_inc_100k", country)
 ```
 
 In `r inc_sum$year` `r country` had an estimated Tuberculosis incidence rate of `r inc_sum$metric` per 100,000 people making it number `r inc_sum$world_rank` in the world and number `r inc_sum$region_rank` regionally. In the last 10 years this has changed by `r inc_sum$avg_change` on average each year. 
@@ -136,7 +66,7 @@ plot_tb_burden_overview(countries = country,
 ## Case Detection Rates (CDR)
 
 ```{r, include = FALSE, results = "hide"}
-cdr_sum <- metric_summary(tb, country, c_cdr)
+cdr_sum <- summarise_metric(tb, "c_cdr", country)
 ```
 
 `r country` had an estimated case detection rate of `r cdr_sum$metric`% in `r cdr_sum$year` making it number `r cdr_sum$world_rank` in the world (with number 1 having the highest CDR) and number `r cdr_sum$region_rank` regionally. In the last 10 years this has changed by `r cdr_sum$avg_change` on average each year. 
@@ -155,7 +85,7 @@ plot_tb_burden_overview(metric = "c_cdr",
 
 
 ```{r, include = FALSE, results = "hide"}
-mort_exc_hiv_sum <- metric_summary(tb, country, e_mort_exc_tbhiv_100k)
+mort_exc_hiv_sum <- summarise_metric(tb, "e_mort_exc_tbhiv_100k", country)
 ```
 
 In `r mort_exc_hiv_sum$year` `r country` had an estimated Tuberculosis mortality rate (excluding HIV) of `r mort_exc_hiv_sum$metric`  per 100,000 people making it number `r mort_exc_hiv_sum$world_rank` in the world and number `r mort_exc_hiv_sum$region_rank` regionally. In the last 10 years this has changed by `r mort_exc_hiv_sum$avg_change` on average each year. 
@@ -190,7 +120,7 @@ plot_tb_burden_overview(metric = "e_mort_exc_tbhiv_100k",
 ## TB HIV related mortality rates
 
 ```{r, include = FALSE, results = "hide"}
-mort_inc_hiv_sum <- metric_summary(tb, country, e_mort_tbhiv_100k)
+mort_inc_hiv_sum <- summarise_metric(tb, "e_mort_tbhiv_100k", country)
 ```
 
 In `r mort_inc_hiv_sum$year` `r country` had an estimated Tuberculosis mortality rate (related to HIV) of `r mort_inc_hiv_sum$metric`  per 100,000 people making it number `r mort_inc_hiv_sum$world_rank` in the world and number `r mort_inc_hiv_sum$region_rank` regionally. In the last 10 years this has changed by `r mort_inc_hiv_sum$avg_change` on average each year. 

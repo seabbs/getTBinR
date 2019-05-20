@@ -82,7 +82,7 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  interactive = FALSE)
 ```
 
-Finally we repeat the above plot but this time only for the UK - this allows us to get a clear picture of trends in TB incidence rates in the UK.
+We can repeat the above plot but this time only for the UK - this allows us to get a clear picture of trends in TB incidence rates in the UK.
 
 ```{r plot-tb-incidence-uk}
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
@@ -90,7 +90,29 @@ getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          interactive = FALSE)
 ```
 
-See [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for more details of the functions used (note the fuzzy country matching, `map_tb_burden`, `plot_tb_burden_overview`, `plot_tb_burden_summary` and `plot_tb_burden` will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make these plots interactive by specifying `interactive = TRUE`
+We might be interested in having some of this information in tablular form. We can either generate a short summary for the most recent year of available data with the following, 
+
+```{r summarise-metric}
+getTBinR::summarise_metric(metric = "e_inc_100k",
+                           countries = "United Kingdom")
+```
+
+
+Or a more detailed dataset as follows, 
+
+```{r summarise_tb_burden}
+getTBinR::summarise_tb_burden(metric = "e_inc_num",
+                              stat = "rate",
+                              countries = "United Kingdom", 
+                              compare_to_world = FALSE, 
+                              compare_to_region = FALSE,
+                              verbose = FALSE) 
+
+```
+
+Here `e_inc_num` is used rather than `e_inc_100k` as incidence rates are being estimated based on notified cases. This allows country level rates to be compared to regional (using `compare_to_region = TRUE`) and global (using `compare_to_world = TRUE`) rates.
+
+See [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for more details of the functions used (note the fuzzy country matching, all functions will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make the plots above interactive by specifying `interactive = TRUE`
 
 ## Shiny Dashboard
 

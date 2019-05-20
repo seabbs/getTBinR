@@ -6,7 +6,9 @@
 #` be passed to the function. 
 #' @param var A character vector of variable names.
 #' @param def A character vector of terms to use to search the variable definitions
-#' for partial matches
+#' for partial matches.
+#' @param dataset A character vector of terms to use to search the dataset names
+#' for partial matches.
 #' @param dict A tibble of the data dictionary. See \code{\link[getTBinR]{get_data_dict}}
 #' for details. If not supplied the function will attempt to load a saved version of the
 #' dictionary. If this fails and \code{download_data = TRUE} then the dictionary will be downloaded.
