@@ -17,6 +17,17 @@ test_that("summarise_tb_burden can summarise a variable
 
 
 test_that("summarise_tb_burden can summarise a variable
+          with confidence intervals for a group of countries", {
+            sum_tab <- summarise_tb_burden(metric = "e_inc_num",
+                                           stat = "mean",
+                                           countries = test_countries,
+                                           years = test_year,
+                                           conf = c("_lo", "_hi"))
+            skip_on_cran()
+            expect_known_output(sum_tab, file = "../../tests/test-files/summarise_tb_burden/test-13.rds")
+          })
+
+test_that("summarise_tb_burden can summarise a variable
           without confidence intervals for a group of countries, comparing within regions", {
             sum_tab <- summarise_tb_burden(metric = "e_inc_num",
                                            stat = "mean",
