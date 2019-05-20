@@ -73,12 +73,12 @@ getTBinR::map_tb_burden(metric = "e_inc_100k")
 #>   c.quosures     rlang
 #>   print.quosures rlang
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpGMpXAj/TB_burden.rds
+#> Saving data to: /tmp/RtmpWgNPW6/TB_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Saving data to: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Saving data to: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -92,10 +92,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpGMpXAj/TB_burden.rds
-#> Loading data from: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_burden.rds
+#> Loading data from: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -110,10 +110,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpGMpXAj/TB_burden.rds
-#> Loading data from: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_burden.rds
+#> Loading data from: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -131,23 +131,23 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  compare_to_region = TRUE,
                                  compare_to_world = TRUE,
                                  interactive = FALSE)
-#> Loading data from: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Extracting data for specified countries
-#> Loading data from: /tmp/RtmpGMpXAj/TB_burden.rds
-#> Loading data from: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_burden.rds
+#> Loading data from: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpGMpXAj/TB_burden.rds
-#> Loading data from: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_burden.rds
+#> Loading data from: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpGMpXAj/TB_burden.rds
-#> Loading data from: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_burden.rds
+#> Loading data from: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_num
 ```
 
@@ -160,10 +160,10 @@ us to get a clear picture of trends in TB incidence rates in the UK.
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmpGMpXAj/TB_burden.rds
-#> Loading data from: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_burden.rds
+#> Loading data from: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpGMpXAj/TB_data_dict.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_data_dict.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -176,13 +176,13 @@ available data with the following,
 ``` r
 getTBinR::summarise_metric(metric = "e_inc_100k",
                            countries = "United Kingdom")
-#> Loading data from: /tmp/RtmpGMpXAj/TB_burden.rds
-#> Loading data from: /tmp/RtmpGMpXAj/MDR_TB.rds
+#> Loading data from: /tmp/RtmpWgNPW6/TB_burden.rds
+#> Loading data from: /tmp/RtmpWgNPW6/MDR_TB.rds
 #> Joining TB burden data and MDR TB data.
 #> # A tibble: 1 x 6
-#>   country                  year metric    world_rank region_rank avg_change
-#>   <chr>                   <int> <chr>          <int>       <int> <chr>     
-#> 1 United Kingdom of Grea…  2017 8.9 (8.1…        165          32 -4.9%
+#>   country         year metric          world_rank region_rank avg_change
+#>   <chr>          <int> <chr>                <int>       <int> <chr>     
+#> 1 United Kingdom  2017 8.9 (8.1 - 9.8)        165          32 -4.9%
 ```
 
 Or a more detailed dataset as follows,
@@ -195,18 +195,18 @@ getTBinR::summarise_tb_burden(metric = "e_inc_num",
                               compare_to_region = FALSE,
                               verbose = FALSE) 
 #> # A tibble: 126 x 5
-#>    area                            year e_inc_num e_inc_num_lo e_inc_num_hi
-#>    <fct>                          <int>     <dbl>        <dbl>        <dbl>
-#>  1 United Kingdom of Great Brita…  2000      11.9         10.7         13.1
-#>  2 United Kingdom of Great Brita…  2001      11.5         10.3         12.7
-#>  3 United Kingdom of Great Brita…  2002      13.1         11.8         14.3
-#>  4 United Kingdom of Great Brita…  2003      13.4         12.1         14.8
-#>  5 United Kingdom of Great Brita…  2004      13.2         11.9         14.5
-#>  6 United Kingdom of Great Brita…  2005      15.3         13.8         16.6
-#>  7 United Kingdom of Great Brita…  2006      15.3         13.8         16.4
-#>  8 United Kingdom of Great Brita…  2007      14.7         13.2         16.1
-#>  9 United Kingdom of Great Brita…  2008      15.0         13.5         16.1
-#> 10 United Kingdom of Great Brita…  2009      14.5         13.1         15.9
+#>    area            year e_inc_num e_inc_num_lo e_inc_num_hi
+#>    <fct>          <int>     <dbl>        <dbl>        <dbl>
+#>  1 United Kingdom  2000      11.9         10.7         13.1
+#>  2 United Kingdom  2001      11.5         10.3         12.7
+#>  3 United Kingdom  2002      13.1         11.8         14.3
+#>  4 United Kingdom  2003      13.4         12.1         14.8
+#>  5 United Kingdom  2004      13.2         11.9         14.5
+#>  6 United Kingdom  2005      15.3         13.8         16.6
+#>  7 United Kingdom  2006      15.3         13.8         16.4
+#>  8 United Kingdom  2007      14.7         13.2         16.1
+#>  9 United Kingdom  2008      15.0         13.5         16.1
+#> 10 United Kingdom  2009      14.5         13.1         15.9
 #> # … with 116 more rows
 ```
 
