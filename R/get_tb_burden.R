@@ -55,8 +55,8 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                                               TRUE ~ g_whoregion)
     )
     
-    tb_df <- mutate_all(tb_df, .funs = funs({ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
-    tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
+    tb_df <- mutate_all(tb_df, .funs = list(~ {ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
+    tb_df <- mutate_if(tb_df, is.numeric, .funs = list( ~ {ifelse(. %in% c(Inf, NaN), NA, .)}))
     tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
     
     return(tb_df)
@@ -79,8 +79,8 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     trans_mdr_data <- function(tb_df) {
       
       tb_df <- tibble::as_tibble(tb_df)
-      tb_df <- mutate_all(tb_df, .funs = funs({ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
-      tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
+      tb_df <- mutate_all(tb_df, .funs = list(~ {ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
+      tb_df <- mutate_if(tb_df, is.numeric, .funs = list(~ {ifelse(. %in% c(Inf, NaN), NA, .)}))
       tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
       
       return(tb_df)

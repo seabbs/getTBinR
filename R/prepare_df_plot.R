@@ -25,7 +25,7 @@
 #' @inheritParams get_tb_burden
 #' @inheritParams search_data_dict
 #' @import magrittr
-#' @importFrom dplyr filter arrange_at mutate mutate_at pull funs lag group_by ungroup arrange slice
+#' @importFrom dplyr filter arrange_at mutate mutate_at pull lag group_by ungroup arrange slice
 #' @importFrom purrr map
 #' @seealso plot_tb_burden plot_tb_burden_overview
 #' @return A list containing 3 elements, the dataframe to plot, the facet to use and
@@ -99,7 +99,12 @@ prepare_df_plot <- function(df = NULL,
                                      dict_save_name = dict_save_name,
                                      verbose = verbose)
     
-    metric_label <- metric_label$definition
+    if (is.null(metric_label)) {
+      metric_label <- metric
+    }else{
+      metric_label <- metric_label$definition
+    }
+
   }
   
   if (annual_change) {
@@ -114,7 +119,7 @@ prepare_df_plot <- function(df = NULL,
     
     df_filt <- df_filt %>% 
       group_by(country) %>% 
-      mutate_at(.vars = metrics, .funs = funs((. - lag(.)) / lag(.))) %>% 
+      mutate_at(.vars = metrics, .funs = list( ~ (. - lag(.)) / lag(.))) %>% 
       arrange(year) %>% 
       slice(-1) %>% 
       ungroup

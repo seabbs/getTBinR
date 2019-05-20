@@ -26,7 +26,7 @@
 #' @export
 #'
 #' @import magrittr
-#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at funs left_join lag bind_rows summarise summarise_at one_of rename_at arrange n contains
+#' @importFrom dplyr mutate group_by ungroup select select_at mutate_at left_join lag bind_rows summarise summarise_at one_of rename_at arrange n contains
 #' @importFrom purrr map map2_dfr compact reduce map_lgl
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr nest unnest
@@ -126,9 +126,9 @@ summarise_tb_burden <- function(df = NULL,
       } else if (stat %in% c("rate", "prop")) {
         summarised_df <- summarised_df %>% 
           summarise_at(.vars = c(metrics, "denom"),
-                       funs(sum(as.numeric(.), na.rm = T))) %>% 
+                       list(~ sum(as.numeric(.), na.rm = T))) %>% 
           mutate_at(.vars = int_metrics,
-                    .funs = funs(. / denom * int_rate_scale)) %>% 
+                    .funs = list(~ . / denom * int_rate_scale)) %>% 
           select(-denom)
         
         
@@ -294,7 +294,7 @@ summarise_tb_burden <- function(df = NULL,
     } else if (is.null(conf)) {
 
       summarised_df <-  all_df %>% 
-        rename_at(.vars = metric, .funs = funs(paste0("samples")))
+        rename_at(.vars = metric, .funs = list( ~ paste0("samples")))
   
       
     }else{
@@ -304,7 +304,7 @@ summarise_tb_burden <- function(df = NULL,
       ## If the data comes with confidence intervals attached
       summarised_df <- all_df %>% 
         mutate_at(.vars = metrics, 
-                  .funs = funs(ifelse(is.na(.), all_df[[metric]], .))) %>% 
+                  .funs = list( ~ ifelse(is.na(.), all_df[[metric]], .))) %>% 
         group_by(Area, Year)
       
       summarised_df$sd <- (summarised_df[[metrics[3]]] - summarised_df[[metrics[2]]]) / (2 * 1.96)
@@ -333,7 +333,7 @@ summarise_tb_burden <- function(df = NULL,
       get_summary() %>% 
       ungroup %>% 
       mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
-                .funs = funs(ifelse(. %in% NaN, NA, .)))
+                .funs = list(~ ifelse(. %in% NaN, NA, .)))
 
     
     ## Clean up summarised results
@@ -343,7 +343,7 @@ summarise_tb_burden <- function(df = NULL,
     if (truncate_at_zero) {
       summarised_df <- summarised_df %>% 
         mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
-                  .funs = funs(ifelse(. < 0, 0, .)))
+                  .funs = list(~ ifelse(. < 0, 0, .)))
     }
     
     colnames(summarised_df) <- c("area", "year", paste0(metric, c("", "_lo", "_hi")))
@@ -377,7 +377,7 @@ summarise_tb_burden <- function(df = NULL,
        get_summary() %>% 
        ungroup %>% 
        mutate_at(.vars = c("mean", "mean_lo", "mean_hi"),
-                 .funs = funs(ifelse(. %in% NaN, NA, .)))
+                 .funs = list(~ ifelse(. %in% NaN, NA, .)))
      
      colnames(output_df) <- c("area", "year", paste0(metric, c("", "_lo", "_hi")))
    }
@@ -408,12 +408,12 @@ summarise_tb_burden <- function(df = NULL,
     output_df <- output_df %>% 
       group_by(area) %>% 
       arrange(year) %>% 
-      mutate_at(.vars = metrics, .funs = funs((. - lag(.)) / lag(.))) %>%
+      mutate_at(.vars = metrics, .funs = list( ~ (. - lag(.)) / lag(.))) %>%
       arrange(year) %>% 
       slice(-1) %>% 
       ungroup %>% 
       mutate_at(.vars = metrics,
-                .funs = funs(replace(., is.nan(.), NA)))
+                .funs = list( ~ replace(., is.nan(.), NA)))
   }
   
   return(output_df)

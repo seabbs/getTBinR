@@ -4,9 +4,9 @@
 \alias{search_data_dict}
 \title{Search the WHO TB Data Dictionary by Variable Name.}
 \usage{
-search_data_dict(var = NULL, def = NULL, dict = NULL,
-  download_data = TRUE, save = TRUE, dict_save_name = "TB_data_dict",
-  verbose = TRUE, ...)
+search_data_dict(var = NULL, def = NULL, dataset = NULL,
+  dict = NULL, download_data = TRUE, save = TRUE,
+  dict_save_name = "TB_data_dict", verbose = TRUE, ...)
 }
 \arguments{
 \item{var}{A character vector of variable names.}
@@ -33,7 +33,7 @@ downloaded from the specified URL?}
 }
 \value{
 A tibble containing the information in the data dictionary matching the variables
-searched for.
+searched for. If nothing is found then \code{NULL} is returned.
 }
 \description{
 Searches the WHO data dictionary for TB burden data. When run for the first time
@@ -47,6 +47,9 @@ search_data_dict(var = "country")
 
 ## Search for all variables mentioning mortality in their definition
 search_data_dict(def = "mortality")
+
+## Search for all variables in the Estimates dataset.
+search_data_dict(dataset = "Estimates")
 
 ## Search for both a known variable and for mortality being mentioned in there definition
 ## Duplicate entries will be omitted.

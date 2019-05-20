@@ -1,3 +1,17 @@
+# getTBinR 0.5.9
+
+## Feature updates
+
+
+* `search_data_dict` can now be used to search for a dataset by name. All variables in this dataset are then returned.
+
+## Package updates
+
+* `search_data_dict` has improved messaging and no longer returns an error when nothing is found in the data dictionary. From #65.
+* `search_data_dict` has expanded testing to account for new dataset searching and for failing to find results. Linked to #60.
+* Dropped usage of `dplyr::funs` as soft deprecated.
+
+
 # getTBinR 0.5.8
 
 ## Feature updates

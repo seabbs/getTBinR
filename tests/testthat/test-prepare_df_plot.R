@@ -139,3 +139,15 @@ test_that("years are correctly filtered for.", {
                                           annual_change = FALSE)$df)
 })
 
+test_that("Using a metric that does not occur in the dataset and 
+          no metric label leads to the metric being used as the default label.", {
+  
+            skip_on_cran()
+            test_df <- tb_data
+            test_df$test_metric <- test_df$e_inc_100k
+            
+            expect_equal("test_metric", prepare_df_plot(metric = "test_metric", 
+                                                    years = 2000,
+                                                    df = test_df, 
+                                                    annual_change = FALSE)$metric_label)
+})
