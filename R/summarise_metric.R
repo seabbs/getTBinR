@@ -58,13 +58,14 @@ summarise_metric <- function(df = NULL,  metric = NULL,
     
     country <- NULL; year <- NULL; g_whoregion <- NULL; change <- NULL;
     . <- NULL
-    target_country <- df$country[grepl(target_country, df$country)] %>% 
+    target_country_in_df <- df$country[grepl(target_country, df$country)] %>% 
       unique %>% 
       first
     
     ## Filter for the country of interest
     country_df <- df %>% 
-      filter(country %in% target_country)
+      filter(country %in% target_country_in_df) %>% 
+      mutate(country = target_country)
     
     ## Most up to date year of incidence data
     recent_inc <- country_df %>% 
@@ -90,14 +91,14 @@ summarise_metric <- function(df = NULL,  metric = NULL,
       
       ## World rank
       target_rank_world <- ranked_countries_inc %>% 
-        filter(country == target_country) %>% 
+        filter(country == target_country_in_df) %>% 
         pull(rank)
       
       ## Region rank
       target_rank_region <- ranked_countries_inc %>% 
         filter(g_whoregion %in% recent_inc$g_whoregion) %>% 
         mutate(rank = 1:n()) %>% 
-        filter(country == target_country) %>%
+        filter(country == target_country_in_df) %>%
         pull(rank)
       
       

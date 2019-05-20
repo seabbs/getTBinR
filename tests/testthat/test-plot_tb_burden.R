@@ -10,7 +10,7 @@ test_that("plot_tb_burden produces a plot", {
 })
 
 test_that("plot_tb_burden produces a plot with smoothed data", {
-  plot <- plot_tb_burden(download_data = TRUE, save = TRUE, smooth = TRUE)
+  plot <- suppressWarnings(plot_tb_burden(download_data = TRUE, save = TRUE, smooth = TRUE))
   
   expect_true(!is.null(plot))
   expect_equal("ggplot", class(plot)[2])

@@ -75,10 +75,11 @@ prepare_df_plot <- function(df = NULL,
       dplyr::filter(country %in% country_sample)
     
     if (length(unique(df_filt$country)) != length(countries)) {
-      country_matches <- purrr::map(countries, ~grep(., df$country, fixed = FALSE))
+      country_matches <- map(countries, ~grep(., df$country, fixed = FALSE))
       country_matches <- unlist(country_matches)
       
-      df_filt <- df[country_matches, ]
+      df_filt <- df[country_matches,]
+      
     }
   }
   
@@ -89,6 +90,14 @@ prepare_df_plot <- function(df = NULL,
     
     df_filt <- df %>% 
       filter(g_whoregion %in% unique(df_filt$g_whoregion))
+  }
+
+  
+  ## Override data names with fuzzy matching uers supplied names.
+  if (!is.null(countries)) {
+    for (i in countries) {
+      df_filt$country <- ifelse(grepl(i, df_filt$country, fixed = FALSE), i, df_filt$country)
+    }
   }
 
   if(is.null(metric_label)) {
