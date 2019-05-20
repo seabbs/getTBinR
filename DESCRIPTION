@@ -43,6 +43,7 @@ Imports:
 Suggests: 
     covr (>= 3.2.1),
     devtools (>= 2.0.2),
+    usethis (>= 1.5.0),
     knitr (>= 1.23),
     pkgnet (>= 0.4.0),
     rmarkdown (>= 1.12),

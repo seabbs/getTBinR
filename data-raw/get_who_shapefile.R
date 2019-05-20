@@ -7,7 +7,7 @@ load("who_shapefile.Rdata")
 who_shapefile <- gworld
 
 ## Add to package
-devtools::use_data(who_shapefile, overwrite = TRUE)
+usethis::use_data(who_shapefile, overwrite = TRUE)
 
 
 
