@@ -10,6 +10,8 @@
 #'  The TB burden URL is now supplied internally - see \code{\link[getTBinR]{available_datasets}} for details.
 #' @param add_mdr_data Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
 #' to the TB burden data.
+#' @param additional_datasets A character vector specifcying the names of the additional datasets to import. 
+#' See \code{\link[getTBinR]{available_datasets}} for available datasets.
 #' @param mdr_save_name Character string, name to save the MDR data under. This arguement is depreciated 
 #' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param mdr_url Character string, indicating the url of the MDR TB data. This arguement is depreciated 
@@ -24,19 +26,28 @@
 #' @inheritParams get_data
 #' @importFrom dplyr case_when mutate mutate_if mutate_all
 #' @importFrom tibble as_tibble
+#' @importFrom purrr map reduce
 #' @export
 #' @seealso get_data search_data_dict
 #' @examples
 #' 
-#' tb_burden <- get_tb_burden()
+#' 
+#' ## Default datasets
+#' tb_burden <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
 #' 
 #' head(tb_burden)
+#' 
+#' ## Add in the latent TB dataset as an additional datasets (see getTBinR::avaiable_datasets)
+#' tb_with_latents <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
+#' 
+#' head(tb_with_latents)
 #' 
 get_tb_burden <- function(url = NULL, 
                           download_data = TRUE,
                           save = TRUE,
                           burden_save_name = NULL,
                           add_mdr_data = TRUE,
+                          additional_datasets = NULL,
                           mdr_save_name = NULL,
                           mdr_url = NULL,
                           return = TRUE,
@@ -137,6 +148,60 @@ get_tb_burden <- function(url = NULL,
     tb_burden <- suppressMessages(left_join(tb_burden, mdr_tb))
   }
   
+  ## Get additional datasets if asked to
+  if (!is.null(additional_datasets)) {
+    
+    load_additional_dataset <- function(dataset) {
+      
+      if (verbose) {
+        message("Getting additional dataset: " , dataset)
+      }
+      
+      if (!any(grepl(dataset, getTBinR::available_datasets$dataset))) {
+        stop(dataset, " is not listed in available_datasets and so cannot be imported.")
+      }
+      
+      generic_trans <- function(df) {
+          df <- tibble::as_tibble(df)
+          df <- mutate_all(df, .funs = list(~ {ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
+          df <- mutate_if(df, is.numeric, .funs = list(~ {ifelse(. %in% c(Inf, NaN), NA, .)}))
+          df$iso_numeric <- df$iso_numeric %>% as.numeric %>% as.integer
+          
+          return(df)
+          
+      }
+      
+      # Use available_datasets for url and get name based on that supplied.
+      url <- getTBinR::available_datasets$url[grepl(dataset, getTBinR::available_datasets$dataset)][1]
+      name <- tolower(dataset) %>% 
+        gsub(" ", "_", .)
+      
+      ad_df <- get_data(
+        url = url,
+        download_data = download_data,
+        data_trans_fn = generic_trans,
+        save = save,
+        save_name = name,
+        return = return,
+        verbose = verbose,
+        use_utils = use_utils
+      )        
+      
+      return(ad_df)
+    }
+    
+    # Run data loading function over all supplied additional dataset names
+    datasets <- map(additional_datasets, ~ load_additional_dataset(.))
+    
+    
+    if (verbose){
+      message("Joining TB burden data and additional datasets.")
+    }
+    
+    tb_burden <- suppressMessages(
+      reduce(datasets, left_join, .init = tb_burden)
+    )
+  }
   
 
   return(tb_burden)

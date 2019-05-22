@@ -5,8 +5,9 @@
 \title{Get the WHO TB Burden Data}
 \usage{
 get_tb_burden(url = NULL, download_data = TRUE, save = TRUE,
-  burden_save_name = NULL, add_mdr_data = TRUE, mdr_save_name = NULL,
-  mdr_url = NULL, return = TRUE, verbose = TRUE, use_utils = FALSE,
+  burden_save_name = NULL, add_mdr_data = TRUE,
+  additional_datasets = NULL, mdr_save_name = NULL, mdr_url = NULL,
+  return = TRUE, verbose = TRUE, use_utils = FALSE,
   retry_download = TRUE)
 }
 \arguments{
@@ -25,6 +26,9 @@ and will be removed from future releases. Dataset naming is now handled internal
 
 \item{add_mdr_data}{Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
 to the TB burden data.}
+
+\item{additional_datasets}{A character vector specifcying the names of the additional datasets to import.
+See \code{\link[getTBinR]{available_datasets}} for available datasets.}
 
 \item{mdr_save_name}{Character string, name to save the MDR data under. This arguement is depreciated
 and will be removed from future releases. Dataset naming is now handled internally.}
@@ -57,9 +61,15 @@ will instead download the data. The MDR TB data is only available for the latest
 }
 \examples{
 
-tb_burden <- get_tb_burden()
+
+## Default datasets
+tb_burden <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
 
 head(tb_burden)
+## Add in additional datasets from getTBinR::avaiable_datasets
+tb_with_latents <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
+
+head(tb_with_latents)
 
 }
 \seealso{
