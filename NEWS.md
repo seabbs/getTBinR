@@ -1,4 +1,4 @@
-# getTBinR 0.5.9
+# getTBinR 0.6.0
 
 ## Feature updates
 
@@ -13,13 +13,9 @@
 * Dropped usage of `dplyr::funs` as soft deprecated.
 * Added tests for `summarise_metric` and added to documentation.
 
-
-# getTBinR 0.5.8
-
-## Feature updates
-
 ## Package updates
 
+* Jumped to `0.6.0` to signal major release.
 * Added package information to license file - suggested during review for JOSS submission by @[rrrlw](/rrrlw).
 * Updated README introduction to better explain package aim -  suggested during review for JOSS submission by @[strengejacke](/strengejacke)
 * Improved package DESCRIPTION for CRAN only users - suggested during review for JOSS submission by @[rrrlw](/rrrlw).
