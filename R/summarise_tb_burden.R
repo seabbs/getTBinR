@@ -94,9 +94,8 @@ summarise_tb_burden <- function(df = NULL,
                                 annual_change = FALSE,
                                 download_data = TRUE,
                                 save = TRUE,
-                                burden_save_name = "TB_burden",
-                                dict_save_name = "TB_data_dict",
-                                verbose = TRUE) {
+                                verbose = TRUE,
+                                ...) {
   
   ## Deal with undefined global function notes
   . <- NULL; Area <- NULL; Year <- NULL; country <- NULL; data <- NULL; e_pop_num <- NULL;
@@ -156,9 +155,8 @@ summarise_tb_burden <- function(df = NULL,
                                     annual_change = FALSE,
                                     download_data = download_data,
                                     save = save,
-                                    burden_save_name = burden_save_name,
-                                    dict_save_name = dict_save_name,
-                                    verbose = verbose )$df
+                                    verbose = verbose,
+                                    ...)$df
     
     countries_df <- mutate(countries_df, Area = as.character(country))
   }else{
@@ -183,9 +181,8 @@ summarise_tb_burden <- function(df = NULL,
                                   annual_change = FALSE,
                                   download_data = download_data,
                                   save = save,
-                                  burden_save_name = burden_save_name,
-                                  dict_save_name = dict_save_name,
-                                  verbose = verbose )$df
+                                  verbose = verbose,
+                                  ...)$df
     
     regions_df <- mutate(regions_df, Area = as.character(g_whoregion))
   }else{
@@ -204,9 +201,8 @@ summarise_tb_burden <- function(df = NULL,
                                 annual_change = FALSE,
                                 download_data = download_data,
                                 save = save,
-                                burden_save_name = burden_save_name,
-                                dict_save_name = dict_save_name,
-                                verbose = verbose )$df
+                                verbose = verbose,
+                                ...)$df
     
     world_df <- mutate(world_df, Area = "Global")
     
@@ -238,9 +234,8 @@ summarise_tb_burden <- function(df = NULL,
                                                         annual_change = FALSE,
                                                         download_data = download_data,
                                                         save = save,
-                                                        burden_save_name = burden_save_name,
-                                                        dict_save_name = dict_save_name,
-                                                        verbose = verbose)$df %>% 
+                                                        verbose = verbose,
+                                                        ...)$df %>% 
                  mutate(Area = .y)
       )
     )

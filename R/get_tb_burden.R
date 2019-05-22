@@ -6,13 +6,17 @@
 #' will instead download the data. The MDR TB data is only available for the latest year of data.
 #' 
 #' @param url Character string, indicating  the url of the TB burden data.
-#'  Default is current url.
+#'  Default is current url. This arguement is depreciated and will be removed from future releases. 
+#'  The TB burden URL is now supplied internally - see \code{\link[getTBinR]{available_datasets}} for details.
 #' @param add_mdr_data Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
 #' to the TB burden data.
-#' @param mdr_save_name Character string, name to save the MDR data under. Defaults to "MDR_TB"
-#' @param mdr_url Character string, indicating the url of the MDR TB data.
-#' @param burden_save_name Character string, name to save the data under. Defaults to
-#' "TB_burden".
+#' @param mdr_save_name Character string, name to save the MDR data under. This arguement is depreciated 
+#' and will be removed from future releases. Dataset naming is now handled internally.
+#' @param mdr_url Character string, indicating the url of the MDR TB data. This arguement is depreciated 
+#' and will be removed from future releases.  The MDR-TB burden URL is now supplied internally - 
+#' see \code{\link[getTBinR]{available_datasets}} for details.
+#' @param burden_save_name Character string, name to save the data under. This arguement is depreciated 
+#' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param return Logical, should the data be returned as a dataframe.
 #' Defaults to \code{TRUE}.
 #'
@@ -28,13 +32,13 @@
 #' 
 #' head(tb_burden)
 #' 
-get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates", 
+get_tb_burden <- function(url = NULL, 
                           download_data = TRUE,
                           save = TRUE,
-                          burden_save_name = "TB_burden",
+                          burden_save_name = NULL,
                           add_mdr_data = TRUE,
-                          mdr_save_name = "MDR_TB",
-                          mdr_url = "https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates",
+                          mdr_save_name = NULL,
+                          mdr_url = NULL,
                           return = TRUE,
                           verbose = TRUE,
                           use_utils = FALSE,
@@ -43,6 +47,35 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
   g_whoregion <- NULL
   . <- NULL
 
+  if (!is.null(url)) {
+    warning("This arguement is depreciated and will be removed from future releases. 
+            The TB burden URL is now supplied internally.")
+  }else{
+    url <- getTBinR::available_datasets$url[1]
+  }
+  
+  
+  if (!is.null(burden_save_name)) {
+    warning("This arguement is depreciated and will be removed from future releases. 
+            The dataset savename is now supplied internally.")
+  }else{
+    burden_save_name <- "tb_burden"
+  }
+  
+  if (!is.null(mdr_url)) {
+    warning("This arguement is depreciated and will be removed from future releases. 
+            The MDR-TB burden URL is now supplied internally.")
+  }else{
+    mdr_url <- getTBinR::available_datasets$url[2]
+  }
+  
+ if (!is.null(mdr_save_name)) {
+    warning("This arguement is depreciated and will be removed from future releases. 
+            The dataset savename is now supplied internally.")
+  }else{
+    mdr_save_name <- "mdr_tb"
+  }
+  
   trans_burden_data <- function(tb_df) {
     
     tb_df <- tibble::as_tibble(tb_df)
@@ -103,6 +136,8 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     
     tb_burden <- suppressMessages(left_join(tb_burden, mdr_tb))
   }
+  
+  
 
   return(tb_burden)
 }

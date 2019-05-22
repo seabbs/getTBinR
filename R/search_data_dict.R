@@ -41,7 +41,7 @@
 search_data_dict <- function(var = NULL, def = NULL, dataset = NULL,
                              dict = NULL, 
                              download_data = TRUE, save = TRUE, 
-                             dict_save_name = "TB_data_dict",
+                             dict_save_name = NULL,
                              verbose = TRUE, ...) {
   if (is.null(var) && is.null(def) && is.null(dataset)) {
     stop("At least one variable name, definition fragment, or dataset should be supplied")

@@ -76,9 +76,8 @@ plot_tb_burden_summary <- function(df = NULL,
                                    viridis_end = 0.9,
                                    download_data = TRUE,
                                    save = TRUE,
-                                   burden_save_name = "TB_burden",
-                                   dict_save_name = "TB_data_dict",
-                                   verbose = TRUE){
+                                   verbose = TRUE,
+                                   ...){
   
   
   if (is.null(metric_label)) {
@@ -90,7 +89,6 @@ plot_tb_burden_summary <- function(df = NULL,
                                  dict = dict,
                                  download_data = download_data,
                                  save = save,
-                                 dict_save_name = dict_save_name,
                                  verbose = verbose)
     
     if (!is.null(metric_label_lk)) {
@@ -120,9 +118,8 @@ plot_tb_burden_summary <- function(df = NULL,
                                 annual_change = annual_change,
                                 download_data = download_data,
                                 save = save,
-                                burden_save_name = burden_save_name,
-                                dict_save_name = dict_save_name,
-                                verbose = verbose) %>% 
+                                verbose = verbose,
+                                ...) %>% 
     rename(Area = area)
   
   

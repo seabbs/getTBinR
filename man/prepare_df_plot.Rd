@@ -8,7 +8,6 @@ prepare_df_plot(df = NULL, dict = NULL, metric = "e_inc_100k",
   conf = NULL, metric_label = NULL, countries = NULL, years = NULL,
   compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
   trans = "identity", download_data = TRUE, save = TRUE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
   verbose = TRUE, ...)
 }
 \arguments{
@@ -51,16 +50,10 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{burden_save_name}{Character string, name to save the data under. Defaults to
-"TB_burden".}
-
-\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
-\code{TB_data_dict}.}
-
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
 
-\item{...}{Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.}
+\item{...}{Additional arguements to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
 A list containing 3 elements, the dataframe to plot, the facet to use and

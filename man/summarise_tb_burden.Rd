@@ -10,8 +10,7 @@ summarise_tb_burden(df = NULL, dict = NULL, metric = "e_inc_num",
   compare_to_world = TRUE, custom_compare = NULL,
   compare_all_regions = TRUE, stat = "rate", denom = "e_pop_num",
   rate_scale = 1e+05, truncate_at_zero = TRUE, annual_change = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", verbose = TRUE)
+  download_data = TRUE, save = TRUE, verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -70,14 +69,10 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{burden_save_name}{Character string, name to save the data under. Defaults to
-"TB_burden".}
-
-\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
-\code{TB_data_dict}.}
-
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
+
+\item{...}{Additional arguements to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
 A tibble containing summarised values (with 95% confidence intervals) for the metric of choice

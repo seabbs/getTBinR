@@ -4,15 +4,13 @@
 \alias{get_data_dict}
 \title{Get the WHO Data Dictionary for TB Data}
 \usage{
-
-  get_data_dict(url = "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary",
-  download_data = TRUE, save = TRUE, dict_save_name = "TB_data_dict",
-  return = TRUE, verbose = TRUE, use_utils = FALSE,
-  retry_download = TRUE)
+get_data_dict(url = NULL, download_data = TRUE, save = TRUE,
+  dict_save_name = NULL, return = TRUE, verbose = TRUE,
+  use_utils = FALSE, retry_download = TRUE)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data
-dictionary. Default is current url.}
+dictionary. This arguement is depreciated and will be removed from future releases.}
 
 \item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
 downloaded from the specified URL?}
@@ -20,8 +18,8 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
-\code{TB_data_dict}.}
+\item{dict_save_name}{Character string, name to save dictionary under. This arguement is depreciated
+and will be removed from future releases. Dataset naming is now handled internally.}
 
 \item{return}{Logical, should the data  dictionary be returned as a dataframe.
 Defaults to \code{TRUE}.}

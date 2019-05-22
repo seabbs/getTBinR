@@ -6,7 +6,7 @@
 \usage{
 search_data_dict(var = NULL, def = NULL, dataset = NULL,
   dict = NULL, download_data = TRUE, save = TRUE,
-  dict_save_name = "TB_data_dict", verbose = TRUE, ...)
+  dict_save_name = NULL, verbose = TRUE, ...)
 }
 \arguments{
 \item{var}{A character vector of variable names.}
@@ -27,8 +27,8 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
-\code{TB_data_dict}.}
+\item{dict_save_name}{Character string, name to save dictionary under. This arguement is depreciated
+and will be removed from future releases. Dataset naming is now handled internally.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should search information be returned.}
 

@@ -26,6 +26,7 @@
 * Updated earliest supported R version based on travis testing - now `3.2.0`. 
 * Used `usethis::use_tidy_versions()` to set package to dependent on package versions used during development work. Added this to makefile to make automated.
 * Added a git commit step to the `Makefile` use with `make message="your commit message". This will automatically run all build steps that are required and then commit any changes. 
+* URL and data save names have been deprecated from all functions and will be removed in a future release. This allows the number of arguements for many functions to be reduced with no loss of functionality (as data is only saved temporally by package functions).
 
 # getTBinR 0.5.7
 

@@ -6,8 +6,8 @@
 \usage{
 summarise_metric(df = NULL, metric = NULL, countries = NULL,
   conf = c("_lo", "_hi"), download_data = TRUE, save = TRUE,
-  burden_save_name = "TB_burden", dict_save_name = "TB_data_dict",
-  verbose = TRUE, ...)
+  burden_save_name = NULL, dict_save_name = NULL, verbose = TRUE,
+  ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -28,16 +28,10 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{burden_save_name}{Character string, name to save the data under. Defaults to
-"TB_burden".}
-
-\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
-\code{TB_data_dict}.}
-
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
 
-\item{...}{Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.}
+\item{...}{Additional arguements to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
 A tibble containing the name of the target country, the year of the most recent data available, the most recent

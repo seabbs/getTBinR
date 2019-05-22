@@ -21,7 +21,7 @@
 #' @param conf Character vector specifying the name variations to use to specify the upper
 #' and lower confidence intervals. Defaults to \code{NULL} for which no confidence intervals 
 #' are used. Used by \code{annual_change}.
-#' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
+#' @param ... Additional arguements to pass to \code{\link[getTBinR]{get_tb_burden}}.
 #' @inheritParams get_tb_burden
 #' @inheritParams search_data_dict
 #' @import magrittr
@@ -48,8 +48,6 @@ prepare_df_plot <- function(df = NULL,
                             annual_change = FALSE,
                             trans = "identity",
                             download_data = TRUE, save = TRUE, 
-                            burden_save_name = "TB_burden",
-                            dict_save_name = "TB_data_dict",
                             verbose = TRUE,
                             ...){
 
@@ -60,7 +58,6 @@ prepare_df_plot <- function(df = NULL,
   if (is.null(df)) {
     df <- get_tb_burden(download_data = download_data,
                         save = save,
-                        burden_save_name = burden_save_name,
                         verbose = verbose, ...)
   }
   
@@ -105,7 +102,6 @@ prepare_df_plot <- function(df = NULL,
                                      dict = dict,
                                      download_data = download_data,
                                      save = save,
-                                     dict_save_name = dict_save_name,
                                      verbose = verbose)
     
     if (is.null(metric_label)) {

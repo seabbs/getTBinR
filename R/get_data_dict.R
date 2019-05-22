@@ -6,9 +6,9 @@
 #' will instead download the data.
 #' 
 #' @param url Character string, indicating  the url of the data 
-#' dictionary. Default is current url.
-#' @param dict_save_name Character string, name to save dictionary under. Defaults to
-#' \code{TB_data_dict}.
+#' dictionary. This arguement is depreciated and will be removed from future releases. 
+#' @param dict_save_name Character string, name to save dictionary under. This arguement is depreciated 
+#' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param return Logical, should the data  dictionary be returned as a dataframe.
 #' Defaults to \code{TRUE}.
 #' @inheritParams get_data
@@ -22,15 +22,30 @@
 #' 
 #' head(dict)
 #' 
-get_data_dict <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary", 
+get_data_dict <- function(url = NULL, 
                           download_data = TRUE,
                           save = TRUE,
-                          dict_save_name = "TB_data_dict",
+                          dict_save_name = NULL,
                           return = TRUE,
                           verbose = TRUE,
                           use_utils = FALSE,
                           retry_download = TRUE) {
 
+  if (!is.null(url)) {
+    warning("This arguement is depreciated and will be removed from future releases. 
+            The  URL is now supplied internally.")
+  }else{
+    url <- "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary"
+  }
+  
+  
+  if (!is.null(dict_save_name)) {
+    warning("This arguement is depreciated and will be removed from future releases. 
+            The dataset savename is now supplied internally.")
+  }else{
+    dict_save_name <- "dictionary"
+  }
+  
   get_data(url = url,
            download_data = download_data,
            save = save,

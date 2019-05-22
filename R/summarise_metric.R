@@ -37,8 +37,8 @@
 summarise_metric <- function(df = NULL,  metric = NULL,
                              countries = NULL, conf = c("_lo", "_hi"),
                              download_data = TRUE, save = TRUE, 
-                             burden_save_name = "TB_burden",
-                             dict_save_name = "TB_data_dict",
+                             burden_save_name = NULL,
+                             dict_save_name = NULL,
                              verbose = TRUE, ...) {
   
   
