@@ -11,7 +11,8 @@
 #' @param add_mdr_data Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
 #' to the TB burden data.
 #' @param additional_datasets A character vector specifcying the names of the additional datasets to import. 
-#' See \code{\link[getTBinR]{available_datasets}} for available datasets.
+#' See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
+#' datasets.
 #' @param mdr_save_name Character string, name to save the MDR data under. This arguement is depreciated 
 #' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param mdr_url Character string, indicating the url of the MDR TB data. This arguement is depreciated 
@@ -37,7 +38,7 @@
 #' 
 #' head(tb_burden)
 #' 
-#' ## Add in the latent TB dataset as an additional datasets (see getTBinR::avaiable_datasets)
+#' ## Add in the latent TB dataset as an additional dataset (see getTBinR::avaiable_datasets)
 #' tb_with_latents <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
 #' 
 #' head(tb_with_latents)
@@ -150,6 +151,11 @@ get_tb_burden <- function(url = NULL,
   
   ## Get additional datasets if asked to
   if (!is.null(additional_datasets)) {
+    
+    
+    if (additional_datasets == "all") {
+      additional_datasets <- getTBinR::available_datasets$dataset[-c(1:2)]
+    }
     
     load_additional_dataset <- function(dataset) {
       

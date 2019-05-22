@@ -28,7 +28,8 @@ and will be removed from future releases. Dataset naming is now handled internal
 to the TB burden data.}
 
 \item{additional_datasets}{A character vector specifcying the names of the additional datasets to import.
-See \code{\link[getTBinR]{available_datasets}} for available datasets.}
+See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
+datasets.}
 
 \item{mdr_save_name}{Character string, name to save the MDR data under. This arguement is depreciated
 and will be removed from future releases. Dataset naming is now handled internally.}
@@ -66,7 +67,8 @@ will instead download the data. The MDR TB data is only available for the latest
 tb_burden <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
 
 head(tb_burden)
-## Add in additional datasets from getTBinR::avaiable_datasets
+
+## Add in the latent TB dataset as an additional dataset (see getTBinR::avaiable_datasets)
 tb_with_latents <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
 
 head(tb_with_latents)
