@@ -6,8 +6,7 @@
 \usage{
 summarise_metric(df = NULL, metric = NULL, countries = NULL,
   conf = c("_lo", "_hi"), download_data = TRUE, save = TRUE,
-  burden_save_name = NULL, dict_save_name = NULL, verbose = TRUE,
-  ...)
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.

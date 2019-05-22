@@ -43,7 +43,6 @@ summarise_metric <- function(df = NULL,  metric = NULL,
   if (is.null(df)) {
     df <- get_tb_burden(download_data = download_data,
                         save = save,
-                        burden_save_name = burden_save_name,
                         verbose = verbose, ...)
   }
   
@@ -108,7 +107,7 @@ summarise_metric <- function(df = NULL,  metric = NULL,
                                             compare_to_world = FALSE,
                                             compare_all_regions = FALSE,
                                             annual_change = TRUE,
-                                            verbose = FALSE) %>% 
+                                            verbose = FALSE, ...) %>% 
         filter(year > (max(year) - 10)) %>% 
         summarise(change = mean(!!metric, na.rm = FALSE)) %>%
         mutate(change = round(change * 100, 1) %>% 
