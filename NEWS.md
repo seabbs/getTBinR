@@ -6,12 +6,7 @@
 * Added a new `summarise_metric` function to the package. This function was previously used internally by the TB report. For a given year it returns the value of given metric, along with the regional and global rankings. The average change over the last decade is also supplied. Linked to #57.
 * `search_data_dict` can now be used to search for a dataset by name. All variables in this dataset are then returned.
 * Added a new dataframe, `available_datasets` that lists the datasets available to be imported into R using the package. This dataframe also gives a short description of each dataset, details the timespan of the dataset, and whether or not it is downloaded by default. Used by `get_tb_burden` as a URL source for downloading the datasets. Linked to #58.
-## Package updates
-
-* `search_data_dict` has improved messaging and no longer returns an error when nothing is found in the data dictionary. From #65.
-* `search_data_dict` has expanded testing to account for new dataset searching and for failing to find results. Linked to #60.
-* Dropped usage of `dplyr::funs` as soft deprecated.
-* Added tests for `summarise_metric` and added to documentation.
+* `get_tb_burden` can now import additional datasets (listed in `available_datasets`), clean them, and then link them with the core dataset. This adds over 400 new variables to the package. Please open an issue if you find an issue with this dataset.
 
 ## Package updates
 
@@ -23,10 +18,16 @@
 * Added development documentation badge to the README + website.
 * Moved to automated pkgdown deployment using travis. Based on [this](https://pkgdown.r-lib.org/reference/deploy_site_github.html) and the [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
 * Expanded travis testing grid based on [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
-* Updated earliest supported R version based on travis testing - now `3.2.0`. 
+* Updated earliest supported R version based on travis testing - now `3.3.0`. 
 * Used `usethis::use_tidy_versions()` to set package to dependent on package versions used during development work. Added this to makefile to make automated.
 * Added a git commit step to the `Makefile` use with `make message="your commit message". This will automatically run all build steps that are required and then commit any changes. 
 * URL and data save names have been deprecated from all functions and will be removed in a future release. This allows the number of arguements for many functions to be reduced with no loss of functionality (as data is only saved temporally by package functions).
+* `search_data_dict` has improved messaging and no longer returns an error when nothing is found in the data dictionary. From #65.
+* `search_data_dict` has expanded testing to account for new dataset searching and for failing to find results. Linked to #60.
+* Dropped usage of `dplyr::funs` as soft deprecated.
+* Added tests for `summarise_metric` and added to documentation.
+* Added tests for additional dataset import in `get_tb_burden`. #58
+* Added `available_datasets` and new data import to the readme and to the getting started vignette.
 
 # getTBinR 0.5.7
 
