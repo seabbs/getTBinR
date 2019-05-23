@@ -175,9 +175,9 @@
 <li>Added a new <code>summarise_metric</code> function to the package. This function was previously used internally by the TB report. For a given year it returns the value of given metric, along with the regional and global rankings. The average change over the last decade is also supplied. Linked to <a href='https://github.com/seabbs/getTBinR/issues/57'>#57</a>.</li>
 <li>
 <code>search_data_dict</code> can now be used to search for a dataset by name. All variables in this dataset are then returned.</li>
-<li>Added a new dataframe, <code>available_datasets</code> that lists the datasets available to be imported into R using the package. This dataframe also gives a short description of each dataset, details the timespan of the dataset, and whether or not it is downloaded by default. Used by <code>get_tb_burden</code> as a URL source for downloading the datasets. Linked to <a href='https://github.com/seabbs/getTBinR/issues/58'>#58</a>.</li>
+<li>Added a new dataframe, <code>available_datasets</code>, that lists the datasets available to be imported into R using the package. This dataframe also gives a short description of each dataset, details the timespan of the dataset, and whether or not it is downloaded by default. Used by <code>get_tb_burden</code> as a URL source for downloading the datasets. Linked to <a href='https://github.com/seabbs/getTBinR/issues/58'>#58</a>.</li>
 <li>
-<code>get_tb_burden</code> can now import additional datasets (listed in <code>available_datasets</code>), clean them, and then link them with the core dataset. This adds over 400 new variables to the package and provides a near complete list of data usd in the WHO Tuberculosis global report. Please open an issue if you find an issue with this dataset.</li>
+<code>get_tb_burden</code> can now import additional datasets (listed in <code>available_datasets</code>), clean them, and then link them with the core dataset. This adds over 400 new variables to the package and provides a near complete list of data used in the WHO Tuberculosis global report. Please open an issue if you find an issue with this dataset.</li>
 </ul>
 </div>
 <div id="package-updates" class="section level2">
@@ -186,7 +186,7 @@
 <ul>
 <li>Jumped to <code>0.6.0</code> to signal a major release.</li>
 <li>Updated earliest supported R version based on travis testing - now <code>3.3.0</code>.</li>
-<li>Added <a href="https://doi.org/10.21105/joss.01260">JOSS paper</a> as the preferred citation for <code>getTBinR</code> and also added this information to the README.</li>
+<li>Added the <a href="https://doi.org/10.21105/joss.01260">JOSS paper</a> as the preferred citation for <code>getTBinR</code> and also added this information to the README.</li>
 <li>URL and data save names have been deprecated from all functions and will be removed in a future release. This allows the number of arguments for many functions to be reduced with no loss of functionality (as data is only saved temporally by package functions).</li>
 <li>
 <code>search_data_dict</code> has improved messaging and no longer returns an error when nothing is found in the data dictionary. From <a href='https://github.com/seabbs/getTBinR/issues/65'>#65</a>.</li>
