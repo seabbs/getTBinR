@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -73,7 +75,7 @@ Various other options are available for tuning the plot further." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -140,7 +142,7 @@ Various other options are available for tuning the plot further." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/seabbs/getTBinR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -176,12 +178,11 @@ Various other options are available for tuning the plot further.</p>
     </div>
 
     <pre class="usage"><span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
-  <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>smooth</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>),
+  <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>smooth</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>),
   <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>years</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='st'>"none"</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
-  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>,
+  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>,
   <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -209,7 +210,7 @@ dictionary. If this fails and <code>download_data = TRUE</code> then the diction
     </tr>
     <tr>
       <th>smooth</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Should the data be smoothed (using <code><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>ggplot2::geom_smooth</a></code>)
+      <td><p>Logical, defaults to <code>FALSE</code>. Should the data be smoothed (using <code><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>ggplot2::geom_smooth</a></code>)
 prior to plotting. If set to <code>TRUE</code> then the confidence intervals shown are derived from the smooth
 and do not represent the underlying uncertainty in the data.</p></td>
     </tr>
@@ -222,7 +223,7 @@ intervals represent the annual percentage change in the metrics confidence inter
     </tr>
     <tr>
       <th>countries</th>
-      <td><p>A character string specifying the countries to plot.</p></td>
+      <td><p>A character string specifying the countries to target.</p></td>
     </tr>
     <tr>
       <th>years</th>
@@ -240,7 +241,7 @@ Note that this will override settings for <code>facet</code>, unless it is set t
     </tr>
     <tr>
       <th>legend</th>
-      <td><p>Character string, defaults to <code>"none"</code>. Position of the legend see <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>?ggplot2::theme</a></code> for defaults but known
+      <td><p>Character string, defaults to <code>"none"</code>. Position of the legend see <code><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>?ggplot2::theme</a></code> for defaults but known
 options are: <code>"none"</code>, <code>"top"</code>, <code>"right"</code> and <code>"bottom"</code>.</p></td>
     </tr>
     <tr>
@@ -272,33 +273,23 @@ downloaded from the specified URL?</p></td>
     <tr>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
-<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>burden_save_name</th>
-      <td><p>Character string, name to save the data under. Defaults to
-"TB_burden".</p></td>
-    </tr>
-    <tr>
-      <th>dict_save_name</th>
-      <td><p>Character string, name to save dictionary under. Defaults to
-<code>TB_data_dict</code>.</p></td>
+<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>viridis_palette</th>
       <td><p>Character string indicating the <code>viridis</code> colour palette to use. Defaults
 to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
-see <code><a href='https://www.rdocumentation.org/packages/viridis/topics/viridis_pal'>viridis_pal</a></code> for additional details.</p></td>
+see <code><a href='https://rdrr.io/pkg/viridis/man/viridis_pal.html'>viridis_pal</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>viridis_direction</th>
       <td><p>Numeric, indicating the direction for the colour palette (1 or -1), defaults to -1.
-See <code><a href='https://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
+See <code><a href='https://rdrr.io/pkg/viridis/man/scale_viridis.html'>scale_color_viridis</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>viridis_end</th>
       <td><p>Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
-#' See <code><a href='https://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></code> for additional details.</p></td>
+#' See <code><a href='https://rdrr.io/pkg/viridis/man/scale_viridis.html'>scale_color_viridis</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -307,7 +298,7 @@ be displayed.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional parameters to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
+      <td><p>Additional arguments to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
     </table>
     
@@ -323,9 +314,9 @@ be displayed.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the WHO TB burden data and the data dictionary</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/TB_data_dict.rds</span></div><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/dictionary.rds</span></div><div class='input'>
 <span class='co'>## Get a random sample of 9 countries</span>
-<span class='no'>sample_countries</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='no'>tb_burden</span>$<span class='no'>country</span>), <span class='fl'>9</span>)
+<span class='no'>sample_countries</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span>(<span class='no'>tb_burden</span>$<span class='no'>country</span>), <span class='fl'>9</span>)
 
 <span class='co'>## Plot incidence rates in these countries</span>
 <span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_burden</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='no'>dict</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>)</div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden-1.png' alt='' width='700' height='433' /></div><div class='input'>
@@ -368,7 +359,7 @@ be displayed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>

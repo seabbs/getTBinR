@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>getTBinR: Get WHO Tuberculosis Data — getTBinR-package • getTBinR</title>
+<title>getTBinR: Access and Summarise World Health Organisation Tuberculosis data — getTBinR-package • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -36,14 +38,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="getTBinR: Get WHO Tuberculosis Data — getTBinR-package" />
+<meta property="og:title" content="getTBinR: Access and Summarise World Health Organisation Tuberculosis data — getTBinR-package" />
 
-<meta property="og:description" content="Quickly and easily import analysis ready Tuberculosis (TB) burden data, 
-    from the World Health Organisation (WHO), into R. The aim of the package is to speed 
-    up access to high quality TB burden data, using a simple R interface. Generic plotting
-    functions are provided to allow for rapid graphical exploration of the WHO TB data. 
-    A shiny dashboard is built in to showcase package functionality. An automated report
-    allows country level TB burden to be summarised." />
+<meta property="og:description" content="
+Quickly and easily import analysis ready
+    Tuberculosis (TB) burden data, from the World Health Organisation
+    (WHO), into R. The aim of getTBinR is to allow researchers, and other
+    interested individuals, to quickly and easily gain access to a
+    detailed TB data set and to start using it to derive key insights. It
+    provides a consistent set of tools that can be used to rapidly
+    evaluate hypotheses on a widely used data set before they are explored
+    further using more complex methods or more detailed data. These tools
+    include: generic plotting and mapping functions; a data dictionary
+    search tool; an interactive shiny dashboard; and an automated, country
+    level, TB report. For newer R users, this package reduces the barrier
+    to entry by handling data import, munging, and visualisation. All
+    plotting and mapping functions are built with ggplot2 so can be
+    readily extended." />
 
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -76,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -143,7 +154,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/seabbs/getTBinR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -165,19 +176,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>getTBinR: Get WHO Tuberculosis Data</h1>
+    <h1>getTBinR: Access and Summarise World Health Organisation Tuberculosis data</h1>
     <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/getTBinR.R'><code>R/getTBinR.R</code></a></small>
     <div class="hidden name"><code>getTBinR-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Quickly and easily import analysis ready Tuberculosis (TB) burden data, 
-    from the World Health Organisation (WHO), into R. The aim of the package is to speed 
-    up access to high quality TB burden data, using a simple R interface. Generic plotting
-    functions are provided to allow for rapid graphical exploration of the WHO TB data. 
-    A shiny dashboard is built in to showcase package functionality. An automated report
-    allows country level TB burden to be summarised.</p>
+    <p><img src='figures/logo.png' align='right' /></p>
+<p>Quickly and easily import analysis ready
+    Tuberculosis (TB) burden data, from the World Health Organisation
+    (WHO), into R. The aim of getTBinR is to allow researchers, and other
+    interested individuals, to quickly and easily gain access to a
+    detailed TB data set and to start using it to derive key insights. It
+    provides a consistent set of tools that can be used to rapidly
+    evaluate hypotheses on a widely used data set before they are explored
+    further using more complex methods or more detailed data. These tools
+    include: generic plotting and mapping functions; a data dictionary
+    search tool; an interactive shiny dashboard; and an automated, country
+    level, TB report. For newer R users, this package reduces the barrier
+    to entry by handling data import, munging, and visualisation. All
+    plotting and mapping functions are built with ggplot2 so can be
+    readily extended.</p>
     
     </div>
 
@@ -210,7 +230,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>

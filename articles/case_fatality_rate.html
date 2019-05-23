@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exploring Estimates of the Tuberculosis Case Fatality Ratio • getTBinR</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Exploring Estimates of the Tuberculosis Case Fatality Ratio">
@@ -33,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -99,7 +100,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/seabbs/getTBinR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -124,7 +125,7 @@
       <h1>Exploring Estimates of the Tuberculosis Case Fatality Ratio</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-02-19</h4>
+            <h4 class="date">2019-05-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_fatality_rate.Rmd"><code>vignettes/case_fatality_rate.Rmd</code></a></small>
       <div class="hidden name"><code>case_fatality_rate.Rmd</code></div>
@@ -137,13 +138,13 @@
 <p>It is estimated that in 2016 there was more than 10 million cases of active TB, with 1.3 million deaths (<a href="https://en.wikipedia.org/wiki/Tuberculosis">source</a>). This makes TB the leading cause of death from an infectious disease. Despite the high numbers of cases globally, and high levels of mortality, TB is often considered a historic disease in developed countries. However, in recent years previously declining trends have flattened out and there is increasing concern surrounding multi-drug resistant TB, which has a greatly reduced the rate of successful treatment (<a href="http://www.who.int/mediacentre/factsheets/fs104/en/">source</a>).</p>
 <p>A key component of TB control is reducing the case fatality rate from active TB, this post explores WHO estimates for the TB case fatality rate in the most recent year of data and then estimates the case fatality rates in previous years. The first step is to download and install the required packages.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("getTBinR")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(getTBinR)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(getTBinR)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#  install.packages("tidyverse")</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># install.packages("viridis")</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(viridis)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(viridis)</a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># install.packages("scales")</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(scales)</a></code></pre></div>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a></code></pre></div>
 <p>Now we use <code>getTBinR</code> to download the TB burden data and its accompanying data dictionary.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>(<span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">dict &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_data_dict.html">get_data_dict</a></span>(<span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
@@ -205,7 +206,7 @@
 <a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; # … with 460 more rows</span></a></code></pre></div>
 <p>We want to explore the case fatality rate (<code>cfr</code>), lets first look at the WHO definition.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="st">"cfr"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">variable_name</th>
@@ -246,12 +247,12 @@
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">## Make function to summarise rates in a given region</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">rate_region &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">df =</span> <span class="ot">NULL</span>, <span class="dt">metric =</span> <span class="ot">NULL</span>) {</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">  metric_vars &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(metric, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(metric, <span class="st">"_lo"</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(metric, <span class="st">"_hi"</span>))</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  metric_vars &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(metric, <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(metric, <span class="st">"_lo"</span>), <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(metric, <span class="st">"_hi"</span>))</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">  </a>
 <a class="sourceLine" id="cb6-6" data-line-number="6">  df &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">    </span><span class="kw">group_by</span>(year, g_whoregion) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">    </span><span class="kw">summarise_at</span>(<span class="dt">.vars =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(metric_vars, <span class="st">"e_pop_num"</span>),</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">                 <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(.), <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">    </span><span class="kw">summarise_at</span>(<span class="dt">.vars =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(metric_vars, <span class="st">"e_pop_num"</span>),</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">                 <span class="dt">.funs =</span> <span class="kw">funs</span>(<span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(.), <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="st">    </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> metric_vars,</a>
 <a class="sourceLine" id="cb6-12" data-line-number="12">              <span class="dt">.funs =</span> <span class="kw">funs</span>(. <span class="op">/</span><span class="st"> </span>e_pop_num <span class="op">*</span><span class="st"> </span><span class="fl">1e5</span>))</a>
@@ -261,7 +262,7 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2">plot_rate_region &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">df =</span> <span class="ot">NULL</span>, <span class="dt">metric =</span> <span class="ot">NULL</span>, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">subtitle =</span> <span class="ot">NULL</span>, </a>
 <a class="sourceLine" id="cb7-3" data-line-number="3">                             <span class="dt">y_lab =</span> <span class="ot">NULL</span>, <span class="dt">scales =</span> <span class="ot">NULL</span>) {</a>
 <a class="sourceLine" id="cb7-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">  metric_vars &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(metric, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(metric, <span class="st">"_lo"</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(metric, <span class="st">"_hi"</span>))</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  metric_vars &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(metric, <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(metric, <span class="st">"_lo"</span>), <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(metric, <span class="st">"_hi"</span>))</a>
 <a class="sourceLine" id="cb7-6" data-line-number="6">  </a>
 <a class="sourceLine" id="cb7-7" data-line-number="7">  df <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes_string</span>(<span class="dt">x =</span> <span class="st">"year"</span>, <span class="dt">y =</span> metric, <span class="dt">col =</span> <span class="st">"g_whoregion"</span>, </a>
@@ -270,8 +271,8 @@
 <a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">    </span><span class="kw">geom_ribbon</span>(<span class="kw">aes_string</span>(<span class="dt">ymin =</span> metric_vars[<span class="dv">2</span>], <span class="dt">ymax =</span> metric_vars[<span class="dv">3</span>]), <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">1.1</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/viridis/topics/scale_viridis">scale_colour_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>, <span class="dt">option =</span> <span class="st">"E"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/viridis/topics/scale_viridis">scale_fill_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>, <span class="dt">option =</span> <span class="st">"E"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/viridis/man/scale_viridis.html">scale_colour_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>, <span class="dt">option =</span> <span class="st">"E"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/viridis/man/scale_viridis.html">scale_fill_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>, <span class="dt">option =</span> <span class="st">"E"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-16" data-line-number="16"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> title, <span class="dt">subtitle =</span> subtitle, </a>
 <a class="sourceLine" id="cb7-17" data-line-number="17">         <span class="dt">x =</span> <span class="st">"Year"</span>, <span class="dt">y =</span> y_lab) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-18" data-line-number="18"><span class="st">    </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
@@ -289,11 +290,11 @@
 <a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; Warning: funs() is soft deprecated as of dplyr 0.8.0</span></a>
 <a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; please use list() instead</span></a>
 <a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; # Before:</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; funs(name = f(.)</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;   # Before:</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt;   funs(name = f(.))</span></a>
 <a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; # After: </span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; list(name = ~f(.))</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;   # After: </span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt;   list(name = ~ f(.))</span></a>
 <a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; This warning is displayed once per session.</span></a>
 <a class="sourceLine" id="cb8-17" data-line-number="17"></a>
 <a class="sourceLine" id="cb8-18" data-line-number="18">plot_inc_region <span class="op">+</span></a>
@@ -314,10 +315,10 @@
 <p>To validate our estimates we first extract the regional estimates for the case fatality ratio based on the WHO estimates, by taking the mean (and standard deviation) of case fatality ratios by country in each region. This gives an estimate for case fatality rates at the regional level as well as the between country variation.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">## Summarise Case fatality rate by region - only availble for most recent year</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">region_case_fat &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(year, g_whoregion) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(cfr, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">            <span class="dt">sd =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/sd">sd</a></span>(cfr, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(cfr, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">            <span class="dt">sd =</span> <span class="kw"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(cfr, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ll =</span> mean <span class="op">-</span><span class="st"> </span>sd,</a>
 <a class="sourceLine" id="cb10-8" data-line-number="8">         <span class="dt">lll =</span> mean <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>sd,</a>
 <a class="sourceLine" id="cb10-9" data-line-number="9">         <span class="dt">hh =</span> mean <span class="op">+</span><span class="st"> </span>sd,</a>
@@ -380,7 +381,7 @@
 <p>We see that the estimate using mortality rates / incidence rates compares well to the estimate published for the most recent year by the WHO, although there is substantial within country variation. For all regions our estimate has substantial uncertainty. The plot suggests that the TB case fatality ratio is decreasing over time in all regions (as of 2016), although this reduction appears to be very minimal in some regions (such as the Americas, Africa, and the Eastern Mediterranean). It is likely that this trend does not hold across all countries, but this is beyond the scope of this post (watch this space).</p>
 <p>As a first look at the case fatality ratios in individual countries we can quickly pull out the 10 countries with the highest case fatality ratio in the most recent year of data. These are,</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">highest_case_fataltity_countries &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(cfr)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st">  </span><span class="kw">pull</span>(country)</a>
@@ -434,7 +435,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
 </div>

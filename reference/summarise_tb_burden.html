@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -74,7 +76,7 @@ include this in any estimated summary measures. Currently two statistics are sup
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -141,7 +143,7 @@ include this in any estimated summary measures. Currently two statistics are sup
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/seabbs/getTBinR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -178,13 +180,12 @@ include this in any estimated summary measures. Currently two statistics are sup
     </div>
 
     <pre class="usage"><span class='fu'>summarise_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_num"</span>,
-  <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>), <span class='kw'>years</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>), <span class='kw'>years</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>custom_compare</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"rate"</span>, <span class='kw'>denom</span> <span class='kw'>=</span> <span class='st'>"e_pop_num"</span>,
   <span class='kw'>rate_scale</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>truncate_at_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
-  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -226,7 +227,7 @@ intervals (only used when <code>conf</code> are present)</p></td>
     </tr>
     <tr>
       <th>countries</th>
-      <td><p>A character string specifying the countries to plot.</p></td>
+      <td><p>A character string specifying the countries to target.</p></td>
     </tr>
     <tr>
       <th>compare_to_region</th>
@@ -281,22 +282,16 @@ downloaded from the specified URL?</p></td>
     <tr>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
-<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>burden_save_name</th>
-      <td><p>Character string, name to save the data under. Defaults to
-"TB_burden".</p></td>
-    </tr>
-    <tr>
-      <th>dict_save_name</th>
-      <td><p>Character string, name to save dictionary under. Defaults to
-<code>TB_data_dict</code>.</p></td>
+<code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
       <td><p>Logical, defaults to <code>TRUE</code>. Should additional status and progress messages
 be displayed.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
     </table>
     
@@ -309,7 +304,7 @@ stratified by area and year.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the most recent year of data</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Extremes'>max</a></span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
 
 <span class='co'>## Get summary of the e_mdr_pct_rr_new cases</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mdr_pct_rr_new"</span>,
@@ -318,17 +313,17 @@ stratified by area and year.</p>
                     <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
                     <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/TB_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/MDR_TB.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpZVZl2Z/TB_data_dict.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2017</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2017</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
 #&gt; <span class='message'>                only based on the point estimate.</span></div><div class='output co'>#&gt; # A tibble: 7 x 5
-#&gt;   area    year e_mdr_pct_rr_new e_mdr_pct_rr_new_lo e_mdr_pct_rr_new_hi
-#&gt;   &lt;fct&gt;  &lt;int&gt;            &lt;dbl&gt;               &lt;dbl&gt;               &lt;dbl&gt;
-#&gt; 1 AFR     2017             67.7                38.9                96.6
-#&gt; 2 AMR     2017             81.5                60.6               102. 
-#&gt; 3 EMR     2017             77.0                33.5               120. 
-#&gt; 4 EUR     2017             95.2                77.8               113. 
-#&gt; 5 Global  2017             81.4                49.3               113. 
-#&gt; 6 SEA     2017             85.5                42.2               129. 
-#&gt; 7 WPR     2017             79.3                59.7                98.9</div><span class='co'># NOT RUN {</span>
+#&gt;   area               year e_mdr_pct_rr_new e_mdr_pct_rr_new_… e_mdr_pct_rr_new_…
+#&gt;   &lt;fct&gt;             &lt;int&gt;            &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
+#&gt; 1 Africa             2017             68.1               39.1               97.1
+#&gt; 2 Americas           2017             81.5               60.6              102. 
+#&gt; 3 Eastern Mediterr…  2017             77.0               33.5              120. 
+#&gt; 4 Europe             2017             95.2               77.8              113. 
+#&gt; 5 Global             2017             81.4               49.4              113. 
+#&gt; 6 South-East Asia    2017             85.5               42.2              129. 
+#&gt; 7 Western Pacific    2017             79.3               59.7               98.9</div><span class='co'># NOT RUN {</span>
 <span class='co'>## Get median (with 95% IQR) of the case fatality rate for regions and the world</span>
 <span class='co'>## Boostrapping uncertainty in country measures</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"cfr"</span>,
@@ -378,7 +373,7 @@ stratified by area and year.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Map TB Burden — map_tb_burden • getTBinR</title>
+<title>Summarise a TB Metric - A Quick Look Summary — summarise_metric • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -38,11 +38,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Map TB Burden — map_tb_burden" />
+<meta property="og:title" content="Summarise a TB Metric - A Quick Look Summary — summarise_metric" />
 
-<meta property="og:description" content="Map measures of TB burden by country by specifying a metric from the TB burden data.
-Specify a country or vector of countries in order to map them (the default is to map all countries).
-Various other options are available for tuning the plot further." />
+<meta property="og:description" content="This function provides a curated list of summary measures for a given TB metric in countries of interest.
+It can been used to facilitate reporting and is used extensively in the TB report included in the package
+(see render_country_report). It outputs the most recent year of data in the target country for
+a given metric, along with the year this data was recorded, the regional and global rank and the average change
+in the last decade. For a more customisable metric summary see summarise_tb_burden as a starting point." />
 
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -164,26 +166,24 @@ Various other options are available for tuning the plot further." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Map TB Burden</h1>
-    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/map_tb_burden.R'><code>R/map_tb_burden.R</code></a></small>
-    <div class="hidden name"><code>map_tb_burden.Rd</code></div>
+    <h1>Summarise a TB Metric - A Quick Look Summary</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/summarise_metric.R'><code>R/summarise_metric.R</code></a></small>
+    <div class="hidden name"><code>summarise_metric.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Map measures of TB burden by country by specifying a metric from the TB burden data.
-Specify a country or vector of countries in order to map them (the default is to map all countries).
-Various other options are available for tuning the plot further.</p>
+    <p>This function provides a curated list of summary measures for a given TB metric in countries of interest.
+It can been used to facilitate reporting and is used extensively in the TB report included in the package
+(see <code><a href='render_country_report.html'>render_country_report</a></code>). It outputs the most recent year of data in the target country for
+a given metric, along with the year this data was recorded, the regional and global rank and the average change
+in the last decade. For a more customisable metric summary see <code><a href='summarise_tb_burden.html'>summarise_tb_burden</a></code> as a starting point.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>map_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
-  <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fill_var_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compare_to_region</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='st'>"bottom"</span>,
-  <span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
-  <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>, <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
-  <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>), <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,63 +195,18 @@ If not specified then will source the WHO TB burden data, either locally if avai
 or directly from the WHO (if <code>download_data = TRUE</code>).</p></td>
     </tr>
     <tr>
-      <th>dict</th>
-      <td><p>A tibble of the data dictionary. See <code><a href='get_data_dict.html'>get_data_dict</a></code>
-for details. If not supplied the function will attempt to load a saved version of the
-dictionary. If this fails and <code>download_data = TRUE</code> then the dictionary will be downloaded.</p></td>
-    </tr>
-    <tr>
       <th>metric</th>
       <td><p>Character string specifying the metric to plot</p></td>
-    </tr>
-    <tr>
-      <th>metric_label</th>
-      <td><p>Character string specifying the metric label to use.</p></td>
-    </tr>
-    <tr>
-      <th>fill_var_type</th>
-      <td><p>A character string, defaults to <code>NULL</code>. To set the fill variable type to be
-discrete use "discrete" and to be continuous use "continuous".</p></td>
     </tr>
     <tr>
       <th>countries</th>
       <td><p>A character string specifying the countries to target.</p></td>
     </tr>
     <tr>
-      <th>compare_to_region</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> all
-countries that share a region with those listed in <code>countries</code> will be plotted.
-Note that this will override settings for <code>facet</code>, unless it is set to "country".</p></td>
-    </tr>
-    <tr>
-      <th>facet</th>
-      <td><p>Character string, the name of the variable to facet by.</p></td>
-    </tr>
-    <tr>
-      <th>legend</th>
-      <td><p>Character string, defaults to <code>"bottom"</code>. Position of the legend see <code><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>?ggplot2::theme</a></code> for defaults but known
-options are: <code>"none"</code>, <code>"top"</code>, <code>"right"</code> and <code>"bottom"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>year</th>
-      <td><p>Numeric, indicating the year of data to map. Defaults to the latest year in the data.
-If <code>interactive = TRUE</code> then multiple years may be passed as a vector, the result will then be animated over years.</p></td>
-    </tr>
-    <tr>
-      <th>annual_change</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> then the
-percentage annual change is computed for the specified metric.</p></td>
-    </tr>
-    <tr>
-      <th>trans</th>
-      <td><p>A character string specifying the transform to use on the specified metric. Defaults to no
-transform ("identity"). Other options include log scaling ("log") and log base 10 scaling
-("log10"). For a complete list of options see <code>ggplot2::continous_scale</code>.</p></td>
-    </tr>
-    <tr>
-      <th>interactive</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> then an interactive plot is
-returned.</p></td>
+      <th>conf</th>
+      <td><p>Character vector specifying the name variations to use to specify the upper
+and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to <code>NULL</code>
+then no confidence intervals are shown.</p></td>
     </tr>
     <tr>
       <th>download_data</th>
@@ -262,22 +217,6 @@ downloaded from the specified URL?</p></td>
       <th>save</th>
       <td><p>Logical, should the data be saved for reuse during the current R session. Defaults to
 <code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>viridis_palette</th>
-      <td><p>Character string indicating the <code>viridis</code> colour palette to use. Defaults
-to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
-see <code><a href='https://rdrr.io/pkg/viridis/man/viridis_pal.html'>viridis_pal</a></code> for additional details.</p></td>
-    </tr>
-    <tr>
-      <th>viridis_direction</th>
-      <td><p>Numeric, indicating the direction for the colour palette (1 or -1), defaults to -1.
-See <code><a href='https://rdrr.io/pkg/viridis/man/scale_viridis.html'>scale_color_viridis</a></code> for additional details.</p></td>
-    </tr>
-    <tr>
-      <th>viridis_end</th>
-      <td><p>Numeric between 0 and 1, defaults to 0.9. The end point of the viridis scale to use.
-#' See <code><a href='https://rdrr.io/pkg/viridis/man/scale_viridis.html'>scale_color_viridis</a></code> for additional details.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -292,35 +231,33 @@ be displayed.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A plot of TB Incidence Rates by Country</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict</p></div>
+    <p>A tibble containing the name of the target country, the year of the most recent data available, the most recent
+value for the metric, the regional rank, the global rank and the average change in the previous decade.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>## Map raw incidence rates</span>
-<span class='fu'>map_tb_burden</span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='map_tb_burden-1.png' alt='' width='700' height='433' /></div><span class='co'># NOT RUN {</span>
-<span class='co'>#' ## Map raw incidence rates</span>
-<span class='fu'>map_tb_burden</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2014</span>:<span class='fl'>2017</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
-
-<span class='co'>## Map log10 scaled incidence rates</span>
-<span class='fu'>map_tb_burden</span>(<span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"log10"</span>)
-
-<span class='co'>## Map percentage annual change in incidence rates</span>
-<span class='fu'>map_tb_burden</span>(<span class='kw'>annual_change</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='co'>## Find variables relating to mortality in the WHO dataset</span>
-<span class='fu'><a href='search_data_dict.html'>search_data_dict</a></span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)
-
-<span class='co'>## Map mortality rates (exc HIV) - without progress messages</span>
-<span class='fu'>map_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'>## Can also use a discrete metric if one is available</span>
-<span class='fu'>map_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"g_whoregion"</span>, <span class='kw'>metric_label</span> <span class='kw'>=</span> <span class='st'>"WHO world region"</span>)
-<span class='co'># }</span></pre>
+<span class='co'>## Get a summary of TB incidence rates for the united kingdom and germany</span>
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Germany"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 2 x 6
+#&gt;   country         year metric          world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;                &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 United Kingdom  2017 8.9 (8.1 - 9.8)        165          32 -4.9%     
+#&gt; 2 Germany         2017 7.5 (6.4 - 8.7)        170          34 1.8%      </div><div class='input'>
+<span class='co'>## Get a summary of case detection rates in France</span>
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   country  year metric       world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 France   2017 83 (73 - 94)         93          40 0%        </div><div class='input'>
+<span class='co'>## Get a summary of case detection rates in France - without confidence intervals</span>
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   country  year metric world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;      &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 France   2017     83         93          40 0%        </div><div class='input'>
+<span class='co'>## Provide a dataset and get summary measures from it. </span>
+<span class='no'>tb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp34L7jn/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   country  year metric       world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 France   2017 83 (73 - 94)         93          40 0%        </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -328,8 +265,6 @@ be displayed.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
