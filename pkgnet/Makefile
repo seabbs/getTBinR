@@ -1,7 +1,8 @@
 default: all
 
 
-all: getTBinR_report.html
+all: build_report
 
-getTBinR_report.html:
+.PHONY: build_report
+build_report:
 		Rscript generate_pkgnet_report.R

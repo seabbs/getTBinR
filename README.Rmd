@@ -117,7 +117,7 @@ See [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for m
 
 ## Additional datasets
 
-On top of the core datasets provided by default, `getTBinR` also supports importing mutliple other datasets. These include data on latent TB, HIV surveillance, intervention budgets, and outcomes. The currently supported datasets are listed below,
+On top of the core datasets provided by default, `getTBinR` also supports importing multiple other datasets. These include data on latent TB, HIV surveillance, intervention budgets, and outcomes. The currently supported datasets are listed below,
 
 ```{r additional_datasets}
 knitr::kable(getTBinR::available_datasets[, 1:4])
