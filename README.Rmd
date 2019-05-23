@@ -114,7 +114,24 @@ Here `e_inc_num` is used rather than `e_inc_100k` as incidence rates are being e
 
 See [Functions](https://www.samabbott.co.uk/getTBinR/reference/index.html) for more details of the functions used (note the fuzzy country matching, all functions will try to exactly match your country request and if that fails will search for partial matches) and for more package functionality. We could make the plots above interactive by specifying `interactive = TRUE`
 
-## Shiny Dashboard
+
+## Additional datasets
+
+On top of the core datasets provided by default, `getTBinR` also supports importing mutliple other datasets. These include data on latent TB, HIV surveillance, intervention budgets, and outcomes. The currently supported datasets are listed below,
+
+```{r additional_datasets}
+knitr::kable(getTBinR::available_datasets[, 1:4])
+```
+
+These datasets can be imported into `R` by supplying the name of the required dataset to the `additional_datasets` arguement of `get_tb_burden` (or any of the various plotting/summary functions). Alternatively, they can all be imported in one go using `additional_datasets = "all"`, as below, 
+
+```{r import-additional_datasets}
+getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
+```
+
+Once imported, these datasets can be used in the plotting and summary functions provided by `getTBinR` (by passing them to their `df` arguement or using the `additional_datasets` arguement in each function). See the contributing section if their are any other datasets that you think `getTBinR` should support or if you have suggestions for better descriptions for each dataset.
+
+## Shiny dashboard
 
 To explore the package functionality in an interactive session, or to investigate TB without having to code extensively in R, a shiny dashboard has been built into the package. This can either be used locally using, 
 
@@ -127,7 +144,7 @@ Or accessed [online](http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric 
 ![Snapshot of the integrated dashboard.](man/figures/ExploreGlobalTB.png)
 
 
-## Country Report
+## Country report
 
 To get a detailed overview of TB in a country of your choice run the following, alternatively available from the built in dashboard above.
 
