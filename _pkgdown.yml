@@ -69,4 +69,5 @@ reference:
     - title: Package Data
       desc: Data supplied with the package.
       contents:
+      - available_datasets
       - who_shapefile
