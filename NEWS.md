@@ -5,14 +5,14 @@
 
 * Added a new `summarise_metric` function to the package. This function was previously used internally by the TB report. For a given year it returns the value of given metric, along with the regional and global rankings. The average change over the last decade is also supplied. Linked to #57.
 * `search_data_dict` can now be used to search for a dataset by name. All variables in this dataset are then returned.
-* Added a new dataframe, `available_datasets` that lists the datasets available to be imported into R using the package. This dataframe also gives a short description of each dataset, details the timespan of the dataset, and whether or not it is downloaded by default. Used by `get_tb_burden` as a URL source for downloading the datasets. Linked to #58.
-* `get_tb_burden` can now import additional datasets (listed in `available_datasets`), clean them, and then link them with the core dataset. This adds over 400 new variables to the package and provides a near complete list of data usd in the WHO Tuberculosis global report. Please open an issue if you find an issue with this dataset.
+* Added a new dataframe, `available_datasets`, that lists the datasets available to be imported into R using the package. This dataframe also gives a short description of each dataset, details the timespan of the dataset, and whether or not it is downloaded by default. Used by `get_tb_burden` as a URL source for downloading the datasets. Linked to #58.
+* `get_tb_burden` can now import additional datasets (listed in `available_datasets`), clean them, and then link them with the core dataset. This adds over 400 new variables to the package and provides a near complete list of data used in the WHO Tuberculosis global report. Please open an issue if you find an issue with this dataset.
 
 ## Package updates
 
 * Jumped to `0.6.0` to signal a major release.
 * Updated earliest supported R version based on travis testing - now `3.3.0`. 
-* Added [JOSS paper](https://doi.org/10.21105/joss.01260) as the preferred citation for `getTBinR` and also added this information to the README.
+* Added the [JOSS paper](https://doi.org/10.21105/joss.01260) as the preferred citation for `getTBinR` and also added this information to the README.
 * URL and data save names have been deprecated from all functions and will be removed in a future release. This allows the number of arguments for many functions to be reduced with no loss of functionality (as data is only saved temporally by package functions).
 * `search_data_dict` has improved messaging and no longer returns an error when nothing is found in the data dictionary. From #65.
 * `search_data_dict` has expanded testing to account for new dataset searching and for failing to find results. Linked to #60.
