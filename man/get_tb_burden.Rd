@@ -27,7 +27,7 @@ and will be removed from future releases. Dataset naming is now handled internal
 \item{add_mdr_data}{Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
 to the TB burden data.}
 
-\item{additional_datasets}{A character vector specifcying the names of the additional datasets to import.
+\item{additional_datasets}{A character vector specifying the names of the additional datasets to import.
 See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
 datasets.}
 
