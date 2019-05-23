@@ -79,8 +79,6 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            interactive = FALSE,
                            download_data = TRUE,
                            save = TRUE,
-                           burden_save_name = "TB_burden",
-                           dict_save_name = "TB_data_dict",
                            viridis_palette = "viridis",
                            viridis_direction = -1,
                            viridis_end = 0.9,
@@ -99,9 +97,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                              annual_change = annual_change,
                              download_data = download_data,
                              save = save,
-                             burden_save_name = burden_save_name,
-                             dict_save_name = dict_save_name,
-                             verbose = verbose)
+                             verbose = verbose, 
+                             ...)
   
   country <- NULL
   

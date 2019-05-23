@@ -9,8 +9,7 @@ plot_tb_burden(df = NULL, dict = NULL, metric = "e_inc_100k",
   countries = NULL, years = NULL, compare_to_region = FALSE,
   facet = NULL, legend = "none", annual_change = FALSE,
   trans = "identity", scales = "fixed", interactive = FALSE,
-  download_data = TRUE, save = TRUE, burden_save_name = "TB_burden",
-  dict_save_name = "TB_data_dict", viridis_palette = "viridis",
+  download_data = TRUE, save = TRUE, viridis_palette = "viridis",
   viridis_direction = -1, viridis_end = 0.9, verbose = TRUE, ...)
 }
 \arguments{
@@ -35,7 +34,7 @@ and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to \code{NUL
 then no confidence intervals are shown. When \code{annual_change = TRUE} the confidence
 intervals represent the annual percentage change in the metrics confidence intervals.}
 
-\item{countries}{A character string specifying the countries to plot.}
+\item{countries}{A character string specifying the countries to target.}
 
 \item{years}{Numeric vector of years. Defaults to \code{NULL} which includes all years in the data.}
 
@@ -67,12 +66,6 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{burden_save_name}{Character string, name to save the data under. Defaults to
-"TB_burden".}
-
-\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
-\code{TB_data_dict}.}
-
 \item{viridis_palette}{Character string indicating the \code{viridis} colour palette to use. Defaults
 to "viridis". Options include "cividis", "magma", "inferno", "plasma", and "viridis". For additional details
 see \code{\link[viridis]{viridis_pal}} for additional details.}
@@ -86,7 +79,7 @@ See \code{\link[viridis]{scale_color_viridis}} for additional details.}
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
 
-\item{...}{Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.}
+\item{...}{Additional arguments to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
 A plot of TB Incidence Rates by Country

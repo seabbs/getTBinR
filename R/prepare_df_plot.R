@@ -5,7 +5,7 @@
 #' @param df Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
 #' If not specified then will source the WHO TB burden data, either locally if available
 #' or directly from the WHO (if \code{download_data = TRUE}).
-#' @param countries A character string specifying the countries to plot.
+#' @param countries A character string specifying the countries to target.
 #' @param years Numeric vector of years. Defaults to \code{NULL} which includes all years in the data. 
 #' @param metric Character string specifying the metric to plot
 #' @param metric_label Character string specifying the metric label to use. 
@@ -21,11 +21,11 @@
 #' @param conf Character vector specifying the name variations to use to specify the upper
 #' and lower confidence intervals. Defaults to \code{NULL} for which no confidence intervals 
 #' are used. Used by \code{annual_change}.
-#' @param ... Additional parameters to pass to \code{\link[getTBinR]{get_tb_burden}}.
+#' @param ... Additional arguments to pass to \code{\link[getTBinR]{get_tb_burden}}.
 #' @inheritParams get_tb_burden
 #' @inheritParams search_data_dict
 #' @import magrittr
-#' @importFrom dplyr filter arrange_at mutate mutate_at pull funs lag group_by ungroup arrange slice
+#' @importFrom dplyr filter arrange_at mutate mutate_at pull lag group_by ungroup arrange slice
 #' @importFrom purrr map
 #' @seealso plot_tb_burden plot_tb_burden_overview
 #' @return A list containing 3 elements, the dataframe to plot, the facet to use and
@@ -48,8 +48,6 @@ prepare_df_plot <- function(df = NULL,
                             annual_change = FALSE,
                             trans = "identity",
                             download_data = TRUE, save = TRUE, 
-                            burden_save_name = "TB_burden",
-                            dict_save_name = "TB_data_dict",
                             verbose = TRUE,
                             ...){
 
@@ -60,7 +58,6 @@ prepare_df_plot <- function(df = NULL,
   if (is.null(df)) {
     df <- get_tb_burden(download_data = download_data,
                         save = save,
-                        burden_save_name = burden_save_name,
                         verbose = verbose, ...)
   }
   
@@ -75,10 +72,11 @@ prepare_df_plot <- function(df = NULL,
       dplyr::filter(country %in% country_sample)
     
     if (length(unique(df_filt$country)) != length(countries)) {
-      country_matches <- purrr::map(countries, ~grep(., df$country, fixed = FALSE))
+      country_matches <- map(countries, ~grep(., df$country, fixed = FALSE))
       country_matches <- unlist(country_matches)
       
-      df_filt <- df[country_matches, ]
+      df_filt <- df[country_matches,]
+      
     }
   }
   
@@ -91,15 +89,27 @@ prepare_df_plot <- function(df = NULL,
       filter(g_whoregion %in% unique(df_filt$g_whoregion))
   }
 
+  
+  ## Override data names with fuzzy matching uers supplied names.
+  if (!is.null(countries)) {
+    for (i in countries) {
+      df_filt$country <- ifelse(grepl(i, df_filt$country, fixed = FALSE), i, df_filt$country)
+    }
+  }
+
   if(is.null(metric_label)) {
     metric_label <- search_data_dict(var = metric, 
                                      dict = dict,
                                      download_data = download_data,
                                      save = save,
-                                     dict_save_name = dict_save_name,
                                      verbose = verbose)
     
-    metric_label <- metric_label$definition
+    if (is.null(metric_label)) {
+      metric_label <- metric
+    }else{
+      metric_label <- metric_label$definition
+    }
+
   }
   
   if (annual_change) {
@@ -114,7 +124,7 @@ prepare_df_plot <- function(df = NULL,
     
     df_filt <- df_filt %>% 
       group_by(country) %>% 
-      mutate_at(.vars = metrics, .funs = funs((. - lag(.)) / lag(.))) %>% 
+      mutate_at(.vars = metrics, .funs = list( ~ (. - lag(.)) / lag(.))) %>% 
       arrange(year) %>% 
       slice(-1) %>% 
       ungroup

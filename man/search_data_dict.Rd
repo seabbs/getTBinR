@@ -4,15 +4,18 @@
 \alias{search_data_dict}
 \title{Search the WHO TB Data Dictionary by Variable Name.}
 \usage{
-search_data_dict(var = NULL, def = NULL, dict = NULL,
-  download_data = TRUE, save = TRUE, dict_save_name = "TB_data_dict",
-  verbose = TRUE, ...)
+search_data_dict(var = NULL, def = NULL, dataset = NULL,
+  dict = NULL, download_data = TRUE, save = TRUE,
+  dict_save_name = NULL, verbose = TRUE, ...)
 }
 \arguments{
 \item{var}{A character vector of variable names.}
 
 \item{def}{A character vector of terms to use to search the variable definitions
-for partial matches}
+for partial matches.}
+
+\item{dataset}{A character vector of terms to use to search the dataset names
+for partial matches.}
 
 \item{dict}{A tibble of the data dictionary. See \code{\link[getTBinR]{get_data_dict}}
 for details. If not supplied the function will attempt to load a saved version of the
@@ -24,8 +27,8 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{dict_save_name}{Character string, name to save dictionary under. Defaults to
-\code{TB_data_dict}.}
+\item{dict_save_name}{Character string, name to save dictionary under. This argument is depreciated
+and will be removed from future releases. Dataset naming is now handled internally.}
 
 \item{verbose}{Logical, defaults to \code{TRUE}. Should search information be returned.}
 
@@ -33,7 +36,7 @@ downloaded from the specified URL?}
 }
 \value{
 A tibble containing the information in the data dictionary matching the variables
-searched for.
+searched for. If nothing is found then \code{NULL} is returned.
 }
 \description{
 Searches the WHO data dictionary for TB burden data. When run for the first time
@@ -47,6 +50,9 @@ search_data_dict(var = "country")
 
 ## Search for all variables mentioning mortality in their definition
 search_data_dict(def = "mortality")
+
+## Search for all variables in the Estimates dataset.
+search_data_dict(dataset = "Estimates")
 
 ## Search for both a known variable and for mortality being mentioned in there definition
 ## Duplicate entries will be omitted.

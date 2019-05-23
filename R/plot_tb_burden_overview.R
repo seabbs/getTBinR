@@ -49,8 +49,6 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                     interactive = FALSE, 
                                     download_data = TRUE,
                                     save = TRUE,
-                                    burden_save_name = "TB_burden",
-                                    dict_save_name = "TB_data_dict",
                                     viridis_palette = "viridis",
                                     viridis_direction = -1,
                                     viridis_end = 0.9,
@@ -69,9 +67,8 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                              trans = trans,
                              download_data = download_data,
                              save = save,
-                             burden_save_name = burden_save_name,
-                             dict_save_name = dict_save_name,
-                             verbose = verbose)
+                             verbose = verbose, 
+                             ...)
   country <- NULL
   
   plot <- ggplot(df_prep$df, aes_string(x = "country", 

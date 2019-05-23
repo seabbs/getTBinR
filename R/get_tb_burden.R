@@ -6,13 +6,20 @@
 #' will instead download the data. The MDR TB data is only available for the latest year of data.
 #' 
 #' @param url Character string, indicating  the url of the TB burden data.
-#'  Default is current url.
+#'  Default is current url. This argument is depreciated and will be removed from future releases. 
+#'  The TB burden URL is now supplied internally - see \code{\link[getTBinR]{available_datasets}} for details.
 #' @param add_mdr_data Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
 #' to the TB burden data.
-#' @param mdr_save_name Character string, name to save the MDR data under. Defaults to "MDR_TB"
-#' @param mdr_url Character string, indicating the url of the MDR TB data.
-#' @param burden_save_name Character string, name to save the data under. Defaults to
-#' "TB_burden".
+#' @param additional_datasets A character vector specifying the names of the additional datasets to import. 
+#' See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
+#' datasets.
+#' @param mdr_save_name Character string, name to save the MDR data under. This argument is depreciated 
+#' and will be removed from future releases. Dataset naming is now handled internally.
+#' @param mdr_url Character string, indicating the url of the MDR TB data. This argument is depreciated 
+#' and will be removed from future releases.  The MDR-TB burden URL is now supplied internally - 
+#' see \code{\link[getTBinR]{available_datasets}} for details.
+#' @param burden_save_name Character string, name to save the data under. This argument is depreciated 
+#' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param return Logical, should the data be returned as a dataframe.
 #' Defaults to \code{TRUE}.
 #'
@@ -20,21 +27,30 @@
 #' @inheritParams get_data
 #' @importFrom dplyr case_when mutate mutate_if mutate_all
 #' @importFrom tibble as_tibble
+#' @importFrom purrr map reduce
 #' @export
 #' @seealso get_data search_data_dict
 #' @examples
 #' 
-#' tb_burden <- get_tb_burden()
+#' 
+#' ## Default datasets
+#' tb_burden <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
 #' 
 #' head(tb_burden)
 #' 
-get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates", 
+#' ## Add in the latent TB dataset as an additional dataset (see getTBinR::avaiable_datasets)
+#' tb_with_latents <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
+#' 
+#' head(tb_with_latents)
+#' 
+get_tb_burden <- function(url = NULL, 
                           download_data = TRUE,
                           save = TRUE,
-                          burden_save_name = "TB_burden",
+                          burden_save_name = NULL,
                           add_mdr_data = TRUE,
-                          mdr_save_name = "MDR_TB",
-                          mdr_url = "https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates",
+                          additional_datasets = NULL,
+                          mdr_save_name = NULL,
+                          mdr_url = NULL,
                           return = TRUE,
                           verbose = TRUE,
                           use_utils = FALSE,
@@ -43,6 +59,35 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
   g_whoregion <- NULL
   . <- NULL
 
+  if (!is.null(url)) {
+    warning("This argument is depreciated and will be removed from future releases. 
+            The TB burden URL is now supplied internally.")
+  }else{
+    url <- getTBinR::available_datasets$url[1]
+  }
+  
+  
+  if (!is.null(burden_save_name)) {
+    warning("This argument is depreciated and will be removed from future releases. 
+            The dataset savename is now supplied internally.")
+  }else{
+    burden_save_name <- "tb_burden"
+  }
+  
+  if (!is.null(mdr_url)) {
+    warning("This argument is depreciated and will be removed from future releases. 
+            The MDR-TB burden URL is now supplied internally.")
+  }else{
+    mdr_url <- getTBinR::available_datasets$url[2]
+  }
+  
+ if (!is.null(mdr_save_name)) {
+    warning("This argument is depreciated and will be removed from future releases. 
+            The dataset savename is now supplied internally.")
+  }else{
+    mdr_save_name <- "mdr_tb"
+  }
+  
   trans_burden_data <- function(tb_df) {
     
     tb_df <- tibble::as_tibble(tb_df)
@@ -55,8 +100,8 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
                                               TRUE ~ g_whoregion)
     )
     
-    tb_df <- mutate_all(tb_df, .funs = funs({ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
-    tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
+    tb_df <- mutate_all(tb_df, .funs = list(~ {ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
+    tb_df <- mutate_if(tb_df, is.numeric, .funs = list( ~ {ifelse(. %in% c(Inf, NaN), NA, .)}))
     tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
     
     return(tb_df)
@@ -79,8 +124,8 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     trans_mdr_data <- function(tb_df) {
       
       tb_df <- tibble::as_tibble(tb_df)
-      tb_df <- mutate_all(tb_df, .funs = funs({ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
-      tb_df <- mutate_if(tb_df, is.numeric, .funs = funs({ifelse(. %in% c(Inf, NaN), NA, .)}))
+      tb_df <- mutate_all(tb_df, .funs = list(~ {ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
+      tb_df <- mutate_if(tb_df, is.numeric, .funs = list(~ {ifelse(. %in% c(Inf, NaN), NA, .)}))
       tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
       
       return(tb_df)
@@ -103,6 +148,67 @@ get_tb_burden <- function(url = "https://extranet.who.int/tme/generateCSV.asp?ds
     
     tb_burden <- suppressMessages(left_join(tb_burden, mdr_tb))
   }
+  
+  ## Get additional datasets if asked to
+  if (!is.null(additional_datasets)) {
+    
+    
+    if (additional_datasets == "all") {
+      additional_datasets <- getTBinR::available_datasets$dataset[-c(1:2)]
+    }
+    
+    load_additional_dataset <- function(dataset) {
+      
+      if (verbose) {
+        message("Getting additional dataset: " , dataset)
+      }
+      
+      if (!any(grepl(dataset, getTBinR::available_datasets$dataset))) {
+        stop(dataset, " is not listed in available_datasets and so cannot be imported.")
+      }
+      
+      generic_trans <- function(df) {
+          df <- tibble::as_tibble(df)
+          df <- mutate_all(df, .funs = list(~ {ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
+          df <- mutate_if(df, is.numeric, .funs = list(~ {ifelse(. %in% c(Inf, NaN), NA, .)}))
+          df$iso_numeric <- df$iso_numeric %>% as.numeric %>% as.integer
+          
+          return(df)
+          
+      }
+      
+      # Use available_datasets for url and get name based on that supplied.
+      url <- getTBinR::available_datasets$url[grepl(dataset, getTBinR::available_datasets$dataset)][1]
+      name <- tolower(dataset) %>% 
+        gsub(" ", "_", .)
+      
+      ad_df <- get_data(
+        url = url,
+        download_data = download_data,
+        data_trans_fn = generic_trans,
+        save = save,
+        save_name = name,
+        return = return,
+        verbose = verbose,
+        use_utils = use_utils
+      )        
+      
+      return(ad_df)
+    }
+    
+    # Run data loading function over all supplied additional dataset names
+    datasets <- map(additional_datasets, ~ load_additional_dataset(.))
+    
+    
+    if (verbose){
+      message("Joining TB burden data and additional datasets.")
+    }
+    
+    tb_burden <- suppressMessages(
+      reduce(datasets, left_join, .init = tb_burden)
+    )
+  }
+  
 
   return(tb_burden)
 }

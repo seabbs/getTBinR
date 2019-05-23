@@ -12,20 +12,20 @@ test_that("plot_tb_burden_overview produces a plot", {
 
 test_that("plot_tb_burden_overview produces a plot with a log10 transform", {
   
-  plot <- plot_tb_burden_overview(trans = "log10")
+  plot <- suppressWarnings(plot_tb_burden_overview(trans = "log10"))
   
-  expect_true(!is.null(plot))
-  expect_equal("ggplot", class(plot)[2])
+  expect_true(!is.null(suppressWarnings(plot)))
+  expect_equal("ggplot", class(suppressWarnings(plot))[2])
   skip_on_cran()
-  vdiffr::expect_doppelganger("log-overview", plot)
+  vdiffr::expect_doppelganger("log-overview", suppressWarnings(plot))
 })
 
 test_that("plot_tb_burden_overview produces a plot when the annual_change option is used", {
   
-  plot <- plot_tb_burden_overview(annual_change = TRUE)
+  plot <- suppressWarnings(plot_tb_burden_overview(annual_change = TRUE))
   
-  expect_true(!is.null(plot))
-  expect_equal("ggplot", class(plot)[2])
+  expect_true(!is.null(suppressWarnings(plot)))
+  expect_equal("ggplot", class(suppressWarnings(plot))[2])
 })
 
 

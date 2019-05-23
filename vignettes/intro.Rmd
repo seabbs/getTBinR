@@ -40,6 +40,22 @@ tb_burden <- get_tb_burden()
 tb_burden
 ```
 
+## Getting additional datasets
+
+On top of the core datasets provided by default, `getTBinR` also supports importing multiple other datasets. These include data on latent TB, HIV surveillance, intervention budgets, and outcomes. The currently supported datasets are listed below,
+
+```{r additional_datasets}
+knitr::kable(available_datasets[, 1:4])
+```
+
+These datasets can be imported into `R` by supplying the name of the required dataset to the `additional_datasets` argument of `get_tb_burden` (or any of the various plotting/summary functions). Alternatively, they can all be imported in one go using `additional_datasets = "all"`, as below, 
+
+```{r import-additional_datasets}
+get_tb_burden(additional_datasets = "all", verbose = FALSE)
+```
+
+Once imported, these datasets can be used in the plotting and summary functions provided by `getTBinR` (by passing them to their `df` argument or using the `additional_datasets` argument in each function).
+
 ## Searching for variable definitions
 
 The WHO provides a large, detailed, data dictionary for use with the TB burden data. However, searching through this dataset can be tedious. To streamline this process `getTBinR` provides a search function to find the definition of a single or multiple variables. Again if not previously used this function will download the data dictionary to the temporary directory, but in subsequent uses will load a local copy.
@@ -68,6 +84,16 @@ vars_defs_of_interest <- search_data_dict(var = c("country"),
                                      def = c("mortality"))
 
 knitr::kable(vars_defs_of_interest)
+```
+
+## Searching for dataset details
+
+`search_data_dict` can also be used to explore the details of the variables included in each dataset. For example if we could explore all the variables included in the Latent TB dataset,
+
+```{r search-dataset} 
+dataset_of_interest <- search_data_dict(dataset = "Latent")
+
+knitr::kable(dataset_of_interest)
 ```
 
 ## Mapping Global Incidence Rates
@@ -114,6 +140,15 @@ We might also be interested in getting a regional/global overview of TB incidenc
 getTBinR::plot_tb_burden_summary(conf = NULL, metric_label = "e_inc_100k")
 ```
 
+## Summarising Recent Incidence Rates in a Subset of Countries
+
+We could also get a quick overview of TB in a given group of countries in comparison to regional and global trends by looking at the most recent data using `summarise_metric`. This is used extensively in the supplied TB report (`render_tb_report`) to provide summary statistics. 
+
+```{r summarise_metric}
+## Get a summary of TB incidence rates for the united kingdom and germany
+summarise_metric(metric = "e_inc_100k", countries = c("United Kingdom", "Germany")) %>% 
+  kable
+```
 ## Plotting Incidence Rates over Time in 9 Randomly Sampled Countries
 
 Diving deeper into the data lets plot a sample of 9 countries using the inbuilt `plot_tb_burden` function. Again plotting incidence rates, but this time with 95% confidence intervals. As you can see this isn't a hugely informative graph. Lets improve it!
@@ -126,7 +161,7 @@ plot_tb_burden(tb_burden, metric = "e_inc_100k",
                legend = "top")
 ```
 
-We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be alot of this.
+We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be a lot of this.
 
 ```{r plot-incidence-facet}
 plot_tb_burden(tb_burden, metric = "e_inc_100k",

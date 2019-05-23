@@ -43,3 +43,22 @@ test_that("Combined variable and definition search returns expected results", {
   expect_true(1 <= ncol(test_var_def))
   expect_equal(exp_def, test_var_def$variable_name)
 })
+
+
+test_that("Dataset search for a known  dataset returns expected results", {
+  test_data <- search_data_dict(dataset = "Estimates")
+  
+  expect_true(!is.null(test_data))
+  expect_equal("tbl_df", class(test_data)[1])
+  expect_true(1 <= nrow(test_data))
+  expect_true(1 <= ncol(test_data))
+  expect_equal("Estimates", test_data$dataset[1])
+})
+
+
+test_that("Searching for a attributes not present in the data returns an informative message and does not error.", {
+
+  expect_null(search_data_dict(var = 'g4gt23q2'))
+  expect_null(search_data_dict(def = 'g4gt23q2'))
+  expect_null(search_data_dict(dataset = 'g4gt23q2'))
+})

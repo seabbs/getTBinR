@@ -9,6 +9,7 @@ df_supp_all <- prepare_df_plot(tb_data)
 
 ## Single country exact match
 df_exact_country <- prepare_df_plot(countries = "United Kingdom of Great Britain and Northern Ireland")
+df_exact_country$df$country <- factor("United Kingdom")
 
 ## Single country fuzzy matching
 df_fuzzy_country <- prepare_df_plot(countries = "United Kingdom")
@@ -54,7 +55,7 @@ test_that("TB burden data is correctly proccessed when using a single country", 
   expect_equal("tbl_df", class(df_exact_country$df)[1])
   expect_true(1 <= nrow(df_exact_country$df))
   expect_true(1 <= ncol(df_exact_country$df))
-  expect_equal("United Kingdom of Great Britain and Northern Ireland", 
+  expect_equal("United Kingdom", 
                as.character(unique(df_exact_country$df$country)))
 })
 
@@ -139,3 +140,15 @@ test_that("years are correctly filtered for.", {
                                           annual_change = FALSE)$df)
 })
 
+test_that("Using a metric that does not occur in the dataset and 
+          no metric label leads to the metric being used as the default label.", {
+  
+            skip_on_cran()
+            test_df <- tb_data
+            test_df$test_metric <- test_df$e_inc_100k
+            
+            expect_equal("test_metric", prepare_df_plot(metric = "test_metric", 
+                                                    years = 2000,
+                                                    df = test_df, 
+                                                    annual_change = FALSE)$metric_label)
+})

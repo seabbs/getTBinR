@@ -59,8 +59,6 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            interactive = FALSE, 
                            download_data = TRUE,
                            save = TRUE,
-                           burden_save_name = "TB_burden",
-                           dict_save_name = "TB_data_dict",
                            viridis_palette = "viridis",
                            viridis_direction = -1,
                            viridis_end = 0.9,
@@ -85,9 +83,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                              trans = trans,
                              annual_change = annual_change,
                              save = save,
-                             burden_save_name = burden_save_name,
-                             dict_save_name = dict_save_name,
-                             verbose = verbose)
+                             verbose = verbose, 
+                             ...)
   
   ## Guess at variable type for filling
   if (is.null(fill_var_type)) {

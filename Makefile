@@ -3,7 +3,7 @@
 default: all
 
 
-all: build_data update_deps package docs man/figures/logo.png README.md build_report git_commit
+all: build_data update_deps package docs man/figures/logo.png README.md git_commit
 
 #Update data
 .PHONY: build_data
@@ -32,11 +32,6 @@ man/figures/logo.png: inst/scripts/generate_hex_sticker.R
 README.md: README.Rmd
 		Rscript -e 'rmarkdown::render("README.Rmd")' && \
 		rm README.html
-
-#generate pknet report
-.PHONY: build_report
-build_report:
-		cd pkgnet && make
 		
 #Commit updates
 .PHONY: git_commit
