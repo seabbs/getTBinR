@@ -40,7 +40,8 @@ Imports:
     tidyr (>= 0.8.3),
     viridis (>= 0.5.1),
     rlang (>= 0.3.4)
-Suggests: 
+Suggests:
+    spelling (>= 2.1),
     covr (>= 3.2.1),
     devtools (>= 2.0.2),
     usethis (>= 1.5.0),
@@ -60,3 +61,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
+Language: en-GB

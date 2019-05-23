@@ -6,19 +6,19 @@
 #' will instead download the data. The MDR TB data is only available for the latest year of data.
 #' 
 #' @param url Character string, indicating  the url of the TB burden data.
-#'  Default is current url. This arguement is depreciated and will be removed from future releases. 
+#'  Default is current url. This argument is depreciated and will be removed from future releases. 
 #'  The TB burden URL is now supplied internally - see \code{\link[getTBinR]{available_datasets}} for details.
 #' @param add_mdr_data Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
 #' to the TB burden data.
-#' @param additional_datasets A character vector specifcying the names of the additional datasets to import. 
+#' @param additional_datasets A character vector specifying the names of the additional datasets to import. 
 #' See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
 #' datasets.
-#' @param mdr_save_name Character string, name to save the MDR data under. This arguement is depreciated 
+#' @param mdr_save_name Character string, name to save the MDR data under. This argument is depreciated 
 #' and will be removed from future releases. Dataset naming is now handled internally.
-#' @param mdr_url Character string, indicating the url of the MDR TB data. This arguement is depreciated 
+#' @param mdr_url Character string, indicating the url of the MDR TB data. This argument is depreciated 
 #' and will be removed from future releases.  The MDR-TB burden URL is now supplied internally - 
 #' see \code{\link[getTBinR]{available_datasets}} for details.
-#' @param burden_save_name Character string, name to save the data under. This arguement is depreciated 
+#' @param burden_save_name Character string, name to save the data under. This argument is depreciated 
 #' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param return Logical, should the data be returned as a dataframe.
 #' Defaults to \code{TRUE}.
@@ -60,7 +60,7 @@ get_tb_burden <- function(url = NULL,
   . <- NULL
 
   if (!is.null(url)) {
-    warning("This arguement is depreciated and will be removed from future releases. 
+    warning("This argument is depreciated and will be removed from future releases. 
             The TB burden URL is now supplied internally.")
   }else{
     url <- getTBinR::available_datasets$url[1]
@@ -68,21 +68,21 @@ get_tb_burden <- function(url = NULL,
   
   
   if (!is.null(burden_save_name)) {
-    warning("This arguement is depreciated and will be removed from future releases. 
+    warning("This argument is depreciated and will be removed from future releases. 
             The dataset savename is now supplied internally.")
   }else{
     burden_save_name <- "tb_burden"
   }
   
   if (!is.null(mdr_url)) {
-    warning("This arguement is depreciated and will be removed from future releases. 
+    warning("This argument is depreciated and will be removed from future releases. 
             The MDR-TB burden URL is now supplied internally.")
   }else{
     mdr_url <- getTBinR::available_datasets$url[2]
   }
   
  if (!is.null(mdr_save_name)) {
-    warning("This arguement is depreciated and will be removed from future releases. 
+    warning("This argument is depreciated and will be removed from future releases. 
             The dataset savename is now supplied internally.")
   }else{
     mdr_save_name <- "mdr_tb"

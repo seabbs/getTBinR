@@ -6,8 +6,8 @@
 #' will instead download the data.
 #' 
 #' @param url Character string, indicating  the url of the data 
-#' dictionary. This arguement is depreciated and will be removed from future releases. 
-#' @param dict_save_name Character string, name to save dictionary under. This arguement is depreciated 
+#' dictionary. This argument is depreciated and will be removed from future releases. 
+#' @param dict_save_name Character string, name to save dictionary under. This argument is depreciated 
 #' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param return Logical, should the data  dictionary be returned as a dataframe.
 #' Defaults to \code{TRUE}.
@@ -32,7 +32,7 @@ get_data_dict <- function(url = NULL,
                           retry_download = TRUE) {
 
   if (!is.null(url)) {
-    warning("This arguement is depreciated and will be removed from future releases. 
+    warning("This argument is depreciated and will be removed from future releases. 
             The  URL is now supplied internally.")
   }else{
     url <- "https://extranet.who.int/tme/generateCSV.asp?ds=dictionary"
@@ -40,7 +40,7 @@ get_data_dict <- function(url = NULL,
   
   
   if (!is.null(dict_save_name)) {
-    warning("This arguement is depreciated and will be removed from future releases. 
+    warning("This argument is depreciated and will be removed from future releases. 
             The dataset savename is now supplied internally.")
   }else{
     dict_save_name <- "dictionary"

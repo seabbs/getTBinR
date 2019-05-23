@@ -13,7 +13,7 @@
 * Jumped to `0.6.0` to signal a major release.
 * Updated earliest supported R version based on travis testing - now `3.3.0`. 
 * Added [JOSS paper](https://doi.org/10.21105/joss.01260) as the preferred citation for `getTBinR` and also added this information to the README.
-* URL and data save names have been deprecated from all functions and will be removed in a future release. This allows the number of arguements for many functions to be reduced with no loss of functionality (as data is only saved temporally by package functions).
+* URL and data save names have been deprecated from all functions and will be removed in a future release. This allows the number of arguments for many functions to be reduced with no loss of functionality (as data is only saved temporally by package functions).
 * `search_data_dict` has improved messaging and no longer returns an error when nothing is found in the data dictionary. From #65.
 * `search_data_dict` has expanded testing to account for new dataset searching and for failing to find results. Linked to #60.
 * Dropped usage of `dplyr::funs` as soft deprecated.
@@ -76,7 +76,7 @@ summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articl
 
 ## Feature updates
 
-* Added a years filter to `plot_tb_burden` and `plot_tb_burden_overview`. This allows a range of years to be plotted. The default is all years which was the previous de facto default.  
+* Added a years filter to `plot_tb_burden` and `plot_tb_burden_overview`. This allows a range of years to be plotted. The default is all years which was the previous de-facto default.  
 
 ## Package updates
 
@@ -197,5 +197,5 @@ directory when `get_data` functions are called.
 
 ## Package updates
 
-* Set up package infractstructure
+* Set up package infrastructure
 

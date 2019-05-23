@@ -21,7 +21,7 @@
 #' @param conf Character vector specifying the name variations to use to specify the upper
 #' and lower confidence intervals. Defaults to \code{NULL} for which no confidence intervals 
 #' are used. Used by \code{annual_change}.
-#' @param ... Additional arguements to pass to \code{\link[getTBinR]{get_tb_burden}}.
+#' @param ... Additional arguments to pass to \code{\link[getTBinR]{get_tb_burden}}.
 #' @inheritParams get_tb_burden
 #' @inheritParams search_data_dict
 #' @import magrittr

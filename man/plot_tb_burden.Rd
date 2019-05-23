@@ -79,7 +79,7 @@ See \code{\link[viridis]{scale_color_viridis}} for additional details.}
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
 
-\item{...}{Additional arguements to pass to \code{\link[getTBinR]{get_tb_burden}}.}
+\item{...}{Additional arguments to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
 A plot of TB Incidence Rates by Country

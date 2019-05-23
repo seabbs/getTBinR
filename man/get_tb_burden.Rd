@@ -12,7 +12,7 @@ get_tb_burden(url = NULL, download_data = TRUE, save = TRUE,
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the TB burden data.
-Default is current url. This arguement is depreciated and will be removed from future releases.
+Default is current url. This argument is depreciated and will be removed from future releases.
 The TB burden URL is now supplied internally - see \code{\link[getTBinR]{available_datasets}} for details.}
 
 \item{download_data}{Logical, defaults to \code{TRUE}. If not found locally should the data be
@@ -21,7 +21,7 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{burden_save_name}{Character string, name to save the data under. This arguement is depreciated
+\item{burden_save_name}{Character string, name to save the data under. This argument is depreciated
 and will be removed from future releases. Dataset naming is now handled internally.}
 
 \item{add_mdr_data}{Logical, defaults to \code{TRUE}. Should MDR TB burden data be downloaded and joined
@@ -31,10 +31,10 @@ to the TB burden data.}
 See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
 datasets.}
 
-\item{mdr_save_name}{Character string, name to save the MDR data under. This arguement is depreciated
+\item{mdr_save_name}{Character string, name to save the MDR data under. This argument is depreciated
 and will be removed from future releases. Dataset naming is now handled internally.}
 
-\item{mdr_url}{Character string, indicating the url of the MDR TB data. This arguement is depreciated
+\item{mdr_url}{Character string, indicating the url of the MDR TB data. This argument is depreciated
 and will be removed from future releases.  The MDR-TB burden URL is now supplied internally -
 see \code{\link[getTBinR]{available_datasets}} for details.}
 

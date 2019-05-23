@@ -72,7 +72,7 @@ downloaded from the specified URL?}
 \item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
 be displayed.}
 
-\item{...}{Additional arguements to pass to \code{\link[getTBinR]{get_tb_burden}}.}
+\item{...}{Additional arguments to pass to \code{\link[getTBinR]{get_tb_burden}}.}
 }
 \value{
 A tibble containing summarised values (with 95% confidence intervals) for the metric of choice
