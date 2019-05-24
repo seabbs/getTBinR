@@ -76,7 +76,7 @@ include this in any estimated summary measures. Currently four statistics are su
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.8</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.6.0</span>
       </span>
     </div>
 
@@ -188,8 +188,7 @@ include this in any estimated summary measures. Currently four statistics are su
   <span class='kw'>smooth</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='st'>"top"</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
   <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>,
   <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>burden_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>,
-  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -234,7 +233,7 @@ intervals (only used when <code>conf</code> are present)</p></td>
     </tr>
     <tr>
       <th>countries</th>
-      <td><p>A character string specifying the countries to plot.</p></td>
+      <td><p>A character string specifying the countries to target.</p></td>
     </tr>
     <tr>
       <th>compare_to_region</th>
@@ -339,19 +338,13 @@ downloaded from the specified URL?</p></td>
 <code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
-      <th>burden_save_name</th>
-      <td><p>Character string, name to save the data under. Defaults to
-"TB_burden".</p></td>
-    </tr>
-    <tr>
-      <th>dict_save_name</th>
-      <td><p>Character string, name to save dictionary under. Defaults to
-<code>TB_data_dict</code>.</p></td>
-    </tr>
-    <tr>
       <th>verbose</th>
       <td><p>Logical, defaults to <code>TRUE</code>. Should additional status and progress messages
 be displayed.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
     </table>
     

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generic Get Data Function — get_data • getTBinR</title>
+<title>Summarise a TB Metric - A Quick Look Summary — summarise_metric • getTBinR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -38,11 +38,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Generic Get Data Function — get_data" />
+<meta property="og:title" content="Summarise a TB Metric - A Quick Look Summary — summarise_metric" />
 
-<meta property="og:description" content="If the data is found locally in the temporary directory then this function will load the data into R.
-Otherwise if download_data = TRUE then the data will be retrieved from the specified URL. Data can then be
-saved  to the temporary directory by specifying save = TRUE." />
+<meta property="og:description" content="This function provides a curated list of summary measures for a given TB metric in countries of interest.
+It can been used to facilitate reporting and is used extensively in the TB report included in the package
+(see render_country_report). It outputs the most recent year of data in the target country for
+a given metric, along with the year this data was recorded, the regional and global rank and the average change
+in the last decade. For a more customisable metric summary see summarise_tb_burden as a starting point." />
 
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -164,35 +166,47 @@ saved  to the temporary directory by specifying save = TRUE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generic Get Data Function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/get_data.R'><code>R/get_data.R</code></a></small>
-    <div class="hidden name"><code>get_data.Rd</code></div>
+    <h1>Summarise a TB Metric - A Quick Look Summary</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/summarise_metric.R'><code>R/summarise_metric.R</code></a></small>
+    <div class="hidden name"><code>summarise_metric.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>If the data is found locally in the temporary directory then this function will load the data into R.
-Otherwise if <code>download_data = TRUE</code> then the data will be retrieved from the specified URL. Data can then be
-saved  to the temporary directory by specifying <code>save = TRUE</code>.</p>
+    <p>This function provides a curated list of summary measures for a given TB metric in countries of interest.
+It can been used to facilitate reporting and is used extensively in the TB report included in the package
+(see <code><a href='render_country_report.html'>render_country_report</a></code>). It outputs the most recent year of data in the target country for
+a given metric, along with the year this data was recorded, the regional and global rank and the average change
+in the last decade. For a more customisable metric summary see <code><a href='summarise_tb_burden.html'>summarise_tb_burden</a></code> as a starting point.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use_direct_download</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>), <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>url</th>
-      <td><p>Character string, indicating  the url of the data to download.</p></td>
+      <th>df</th>
+      <td><p>Dataframe of TB burden data, as sourced by <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.
+If not specified then will source the WHO TB burden data, either locally if available
+or directly from the WHO (if <code>download_data = TRUE</code>).</p></td>
     </tr>
     <tr>
-      <th>data_trans_fn</th>
-      <td><p>Function that takes a data.table as input and returns a single
-dataframe of any type. If not specified defaults to transforming the data into a tibble.</p></td>
+      <th>metric</th>
+      <td><p>Character string specifying the metric to plot</p></td>
+    </tr>
+    <tr>
+      <th>countries</th>
+      <td><p>A character string specifying the countries to target.</p></td>
+    </tr>
+    <tr>
+      <th>conf</th>
+      <td><p>Character vector specifying the name variations to use to specify the upper
+and lower confidence intervals. Defaults to c("_lo", "_hi"), if set to <code>NULL</code>
+then no confidence intervals are shown.</p></td>
     </tr>
     <tr>
       <th>download_data</th>
@@ -205,76 +219,45 @@ downloaded from the specified URL?</p></td>
 <code>TRUE</code>. If <code>TRUE</code> then the data is saved to the temporary directory specified by <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>.</p></td>
     </tr>
     <tr>
-      <th>save_name</th>
-      <td><p>Character string, name to save the data under. Defaults to
-<code>NULL</code>.</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>Logical, should the data be returned as a dataframe.
-Defaults to <code>TRUE</code>.</p></td>
-    </tr>
-    <tr>
       <th>verbose</th>
       <td><p>Logical, defaults to <code>TRUE</code>. Should additional status and progress messages
 be displayed.</p></td>
     </tr>
     <tr>
-      <th>use_utils</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Used for testing alternative
-data download function. When <code>TRUE</code> data is downloaded using <code>read.csv</code>.</p></td>
-    </tr>
-    <tr>
-      <th>use_direct_download</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Used for testing alternative
-data download function. When <code>TRUE</code> data is downloaded using <code>download.file</code>.</p></td>
-    </tr>
-    <tr>
-      <th>retry_download</th>
-      <td><p>Logical defaults to <code>TRUE</code>. When <code>TRUE</code>, if downloading
-fails, the function will try repeatedly to download the data within 3 seconds, up
-to 3 times.</p></td>
+      <th>...</th>
+      <td><p>Additional arguments to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>get_tb_burden get_data_dict</p></div>
+    <p>A tibble containing the name of the target country, the year of the most recent data available, the most recent
+value for the metric, the regional rank, the global rank and the average change in the previous decade.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
-<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmp10TR8P/TB_burden.rds</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 47
-#&gt;   country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
-#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghan… AF    AFG             4 EMR          2000  20093756        190
-#&gt; 2 Afghan… AF    AFG             4 EMR          2001  20966463        189
-#&gt; 3 Afghan… AF    AFG             4 EMR          2002  21979923        189
-#&gt; 4 Afghan… AF    AFG             4 EMR          2003  23064851        189
-#&gt; 5 Afghan… AF    AFG             4 EMR          2004  24118979        189
-#&gt; 6 Afghan… AF    AFG             4 EMR          2005  25070798        189
-#&gt; # … with 39 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
-#&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
-#&gt; #   e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;,
-#&gt; #   e_inc_tbhiv_100k &lt;dbl&gt;, e_inc_tbhiv_100k_lo &lt;dbl&gt;,
-#&gt; #   e_inc_tbhiv_100k_hi &lt;dbl&gt;, e_inc_tbhiv_num &lt;int&gt;, e_inc_tbhiv_num_lo &lt;int&gt;,
-#&gt; #   e_inc_tbhiv_num_hi &lt;int&gt;, e_mort_exc_tbhiv_100k &lt;dbl&gt;,
-#&gt; #   e_mort_exc_tbhiv_100k_lo &lt;dbl&gt;, e_mort_exc_tbhiv_100k_hi &lt;dbl&gt;,
-#&gt; #   e_mort_exc_tbhiv_num &lt;int&gt;, e_mort_exc_tbhiv_num_lo &lt;int&gt;,
-#&gt; #   e_mort_exc_tbhiv_num_hi &lt;int&gt;, e_mort_tbhiv_100k &lt;dbl&gt;,
-#&gt; #   e_mort_tbhiv_100k_lo &lt;dbl&gt;, e_mort_tbhiv_100k_hi &lt;dbl&gt;,
-#&gt; #   e_mort_tbhiv_num &lt;int&gt;, e_mort_tbhiv_num_lo &lt;int&gt;,
-#&gt; #   e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;, e_mort_100k_lo &lt;dbl&gt;,
-#&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,
-#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,
-#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;</div><div class='input'>
-</div></pre>
+<span class='co'>## Get a summary of TB incidence rates for the united kingdom and germany</span>
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Germany"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 2 x 6
+#&gt;   country         year metric          world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;                &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 United Kingdom  2017 8.9 (8.1 - 9.8)        165          32 -4.9%     
+#&gt; 2 Germany         2017 7.5 (6.4 - 8.7)        170          34 1.8%      </div><div class='input'>
+<span class='co'>## Get a summary of case detection rates in France</span>
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   country  year metric       world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 France   2017 83 (73 - 94)         92          40 0%        </div><div class='input'>
+<span class='co'>## Get a summary of case detection rates in France - without confidence intervals</span>
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   country  year metric world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;      &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 France   2017     83         92          40 0%        </div><div class='input'>
+<span class='co'>## Provide a dataset and get summary measures from it. </span>
+<span class='no'>tb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp10TR8P/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   country  year metric       world_rank region_rank avg_change
+#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
+#&gt; 1 France   2017 83 (73 - 94)         92          40 0%        </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -282,8 +265,6 @@ to 3 times.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

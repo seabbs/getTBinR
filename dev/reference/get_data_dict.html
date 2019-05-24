@@ -76,7 +76,7 @@ will instead download the data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.8</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.6.0</span>
       </span>
     </div>
 
@@ -179,10 +179,9 @@ will instead download the data.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_data_dict</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=dictionary"</span>,
-  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='st'>"TB_data_dict"</span>,
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_data_dict</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,7 +189,7 @@ will instead download the data.</p>
     <tr>
       <th>url</th>
       <td><p>Character string, indicating  the url of the data
-dictionary. Default is current url.</p></td>
+dictionary. This argument is depreciated and will be removed from future releases.</p></td>
     </tr>
     <tr>
       <th>download_data</th>
@@ -204,8 +203,8 @@ downloaded from the specified URL?</p></td>
     </tr>
     <tr>
       <th>dict_save_name</th>
-      <td><p>Character string, name to save dictionary under. Defaults to
-<code>TB_data_dict</code>.</p></td>
+      <td><p>Character string, name to save dictionary under. This argument is depreciated
+and will be removed from future releases. Dataset naming is now handled internally.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -242,7 +241,7 @@ variable_name, dataset, code_list, definition.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpmgbZ8T/TB_data_dict.rds</span></div><div class='input'>
+<span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data_dict</span>()</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmp10TR8P/dictionary.rds</span></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>dict</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
 #&gt;   variable_name   dataset code_list definition                                  
 #&gt;   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;                                       
