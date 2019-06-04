@@ -25,7 +25,7 @@
 #'
 #' @return The WHO TB burden data as a tibble.
 #' @inheritParams get_data
-#' @importFrom dplyr case_when mutate mutate_if mutate_all
+#' @importFrom dplyr case_when mutate mutate_if mutate_all left_join full_join
 #' @importFrom tibble as_tibble
 #' @importFrom purrr map reduce
 #' @export
@@ -91,15 +91,6 @@ get_tb_burden <- function(url = NULL,
   trans_burden_data <- function(tb_df) {
     
     tb_df <- tibble::as_tibble(tb_df)
-    tb_df <- mutate(tb_df, g_whoregion = case_when(g_whoregion %in% "AFR" ~ "Africa",
-                                              g_whoregion %in% "AMR" ~ "Americas",
-                                              g_whoregion %in% "EMR" ~ "Eastern Mediterranean",
-                                              g_whoregion %in% "EUR" ~ "Europe",
-                                              g_whoregion %in% "SEA" ~ "South-East Asia",
-                                              g_whoregion %in% "WPR" ~ "Western Pacific",
-                                              TRUE ~ g_whoregion)
-    )
-    
     tb_df <- mutate_all(tb_df, .funs = list(~ {ifelse(. %in% c("NA", "`<NA>`"), NA, .)}))
     tb_df <- mutate_if(tb_df, is.numeric, .funs = list( ~ {ifelse(. %in% c(Inf, NaN), NA, .)}))
     tb_df$iso_numeric <- tb_df$iso_numeric %>% as.numeric %>% as.integer
@@ -205,10 +196,18 @@ get_tb_burden <- function(url = NULL,
     }
     
     tb_burden <- suppressMessages(
-      reduce(datasets, left_join, .init = tb_burden)
+      reduce(datasets, full_join, .init = tb_burden)
     )
   }
   
-
+  ## Common dataset cleaning
+  tb_burden <- mutate(tb_burden, g_whoregion = case_when(g_whoregion %in% "AFR" ~ "Africa",
+                                                 g_whoregion %in% "AMR" ~ "Americas",
+                                                 g_whoregion %in% "EMR" ~ "Eastern Mediterranean",
+                                                 g_whoregion %in% "EUR" ~ "Europe",
+                                                 g_whoregion %in% "SEA" ~ "South-East Asia",
+                                                 g_whoregion %in% "WPR" ~ "Western Pacific",
+                                                 TRUE ~ g_whoregion)
+  )
   return(tb_burden)
 }

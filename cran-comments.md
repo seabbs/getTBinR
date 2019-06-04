@@ -1,3 +1,7 @@
+## Comments
+
+Maintenance release fixing a bug in the recent CRAN version.
+
 ## Test environments
 
 * local OS X install, R 3.6.0

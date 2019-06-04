@@ -1,3 +1,10 @@
+# getTBinR 0.6.1
+
+## Package updates
+
+* Fixed a joining bug for additional datasets that was removing all new data.
+* Fixed a joining bug for budgets data that was removing all budgets data.
+
 # getTBinR 0.6.0
 
 ## Feature updates
