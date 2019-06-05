@@ -196,3 +196,15 @@ test_that("summarise_tb_burden can generate summarised proportions for regions a
 })
 
 
+
+test_that("summarise_tb_burden works as expected when no confidence intervals are given and a country is specified", {
+  sum_tab <- summarise_tb_burden(countries = test_countries,
+                                 compare_all_regions = TRUE,
+                                 compare_to_world = TRUE,
+                                 conf = TRUE)
+  skip_on_cran()
+  expect_known_output(sum_tab, 
+                      file = "../../tests/test-files/summarise_tb_burden/test-13.rds")
+})
+
+

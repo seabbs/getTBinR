@@ -278,7 +278,7 @@ summarise_tb_burden <- function(df = NULL,
       if (!is.null(conf)) {
         metrics <- c(metric, paste0(metric, conf))
       }else{
-        metrics <- c(metric, paste0(metric, 1:2))
+        metrics <- c(metric, paste0(metric, c("_lo", "_hi")))
         all_df[metrics] <- all_df[[metric]]
       }
 
@@ -357,11 +357,20 @@ summarise_tb_burden <- function(df = NULL,
   area_list <- c(area_list, "Global")
   
  if (!is.null(countries_df)) {
+   
+   if (!is.null(conf)) {
+     metrics <- c(metric, paste0(metric, conf))
+   }else{
+     metrics <- c(metric, paste0(metric, c("_lo", "_hi")))
+     countries_df[metrics] <- countries_df[[metric]]
+   }
+   
    output_df <- countries_df %>% 
      select(area = Area, year, one_of(paste0(metric, c("", "_lo", "_hi"))), contains(denom)) 
    
    if (!is.null(years)) {
      output_df <- filter(output_df, year %in% years)
+   
    }
    
    ## Estimate rate/proportions for countries specified.

@@ -4,6 +4,8 @@
 
 * Fixed a joining bug for additional datasets that was removing all new data.
 * Fixed a joining bug for budgets data that was removing all budgets data.
+* Fixed a bug with `summarise_tb_burden` that caused an error when confidence intervals where not 
+wanted and rates were estimated for countries.
 
 # getTBinR 0.6.0
 

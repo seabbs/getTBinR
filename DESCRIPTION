@@ -36,7 +36,7 @@ Imports:
     plotly (>= 4.9.0),
     purrr (>= 0.3.2),
     scales (>= 1.0.0),
-    tibble (>= 2.1.1),
+    tibble (>= 2.1.2),
     tidyr (>= 0.8.3),
     viridis (>= 0.5.1),
     rlang (>= 0.3.4)
@@ -47,7 +47,7 @@ Suggests:
     usethis (>= 1.5.0),
     knitr (>= 1.23),
     pkgnet (>= 0.4.0),
-    rmarkdown (>= 1.12),
+    rmarkdown (>= 1.13),
     shiny (>= 1.3.2),
     shinycssloaders (>= 0.2.0),
     shinydashboard (>= 0.7.1),
