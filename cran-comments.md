@@ -1,6 +1,8 @@
 ## Comments
 
-Maintenance release fixing a bug in the recent CRAN version.
+* Maintenance release fixing a bug in the recent CRAN version.
+* Switched GitHub relative links to actual links for CRAN check (not seen locally).
+
 
 ## Test environments
 
