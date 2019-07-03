@@ -127,7 +127,7 @@
       <h1>Exploring Estimates of the Tuberculosis Case Fatality Ratio</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-06-26</h4>
+            <h4 class="date">2019-07-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_fatality_rate.Rmd"><code>vignettes/case_fatality_rate.Rmd</code></a></small>
       <div class="hidden name"><code>case_fatality_rate.Rmd</code></div>
@@ -290,17 +290,20 @@
 <a class="sourceLine" id="cb8-6" data-line-number="6">                   <span class="dt">scales =</span> <span class="st">"free_y"</span>,</a>
 <a class="sourceLine" id="cb8-7" data-line-number="7">                   <span class="dt">y_lab =</span> <span class="st">"Tuberculosis Incidence Rates (per 100,000 population)"</span>)</a>
 <a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; Warning: funs() is soft deprecated as of dplyr 0.8.0</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; please use list() instead</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; Please use a list of either functions or lambdas: </span></a>
 <a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;   # Before:</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt;   funs(name = f(.))</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;   # Simple named list: </span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt;   list(mean = mean, median = median)</span></a>
 <a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;   # After: </span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt;   list(name = ~ f(.))</span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; This warning is displayed once per session.</span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb8-18" data-line-number="18">plot_inc_region <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;   # Auto named with `tibble::lst()`: </span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt;   tibble::lst(mean, median)</span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt;   # Using lambdas</span></a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt;   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))</span></a>
+<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt; This warning is displayed once per session.</span></a>
+<a class="sourceLine" id="cb8-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb8-21" data-line-number="21">plot_inc_region <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</a></code></pre></div>
 <p><img src="case_fatality_rate_files/figure-html/plot-tb-inc-reg-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">plot_mort_region &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">rate_region</span>(<span class="dt">metric =</span> <span class="st">"e_mort_num"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
