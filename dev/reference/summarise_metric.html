@@ -15,10 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -45,16 +47,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Summarise a TB Metric - A Quick Look Summary — summarise_metric" />
 
+<meta property="og:title" content="Summarise a TB Metric - A Quick Look Summary — summarise_metric" />
 <meta property="og:description" content="This function provides a curated list of summary measures for a given TB metric in countries of interest.
 It can been used to facilitate reporting and is used extensively in the TB report included in the package
 (see render_country_report). It outputs the most recent year of data in the target country for
 a given metric, along with the year this data was recorded, the regional and global rank and the average change
 in the last decade. For a more customisable metric summary see summarise_tb_burden as a starting point." />
-
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -148,7 +150,6 @@ in the last decade. For a more customisable metric summary see summarise_tb_burd
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/seabbs/getTBinR">
@@ -181,19 +182,17 @@ in the last decade. For a more customisable metric summary see summarise_tb_burd
     </div>
 
     <div class="ref-description">
-    
     <p>This function provides a curated list of summary measures for a given TB metric in countries of interest.
 It can been used to facilitate reporting and is used extensively in the TB report included in the package
 (see <code><a href='render_country_report.html'>render_country_report</a></code>). It outputs the most recent year of data in the target country for
 a given metric, along with the year this data was recorded, the regional and global rank and the average change
 in the last decade. For a more customisable metric summary see <code><a href='summarise_tb_burden.html'>summarise_tb_burden</a></code> as a starting point.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>conf</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_lo"</span>, <span class='st'>"_hi"</span>), <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -237,33 +236,32 @@ be displayed.</p></td>
       <td><p>Additional arguments to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble containing the name of the target country, the year of the most recent data available, the most recent
 value for the metric, the regional rank, the global rank and the average change in the previous decade.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get a summary of TB incidence rates for the united kingdom and germany</span>
-<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Germany"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 2 x 6
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Germany"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 2 x 6
 #&gt;   country         year metric          world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;                &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
 #&gt; 1 United Kingdom  2017 8.9 (8.1 - 9.8)        165          32 -4.9%     
 #&gt; 2 Germany         2017 7.5 (6.4 - 8.7)        170          34 1.8%      </div><div class='input'>
 <span class='co'>## Get a summary of case detection rates in France</span>
-<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
 #&gt;   country  year metric       world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
 #&gt; 1 France   2017 83 (73 - 94)         93          40 0%        </div><div class='input'>
 <span class='co'>## Get a summary of case detection rates in France - without confidence intervals</span>
-<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
 #&gt;   country  year metric world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;      &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
 #&gt; 1 France   2017     83         93          40 0%        </div><div class='input'>
 <span class='co'>## Provide a dataset and get summary measures from it. </span>
-<span class='no'>tb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpIruhtW/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+<span class='no'>tb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpsq6XO3/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
 #&gt;   country  year metric       world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
 #&gt; 1 France   2017 83 (73 - 94)         93          40 0%        </div></pre>
@@ -272,9 +270,7 @@ value for the metric, the regional rank, the global rank and the average change 
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

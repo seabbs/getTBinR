@@ -15,10 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -45,14 +47,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Generic Get Data Function — get_data" />
 
+<meta property="og:title" content="Generic Get Data Function — get_data" />
 <meta property="og:description" content="If the data is found locally in the temporary directory then this function will load the data into R.
 Otherwise if download_data = TRUE then the data will be retrieved from the specified URL. Data can then be
 saved  to the temporary directory by specifying save = TRUE." />
-
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -146,7 +148,6 @@ saved  to the temporary directory by specifying save = TRUE." />
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/seabbs/getTBinR">
@@ -179,18 +180,16 @@ saved  to the temporary directory by specifying save = TRUE." />
     </div>
 
     <div class="ref-description">
-    
     <p>If the data is found locally in the temporary directory then this function will load the data into R.
 Otherwise if <code>download_data = TRUE</code> then the data will be retrieved from the specified URL. Data can then be
 saved  to the temporary directory by specifying <code>save = TRUE</code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_trans_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>use_utils</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use_direct_download</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>retry_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -245,20 +244,18 @@ fails, the function will try repeatedly to download the data within 3 seconds, u
 to 3 times.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The data loaded from a local copy or downloaded from the given url as a dataframe, exact format specified by data_trans_fn</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>get_tb_burden get_data_dict</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://extranet.who.int/tme/generateCSV.asp?ds=estimates"</span>,
-<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpIruhtW/TB_burden.rds</span></div><div class='input'>
+<span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"TB_burden"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/Rtmpsq6XO3/TB_burden.rds</span></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 47
 #&gt;   country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
@@ -289,11 +286,8 @@ to 3 times.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
