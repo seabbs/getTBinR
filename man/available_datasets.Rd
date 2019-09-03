@@ -4,7 +4,7 @@
 \name{available_datasets}
 \alias{available_datasets}
 \title{Available Datasets}
-\format{A data frame with 6 rows and 5 variables.
+\format{A data frame with 7 rows and 5 variables.
 \describe{
 \item{dataset}{Dataset name used by the WHO data dictionary.}
 \item{description}{Either the data description supplied by the WHO or a user generated description.}

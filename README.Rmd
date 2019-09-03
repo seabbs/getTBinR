@@ -13,15 +13,10 @@ knitr::opts_chunk$set(
 # getTBinR: Access and Summarise World Health Organisation Tuberculosis Data  <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.6.1-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
-[![Documentation via pkgdown](https://img.shields.io/badge/Documentation-click here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/)
-[![Development documentation via pkgdown](https://img.shields.io/badge/Development Documentation-click here!-lightblue.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/dev)
-[![badge](https://img.shields.io/badge/Launch-getTBinR-blue.svg)](https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio)
-[![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR)
-[![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.7.0-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
 [![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR)
 [![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4)](https://cran.r-project.org/package=getTBinR)
+[![badge](https://img.shields.io/badge/Launch-getTBinR-blue.svg)](https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio)
 [![DOI](https://zenodo.org/badge/112591837.svg)](https://zenodo.org/badge/latestdoi/112591837)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01260/status.svg)](https://doi.org/10.21105/joss.01260)
 
@@ -41,6 +36,20 @@ Alternatively install the development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("seabbs/getTBinR")
 ```
+
+## Documentation
+
+[![Documentation](https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/)
+[![Development documentation](https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/dev)
+[![Getting started](https://img.shields.io/badge/Documentation-getting started-yellow.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/articles/intro.html)
+[![Functions](https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/reference/index.html)
+
+
+## Testing
+
+[![Travis-CI Build Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR)
+[![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master)
 
 ## Quick start
 

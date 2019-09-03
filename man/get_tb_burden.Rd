@@ -29,7 +29,7 @@ to the TB burden data.}
 
 \item{additional_datasets}{A character vector specifying the names of the additional datasets to import.
 See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
-datasets.}
+datasets (experimental datasets such as incidence by age and sex are excluded from this list).}
 
 \item{mdr_save_name}{Character string, name to save the MDR data under. This argument is depreciated
 and will be removed from future releases. Dataset naming is now handled internally.}

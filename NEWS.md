@@ -2,13 +2,14 @@
 
 ## Feature updates
 
-* Added experimental support for Incidence data stratified by age and sex (). Current implementation requires data cleaning before use. See the release post for details.
+* Added experimental support for incidence data stratified by age and sex. Current implementation requires data cleaning before use. See the release post for details.
 
 ## Package updates
 
 * Fixed a bug that was preventing `render_country_report` from producing a country level report. Added tests to flag this in the future.
 * Updated the packages requested for installation by `run_tb_dashboard` so that `render_country_report` runs without errors.
-
+* Switched to using `ggplot2` best practises ([#77](https://github.com/seabbs/getTBinR/issues/77)).
+* Updated the README to make identifying types of badges easier.
 
 # getTBinR 0.6.1
 

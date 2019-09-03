@@ -10,7 +10,8 @@
 #' @seealso get_tb_burden search_data_dict
 #' @return A dot plot of any numeric metric by country.
 #' @export 
-#' @import ggplot2
+#' @importFrom ggplot2 ggplot aes geom_point geom_hline coord_flip theme theme_minimal labs facet_wrap
+#' @importFrom rlang .data
 #' @importFrom viridis scale_colour_viridis
 #' @importFrom plotly ggplotly style
 #' @importFrom scales percent
@@ -71,9 +72,9 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                              ...)
   country <- NULL
   
-  plot <- ggplot(df_prep$df, aes_string(x = "country", 
-                                        y = paste0("`", df_prep$metric_label, "`"),
-                                        col = "Year")) +
+  plot <- ggplot(df_prep$df, aes(x = country, 
+                                 y = .data[[df_prep$metric_label]],
+                                 col = Year)) +
     geom_point(alpha = 0.6, size = 1.5, na.rm = TRUE)
   
   plot <- plot +

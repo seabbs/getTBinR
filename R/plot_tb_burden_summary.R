@@ -14,6 +14,8 @@
 #' @inheritParams summarise_tb_burden
 #' @seealso search_data_dict plot_tb_burden summarise_tb_burden
 #' @importFrom purrr possibly
+#' @importFrom ggplot2 ggplot aes geom_ribbon scale_y_continuous facet_wrap theme theme_minimal labs geom_line geom_smooth scale_y_continuous
+#' @importFrom rlang .data
 #' @importFrom plotly ggplotly style
 #' @importFrom viridis  scale_fill_viridis  scale_colour_viridis
 #' @return A plot of TB Incidence Rates by Country
@@ -126,9 +128,10 @@ plot_tb_burden_summary <- function(df = NULL,
   
   area <- NULL
   
-  plot <- ggplot(sum_df, aes_string(x = "year", 
-                                    y = paste0("`", metric, "`"),
-                                    col = "Area", fill = "Area"))
+  plot <- ggplot(sum_df, aes(x = year, 
+                             y = .data[[metric]],
+                             col = Area, 
+                             fill = Area))
   
   if (smooth) {
     plot <- plot + 
@@ -144,8 +147,8 @@ plot_tb_burden_summary <- function(df = NULL,
   
   if (!is.null(conf)) {
     plot <- plot +
-      geom_ribbon(aes_string(ymin = paste0(metric, conf[1]),
-                             ymax =  paste0(metric, conf[2]), 
+      geom_ribbon(aes(ymin = .data[[paste0(metric, conf[1])]],
+                             ymax = .data[[paste0(metric, conf[2])]], 
                              col = NULL), alpha = 0.2, na.rm = TRUE) 
   }
   

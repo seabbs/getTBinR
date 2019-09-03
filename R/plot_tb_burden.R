@@ -27,9 +27,10 @@
 #' @seealso get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
 #' @export
-#' @import ggplot2
 #' @import magrittr
+#' @importFrom ggplot2 ggplot aes geom_smooth geom_point geom_line geom_smooth scale_y_continuous theme theme_minimal labs facet_wrap guides guide_legend
 #' @importFrom dplyr filter
+#' @importFrom rlang .data
 #' @importFrom scales percent
 #' @importFrom purrr map
 #' @importFrom plotly ggplotly style
@@ -102,9 +103,9 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   
   country <- NULL
   
-  plot <- ggplot(df_prep$df, aes_string(x = "year", 
-                                        y = paste0("`", df_prep$metric_label, "`"),
-                                        col = "country", fill = "country"))
+  plot <- ggplot(df_prep$df, aes(x = year, 
+                                 y = .data[[df_prep$metric_label]],
+                                 col = country, fill = country))
   
   if (smooth) {
     plot <- plot + 
@@ -120,9 +121,9 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
   
   if (!is.null(conf)) {
     plot <- plot +
-      geom_ribbon(aes_string(ymin = paste0(metric, conf[1]),
-                             ymax =  paste0(metric, conf[2]), 
-                             col = NULL), alpha = 0.2, na.rm = TRUE) 
+      geom_ribbon(aes(ymin = .data[[paste0(metric, conf[1])]],
+                      ymax =  .data[[paste0(metric, conf[2])]], 
+                      col = NULL), alpha = 0.2, na.rm = TRUE) 
   }
   
   plot <- plot +

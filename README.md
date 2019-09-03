@@ -2,22 +2,12 @@
 # getTBinR: Access and Summarise World Health Organisation Tuberculosis Data <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.6.1-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
-[![Documentation via
-pkgdown](https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/)
-[![Development documentation via
-pkgdown](https://img.shields.io/badge/Development%20Documentation-click%20here!-lightblue.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/dev)
-[![badge](https://img.shields.io/badge/Launch-getTBinR-blue.svg)](https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio)
-[![Travis-CI Build
-Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.7.0-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
 [![metacran monthly
 downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR)
 [![metacran
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4)](https://cran.r-project.org/package=getTBinR)
+[![badge](https://img.shields.io/badge/Launch-getTBinR-blue.svg)](https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio)
 [![DOI](https://zenodo.org/badge/112591837.svg)](https://zenodo.org/badge/latestdoi/112591837)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01260/status.svg)](https://doi.org/10.21105/joss.01260)
 
@@ -57,6 +47,24 @@ Alternatively install the development version from GitHub:
 devtools::install_github("seabbs/getTBinR")
 ```
 
+## Documentation
+
+[![Documentation](https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/)
+[![Development
+documentation](https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/dev)
+[![Getting
+started](https://img.shields.io/badge/Documentation-getting%20started-yellow.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/articles/intro.html)
+[![Functions](https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat)](https://www.samabbott.co.uk/getTBinR/reference/index.html)
+
+## Testing
+
+[![Travis-CI Build
+Status](https://travis-ci.org/seabbs/getTBinR.svg?branch=master)](https://travis-ci.org/seabbs/getTBinR)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/seabbs/getTBinR?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/getTBinR)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg)](https://codecov.io/github/seabbs/getTBinR?branch=master)
+
 ## Quick start
 
 Lets get started quickly by mapping and then plotting TB incidence rates
@@ -67,18 +75,13 @@ temporary directory),
 
 ``` r
 getTBinR::map_tb_burden(metric = "e_inc_100k")
-#> Registered S3 methods overwritten by 'ggplot2':
-#>   method         from 
-#>   [.quosures     rlang
-#>   c.quosures     rlang
-#>   print.quosures rlang
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/Rtmpwn62hN/tb_burden.rds
+#> Saving data to: /tmp/RtmpDH5k7W/tb_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Saving data to: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/Rtmpwn62hN/dictionary.rds
+#> Saving data to: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -92,10 +95,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmpwn62hN/tb_burden.rds
-#> Loading data from: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Loading data from: /tmp/RtmpDH5k7W/tb_burden.rds
+#> Loading data from: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmpwn62hN/dictionary.rds
+#> Loading data from: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -110,10 +113,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmpwn62hN/tb_burden.rds
-#> Loading data from: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Loading data from: /tmp/RtmpDH5k7W/tb_burden.rds
+#> Loading data from: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmpwn62hN/dictionary.rds
+#> Loading data from: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -131,23 +134,23 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  compare_to_region = TRUE,
                                  compare_to_world = TRUE,
                                  interactive = FALSE)
-#> Loading data from: /tmp/Rtmpwn62hN/dictionary.rds
+#> Loading data from: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Extracting data for specified countries
-#> Loading data from: /tmp/Rtmpwn62hN/tb_burden.rds
-#> Loading data from: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Loading data from: /tmp/RtmpDH5k7W/tb_burden.rds
+#> Loading data from: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmpwn62hN/dictionary.rds
+#> Loading data from: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/Rtmpwn62hN/tb_burden.rds
-#> Loading data from: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Loading data from: /tmp/RtmpDH5k7W/tb_burden.rds
+#> Loading data from: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmpwn62hN/dictionary.rds
+#> Loading data from: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/Rtmpwn62hN/tb_burden.rds
-#> Loading data from: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Loading data from: /tmp/RtmpDH5k7W/tb_burden.rds
+#> Loading data from: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmpwn62hN/dictionary.rds
+#> Loading data from: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
 ```
 
@@ -160,10 +163,10 @@ us to get a clear picture of trends in TB incidence rates in the UK.
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          interactive = FALSE)
-#> Loading data from: /tmp/Rtmpwn62hN/tb_burden.rds
-#> Loading data from: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Loading data from: /tmp/RtmpDH5k7W/tb_burden.rds
+#> Loading data from: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmpwn62hN/dictionary.rds
+#> Loading data from: /tmp/RtmpDH5k7W/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -176,8 +179,8 @@ available data with the following,
 ``` r
 getTBinR::summarise_metric(metric = "e_inc_100k",
                            countries = "United Kingdom")
-#> Loading data from: /tmp/Rtmpwn62hN/tb_burden.rds
-#> Loading data from: /tmp/Rtmpwn62hN/mdr_tb.rds
+#> Loading data from: /tmp/RtmpDH5k7W/tb_burden.rds
+#> Loading data from: /tmp/RtmpDH5k7W/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
 #> # A tibble: 1 x 6
 #>   country         year metric          world_rank region_rank avg_change
@@ -239,6 +242,7 @@ knitr::kable(getTBinR::available_datasets[, 1:4])
 | :--------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------- | :------ |
 | Estimates                    | Generated estimates of TB mortality, incidence, case fatality ratio, and treatment coverage (previously called case detection rate). Data available split by HIV status.                             | 2000-2017 | yes     |
 | Estimates                    | Generated estimates for the proportion of TB cases that have rifampicin-resistant TB (RR-TB, which includes cases with multidrug-resistant TB, MDR-TB), RR/MDR-TB among notified pulmonary TB cases. | 2017      | yes     |
+| Incidence by age and sex     | Generated estimates of TB incidence stratified by age and sex. This dataset is currently experimental.                                                                                               | 2017      | no      |
 | Latent TB infection          | Generated estimates incidence of latent TB stratified by age.                                                                                                                                        | 2017      | no      |
 | Notification                 | TB notification dataset linking to TB notifications as raw numbers. Age-stratified, with good data dictionary coverage but has large amounts of missing data.                                        | 1980-2017 | no      |
 | Drug resistance surveillance | Country level drug resistance surveillance. Lists drug resistance data from country level reporting. Good data dictionary coverage but has large amounts of missing data.                            | 2017      | no      |
