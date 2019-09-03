@@ -23,6 +23,13 @@ available_datasets <- tibble(
   timespan = "2017"
   ) %>% 
   add_row(
+    dataset = "Incidence by age and sex",
+    description = "Generated estimates of TB incidence stratified by age and sex. This dataset is currently experimental.",
+    url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates_age_sex",
+    default = "no",
+    timespan = "2000-2017"
+  ) %>% 
+  add_row(
   dataset = "Latent TB infection",
   description = "Generated estimates incidence of latent TB stratified by age.", 
   url = "https://extranet.who.int/tme/generateCSV.asp?ds=ltbi_estimates", 
