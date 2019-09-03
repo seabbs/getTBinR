@@ -58,6 +58,7 @@ get_tb_burden <- function(url = NULL,
 
   g_whoregion <- NULL
   . <- NULL
+  best <- NULL; lo <- NULL; hi <- NULL; age_group <- NULL; sex <- NULL
 
   if (!is.null(url)) {
     warning("This argument is depreciated and will be removed from future releases. 

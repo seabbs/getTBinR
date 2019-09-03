@@ -82,6 +82,8 @@ plot_tb_burden_summary <- function(df = NULL,
                                    ...){
   
   
+  year <- NULL; Area <- NULL; 
+  
   if (is.null(metric_label)) {
     metric_label <- metric
   }

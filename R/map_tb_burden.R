@@ -64,6 +64,8 @@ map_tb_burden <- function(df = NULL, dict = NULL,
                            viridis_direction = -1,
                            viridis_end = 0.9,
                            verbose = TRUE, ...) {
+  
+  long <- NULL; lat <- NULL; Year <- NULL; 
   if (!is.null(facet) && facet %in% "year") {
     facet <- "Year"
   }

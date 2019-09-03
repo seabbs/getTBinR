@@ -85,6 +85,8 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            viridis_end = 0.9,
                            verbose = TRUE, ...) {
 
+  year <- NULL; 
+  
   df_prep <- prepare_df_plot(df = df,
                              dict = dict,
                              metric = metric,
