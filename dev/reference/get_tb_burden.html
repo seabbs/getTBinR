@@ -273,8 +273,8 @@ to 3 times.</p></td>
     <pre class="examples"><div class='input'>
 
 <span class='co'>## Default datasets</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpCcIbUw/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpCcIbUw/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Latent TB infection</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=ltbi_estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpCcIbUw/latent_tb_infection.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and additional datasets.</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 80
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpuwLTC9/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpuwLTC9/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Incidence by age and sex</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates_age_sex</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpuwLTC9/incidence_by_age_and_sex.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and additional datasets.</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 75
 #&gt;   country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
 #&gt; 1 Afghan… AF    AFG             4 Eastern Me…  2000  20093756        190
@@ -283,7 +283,7 @@ to 3 times.</p></td>
 #&gt; 4 Afghan… AF    AFG             4 Eastern Me…  2003  23064851        189
 #&gt; 5 Afghan… AF    AFG             4 Eastern Me…  2004  24118979        189
 #&gt; 6 Afghan… AF    AFG             4 Eastern Me…  2005  25070798        189
-#&gt; # … with 72 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
+#&gt; # … with 67 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;,
 #&gt; #   e_inc_tbhiv_100k &lt;dbl&gt;, e_inc_tbhiv_100k_lo &lt;dbl&gt;,
@@ -306,15 +306,11 @@ to 3 times.</p></td>
 #&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,
 #&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,
 #&gt; #   e_rr_in_notified_pulm_lo &lt;int&gt;, e_rr_in_notified_pulm_hi &lt;int&gt;,
-#&gt; #   source_hh &lt;chr&gt;, e_hh_size &lt;dbl&gt;, prevtx_data_available &lt;int&gt;,
-#&gt; #   newinc_con04_prevtx &lt;int&gt;, ptsurvey_newinc &lt;lgl&gt;,
-#&gt; #   ptsurvey_newinc_con04_prevtx &lt;lgl&gt;, e_prevtx_eligible &lt;dbl&gt;,
-#&gt; #   e_prevtx_eligible_lo &lt;dbl&gt;, e_prevtx_eligible_hi &lt;dbl&gt;,
-#&gt; #   e_prevtx_kids_pct &lt;dbl&gt;, e_prevtx_kids_pct_lo &lt;dbl&gt;,
-#&gt; #   e_prevtx_kids_pct_hi &lt;dbl&gt;</div><div class='input'>
+#&gt; #   measure &lt;chr&gt;, unit &lt;chr&gt;, age_group &lt;chr&gt;, sex &lt;chr&gt;, best &lt;int&gt;,
+#&gt; #   lo &lt;int&gt;, hi &lt;int&gt;</div><div class='input'>
 <span class='co'>## Add in the latent TB dataset as an additional dataset (see getTBinR::avaiable_datasets)</span>
-<span class='no'>tb_with_latents</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpCcIbUw/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpCcIbUw/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Latent TB infection</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpCcIbUw/latent_tb_infection.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and additional datasets.</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_with_latents</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 80
+<span class='no'>tb_with_latents</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpuwLTC9/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpuwLTC9/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Incidence by age and sex</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpuwLTC9/incidence_by_age_and_sex.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and additional datasets.</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_with_latents</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 75
 #&gt;   country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
 #&gt; 1 Afghan… AF    AFG             4 Eastern Me…  2000  20093756        190
@@ -323,7 +319,7 @@ to 3 times.</p></td>
 #&gt; 4 Afghan… AF    AFG             4 Eastern Me…  2003  23064851        189
 #&gt; 5 Afghan… AF    AFG             4 Eastern Me…  2004  24118979        189
 #&gt; 6 Afghan… AF    AFG             4 Eastern Me…  2005  25070798        189
-#&gt; # … with 72 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
+#&gt; # … with 67 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;,
 #&gt; #   e_inc_tbhiv_100k &lt;dbl&gt;, e_inc_tbhiv_100k_lo &lt;dbl&gt;,
@@ -346,12 +342,8 @@ to 3 times.</p></td>
 #&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,
 #&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,
 #&gt; #   e_rr_in_notified_pulm_lo &lt;int&gt;, e_rr_in_notified_pulm_hi &lt;int&gt;,
-#&gt; #   source_hh &lt;chr&gt;, e_hh_size &lt;dbl&gt;, prevtx_data_available &lt;int&gt;,
-#&gt; #   newinc_con04_prevtx &lt;int&gt;, ptsurvey_newinc &lt;lgl&gt;,
-#&gt; #   ptsurvey_newinc_con04_prevtx &lt;lgl&gt;, e_prevtx_eligible &lt;dbl&gt;,
-#&gt; #   e_prevtx_eligible_lo &lt;dbl&gt;, e_prevtx_eligible_hi &lt;dbl&gt;,
-#&gt; #   e_prevtx_kids_pct &lt;dbl&gt;, e_prevtx_kids_pct_lo &lt;dbl&gt;,
-#&gt; #   e_prevtx_kids_pct_hi &lt;dbl&gt;</div><div class='input'>
+#&gt; #   measure &lt;chr&gt;, unit &lt;chr&gt;, age_group &lt;chr&gt;, sex &lt;chr&gt;, best &lt;int&gt;,
+#&gt; #   lo &lt;int&gt;, hi &lt;int&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
