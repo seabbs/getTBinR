@@ -1,3 +1,10 @@
+# getTBinR 0.7.0
+
+## Feature updates
+
+## Package updates
+
+
 # getTBinR 0.6.1
 
 ## Package updates
