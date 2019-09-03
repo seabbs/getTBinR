@@ -8,10 +8,19 @@
 
 <title>Plot TB Burden by Country — plot_tb_burden • getTBinR</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -38,14 +47,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Plot TB Burden by Country — plot_tb_burden" />
 
+<meta property="og:title" content="Plot TB Burden by Country — plot_tb_burden" />
 <meta property="og:description" content="Plot measures of TB burden by country by specifying a metric from the TB burden data.
 Specify a country or vector of countries in order to plot them (by default plots all countries).
 Various other options are available for tuning the plot further." />
-
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -57,6 +66,7 @@ Various other options are available for tuning the plot further." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -75,7 +85,7 @@ Various other options are available for tuning the plot further." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
       </span>
     </div>
 
@@ -138,7 +148,6 @@ Various other options are available for tuning the plot further." />
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/seabbs/getTBinR">
@@ -159,6 +168,7 @@ Various other options are available for tuning the plot further." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -170,11 +180,9 @@ Various other options are available for tuning the plot further." />
     </div>
 
     <div class="ref-description">
-    
     <p>Plot measures of TB burden by country by specifying a metric from the TB burden data.
 Specify a country or vector of countries in order to plot them (by default plots all countries).
 Various other options are available for tuning the plot further.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>,
@@ -184,7 +192,7 @@ Various other options are available for tuning the plot further.</p>
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>viridis_palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>,
   <span class='kw'>viridis_direction</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>viridis_end</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -210,7 +218,7 @@ dictionary. If this fails and <code>download_data = TRUE</code> then the diction
     </tr>
     <tr>
       <th>smooth</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Should the data be smoothed (using <code><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>ggplot2::geom_smooth</a></code>)
+      <td><p>Logical, defaults to <code>FALSE</code>. Should the data be smoothed (using <code><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>ggplot2::geom_smooth</a></code>)
 prior to plotting. If set to <code>TRUE</code> then the confidence intervals shown are derived from the smooth
 and do not represent the underlying uncertainty in the data.</p></td>
     </tr>
@@ -241,7 +249,7 @@ Note that this will override settings for <code>facet</code>, unless it is set t
     </tr>
     <tr>
       <th>legend</th>
-      <td><p>Character string, defaults to <code>"none"</code>. Position of the legend see <code><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>?ggplot2::theme</a></code> for defaults but known
+      <td><p>Character string, defaults to <code>"none"</code>. Position of the legend see <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>?ggplot2::theme</a></code> for defaults but known
 options are: <code>"none"</code>, <code>"top"</code>, <code>"right"</code> and <code>"bottom"</code>.</p></td>
     </tr>
     <tr>
@@ -301,26 +309,24 @@ be displayed.</p></td>
       <td><p>Additional arguments to pass to <code><a href='get_tb_burden.html'>get_tb_burden</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A plot of TB Incidence Rates by Country</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>get_tb_burden search_data_dict</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the WHO TB burden data and the data dictionary</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpemwzMe/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpemwzMe/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpemwzMe/dictionary.rds</span></div><div class='input'>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpxwgdox/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpxwgdox/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>dict</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_data_dict.html'>get_data_dict</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmpxwgdox/dictionary.rds</span></div><div class='input'>
 <span class='co'>## Get a random sample of 9 countries</span>
 <span class='no'>sample_countries</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span>(<span class='no'>tb_burden</span>$<span class='no'>country</span>), <span class='fl'>9</span>)
 
 <span class='co'>## Plot incidence rates in these countries</span>
 <span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_burden</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='no'>dict</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>)</div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_inc_100k</span></div><div class='img'><img src='plot_tb_burden-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>## Plot smoothed incidence rates in these countries</span>
 <span class='fu'>plot_tb_burden</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_burden</span>, <span class='kw'>dict</span> <span class='kw'>=</span> <span class='no'>dict</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>smooth</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>)
@@ -336,22 +342,20 @@ be displayed.</p></td>
 <span class='co'>## Plot mortality rates (exc HIV) - without progress messages</span>
 <span class='fu'>plot_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='st'>"country"</span>,
                <span class='kw'>countries</span> <span class='kw'>=</span> <span class='no'>sample_countries</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_y"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='co'># }</span></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -359,8 +363,9 @@ be displayed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.9900.</p>
 </div>
+
       </footer>
    </div>
 
@@ -383,6 +388,8 @@ be displayed.</p></td>
 </script>
 
 
+
   </body>
 </html>
+
 
