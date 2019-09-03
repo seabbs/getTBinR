@@ -2,6 +2,8 @@
 
 ## Feature updates
 
+* Added experimental support for Incidence data stratified by age and sex (). Current implementation requires data cleaning before use. See the release post for details.
+
 ## Package updates
 
 * Fixed a bug that was preventing `render_country_report` from producing a country level report. Added tests to flag this in the future.

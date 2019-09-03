@@ -12,7 +12,7 @@
 #' to the TB burden data.
 #' @param additional_datasets A character vector specifying the names of the additional datasets to import. 
 #' See \code{\link[getTBinR]{available_datasets}} for available datasets. Use "all" to download all available
-#' datasets.
+#' datasets (experimental datasets such as incidence by age and sex are excluded from this list).
 #' @param mdr_save_name Character string, name to save the MDR data under. This argument is depreciated 
 #' and will be removed from future releases. Dataset naming is now handled internally.
 #' @param mdr_url Character string, indicating the url of the MDR TB data. This argument is depreciated 
@@ -25,7 +25,7 @@
 #'
 #' @return The WHO TB burden data as a tibble.
 #' @inheritParams get_data
-#' @importFrom dplyr case_when mutate mutate_if mutate_all left_join full_join
+#' @importFrom dplyr case_when mutate mutate_if mutate_all left_join full_join filter rename
 #' @importFrom tibble as_tibble
 #' @importFrom purrr map reduce
 #' @export
@@ -145,7 +145,7 @@ get_tb_burden <- function(url = NULL,
     
     
     if (additional_datasets == "all") {
-      additional_datasets <- getTBinR::available_datasets$dataset[-c(1:2)]
+      additional_datasets <- getTBinR::available_datasets$dataset[-c(1:3)]
     }
     
     load_additional_dataset <- function(dataset) {
@@ -184,6 +184,14 @@ get_tb_burden <- function(url = NULL,
         use_utils = use_utils
       )        
       
+      if (grepl("Incidence by age and sex", dataset)) {
+        message("Incidence by age and sex data is experimental and may cause issues for other
+        datasets. Use with caution!
+        Open an issue here if you run into problems: https://github.com/seabbs/getTBinR/issues")
+        ad_df <- ad_df %>% 
+          dplyr::rename(inc_age_sex = best, inc_age_sex_lo = lo, inc_age_sex_hi = hi)  %>% 
+          dplyr::filter(!(age_group %in% c("all", "15plus")), sex != "a")
+      }
       return(ad_df)
     }
     
