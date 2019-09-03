@@ -4,6 +4,9 @@
 
 ## Package updates
 
+* Fixed a bug that was preventing `render_country_report` from producing a country level report. Added tests to flag this in the future.
+* Updated the packages requested for installation by `run_tb_dashboard` so that `render_country_report` runs without errors.
+
 
 # getTBinR 0.6.1
 

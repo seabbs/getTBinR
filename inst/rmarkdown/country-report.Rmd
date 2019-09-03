@@ -77,7 +77,7 @@ cdr_sum <- summarise_metric(tb, "c_cdr", country)
 plot_tb_burden_overview(metric = "c_cdr",
                         countries = country,
                         compare_to_region = TRUE,
-                        interactrive = interactive,
+                        interactive = interactive,
                         verbose = FALSE)
 ```
 
@@ -113,7 +113,7 @@ plot_tb_burden_summary(metric = "e_mort_exc_tbhiv_num",
 plot_tb_burden_overview(metric = "e_mort_exc_tbhiv_100k",
                         countries = country,
                         compare_to_region = TRUE,
-                        interactrive = interactive,
+                        interactive = interactive,
                         verbose = FALSE)
 ```
 
@@ -148,7 +148,7 @@ plot_tb_burden_summary(metric = "e_mort_tbhiv_num",
 plot_tb_burden_overview(metric = "e_mort_tbhiv_100k",
                         countries = country,
                         compare_to_region = TRUE,
-                        interactrive = interactive,
+                        interactive = interactive,
                         verbose = FALSE)
 
 ```
