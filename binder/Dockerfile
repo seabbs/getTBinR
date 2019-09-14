@@ -7,4 +7,8 @@ RUN chown -R ${NB_USER} ${HOME}
 ## Become normal user again
 USER ${NB_USER}
 
-RUN R -e "options(repos = 'https://cloud.r-project.org/'); install.packages('getTBinR'); devtools::install_dev_deps(); devtools::install()"
+RUN R -e "options(repos = 'https://cloud.r-project.org/')"
+
+RUN R -e "install.packages('getTBinR')"
+
+RUN R -e "devtools::install_dev_deps()"
