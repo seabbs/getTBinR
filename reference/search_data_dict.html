@@ -25,8 +25,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -247,12 +247,12 @@ searched for. If nothing is found then <code>NULL</code> is returned.</p>
     <pre class="examples"><div class='input'>
 <span class='co'>## Search for a known variable</span>
 <span class='co'>## Download and save the dictionary if it is not available locally</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpimFuSt/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; # A tibble: 1 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; # A tibble: 1 x 4
 #&gt;   variable_name dataset                code_list definition               
 #&gt;   &lt;chr&gt;         &lt;chr&gt;                  &lt;chr&gt;     &lt;chr&gt;                    
 #&gt; 1 country       Country identification ""        Country or territory name</div><div class='input'>
 <span class='co'>## Search for all variables mentioning mortality in their definition</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpimFuSt/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
 #&gt;   variable_name      dataset  code_list definition                              
 #&gt;   &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;                                   
 #&gt; 1 e_mort_100k        Estimat… ""        Estimated mortality of TB cases (all fo…
@@ -265,7 +265,7 @@ searched for. If nothing is found then <code>NULL</code> is returned.</p>
 #&gt; 8 e_mort_tbhiv_100k… Estimat… ""        Estimated mortality of TB cases who are…
 #&gt; 9 e_mort_tbhiv_100k… Estimat… ""        Estimated mortality of TB cases who are…</div><div class='input'>
 <span class='co'>## Search for all variables in the Estimates dataset.</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"Estimates"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpimFuSt/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>62 results found for your dataset search for Estimates</span></div><div class='output co'>#&gt; # A tibble: 62 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"Estimates"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>65 results found for your dataset search for Estimates</span></div><div class='output co'>#&gt; # A tibble: 65 x 4
 #&gt;    variable_name dataset   code_list definition                                 
 #&gt;    &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                                      
 #&gt;  1 c_cdr         Estimates ""        Case detection rate (all forms) [also know…
@@ -275,13 +275,13 @@ searched for. If nothing is found then <code>NULL</code> is returned.</p>
 #&gt;  5 cfr           Estimates ""        Estimated TB case fatality ratio           
 #&gt;  6 cfr_hi        Estimates ""        Estimated TB case fatality ratio: high bou…
 #&gt;  7 cfr_lo        Estimates ""        Estimated TB case fatality ratio: low bound
-#&gt;  8 e_inc_100k    Estimates ""        Estimated incidence (all forms) per 100 00…
-#&gt;  9 e_inc_100k_hi Estimates ""        Estimated incidence (all forms) per 100 00…
-#&gt; 10 e_inc_100k_lo Estimates ""        Estimated incidence (all forms) per 100 00…
-#&gt; # … with 52 more rows</div><div class='input'>
+#&gt;  8 cfr_pct       Estimates ""        Estimated TB case fatality ratio expressed…
+#&gt;  9 cfr_pct_hi    Estimates ""        Estimated TB case fatality ratio: high bou…
+#&gt; 10 cfr_pct_lo    Estimates ""        Estimated TB case fatality ratio: low boun…
+#&gt; # … with 55 more rows</div><div class='input'>
 <span class='co'>## Search for both a known variable and for mortality being mentioned in there definition</span>
 <span class='co'>## Duplicate entries will be omitted.</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpimFuSt/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
 #&gt;   variable_name      dataset  code_list definition                              
 #&gt;   &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;                                   
 #&gt; 1 e_mort_exc_tbhiv_… Estimat… ""        Estimated mortality of TB cases (all fo…

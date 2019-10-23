@@ -25,8 +25,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -273,19 +273,19 @@ to 3 times.</p></td>
     <pre class="examples"><div class='input'>
 
 <span class='co'>## Default datasets</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpimFuSt/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpimFuSt/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Incidence by age and sex</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates_age_sex</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpimFuSt/incidence_by_age_and_sex.rds</span></div><div class='output co'>#&gt; <span class='message'>Incidence by age and sex data is experimental and may cause issues for other</span>
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpNd0myK/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpNd0myK/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Incidence by age and sex</span></div><div class='output co'>#&gt; <span class='message'>Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates_age_sex</span></div><div class='output co'>#&gt; <span class='message'>Saving data to: /tmp/RtmpNd0myK/incidence_by_age_and_sex.rds</span></div><div class='output co'>#&gt; <span class='message'>Incidence by age and sex data is experimental and may cause issues for other</span>
 #&gt; <span class='message'>        datasets. Use with caution!</span>
 #&gt; <span class='message'>        Open an issue here if you run into problems: https://github.com/seabbs/getTBinR/issues</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and additional datasets.</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 75
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_burden</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 79
 #&gt;   country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghan… AF    AFG             4 Eastern Me…  2000  20093756        190
-#&gt; 2 Afghan… AF    AFG             4 Eastern Me…  2001  20966463        189
-#&gt; 3 Afghan… AF    AFG             4 Eastern Me…  2002  21979923        189
-#&gt; 4 Afghan… AF    AFG             4 Eastern Me…  2003  23064851        189
-#&gt; 5 Afghan… AF    AFG             4 Eastern Me…  2004  24118979        189
-#&gt; 6 Afghan… AF    AFG             4 Eastern Me…  2005  25070798        189
-#&gt; # … with 67 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
+#&gt; 1 Afghan… AF    AFG             4 Eastern Me…  2000  20779953        190
+#&gt; 2 Afghan… AF    AFG             4 Eastern Me…  2001  21606988        189
+#&gt; 3 Afghan… AF    AFG             4 Eastern Me…  2002  22600770        189
+#&gt; 4 Afghan… AF    AFG             4 Eastern Me…  2003  23680871        189
+#&gt; 5 Afghan… AF    AFG             4 Eastern Me…  2004  24726684        189
+#&gt; 6 Afghan… AF    AFG             4 Eastern Me…  2005  25654277        189
+#&gt; # … with 71 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;,
 #&gt; #   e_inc_tbhiv_100k &lt;dbl&gt;, e_inc_tbhiv_100k_lo &lt;dbl&gt;,
@@ -298,32 +298,34 @@ to 3 times.</p></td>
 #&gt; #   e_mort_tbhiv_num &lt;int&gt;, e_mort_tbhiv_num_lo &lt;int&gt;,
 #&gt; #   e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;, e_mort_100k_lo &lt;dbl&gt;,
 #&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,
-#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,
-#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,
-#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,
-#&gt; #   source_drs_year_new &lt;int&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,
-#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,
-#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;int&gt;,
-#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,
-#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,
-#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,
-#&gt; #   e_rr_in_notified_pulm_lo &lt;int&gt;, e_rr_in_notified_pulm_hi &lt;int&gt;,
-#&gt; #   measure &lt;chr&gt;, unit &lt;chr&gt;, age_group &lt;chr&gt;, sex &lt;chr&gt;, inc_age_sex &lt;int&gt;,
+#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;, cfr_pct &lt;int&gt;,
+#&gt; #   cfr_pct_lo &lt;int&gt;, cfr_pct_hi &lt;int&gt;, c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;,
+#&gt; #   c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;, source_rr_new &lt;chr&gt;,
+#&gt; #   source_drs_coverage_new &lt;chr&gt;, source_drs_year_new &lt;int&gt;,
+#&gt; #   e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;, e_rr_pct_new_hi &lt;dbl&gt;,
+#&gt; #   e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;, source_drs_coverage_ret &lt;chr&gt;,
+#&gt; #   source_drs_year_ret &lt;int&gt;, e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;,
+#&gt; #   e_rr_pct_ret_hi &lt;dbl&gt;, e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;,
+#&gt; #   e_inc_rr_num_lo &lt;int&gt;, e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;dbl&gt;,
+#&gt; #   e_rr_in_notified_labconf_pulm &lt;int&gt;,
+#&gt; #   e_rr_in_notified_labconf_pulm_lo &lt;int&gt;,
+#&gt; #   e_rr_in_notified_labconf_pulm_hi &lt;int&gt;, measure &lt;chr&gt;, unit &lt;chr&gt;,
+#&gt; #   age_group &lt;chr&gt;, sex &lt;chr&gt;, risk_factor &lt;chr&gt;, inc_age_sex &lt;int&gt;,
 #&gt; #   inc_age_sex_lo &lt;int&gt;, inc_age_sex_hi &lt;int&gt;</div><div class='input'>
 <span class='co'>## Add in the latent TB dataset as an additional dataset (see getTBinR::avaiable_datasets)</span>
-<span class='no'>tb_with_latents</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpimFuSt/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpimFuSt/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Incidence by age and sex</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpimFuSt/incidence_by_age_and_sex.rds</span></div><div class='output co'>#&gt; <span class='message'>Incidence by age and sex data is experimental and may cause issues for other</span>
+<span class='no'>tb_with_latents</span> <span class='kw'>&lt;-</span> <span class='fu'>get_tb_burden</span>(<span class='kw'>additional_datasets</span> <span class='kw'>=</span> <span class='no'>available_datasets</span>$<span class='no'>dataset</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Getting additional dataset: Incidence by age and sex</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/incidence_by_age_and_sex.rds</span></div><div class='output co'>#&gt; <span class='message'>Incidence by age and sex data is experimental and may cause issues for other</span>
 #&gt; <span class='message'>        datasets. Use with caution!</span>
 #&gt; <span class='message'>        Open an issue here if you run into problems: https://github.com/seabbs/getTBinR/issues</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and additional datasets.</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_with_latents</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 75
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>tb_with_latents</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 79
 #&gt;   country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;
-#&gt; 1 Afghan… AF    AFG             4 Eastern Me…  2000  20093756        190
-#&gt; 2 Afghan… AF    AFG             4 Eastern Me…  2001  20966463        189
-#&gt; 3 Afghan… AF    AFG             4 Eastern Me…  2002  21979923        189
-#&gt; 4 Afghan… AF    AFG             4 Eastern Me…  2003  23064851        189
-#&gt; 5 Afghan… AF    AFG             4 Eastern Me…  2004  24118979        189
-#&gt; 6 Afghan… AF    AFG             4 Eastern Me…  2005  25070798        189
-#&gt; # … with 67 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
+#&gt; 1 Afghan… AF    AFG             4 Eastern Me…  2000  20779953        190
+#&gt; 2 Afghan… AF    AFG             4 Eastern Me…  2001  21606988        189
+#&gt; 3 Afghan… AF    AFG             4 Eastern Me…  2002  22600770        189
+#&gt; 4 Afghan… AF    AFG             4 Eastern Me…  2003  23680871        189
+#&gt; 5 Afghan… AF    AFG             4 Eastern Me…  2004  24726684        189
+#&gt; 6 Afghan… AF    AFG             4 Eastern Me…  2005  25654277        189
+#&gt; # … with 71 more variables: e_inc_100k_lo &lt;dbl&gt;, e_inc_100k_hi &lt;dbl&gt;,
 #&gt; #   e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;, e_inc_num_hi &lt;int&gt;,
 #&gt; #   e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;, e_tbhiv_prct_hi &lt;dbl&gt;,
 #&gt; #   e_inc_tbhiv_100k &lt;dbl&gt;, e_inc_tbhiv_100k_lo &lt;dbl&gt;,
@@ -336,17 +338,19 @@ to 3 times.</p></td>
 #&gt; #   e_mort_tbhiv_num &lt;int&gt;, e_mort_tbhiv_num_lo &lt;int&gt;,
 #&gt; #   e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;, e_mort_100k_lo &lt;dbl&gt;,
 #&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,
-#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,
-#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,
-#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,
-#&gt; #   source_drs_year_new &lt;int&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,
-#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,
-#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;int&gt;,
-#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,
-#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,
-#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;int&gt;, e_rr_in_notified_pulm &lt;int&gt;,
-#&gt; #   e_rr_in_notified_pulm_lo &lt;int&gt;, e_rr_in_notified_pulm_hi &lt;int&gt;,
-#&gt; #   measure &lt;chr&gt;, unit &lt;chr&gt;, age_group &lt;chr&gt;, sex &lt;chr&gt;, inc_age_sex &lt;int&gt;,
+#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;, cfr_pct &lt;int&gt;,
+#&gt; #   cfr_pct_lo &lt;int&gt;, cfr_pct_hi &lt;int&gt;, c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;,
+#&gt; #   c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;, source_rr_new &lt;chr&gt;,
+#&gt; #   source_drs_coverage_new &lt;chr&gt;, source_drs_year_new &lt;int&gt;,
+#&gt; #   e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;, e_rr_pct_new_hi &lt;dbl&gt;,
+#&gt; #   e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;, source_drs_coverage_ret &lt;chr&gt;,
+#&gt; #   source_drs_year_ret &lt;int&gt;, e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;,
+#&gt; #   e_rr_pct_ret_hi &lt;dbl&gt;, e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;,
+#&gt; #   e_inc_rr_num_lo &lt;int&gt;, e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;dbl&gt;,
+#&gt; #   e_rr_in_notified_labconf_pulm &lt;int&gt;,
+#&gt; #   e_rr_in_notified_labconf_pulm_lo &lt;int&gt;,
+#&gt; #   e_rr_in_notified_labconf_pulm_hi &lt;int&gt;, measure &lt;chr&gt;, unit &lt;chr&gt;,
+#&gt; #   age_group &lt;chr&gt;, sex &lt;chr&gt;, risk_factor &lt;chr&gt;, inc_age_sex &lt;int&gt;,
 #&gt; #   inc_age_sex_lo &lt;int&gt;, inc_age_sex_hi &lt;int&gt;</div><div class='input'>
 </div></pre>
   </div>

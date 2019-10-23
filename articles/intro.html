@@ -13,8 +13,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
@@ -132,7 +132,7 @@
       <h1>Getting started with getTBinR</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-10-16</h4>
+            <h4 class="date">2019-10-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -157,26 +157,26 @@
 <p>Get TB burden data with a single function call. This will download the data if it has never been accessed and then save a local copy to R’s temporary directory (see <code><a href="https://rdrr.io/r/base/tempfile.html">tempdir()</a></code>). If a local copy exists from the current session then this will be loaded instead.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">tb_burden &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>()</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Saving data to: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Saving data to: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Saving data to: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Saving data to: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">tb_burden</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; # A tibble: 3,850 x 68</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; # A tibble: 4,040 x 71</span></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k</span></a>
 <a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  1 Afghan… AF    AFG             4 Eastern Me…  2000  20093756        190</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  2 Afghan… AF    AFG             4 Eastern Me…  2001  20966463        189</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;  3 Afghan… AF    AFG             4 Eastern Me…  2002  21979923        189</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;  4 Afghan… AF    AFG             4 Eastern Me…  2003  23064851        189</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt;  5 Afghan… AF    AFG             4 Eastern Me…  2004  24118979        189</span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt;  6 Afghan… AF    AFG             4 Eastern Me…  2005  25070798        189</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt;  7 Afghan… AF    AFG             4 Eastern Me…  2006  25893450        189</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;  8 Afghan… AF    AFG             4 Eastern Me…  2007  26616792        189</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt;  9 Afghan… AF    AFG             4 Eastern Me…  2008  27294031        189</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 10 Afghan… AF    AFG             4 Eastern Me…  2009  28004331        189</span></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; # … with 3,840 more rows, and 60 more variables: e_inc_100k_lo &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  1 Afghan… AF    AFG             4 Eastern Me…  2000  20779953        190</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  2 Afghan… AF    AFG             4 Eastern Me…  2001  21606988        189</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;  3 Afghan… AF    AFG             4 Eastern Me…  2002  22600770        189</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;  4 Afghan… AF    AFG             4 Eastern Me…  2003  23680871        189</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt;  5 Afghan… AF    AFG             4 Eastern Me…  2004  24726684        189</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt;  6 Afghan… AF    AFG             4 Eastern Me…  2005  25654277        189</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt;  7 Afghan… AF    AFG             4 Eastern Me…  2006  26433049        189</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;  8 Afghan… AF    AFG             4 Eastern Me…  2007  27100536        189</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt;  9 Afghan… AF    AFG             4 Eastern Me…  2008  27722276        189</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 10 Afghan… AF    AFG             4 Eastern Me…  2009  28394813        189</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; # … with 4,030 more rows, and 63 more variables: e_inc_100k_lo &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt; #   e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;,</span></a>
 <a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; #   e_inc_num_hi &lt;int&gt;, e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; #   e_tbhiv_prct_hi &lt;dbl&gt;, e_inc_tbhiv_100k &lt;dbl&gt;,</span></a>
@@ -191,16 +191,18 @@
 <a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt; #   e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;, e_mort_100k_lo &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,</span></a>
 <a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; #   source_drs_year_new &lt;int&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co">#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co">#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co">#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; #   e_rr_in_notified_pulm &lt;int&gt;, e_rr_in_notified_pulm_lo &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt; #   e_rr_in_notified_pulm_hi &lt;int&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt; #   cfr_pct &lt;int&gt;, cfr_pct_lo &lt;int&gt;, cfr_pct_hi &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; #   source_drs_year_new &lt;int&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co">#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co">#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co">#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt; #   e_rr_in_notified_labconf_pulm &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; #   e_rr_in_notified_labconf_pulm_lo &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; #   e_rr_in_notified_labconf_pulm_hi &lt;int&gt;</span></a></code></pre></div>
 </div>
 <div id="getting-additional-datasets" class="section level2">
 <h2 class="hasAnchor">
@@ -297,20 +299,20 @@
 </table>
 <p>These datasets can be imported into <code>R</code> by supplying the name of the required dataset to the <code>additional_datasets</code> argument of <code>get_tb_burden</code> (or any of the various plotting/summary functions). Alternatively, they can all be imported in one go using <code>additional_datasets = "all"</code>, as below,</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/get_tb_burden.html">get_tb_burden</a></span>(<span class="dt">additional_datasets =</span> <span class="st">"all"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 8,290 x 461</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 8,694 x 485</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;       &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;  1 Afghan… AF    AFG             4 Eastern Me…  2000  20093756        190</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  2 Afghan… AF    AFG             4 Eastern Me…  2001  20966463        189</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  3 Afghan… AF    AFG             4 Eastern Me…  2002  21979923        189</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;  4 Afghan… AF    AFG             4 Eastern Me…  2003  23064851        189</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  5 Afghan… AF    AFG             4 Eastern Me…  2004  24118979        189</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  6 Afghan… AF    AFG             4 Eastern Me…  2005  25070798        189</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  7 Afghan… AF    AFG             4 Eastern Me…  2006  25893450        189</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  8 Afghan… AF    AFG             4 Eastern Me…  2007  26616792        189</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  9 Afghan… AF    AFG             4 Eastern Me…  2008  27294031        189</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 10 Afghan… AF    AFG             4 Eastern Me…  2009  28004331        189</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; # … with 8,280 more rows, and 453 more variables: e_inc_100k_lo &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;  1 Afghan… AF    AFG             4 Eastern Me…  2000  20779953        190</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  2 Afghan… AF    AFG             4 Eastern Me…  2001  21606988        189</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  3 Afghan… AF    AFG             4 Eastern Me…  2002  22600770        189</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;  4 Afghan… AF    AFG             4 Eastern Me…  2003  23680871        189</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  5 Afghan… AF    AFG             4 Eastern Me…  2004  24726684        189</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  6 Afghan… AF    AFG             4 Eastern Me…  2005  25654277        189</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  7 Afghan… AF    AFG             4 Eastern Me…  2006  26433049        189</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  8 Afghan… AF    AFG             4 Eastern Me…  2007  27100536        189</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  9 Afghan… AF    AFG             4 Eastern Me…  2008  27722276        189</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 10 Afghan… AF    AFG             4 Eastern Me…  2009  28394813        189</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; # … with 8,684 more rows, and 477 more variables: e_inc_100k_lo &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; #   e_inc_100k_hi &lt;dbl&gt;, e_inc_num &lt;int&gt;, e_inc_num_lo &lt;int&gt;,</span></a>
 <a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; #   e_inc_num_hi &lt;int&gt;, e_tbhiv_prct &lt;dbl&gt;, e_tbhiv_prct_lo &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; #   e_tbhiv_prct_hi &lt;dbl&gt;, e_inc_tbhiv_100k &lt;dbl&gt;,</span></a>
@@ -325,29 +327,31 @@
 <a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt; #   e_mort_tbhiv_num_hi &lt;int&gt;, e_mort_100k &lt;dbl&gt;, e_mort_100k_lo &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt; #   e_mort_100k_hi &lt;dbl&gt;, e_mort_num &lt;int&gt;, e_mort_num_lo &lt;int&gt;,</span></a>
 <a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt; #   e_mort_num_hi &lt;int&gt;, cfr &lt;dbl&gt;, cfr_lo &lt;dbl&gt;, cfr_hi &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt; #   source_drs_year_new &lt;int&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt; #   e_rr_in_notified_pulm &lt;int&gt;, e_rr_in_notified_pulm_lo &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt; #   e_rr_in_notified_pulm_hi &lt;int&gt;, source_hh &lt;chr&gt;, e_hh_size &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt; #   prevtx_data_available &lt;int&gt;, newinc_con04_prevtx &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; #   ptsurvey_newinc &lt;lgl&gt;, ptsurvey_newinc_con04_prevtx &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">#&gt; #   e_prevtx_eligible &lt;dbl&gt;, e_prevtx_eligible_lo &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt; #   e_prevtx_eligible_hi &lt;dbl&gt;, e_prevtx_kids_pct &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">#&gt; #   e_prevtx_kids_pct_lo &lt;dbl&gt;, e_prevtx_kids_pct_hi &lt;dbl&gt;, new_sp &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">#&gt; #   new_sn &lt;int&gt;, new_su &lt;int&gt;, new_ep &lt;int&gt;, new_oth &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt; #   ret_rel &lt;int&gt;, ret_taf &lt;int&gt;, ret_tad &lt;int&gt;, ret_oth &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-47" data-line-number="47"><span class="co">#&gt; #   newret_oth &lt;int&gt;, new_labconf &lt;int&gt;, new_clindx &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-48" data-line-number="48"><span class="co">#&gt; #   ret_rel_labconf &lt;int&gt;, ret_rel_clindx &lt;int&gt;, ret_rel_ep &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-49" data-line-number="49"><span class="co">#&gt; #   ret_nrel &lt;int&gt;, notif_foreign &lt;int&gt;, c_newinc &lt;int&gt;, new_sp_m04 &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co">#&gt; #   new_sp_m514 &lt;int&gt;, new_sp_m014 &lt;int&gt;, new_sp_m1524 &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">#&gt; #   new_sp_m2534 &lt;int&gt;, new_sp_m3544 &lt;int&gt;, new_sp_m4554 &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb4-52" data-line-number="52"><span class="co">#&gt; #   new_sp_m5564 &lt;int&gt;, new_sp_m65 &lt;int&gt;, new_sp_mu &lt;int&gt;, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt; #   cfr_pct &lt;int&gt;, cfr_pct_lo &lt;int&gt;, cfr_pct_hi &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt; #   c_newinc_100k &lt;dbl&gt;, c_cdr &lt;dbl&gt;, c_cdr_lo &lt;dbl&gt;, c_cdr_hi &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt; #   source_rr_new &lt;chr&gt;, source_drs_coverage_new &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt; #   source_drs_year_new &lt;int&gt;, e_rr_pct_new &lt;dbl&gt;, e_rr_pct_new_lo &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt; #   e_rr_pct_new_hi &lt;dbl&gt;, e_mdr_pct_rr_new &lt;int&gt;, source_rr_ret &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; #   source_drs_coverage_ret &lt;chr&gt;, source_drs_year_ret &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; #   e_rr_pct_ret &lt;dbl&gt;, e_rr_pct_ret_lo &lt;dbl&gt;, e_rr_pct_ret_hi &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt; #   e_mdr_pct_rr_ret &lt;int&gt;, e_inc_rr_num &lt;int&gt;, e_inc_rr_num_lo &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt; #   e_inc_rr_num_hi &lt;int&gt;, e_mdr_pct_rr &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt; #   e_rr_in_notified_labconf_pulm &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt; #   e_rr_in_notified_labconf_pulm_lo &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; #   e_rr_in_notified_labconf_pulm_hi &lt;int&gt;, source_hh &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">#&gt; #   e_hh_size &lt;dbl&gt;, prevtx_data_available &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt; #   newinc_con04_prevtx &lt;int&gt;, ptsurvey_newinc &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">#&gt; #   ptsurvey_newinc_con04_prevtx &lt;int&gt;, e_prevtx_eligible &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">#&gt; #   e_prevtx_eligible_lo &lt;dbl&gt;, e_prevtx_eligible_hi &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt; #   e_prevtx_kids_pct &lt;dbl&gt;, e_prevtx_kids_pct_lo &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-47" data-line-number="47"><span class="co">#&gt; #   e_prevtx_kids_pct_hi &lt;dbl&gt;, new_sp &lt;int&gt;, new_sn &lt;int&gt;, new_su &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-48" data-line-number="48"><span class="co">#&gt; #   new_ep &lt;int&gt;, new_oth &lt;int&gt;, ret_rel &lt;int&gt;, ret_taf &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-49" data-line-number="49"><span class="co">#&gt; #   ret_tad &lt;int&gt;, ret_oth &lt;int&gt;, newret_oth &lt;int&gt;, new_labconf &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co">#&gt; #   new_clindx &lt;int&gt;, ret_rel_labconf &lt;int&gt;, ret_rel_clindx &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">#&gt; #   ret_rel_ep &lt;int&gt;, ret_nrel &lt;int&gt;, notif_foreign &lt;int&gt;, c_newinc &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-52" data-line-number="52"><span class="co">#&gt; #   new_sp_m04 &lt;int&gt;, new_sp_m514 &lt;int&gt;, new_sp_m014 &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-53" data-line-number="53"><span class="co">#&gt; #   new_sp_m1524 &lt;int&gt;, new_sp_m2534 &lt;int&gt;, new_sp_m3544 &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb4-54" data-line-number="54"><span class="co">#&gt; #   new_sp_m4554 &lt;int&gt;, …</span></a></code></pre></div>
 <p>Once imported, these datasets can be used in the plotting and summary functions provided by <code>getTBinR</code> (by passing them to their <code>df</code> argument or using the <code>additional_datasets</code> argument in each function).</p>
 </div>
 <div id="searching-for-variable-definitions" class="section level2">
@@ -359,7 +363,7 @@
 <a class="sourceLine" id="cb5-3" data-line-number="3">                                             <span class="st">"e_inc_100k_lo"</span>,</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">                                             <span class="st">"e_inc_100k_hi"</span>))</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Saving data to: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Saving data to: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 4 results found for your variable search for country, e_inc_100k, e_inc_100k_lo, e_inc_100k_hi</span></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9">knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(vars_of_interest)</a></code></pre></div>
@@ -399,7 +403,7 @@
 </table>
 <p>We might also want to search the variable definitions for key phrases, for example mortality.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">def =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"mortality"</span>))</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; 9 results found for your definition search for mortality</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(defs_of_interest)</a></code></pre></div>
@@ -470,7 +474,7 @@
 <p>Finally we could both search for a known variable and for key phrases in variable definitions.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">vars_defs_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">var =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"country"</span>),</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">                                     <span class="dt">def =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"mortality"</span>))</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; 1 results found for your variable search for country</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; 9 results found for your definition search for mortality</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"></a>
@@ -551,8 +555,8 @@
 <a href="#searching-for-dataset-details" class="anchor"></a>Searching for dataset details</h2>
 <p><code>search_data_dict</code> can also be used to explore the details of the variables included in each dataset. For example if we could explore all the variables included in the Latent TB dataset,</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">dataset_of_interest &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">dataset =</span> <span class="st">"Latent"</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 12 results found for your dataset search for Latent</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 11 results found for your dataset search for Latent</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5">knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(dataset_of_interest)</a></code></pre></div>
 <table class="table">
@@ -609,27 +613,21 @@
 <td align="left">newinc_con04_prevtx</td>
 <td align="left">Latent TB infection</td>
 <td align="left"></td>
-<td align="left">(If prevtx_data_available=60) Number of children aged under 5 started on TB preventive therapy who are household contacts of bacteriologically-confirmed new and relapse TB cases notified</td>
+<td align="left">(If prevtx_data_available=60) Number of children aged under 5 started on TB preventive treatment who are household contacts of bacteriologically-confirmed new and relapse TB cases notified</td>
 </tr>
 <tr class="odd">
-<td align="left">prevtx_data_available</td>
-<td align="left">Latent TB infection</td>
-<td align="left">0=No; 60= Yes available from the routine surveillance system; 61=Yes estimated from a survey of a random sample of medical records or treatment cards of TB patients representative of the national TB patient population</td>
-<td align="left">Are data available on the number of children aged under 5 who are household contacts of TB cases and started on TB preventive therapy?</td>
-</tr>
-<tr class="even">
 <td align="left">ptsurvey_newinc</td>
 <td align="left">Latent TB infection</td>
 <td align="left"></td>
 <td align="left">(If prevtx_data_available=61) Number of bacteriologically-confirmed TB new and relapse cases notified in the reporting year whose medical records or treatment cards were included in a survey</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">ptsurvey_newinc_con04_prevtx</td>
 <td align="left">Latent TB infection</td>
 <td align="left"></td>
-<td align="left">(If prevtx_data_available=61) Number of children aged under 5 started on TB preventive therapy who are household contacts of the TB cases in ptsurvey_newinc</td>
+<td align="left">(If prevtx_data_available=61) Number of children aged under 5 started on TB preventive treatment who are household contacts of the TB cases in ptsurvey_newinc</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">source_hh</td>
 <td align="left">Latent TB infection</td>
 <td align="left"></td>
@@ -643,10 +641,10 @@
 <a href="#mapping-global-incidence-rates" class="anchor"></a>Mapping Global Incidence Rates</h2>
 <p>To start exploring the WHO TB data we map, the most recently available, global TB incidence rates. Mapping data can help identify spatial patterns.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/map-tb-incidence-eur-1.png" width="1440" style="display: block; margin: auto;"></p>
 </div>
@@ -656,10 +654,10 @@
 <p>To showcase how quickly we can go from no data to plotting informative graphs we quickly explore incidence rates for all countries in the WHO data.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-tb-all-1.png" width="960" style="display: block; margin: auto;"></p>
 <p>Another way to compare incidence rates in countries is to look at the annual percentage change. The plot below only shows countries with a maximum incidence rate above 5 per 100,000.</p>
@@ -674,10 +672,10 @@
 <a class="sourceLine" id="cb11-9" data-line-number="9">                                  <span class="dt">interactive =</span> <span class="ot">FALSE</span>,</a>
 <a class="sourceLine" id="cb11-10" data-line-number="10">                                  <span class="dt">annual_change =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb11-11" data-line-number="11">                                  <span class="dt">countries =</span> higher_burden_countries)</a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-tb-al-per-1.png" width="960" style="display: block; margin: auto;"></p>
 </div>
@@ -686,17 +684,17 @@
 <a href="#summarising-regional-and-global-incidence-rates" class="anchor"></a>Summarising Regional and Global Incidence Rates</h2>
 <p>We might also be interested in getting a regional/global overview of TB incidence rates (<em>Hint: Use <code>search_data_dict</code> to look up <code>e_inc_100k</code> to see what role this is playing here</em>). See <code><a href="../reference/plot_tb_burden_summary.html">?plot_tb_burden_summary</a></code> for more ways to summarise TB metrics.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">getTBinR<span class="op">::</span><span class="kw"><a href="samabbott.co.uk/getTBinR//reference/plot_tb_burden_summary.html">plot_tb_burden_summary</a></span>(<span class="dt">conf =</span> <span class="ot">NULL</span>, <span class="dt">metric_label =</span> <span class="st">"e_inc_100k"</span>)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co">#&gt; 1 results found for your variable search for e_inc_num</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-regional-summary-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
@@ -707,8 +705,8 @@
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">## Get a summary of TB incidence rates for the united kingdom and germany</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="../reference/summarise_metric.html">summarise_metric</a></span>(<span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>, <span class="dt">countries =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"United Kingdom"</span>, <span class="st">"Germany"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span>kable</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -722,19 +720,19 @@
 <tbody>
 <tr class="odd">
 <td align="left">United Kingdom</td>
-<td align="right">2017</td>
-<td align="left">8.9 (8.1 - 9.8)</td>
+<td align="right">2018</td>
+<td align="left">8 (7.2 - 8.8)</td>
 <td align="right">165</td>
-<td align="right">32</td>
-<td align="left">-4.9%</td>
+<td align="right">33</td>
+<td align="left">-5.9%</td>
 </tr>
 <tr class="even">
 <td align="left">Germany</td>
-<td align="right">2017</td>
-<td align="left">7.5 (6.4 - 8.7)</td>
-<td align="right">170</td>
+<td align="right">2018</td>
+<td align="left">7.3 (6.2 - 8.4)</td>
+<td align="right">166</td>
 <td align="right">34</td>
-<td align="left">1.8%</td>
+<td align="left">2.6%</td>
 </tr>
 <tr class="odd">
 <td align="left">## Plotting Incid</td>
@@ -752,14 +750,14 @@
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb14-4" data-line-number="4">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb14-5" data-line-number="5">               <span class="dt">legend =</span> <span class="st">"top"</span>)</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be a lot of this.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(tb_burden, <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>,</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb15-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>)</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-facet-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>To explore within country variation we need to change the scale of the y axis.</p>
@@ -767,7 +765,7 @@
 <a class="sourceLine" id="cb16-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb16-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>,</a>
 <a class="sourceLine" id="cb16-4" data-line-number="4">               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt; 1 results found for your variable search for e_inc_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-incidence-facet-free-y-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We might also be interested in mortality in both HIV negative and HIV positive cases in our sample countries. We can also look at this using <code>plot_tb_burden</code> as follows. Note we can do this without specifying the TB burden data, the plotting function will automatically find it either locally or remotely.</p>
@@ -775,20 +773,20 @@
 <a class="sourceLine" id="cb17-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb17-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>,</a>
 <a class="sourceLine" id="cb17-4" data-line-number="4">               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb17-7" data-line-number="7"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">#&gt; 1 results found for your variable search for e_mort_exc_tbhiv_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-mortality-excluding-hiv-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">metric =</span> <span class="st">"e_mort_tbhiv_100k"</span>,</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2">               <span class="dt">countries =</span> sample_countries,</a>
 <a class="sourceLine" id="cb18-3" data-line-number="3">               <span class="dt">facet =</span> <span class="st">"country"</span>,</a>
 <a class="sourceLine" id="cb18-4" data-line-number="4">               <span class="dt">scales =</span> <span class="st">"free_y"</span>)</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/tb_burden.rds</span></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/mdr_tb.rds</span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/tb_burden.rds</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/mdr_tb.rds</span></a>
 <a class="sourceLine" id="cb18-7" data-line-number="7"><span class="co">#&gt; Joining TB burden data and MDR TB data.</span></a>
-<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/Rtmp6R9RtK/dictionary.rds</span></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="co">#&gt; Loading data from: /tmp/RtmpUpxyYA/dictionary.rds</span></a>
 <a class="sourceLine" id="cb18-9" data-line-number="9"><span class="co">#&gt; 1 results found for your variable search for e_mort_tbhiv_100k</span></a></code></pre></div>
 <p><img src="intro_files/figure-html/plot-mortality-including-hiv-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>

@@ -13,8 +13,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
@@ -132,7 +132,7 @@
       <h1>Exploring Global Trends in Tuberculosis Incidence Rates</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-10-16</h4>
+            <h4 class="date">2019-10-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_study_global_trends.Rmd"><code>vignettes/case_study_global_trends.Rmd</code></a></small>
       <div class="hidden name"><code>case_study_global_trends.Rmd</code></div>
@@ -308,7 +308,7 @@
 <a class="sourceLine" id="cb7-17" data-line-number="17"><span class="st">  </span>unique</a>
 <a class="sourceLine" id="cb7-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb7-19" data-line-number="19">high_inc_up_countries &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/sets.html">intersect</a></span>(countries_inc_up, high_inc_countries)</a></code></pre></div>
-<p>This results in a list of 47 countries all of which had higher incidence rates in 2016 than in 2000. Of these countries 9 were in the top 20 countries by incidence rate in 2016. This can plotted below using <code><a href="../reference/plot_tb_burden_overview.html">getTBinR::plot_tb_burden_overview</a></code>,</p>
+<p>This results in a list of 49 countries all of which had higher incidence rates in 2016 than in 2000. Of these countries 9 were in the top 20 countries by incidence rate in 2016. This can plotted below using <code><a href="../reference/plot_tb_burden_overview.html">getTBinR::plot_tb_burden_overview</a></code>,</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/plot_tb_burden_overview.html">plot_tb_burden_overview</a></span>(<span class="dt">df =</span> tb_burden,</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">                        <span class="dt">dict =</span> dict, </a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">                        <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>, </a>
@@ -355,6 +355,12 @@
 <td align="left">Estimates</td>
 <td align="left"></td>
 <td align="left">Case detection rate (all forms) [also known as TB treatment coverage], percent, low bound</td>
+</tr>
+<tr class="even">
+<td align="left">lf_urine_lam</td>
+<td align="left">Policies and services</td>
+<td align="left">0=No; 1=yes</td>
+<td align="left">Does national policy and the diagnostic algorithm indicate the use of the lateral flow urine lipoarabinomannan assay (LF-LAM) to assist in the detection of TB in people living with HIV?</td>
 </tr>
 </tbody>
 </table>
