@@ -25,8 +25,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -86,7 +86,7 @@ include this in any estimated summary measures. Currently two statistics are sup
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.7.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.7.1</span>
       </span>
     </div>
 
@@ -311,7 +311,7 @@ stratified by area and year.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get the most recent year of data</span>
-<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
+<span class='no'>tb_burden</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='no'>most_recent_year</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>tb_burden</span>$<span class='no'>year</span>)
 
 <span class='co'>## Get summary of the e_mdr_pct_rr_new cases</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_mdr_pct_rr_new"</span>,
@@ -320,17 +320,17 @@ stratified by area and year.</p>
                     <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
                     <span class='kw'>compare_all_regions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                     <span class='kw'>compare_to_world</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2017</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
+                    <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mdr_pct_rr_new</span></div><div class='output co'>#&gt; <span class='message'>Filtering to use only data from: 2018</span></div><div class='output co'>#&gt; <span class='message'>Confidence intervals were not found using your specified conf, so defaulting to estimating</span>
 #&gt; <span class='message'>                only based on the point estimate.</span></div><div class='output co'>#&gt; # A tibble: 7 x 5
 #&gt;   area               year e_mdr_pct_rr_new e_mdr_pct_rr_new_… e_mdr_pct_rr_new_…
 #&gt;   &lt;fct&gt;             &lt;int&gt;            &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
-#&gt; 1 Africa             2017             68.1               39.1               97.1
-#&gt; 2 Americas           2017             81.5               60.6              102. 
-#&gt; 3 Eastern Mediterr…  2017             77.0               33.5              120. 
-#&gt; 4 Europe             2017             95.2               77.8              113. 
-#&gt; 5 Global             2017             81.4               49.4              113. 
-#&gt; 6 South-East Asia    2017             85.5               42.2              129. 
-#&gt; 7 Western Pacific    2017             79.3               59.7               98.9</div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+#&gt; 1 Africa             2018             79.8               51.9               108.
+#&gt; 2 Americas           2018             71.4               41.4               101.
+#&gt; 3 Eastern Mediterr…  2018             79.6               39.2               120.
+#&gt; 4 Europe             2018             83.3               45.8               121.
+#&gt; 5 Global             2018             78.5               41.1               116.
+#&gt; 6 South-East Asia    2018             96.4               79.7               113.
+#&gt; 7 Western Pacific    2018             72.8               24.6               121.</div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>## Get median (with 95% IQR) of the case fatality rate for regions and the world</span>
 <span class='co'>## Boostrapping uncertainty in country measures</span>
 <span class='fu'>summarise_tb_burden</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"cfr"</span>,
@@ -379,7 +379,7 @@ stratified by area and year.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.9900.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

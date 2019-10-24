@@ -25,8 +25,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -87,7 +87,7 @@ in the last decade. For a more customisable metric summary see summarise_tb_burd
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.7.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.7.1</span>
       </span>
     </div>
 
@@ -245,26 +245,26 @@ value for the metric, the regional rank, the global rank and the average change 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Get a summary of TB incidence rates for the united kingdom and germany</span>
-<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Germany"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 2 x 6
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"e_inc_100k"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"United Kingdom"</span>, <span class='st'>"Germany"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 2 x 6
 #&gt;   country         year metric          world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;                &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
-#&gt; 1 United Kingdom  2017 8.9 (8.1 - 9.8)        165          32 -4.9%     
-#&gt; 2 Germany         2017 7.5 (6.4 - 8.7)        170          34 1.8%      </div><div class='input'>
+#&gt; 1 United Kingdom  2018 8 (7.2 - 8.8)          165          33 -5.9%     
+#&gt; 2 Germany         2018 7.3 (6.2 - 8.4)        166          34 2.6%      </div><div class='input'>
 <span class='co'>## Get a summary of case detection rates in France</span>
-<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
 #&gt;   country  year metric       world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
-#&gt; 1 France   2017 83 (73 - 94)         93          40 0%        </div><div class='input'>
+#&gt; 1 France   2018 83 (73 - 94)         93          37 0%        </div><div class='input'>
 <span class='co'>## Get a summary of case detection rates in France - without confidence intervals</span>
-<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
+<span class='fu'>summarise_metric</span>(<span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>, <span class='kw'>conf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='output co'>#&gt; # A tibble: 1 x 6
 #&gt;   country  year metric world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;      &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
-#&gt; 1 France   2017     83         93          40 0%        </div><div class='input'>
+#&gt; 1 France   2018     83         93          37 0%        </div><div class='input'>
 <span class='co'>## Provide a dataset and get summary measures from it. </span>
-<span class='no'>tb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpGBRUaE/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+<span class='no'>tb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tb_burden.html'>get_tb_burden</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/tb_burden.rds</span></div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/Rtmp5Xd2Po/mdr_tb.rds</span></div><div class='output co'>#&gt; <span class='message'>Joining TB burden data and MDR TB data.</span></div><div class='input'><span class='fu'>summarise_metric</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb</span>, <span class='kw'>metric</span> <span class='kw'>=</span> <span class='st'>"c_cdr"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"France"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
 #&gt;   country  year metric       world_rank region_rank avg_change
 #&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     
-#&gt; 1 France   2017 83 (73 - 94)         93          40 0%        </div></pre>
+#&gt; 1 France   2018 83 (73 - 94)         93          37 0%        </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -284,7 +284,7 @@ value for the metric, the regional rank, the global rank and the average change 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.9900.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>
