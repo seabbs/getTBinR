@@ -99,7 +99,7 @@ shinyServer(function(input, output, session) {
   year <- reactive({
     
     if (is.null(input$year)) {
-      year <- 2016
+      year <- 2018
     }else{
       year <- input$year
     }

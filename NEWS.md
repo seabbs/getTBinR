@@ -1,3 +1,11 @@
+# getTBinR 0.7.1 (in development)
+
+## Feature updates
+
+* Switched dashboard to defaulting to 2018 data.
+
+## Package updates
+
 # getTBinR 0.7.0
 
 ## Feature updates
