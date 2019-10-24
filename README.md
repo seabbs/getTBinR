@@ -3,7 +3,7 @@
 
 [![badge](https://img.shields.io/badge/Launch-getTBinR-blue.svg)](https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio)
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.7.0-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.7.1-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
 [![DOI](https://zenodo.org/badge/112591837.svg)](https://zenodo.org/badge/latestdoi/112591837)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01260/status.svg)](https://doi.org/10.21105/joss.01260)
 [![metacran monthly
@@ -76,12 +76,12 @@ temporary directory),
 ``` r
 getTBinR::map_tb_burden(metric = "e_inc_100k")
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/Rtmp7FpgvP/tb_burden.rds
+#> Saving data to: /tmp/RtmpEbOB9k/tb_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Saving data to: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Saving data to: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -95,10 +95,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmp7FpgvP/tb_burden.rds
-#> Loading data from: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Loading data from: /tmp/RtmpEbOB9k/tb_burden.rds
+#> Loading data from: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Loading data from: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -113,10 +113,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/Rtmp7FpgvP/tb_burden.rds
-#> Loading data from: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Loading data from: /tmp/RtmpEbOB9k/tb_burden.rds
+#> Loading data from: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Loading data from: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -134,23 +134,23 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  compare_to_region = TRUE,
                                  compare_to_world = TRUE,
                                  interactive = FALSE)
-#> Loading data from: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Loading data from: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Extracting data for specified countries
-#> Loading data from: /tmp/Rtmp7FpgvP/tb_burden.rds
-#> Loading data from: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Loading data from: /tmp/RtmpEbOB9k/tb_burden.rds
+#> Loading data from: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Loading data from: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/Rtmp7FpgvP/tb_burden.rds
-#> Loading data from: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Loading data from: /tmp/RtmpEbOB9k/tb_burden.rds
+#> Loading data from: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Loading data from: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/Rtmp7FpgvP/tb_burden.rds
-#> Loading data from: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Loading data from: /tmp/RtmpEbOB9k/tb_burden.rds
+#> Loading data from: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Loading data from: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
 ```
 
@@ -163,10 +163,10 @@ us to get a clear picture of trends in TB incidence rates in the UK.
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          interactive = FALSE)
-#> Loading data from: /tmp/Rtmp7FpgvP/tb_burden.rds
-#> Loading data from: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Loading data from: /tmp/RtmpEbOB9k/tb_burden.rds
+#> Loading data from: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/Rtmp7FpgvP/dictionary.rds
+#> Loading data from: /tmp/RtmpEbOB9k/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -179,13 +179,13 @@ available data with the following,
 ``` r
 getTBinR::summarise_metric(metric = "e_inc_100k",
                            countries = "United Kingdom")
-#> Loading data from: /tmp/Rtmp7FpgvP/tb_burden.rds
-#> Loading data from: /tmp/Rtmp7FpgvP/mdr_tb.rds
+#> Loading data from: /tmp/RtmpEbOB9k/tb_burden.rds
+#> Loading data from: /tmp/RtmpEbOB9k/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
 #> # A tibble: 1 x 6
-#>   country         year metric          world_rank region_rank avg_change
-#>   <chr>          <int> <chr>                <int>       <int> <chr>     
-#> 1 United Kingdom  2017 8.9 (8.1 - 9.8)        165          32 -4.9%
+#>   country         year metric        world_rank region_rank avg_change
+#>   <chr>          <int> <chr>              <int>       <int> <chr>     
+#> 1 United Kingdom  2018 8 (7.2 - 8.8)        165          33 -5.9%
 ```
 
 Or a more detailed dataset as follows,
@@ -197,7 +197,7 @@ getTBinR::summarise_tb_burden(metric = "e_inc_num",
                               compare_to_world = FALSE, 
                               compare_to_region = FALSE,
                               verbose = FALSE) 
-#> # A tibble: 126 x 5
+#> # A tibble: 133 x 5
 #>    area            year e_inc_num e_inc_num_lo e_inc_num_hi
 #>    <fct>          <int>     <dbl>        <dbl>        <dbl>
 #>  1 United Kingdom  2000      11.9         10.7         13.1
@@ -207,10 +207,10 @@ getTBinR::summarise_tb_burden(metric = "e_inc_num",
 #>  5 United Kingdom  2004      13.2         11.9         14.5
 #>  6 United Kingdom  2005      15.3         13.8         16.6
 #>  7 United Kingdom  2006      15.3         13.8         16.4
-#>  8 United Kingdom  2007      14.7         13.2         16.1
+#>  8 United Kingdom  2007      14.6         13.2         16.1
 #>  9 United Kingdom  2008      15.0         13.5         16.1
 #> 10 United Kingdom  2009      14.5         13.1         15.9
-#> # … with 116 more rows
+#> # … with 123 more rows
 ```
 
 Here `e_inc_num` is used rather than `e_inc_100k` as incidence rates are
@@ -262,20 +262,20 @@ Alternatively, they can all be imported in one go using
 
 ``` r
 getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
-#> # A tibble: 8,290 x 461
+#> # A tibble: 8,694 x 485
 #>    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #>    <chr>   <chr> <chr>       <int> <chr>       <int>     <int>      <dbl>
-#>  1 Afghan… AF    AFG             4 Eastern Me…  2000  20093756        190
-#>  2 Afghan… AF    AFG             4 Eastern Me…  2001  20966463        189
-#>  3 Afghan… AF    AFG             4 Eastern Me…  2002  21979923        189
-#>  4 Afghan… AF    AFG             4 Eastern Me…  2003  23064851        189
-#>  5 Afghan… AF    AFG             4 Eastern Me…  2004  24118979        189
-#>  6 Afghan… AF    AFG             4 Eastern Me…  2005  25070798        189
-#>  7 Afghan… AF    AFG             4 Eastern Me…  2006  25893450        189
-#>  8 Afghan… AF    AFG             4 Eastern Me…  2007  26616792        189
-#>  9 Afghan… AF    AFG             4 Eastern Me…  2008  27294031        189
-#> 10 Afghan… AF    AFG             4 Eastern Me…  2009  28004331        189
-#> # … with 8,280 more rows, and 453 more variables: e_inc_100k_lo <dbl>,
+#>  1 Afghan… AF    AFG             4 Eastern Me…  2000  20779953        190
+#>  2 Afghan… AF    AFG             4 Eastern Me…  2001  21606988        189
+#>  3 Afghan… AF    AFG             4 Eastern Me…  2002  22600770        189
+#>  4 Afghan… AF    AFG             4 Eastern Me…  2003  23680871        189
+#>  5 Afghan… AF    AFG             4 Eastern Me…  2004  24726684        189
+#>  6 Afghan… AF    AFG             4 Eastern Me…  2005  25654277        189
+#>  7 Afghan… AF    AFG             4 Eastern Me…  2006  26433049        189
+#>  8 Afghan… AF    AFG             4 Eastern Me…  2007  27100536        189
+#>  9 Afghan… AF    AFG             4 Eastern Me…  2008  27722276        189
+#> 10 Afghan… AF    AFG             4 Eastern Me…  2009  28394813        189
+#> # … with 8,684 more rows, and 477 more variables: e_inc_100k_lo <dbl>,
 #> #   e_inc_100k_hi <dbl>, e_inc_num <int>, e_inc_num_lo <int>,
 #> #   e_inc_num_hi <int>, e_tbhiv_prct <dbl>, e_tbhiv_prct_lo <dbl>,
 #> #   e_tbhiv_prct_hi <dbl>, e_inc_tbhiv_100k <dbl>,
@@ -290,6 +290,7 @@ getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
 #> #   e_mort_tbhiv_num_hi <int>, e_mort_100k <dbl>, e_mort_100k_lo <dbl>,
 #> #   e_mort_100k_hi <dbl>, e_mort_num <int>, e_mort_num_lo <int>,
 #> #   e_mort_num_hi <int>, cfr <dbl>, cfr_lo <dbl>, cfr_hi <dbl>,
+#> #   cfr_pct <int>, cfr_pct_lo <int>, cfr_pct_hi <int>,
 #> #   c_newinc_100k <dbl>, c_cdr <dbl>, c_cdr_lo <dbl>, c_cdr_hi <dbl>,
 #> #   source_rr_new <chr>, source_drs_coverage_new <chr>,
 #> #   source_drs_year_new <int>, e_rr_pct_new <dbl>, e_rr_pct_new_lo <dbl>,
@@ -297,22 +298,23 @@ getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
 #> #   source_drs_coverage_ret <chr>, source_drs_year_ret <int>,
 #> #   e_rr_pct_ret <dbl>, e_rr_pct_ret_lo <dbl>, e_rr_pct_ret_hi <dbl>,
 #> #   e_mdr_pct_rr_ret <int>, e_inc_rr_num <int>, e_inc_rr_num_lo <int>,
-#> #   e_inc_rr_num_hi <int>, e_mdr_pct_rr <int>,
-#> #   e_rr_in_notified_pulm <int>, e_rr_in_notified_pulm_lo <int>,
-#> #   e_rr_in_notified_pulm_hi <int>, source_hh <chr>, e_hh_size <dbl>,
-#> #   prevtx_data_available <int>, newinc_con04_prevtx <int>,
-#> #   ptsurvey_newinc <lgl>, ptsurvey_newinc_con04_prevtx <lgl>,
-#> #   e_prevtx_eligible <dbl>, e_prevtx_eligible_lo <dbl>,
-#> #   e_prevtx_eligible_hi <dbl>, e_prevtx_kids_pct <dbl>,
-#> #   e_prevtx_kids_pct_lo <dbl>, e_prevtx_kids_pct_hi <dbl>, new_sp <int>,
-#> #   new_sn <int>, new_su <int>, new_ep <int>, new_oth <int>,
-#> #   ret_rel <int>, ret_taf <int>, ret_tad <int>, ret_oth <int>,
-#> #   newret_oth <int>, new_labconf <int>, new_clindx <int>,
-#> #   ret_rel_labconf <int>, ret_rel_clindx <int>, ret_rel_ep <int>,
-#> #   ret_nrel <int>, notif_foreign <int>, c_newinc <int>, new_sp_m04 <int>,
-#> #   new_sp_m514 <int>, new_sp_m014 <int>, new_sp_m1524 <int>,
-#> #   new_sp_m2534 <int>, new_sp_m3544 <int>, new_sp_m4554 <int>,
-#> #   new_sp_m5564 <int>, new_sp_m65 <int>, new_sp_mu <int>, …
+#> #   e_inc_rr_num_hi <int>, e_mdr_pct_rr <dbl>,
+#> #   e_rr_in_notified_labconf_pulm <int>,
+#> #   e_rr_in_notified_labconf_pulm_lo <int>,
+#> #   e_rr_in_notified_labconf_pulm_hi <int>, source_hh <chr>,
+#> #   e_hh_size <dbl>, prevtx_data_available <int>,
+#> #   newinc_con04_prevtx <int>, ptsurvey_newinc <int>,
+#> #   ptsurvey_newinc_con04_prevtx <int>, e_prevtx_eligible <dbl>,
+#> #   e_prevtx_eligible_lo <dbl>, e_prevtx_eligible_hi <dbl>,
+#> #   e_prevtx_kids_pct <dbl>, e_prevtx_kids_pct_lo <dbl>,
+#> #   e_prevtx_kids_pct_hi <dbl>, new_sp <int>, new_sn <int>, new_su <int>,
+#> #   new_ep <int>, new_oth <int>, ret_rel <int>, ret_taf <int>,
+#> #   ret_tad <int>, ret_oth <int>, newret_oth <int>, new_labconf <int>,
+#> #   new_clindx <int>, ret_rel_labconf <int>, ret_rel_clindx <int>,
+#> #   ret_rel_ep <int>, ret_nrel <int>, notif_foreign <int>, c_newinc <int>,
+#> #   new_sp_m04 <int>, new_sp_m514 <int>, new_sp_m014 <int>,
+#> #   new_sp_m1524 <int>, new_sp_m2534 <int>, new_sp_m3544 <int>,
+#> #   new_sp_m4554 <int>, …
 ```
 
 Once imported, these datasets can be used in the plotting and summary

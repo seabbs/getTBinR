@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 [![badge](https://img.shields.io/badge/Launch-getTBinR-blue.svg)](https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio) 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.7.0-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.7.1-blue.svg?style=flat)](https://github.com/seabbs/getTBinR)
 [![DOI](https://zenodo.org/badge/112591837.svg)](https://zenodo.org/badge/latestdoi/112591837)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01260/status.svg)](https://doi.org/10.21105/joss.01260)
 [![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.org/package=getTBinR)
