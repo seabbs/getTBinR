@@ -140,6 +140,17 @@ getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
 
 Once imported, these datasets can be used in the plotting and summary functions provided by `getTBinR` (by passing them to their `df` argument or using the `additional_datasets` argument in each function). See the contributing section if their are any other datasets that you think `getTBinR` should support or if you have suggestions for better descriptions for each dataset.
 
+## WHO-inspired themes and palettes. 
+
+The WHO makes use of several standardised plot themes and colour palettes. `getTBinR` implements these so that the package can be easily used internally at the WHO or by those collaborating with the WHO. 
+
+```{r who-theme-example, message = FALSE, warning = FALSE}
+getTBinR::plot_tb_burden_summary(countries = "United Kingdom", compare_all_regions = FALSE, 
+                                 compare_to_region = TRUE, verbose = FALSE) +
+  getTBinR::theme_who() +
+  getTBinR::scale_colour_who(reverse = TRUE) +
+  getTBinR::scale_fill_who(reverse = TRUE)
+```
 ## Shiny dashboard
 
 To explore the package functionality in an interactive session, or to investigate TB without having to code extensively in R, a shiny dashboard has been built into the package. This can either be used locally using, 
