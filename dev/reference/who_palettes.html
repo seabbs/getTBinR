@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • getTBinR</title>
+<title>World Health Organization-inspired palettes — who_palettes • getTBinR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +48,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="World Health Organization-inspired palettes — who_palettes" />
+<meta property="og:description" content="World Health Organization-inspired palettes" />
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -69,7 +70,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -169,210 +170,64 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>World Health Organization-inspired palettes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/getTBinR/blob/master/R/who_palettes.R'><code>R/who_palettes.R</code></a></small>
+    <div class="hidden name"><code>who_palettes.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>World Health Organization-inspired palettes</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>who_palettes</span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"main"</span>, <span class='kw'>reverse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-get-who-tuberculosis-data" class="hasAnchor"><a href="#section-get-who-tuberculosis-data" class="anchor"></a>Get WHO Tuberculosis Data</h2>
-          <p class="section-desc"><p>Retrieve or load the WHO data into R</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="get_data.html">get_data()</a></code> </p>
-        </td>
-        <td><p>Generic Get Data Function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_data_dict.html">get_data_dict()</a></code> </p>
-        </td>
-        <td><p>Get the WHO Data Dictionary for TB Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_tb_burden.html">get_tb_burden()</a></code> </p>
-        </td>
-        <td><p>Get the WHO TB Burden Data</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-summarise-who-tuberculosis-data" class="hasAnchor"><a href="#section-summarise-who-tuberculosis-data" class="anchor"></a>Summarise WHO Tuberculosis Data</h2>
-          <p class="section-desc"><p>Get useful regional and global summaries of TB metrics</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="summarise_metric.html">summarise_metric()</a></code> </p>
-        </td>
-        <td><p>Summarise a TB Metric - A Quick Look Summary</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summarise_tb_burden.html">summarise_tb_burden()</a></code> </p>
-        </td>
-        <td><p>Summarise TB Burden - By Region, Globally and for Custom Groups</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-map-who-tuberculosis-data" class="hasAnchor"><a href="#section-map-who-tuberculosis-data" class="anchor"></a>Map WHO Tuberculosis Data</h2>
-          <p class="section-desc"><p>Make maps of the WHO tuberculois data</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="map_tb_burden.html">map_tb_burden()</a></code> </p>
-        </td>
-        <td><p>Map TB Burden</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-plot-who-tuberculosis-data" class="hasAnchor"><a href="#section-plot-who-tuberculosis-data" class="anchor"></a>Plot WHO Tuberculosis Data</h2>
-          <p class="section-desc"><p>Generate exploratory plots of the WHO Tuberulosis data.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="plot_tb_burden.html">plot_tb_burden()</a></code> </p>
-        </td>
-        <td><p>Plot TB Burden by Country</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_tb_burden_overview.html">plot_tb_burden_overview()</a></code> </p>
-        </td>
-        <td><p>Plot an overview of TB Burden for Multiple Countries</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_tb_burden_summary.html">plot_tb_burden_summary()</a></code> </p>
-        </td>
-        <td><p>Plot Summaries of TB Burden - By Region, Globally and for Custom Groups</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-dashboards" class="hasAnchor"><a href="#section-dashboards" class="anchor"></a>Dashboards</h2>
-          <p class="section-desc"><p>Launch interactive dashboards showcasing package functionality. These dashboards require the shiny package.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="run_tb_dashboard.html">run_tb_dashboard()</a></code> </p>
-        </td>
-        <td><p>Run a TB Shiny Dashboard</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-reports" class="hasAnchor"><a href="#section-reports" class="anchor"></a>Reports</h2>
-          <p class="section-desc"><p>Render parameterised reports showcasing package functionality. These reports require the rmarkdown package.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="render_country_report.html">render_country_report()</a></code> </p>
-        </td>
-        <td><p>Render a Country Level TB Report</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-themes-and-palettes" class="hasAnchor"><a href="#section-themes-and-palettes" class="anchor"></a>Themes and Palettes</h2>
-          <p class="section-desc"><p>Customised `{ggplot2} themes and colour palettes.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="theme_who.html">theme_who()</a></code> </p>
-        </td>
-        <td><p>World Health Organization-inspired ggplot2 theme</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="who_palettes.html">who_palettes()</a></code> </p>
-        </td>
-        <td><p>World Health Organization-inspired palettes</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-helpers" class="hasAnchor"><a href="#section-helpers" class="anchor"></a>Helpers</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="search_data_dict.html">search_data_dict()</a></code> </p>
-        </td>
-        <td><p>Search the WHO TB Data Dictionary by Variable Name.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="prepare_df_plot.html">prepare_df_plot()</a></code> </p>
-        </td>
-        <td><p>Generic Function to Prepare TB Burden Data for Plotting</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-package-data" class="hasAnchor"><a href="#section-package-data" class="anchor"></a>Package Data</h2>
-          <p class="section-desc"><p>Data supplied with the package.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="available_datasets.html">available_datasets</a></code> </p>
-        </td>
-        <td><p>Available Datasets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="who_shapefile.html">who_shapefile</a></code> </p>
-        </td>
-        <td><p>WHO shapefile</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>palette</th>
+      <td><p>A character string. the colours of choice, current options are "main" and "light".</p></td>
+    </tr>
+    <tr>
+      <th>reverse</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. Should the palette be reversed.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Pass additional arguments to <code>colorRampPalette</code>.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>scale_colour_who scale_fill_who</p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># Set up the main palette but reversed.</span>
+<span class='fu'>who_palettes</span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"main"</span>, <span class='kw'>reverse</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; function (n) 
+#&gt; {
+#&gt;     x &lt;- ramp(seq.int(0, 1, length.out = n))
+#&gt;     if (ncol(x) == 4L) 
+#&gt;         rgb(x[, 1L], x[, 2L], x[, 3L], x[, 4L], maxColorValue = 255)
+#&gt;     else rgb(x[, 1L], x[, 2L], x[, 3L], maxColorValue = 255)
+#&gt; }
+#&gt; &lt;bytecode: 0x94e12b8&gt;
+#&gt; &lt;environment: 0x76243a8&gt;</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-get-who-tuberculosis-data">Get WHO Tuberculosis Data</a></li>
-      <li><a href="#section-summarise-who-tuberculosis-data">Summarise WHO Tuberculosis Data</a></li>
-      <li><a href="#section-map-who-tuberculosis-data">Map WHO Tuberculosis Data</a></li>
-      <li><a href="#section-plot-who-tuberculosis-data">Plot WHO Tuberculosis Data</a></li>
-      <li><a href="#section-dashboards">Dashboards</a></li>
-      <li><a href="#section-reports">Reports</a></li>
-      <li><a href="#section-themes-and-palettes">Themes and Palettes</a></li>
-      <li><a href="#section-helpers">Helpers</a></li>
-      <li><a href="#section-package-data">Package Data</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    <p>Maria Bekker-Nielsen Dunbar</p>
+<p>Sam Abbott</p>
   </div>
 </div>
 
