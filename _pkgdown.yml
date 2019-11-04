@@ -67,7 +67,7 @@ reference:
       contents:
       - starts_with("theme")
       - who_palettes
-      - start_with("scale_")
+      - starts_with("scale_")
     - title: Helpers
       contents:
       - search_data_dict
