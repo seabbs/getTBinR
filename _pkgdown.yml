@@ -62,6 +62,12 @@ reference:
       desc: Render parameterised reports showcasing package functionality. These reports require the rmarkdown package.
       contents:
       - starts_with("render_")
+    - title: Themes and Palettes 
+      desc: Customised `{ggplot2} themes and colour palettes.
+      contents:
+      - starts_with("theme")
+      - who_palettes
+      - start_with("scale_")
     - title: Helpers
       contents:
       - search_data_dict

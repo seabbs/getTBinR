@@ -35,5 +35,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (0000-0001-8057-8037)
 
+Other contributors:
+\itemize{
+  \item Maria Bekker-Nielsen Dunbar (0000-0002-7249-3524) [contributor]
+}
+
 }
 \keyword{internal}

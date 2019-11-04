@@ -2,9 +2,16 @@
 
 ## Feature updates
 
-* Switched dashboard to defaulting to 2018 data.
+* Switched dashboard to default to 2018 data.
+* Added a new WHO inspired `{ggplot2}` theme (`theme_who`) and colour palette (`who_palettes`) resolving issue [#86](https://github.com/seabbs/getTBinR/issues/86). Plus `scale_colour` and `scale_fill_who` functions for using the palette. Thanks to [@mariabnd](https://github.com/mariabnd) for implementing this.
 
 ## Package updates
+
+* Additional testing and examples to support the new WHO inspired theme and colour palettes.
+* Additional documentation for the new WHO inspired theme and colour palettes.
+* Added [@mariabnd](https://github.com/mariabnd) as a package contributor.
+
+Thanks to [@mariabnd](https://github.com/mariabnd) for contributiong to this release.
 
 # getTBinR 0.7.0
 
