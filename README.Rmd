@@ -151,6 +151,7 @@ getTBinR::plot_tb_burden_summary(countries = "United Kingdom", compare_all_regio
   getTBinR::scale_colour_who(reverse = TRUE) +
   getTBinR::scale_fill_who(reverse = TRUE)
 ```
+
 ## Shiny dashboard
 
 To explore the package functionality in an interactive session, or to investigate TB without having to code extensively in R, a shiny dashboard has been built into the package. This can either be used locally using, 

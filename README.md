@@ -76,12 +76,12 @@ temporary directory),
 ``` r
 getTBinR::map_tb_burden(metric = "e_inc_100k")
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpDWGITq/tb_burden.rds
+#> Saving data to: /tmp/RtmpkjkDp6/tb_burden.rds
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Saving data to: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
 #> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpDWGITq/dictionary.rds
+#> Saving data to: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -95,10 +95,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpDWGITq/tb_burden.rds
-#> Loading data from: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
+#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpDWGITq/dictionary.rds
+#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -113,10 +113,10 @@ getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   compare_to_region = TRUE,
                                   annual_change = TRUE,
                                   interactive = FALSE)
-#> Loading data from: /tmp/RtmpDWGITq/tb_burden.rds
-#> Loading data from: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
+#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpDWGITq/dictionary.rds
+#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -134,23 +134,23 @@ getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  compare_to_region = TRUE,
                                  compare_to_world = TRUE,
                                  interactive = FALSE)
-#> Loading data from: /tmp/RtmpDWGITq/dictionary.rds
+#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 #> Extracting data for specified countries
-#> Loading data from: /tmp/RtmpDWGITq/tb_burden.rds
-#> Loading data from: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
+#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpDWGITq/dictionary.rds
+#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpDWGITq/tb_burden.rds
-#> Loading data from: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
+#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpDWGITq/dictionary.rds
+#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpDWGITq/tb_burden.rds
-#> Loading data from: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
+#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpDWGITq/dictionary.rds
+#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_num
 ```
 
@@ -163,10 +163,10 @@ us to get a clear picture of trends in TB incidence rates in the UK.
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
                          countries = "United Kingdom",
                          interactive = FALSE)
-#> Loading data from: /tmp/RtmpDWGITq/tb_burden.rds
-#> Loading data from: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
+#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpDWGITq/dictionary.rds
+#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
 #> 1 results found for your variable search for e_inc_100k
 ```
 
@@ -179,8 +179,8 @@ available data with the following,
 ``` r
 getTBinR::summarise_metric(metric = "e_inc_100k",
                            countries = "United Kingdom")
-#> Loading data from: /tmp/RtmpDWGITq/tb_burden.rds
-#> Loading data from: /tmp/RtmpDWGITq/mdr_tb.rds
+#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
+#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
 #> Joining TB burden data and MDR TB data.
 #> # A tibble: 1 x 6
 #>   country         year metric        world_rank region_rank avg_change
@@ -339,7 +339,9 @@ getTBinR::plot_tb_burden_summary(countries = "United Kingdom", compare_all_regio
   getTBinR::scale_fill_who(reverse = TRUE)
 ```
 
-![](man/figures/who-theme-example-1.png)<!-- --> \#\# Shiny dashboard
+![](man/figures/who-theme-example-1.png)<!-- -->
+
+## Shiny dashboard
 
 To explore the package functionality in an interactive session, or to
 investigate TB without having to code extensively in R, a shiny
