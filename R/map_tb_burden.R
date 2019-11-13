@@ -141,7 +141,7 @@ map_tb_burden <- function(df = NULL, dict = NULL,
     ggthemes::theme_map() +
     theme(legend.position = legend) +
     guides(fill = guide_legend(title = df_prep$metric_label)) +
-    labs(caption = "Source: World Health Organisation")
+    labs(caption = "Source: World Health Organization")
   
   if (annual_change) {
     

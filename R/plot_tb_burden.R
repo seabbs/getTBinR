@@ -136,7 +136,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
     theme_minimal() +
     theme(legend.position = legend) +
     labs(x = "Year", y = df_prep$metric_label,
-         caption = "Source: World Health Organisation")
+         caption = "Source: World Health Organization")
   
   if (annual_change) {
     plot <- plot +
