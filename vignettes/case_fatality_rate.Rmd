@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This case study investigates World Health Organisation (WHO) estimates of the case fatality ratio for Tuberculosis (TB). It then estimates case fatality rates using a simple approximation and compares the results to the WHO estimates. It was adapted from [this](https://www.samabbott.co.uk/post/est-cfr-gettbinr/) blog post. 
+This case study investigates World Health Organization (WHO) estimates of the case fatality ratio for Tuberculosis (TB). It then estimates case fatality rates using a simple approximation and compares the results to the WHO estimates. It was adapted from [this](https://www.samabbott.co.uk/post/est-cfr-gettbinr/) blog post. 
 
 It is estimated that in 2016 there was more than 10 million cases of active TB, with 1.3 million deaths ([source](https://en.wikipedia.org/wiki/Tuberculosis)). This makes TB the leading cause of death from an infectious disease. Despite the high numbers of cases globally, and high levels of mortality, TB is often considered a historic disease in developed countries. However, in recent years previously declining trends have flattened out and there is increasing concern surrounding multi-drug resistant TB, which has a greatly reduced the rate of successful treatment ([source](http://www.who.int/mediacentre/factsheets/fs104/en/)).
 
@@ -137,7 +137,7 @@ plot_inc_region <- tb_burden %>%
                    y_lab = "Tuberculosis Incidence Rates (per 100,000 population)")
 
 plot_inc_region +
-  labs(caption = "Source: World Health Organisation")
+  labs(caption = "Source: World Health Organization")
 ```
 
 
@@ -151,7 +151,7 @@ plot_mort_region <- tb_burden %>%
                    y_lab = "Tuberculosis Mortality Rates (per 100,000 population)")
 
 plot_mort_region +
-  labs(caption = "Source: World Health Organisation")
+  labs(caption = "Source: World Health Organization")
 ```
 
 This gives an encouraging picture with both incidence rates and mortality rates declining in all regions (as of 2016). As we observed from the maps above incidence rates (and mortality rates) are highest in Africa, and South-East Asia. We also see that the rate of decline in incidence rates varies across regions, with South-East Asia and the Eastern Mediterranean experiencing the slowest decreases. Interestingly it also appears that mortality rates in some areas are decreasing more quickly than incidence rates, this is most notable for Europe. As mortality rates and incidence rates are highly correlated to explore in more depth we need to estimate the case fatality ratio for all years in the data. 
@@ -203,7 +203,7 @@ plot_region_case_fatality <- region_case_fatality %>%
   geom_linerange(data = region_case_fat, aes(ymin = lll, ymax = hhh, y = NULL), alpha = 0.2, size = 1.2, col = "black")
   
 plot_region_case_fatality +
-  labs(caption = "Source: World Health Organisation")
+  labs(caption = "Source: World Health Organization")
 ```
 
 We see that the estimate using mortality rates / incidence rates compares well to the estimate published for the most recent year by the WHO, although there is substantial within country variation. For all regions our estimate has substantial uncertainty. The plot suggests that the TB case fatality ratio is decreasing over time in all regions (as of 2016), although this reduction appears to be very minimal in some regions (such as the Americas, Africa, and the Eastern Mediterranean). It is likely that this trend does not hold across all countries, but this is beyond the scope of this post (watch this space). 

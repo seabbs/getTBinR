@@ -1,5 +1,5 @@
 
-# getTBinR: Access and Summarise World Health Organisation Tuberculosis Data <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# getTBinR: Access and Summarise World Health Organization Tuberculosis Data <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![badge](https://img.shields.io/badge/Launch-getTBinR-blue.svg)](https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio)
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/getTBinR)](https://CRAN.R-project.org/package=getTBinR)
@@ -12,7 +12,7 @@ downloads](http://cranlogs.r-pkg.org/badges/getTBinR)](https://cran.r-project.or
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/getTBinR?color=ff69b4)](https://cran.r-project.org/package=getTBinR)
 
 Quickly and easily import analysis ready Tuberculosis (TB) burden data,
-from the World Health Organisation (WHO), into R. The aim of `getTBinR`
+from the World Health Organization (WHO), into R. The aim of `getTBinR`
 is to allow researchers, and other interested individuals, to quickly
 and easily gain access to a detailed TB data set and to start using it
 to derive key insights. It provides a consistent set of tools that can

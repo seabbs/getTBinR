@@ -48,7 +48,7 @@ The first hit, `e_inc_100k`, is the TB incidence rate, with the next two variabl
 map_tb_burden(df = tb_burden, dict = dict, year = 2016,
               metric = "e_inc_100k", verbose = FALSE) +
   labs(title = "Map of Global Tuberculosis Incidence Rates - 2016",
-       subtitle = "", caption = "Source: World Health Organisation")
+       subtitle = "", caption = "Source: World Health Organization")
 ```
 
 This shows that incidence rates are highly heterogeneous between regions. To get an better understanding of this lets plot incidence rates by WHO region (**Note: This functionality has now been implemented into the `getTBinR` using `getTBinR::plot_tb_burden_summary(metric_label = "e_inc_100k", legend = "none", facet = "Area", scales = "free_y", compare_to_world = FALSE)`**), 
@@ -70,7 +70,7 @@ plot_tb_inc_region <- function(df = NULL, title = NULL, subtitle = NULL, scales 
   scale_colour_viridis(discrete = TRUE) +
   labs(title = title, subtitle = subtitle, 
        x = "Year", y = "Tuberculosis Incidence Rates (per 100,000 population)",
-       caption = "Source: World Health Organisation") +
+       caption = "Source: World Health Organization") +
   theme_minimal() +
   theme(legend.position = "none") +
   facet_wrap(~g_whoregion, scales = scales)
@@ -125,7 +125,7 @@ plot_tb_burden_overview(df = tb_burden,
                         verbose = FALSE) +
   labs(title = "Tuberculosis Incidence Rates from 2000-2016",
        subtitle = "Showing countries with the highest incidence rates in which incidence rates are increasing",
-       caption = "Source: World Health Organisation")
+       caption = "Source: World Health Organization")
 ```
 
 GetTBinR also supplies another function (`plot_tb_burden`) that can be used to visualise this,
@@ -137,7 +137,7 @@ plot_tb_burden(df = tb_burden,
                facet = "country", scales = "free_y", verbose = FALSE) +
   labs(title = "Tuberculosis Incidence Rates",
        subtitle = "Showing countries with the highest incidence rates in which incidence rates are increasing",
-       caption = "Source: World Health Organisation")
+       caption = "Source: World Health Organization")
 ```
 
 A possible cause of this may be that reporting of Tuberculosis notifications has improved over time, to understand this we first find the required variable in the data,
@@ -156,7 +156,7 @@ plot_tb_burden(df = tb_burden,
                facet = "country", scales = "free_y", verbose = FALSE) +
   labs(title = "Tuberculosis Detection Rates",
        subtitle = "Showing countries with the highest incidence rates in which incidence rates are increasing",
-       caption = "Source: World Health Organisation")
+       caption = "Source: World Health Organization")
 ```
 
 The plot above shows that for some countries such as Mozambique and South Africa the increases in incidence rates may be linked to increases in the cases detection rate. However, it is clear that this is not the case for all countries, in particular the Congo which has seen increasing incidence rates and falling case detection rates.

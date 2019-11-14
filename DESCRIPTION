@@ -1,6 +1,6 @@
 Type: Package
 Package: getTBinR
-Title: Access and Summarise World Health Organisation Tuberculosis data
+Title: Access and Summarise World Health Organization Tuberculosis data
 Version: 0.7.1
 Authors@R: c(
     person(given = "Sam Abbott",
@@ -11,7 +11,7 @@ Authors@R: c(
            role = c("ctb"),
            comment = c(ORCID = "0000-0002-7249-3524")))
 Description: Quickly and easily import analysis ready
-    Tuberculosis (TB) burden data, from the World Health Organisation
+    Tuberculosis (TB) burden data, from the World Health Organization
     (WHO), into R. The aim of getTBinR is to allow researchers, and other
     interested individuals, to quickly and easily gain access to a
     detailed TB data set and to start using it to derive key insights. It
