@@ -133,7 +133,7 @@
       <h1>Exploring Global Trends in Tuberculosis Incidence Rates</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-11-13</h4>
+            <h4 class="date">2019-11-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/getTBinR/blob/master/vignettes/case_study_global_trends.Rmd"><code>vignettes/case_study_global_trends.Rmd</code></a></small>
       <div class="hidden name"><code>case_study_global_trends.Rmd</code></div>
@@ -241,7 +241,7 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/map_tb_burden.html">map_tb_burden</a></span>(<span class="dt">df =</span> tb_burden, <span class="dt">dict =</span> dict, <span class="dt">year =</span> <span class="dv">2016</span>,</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">              <span class="dt">metric =</span> <span class="st">"e_inc_100k"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Map of Global Tuberculosis Incidence Rates - 2016"</span>,</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">       <span class="dt">subtitle =</span> <span class="st">""</span>, <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb4-4" data-line-number="4">       <span class="dt">subtitle =</span> <span class="st">""</span>, <span class="dt">caption =</span> <span class="st">"Source: World Health Organization"</span>)</a></code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/map-tb-2016-inc-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>This shows that incidence rates are highly heterogeneous between regions. To get an better understanding of this lets plot incidence rates by WHO region (<strong>Note: This functionality has now been implemented into the <code>getTBinR</code> using <code><a href="../reference/plot_tb_burden_summary.html">getTBinR::plot_tb_burden_summary(metric_label = "e_inc_100k", legend = "none", facet = "Area", scales = "free_y", compare_to_world = FALSE)</a></code></strong>),</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">tb_inc_region &lt;-<span class="st"> </span>tb_burden <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -272,7 +272,7 @@
 <a class="sourceLine" id="cb5-26" data-line-number="26"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/viridis/man/scale_viridis.html">scale_colour_viridis</a></span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-27" data-line-number="27"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> title, <span class="dt">subtitle =</span> subtitle, </a>
 <a class="sourceLine" id="cb5-28" data-line-number="28">       <span class="dt">x =</span> <span class="st">"Year"</span>, <span class="dt">y =</span> <span class="st">"Tuberculosis Incidence Rates (per 100,000 population)"</span>,</a>
-<a class="sourceLine" id="cb5-29" data-line-number="29">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-29" data-line-number="29">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organization"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-30" data-line-number="30"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-31" data-line-number="31"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-32" data-line-number="32"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>g_whoregion, <span class="dt">scales =</span> scales)</a>
@@ -317,7 +317,7 @@
 <a class="sourceLine" id="cb8-5" data-line-number="5">                        <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Tuberculosis Incidence Rates from 2000-2016"</span>,</a>
 <a class="sourceLine" id="cb8-7" data-line-number="7">       <span class="dt">subtitle =</span> <span class="st">"Showing countries with the highest incidence rates in which incidence rates are increasing"</span>,</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-8" data-line-number="8">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organization"</span>)</a></code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/plot-tb-inc-high-inc-overview-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>GetTBinR also supplies another function (<code>plot_tb_burden</code>) that can be used to visualise this,</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/plot_tb_burden.html">plot_tb_burden</a></span>(<span class="dt">df =</span> tb_burden,</a>
@@ -326,7 +326,7 @@
 <a class="sourceLine" id="cb9-4" data-line-number="4">               <span class="dt">facet =</span> <span class="st">"country"</span>, <span class="dt">scales =</span> <span class="st">"free_y"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Tuberculosis Incidence Rates"</span>,</a>
 <a class="sourceLine" id="cb9-6" data-line-number="6">       <span class="dt">subtitle =</span> <span class="st">"Showing countries with the highest incidence rates in which incidence rates are increasing"</span>,</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb9-7" data-line-number="7">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organization"</span>)</a></code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/plot-tb-inc-high-inc-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>A possible cause of this may be that reporting of Tuberculosis notifications has improved over time, to understand this we first find the required variable in the data,</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/search_data_dict.html">search_data_dict</a></span>(<span class="dt">dict =</span> dict, <span class="dt">def =</span> <span class="st">"detection"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -372,7 +372,7 @@
 <a class="sourceLine" id="cb11-4" data-line-number="4">               <span class="dt">facet =</span> <span class="st">"country"</span>, <span class="dt">scales =</span> <span class="st">"free_y"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb11-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Tuberculosis Detection Rates"</span>,</a>
 <a class="sourceLine" id="cb11-6" data-line-number="6">       <span class="dt">subtitle =</span> <span class="st">"Showing countries with the highest incidence rates in which incidence rates are increasing"</span>,</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organisation"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb11-7" data-line-number="7">       <span class="dt">caption =</span> <span class="st">"Source: World Health Organization"</span>)</a></code></pre></div>
 <p><img src="case_study_global_trends_files/figure-html/plot-tb-inc-high-case-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>The plot above shows that for some countries such as Mozambique and South Africa the increases in incidence rates may be linked to increases in the cases detection rate. However, it is clear that this is not the case for all countries, in particular the Congo which has seen increasing incidence rates and falling case detection rates.</p>
 <p>This case study has highlighted the fact that whilst Tuberculosis is declining globally this is not the case in all countries. In order for the global eradication of Tuberculosis to be a success it is vital that resources are targeted at those countries which are struggling to reduce their incidence rates.</p>
