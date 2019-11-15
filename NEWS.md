@@ -9,6 +9,7 @@
 
 * Additional testing and examples to support the new WHO inspired theme and colour palettes.
 * Additional documentation for the new WHO inspired theme and colour palettes.
+* Updated the spelling of organisation to organization in all uses relating to the World Health Organization. Thanks to [@mariabnd](https://github.com/mariabnd) for spotting this.
 * Added [@mariabnd](https://github.com/mariabnd) as a package contributor.
 
 Thanks to [@mariabnd](https://github.com/mariabnd) for contributiong to this release.
