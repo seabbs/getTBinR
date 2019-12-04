@@ -23,7 +23,7 @@ who_palettes <- function(palette = "main", reverse = FALSE, n = NULL,
                          add_missings = FALSE,...){
   
   if (!palette %in% c("main", "light", "purple", "turquoise",
-                      "blue", "magenta", "brown", "misc", "green"))
+                      "blue", "magenta", "brown", "misc", "green", "red"))
     stop("chosen palette not available")
   
   if (palette == "main")
@@ -57,6 +57,7 @@ who_palettes <- function(palette = "main", reverse = FALSE, n = NULL,
   if (palette == "brown")
     who_pal <- list(c("#82524C"),
                     c("#F7931D", "#82524C"), 
+                    c("#DDCFCA", "#CCB1A8", "#AB887F", "#82524C"),
                     c("#FEE5CA", "#FDCA93", "#DC936D", "#CB572C", "#82524C"), 
                     c("#F3DED1", "#EBC4AC", "#E1A280", "#B7988F", "#A07A71", "#82524C"))
   
@@ -73,6 +74,9 @@ who_palettes <- function(palette = "main", reverse = FALSE, n = NULL,
                     c("#DEF0E7", "#A6D8C3", "#62C29F", "#00AE70"),
                     c("#EAEBD9", "#D7DBB7", "#C4CC94", "#7FCAAD", "#3FC39A", "#00A66C"))
   
+  if (palette == "red")
+    who_pal <- list(c("#FFEBD5", "#FCD2C1", "#F8A98F", "#F48365", "#ED1C24", "#B01116"))
+  
   len <- sapply(1 : length(who_pal), function(x) length(who_pal[[x]]))
   if (is.null(n)) {
     pal <- who_pal[[which.max(len)]]
@@ -87,8 +91,8 @@ who_palettes <- function(palette = "main", reverse = FALSE, n = NULL,
     pal <- rev(pal)
   
   if (isTRUE(add_missings)) {
-    if (palette == "light") {
-      #pal <- c(pal, c())
+    if (palette %in% c("light", "misc")) {
+      pal <- c(pal, c("#A7A9AB", "#DBDCDE"))
     } else {
       pal <- c(pal, c("#9D9B9C", "#FFFFFF"))
     }
