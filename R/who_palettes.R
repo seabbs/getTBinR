@@ -1,7 +1,8 @@
 #' World Health Organization-inspired palettes
 #' 
-#' @param palette A character string. the colours of choice, current options are "main" and "light"
-#' for mixed colours as well as "purples", "blues", "pinks", "greens", and "browns".
+#' @param palette A character string. the colours of choice, current options are 
+#' "main", "light" and "misc" for mixed colours as well as "purple", "turquoise",
+#' "blue", "magenta", "brown", "misc", "green", and "red".
 #' @param reverse Logical, defaults to \code{FALSE}. Should the palette be reversed.
 #' @param n Number of colours desired. If a specific value is given which corresponds 
 #' to the length of a palette used in the 2019 WHO TB report, this palette is returned, 
