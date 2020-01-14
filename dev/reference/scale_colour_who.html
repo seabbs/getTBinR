@@ -184,14 +184,16 @@ palette has not been implemented so the <code>viridis</code> palettes will be us
     </div>
 
     <pre class="usage"><span class='fu'>scale_colour_who</span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"main"</span>, <span class='kw'>discrete</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reverse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>)</pre>
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>add_missings</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>palette</th>
-      <td><p>A character string. the colours of choice, current options are "main" and "light".</p></td>
+      <td><p>A character string. the colours of choice, current options are
+"main", "light" and "misc" for mixed colours as well as "purple", "turquoise",
+"blue", "magenta", "brown", "misc", "green", and "red".</p></td>
     </tr>
     <tr>
       <th>discrete</th>
@@ -200,6 +202,17 @@ palette has not been implemented so the <code>viridis</code> palettes will be us
     <tr>
       <th>reverse</th>
       <td><p>Logical, defaults to <code>FALSE</code>. Should the colour palette be reversed.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>Number of colours desired. If a specific value is given which corresponds
+to the length of a palette used in the 2019 WHO TB report, this palette is returned,
+else the number of entries in the palette with the most colour options (up to its
+full length) is returned. Defaults to <code>NULL</code> which returns the longest palette.</p></td>
+    </tr>
+    <tr>
+      <th>add_missings</th>
+      <td><p>Add a grey and white colour to the palette, defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
