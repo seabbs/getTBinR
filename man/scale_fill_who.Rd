@@ -5,14 +5,23 @@
 \title{Adds World Health Organization-inspired colours as fills to plots}
 \usage{
 scale_fill_who(palette = "light", discrete = TRUE, reverse = FALSE,
-  ...)
+  n = NULL, add_missings = FALSE, ...)
 }
 \arguments{
-\item{palette}{A character string. the colours of choice, current options are "main" and "light".}
+\item{palette}{A character string. the colours of choice, current options are
+"main", "light" and "misc" for mixed colours as well as "purple", "turquoise",
+"blue", "magenta", "brown", "misc", "green", and "red".}
 
 \item{discrete}{Logical, defaults to \code{TRUE}. Should the palette be discrete or continuous.}
 
 \item{reverse}{Logical, defaults to \code{FALSE}. Should the colour palette be reversed.}
+
+\item{n}{Number of colours desired. If a specific value is given which corresponds
+to the length of a palette used in the 2019 WHO TB report, this palette is returned,
+else the number of entries in the palette with the most colour options (up to its
+full length) is returned. Defaults to \code{NULL} which returns the longest palette.}
+
+\item{add_missings}{Add a grey and white colour to the palette, defaults to \code{FALSE}.}
 
 \item{...}{Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
 depending on the \code{discrete} setting.}

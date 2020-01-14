@@ -4,12 +4,22 @@
 \alias{who_palettes}
 \title{World Health Organization-inspired palettes}
 \usage{
-who_palettes(palette = "main", reverse = FALSE, ...)
+who_palettes(palette = "main", reverse = FALSE, n = NULL,
+  add_missings = FALSE, ...)
 }
 \arguments{
-\item{palette}{A character string. the colours of choice, current options are "main" and "light".}
+\item{palette}{A character string. the colours of choice, current options are
+"main", "light" and "misc" for mixed colours as well as "purple", "turquoise",
+"blue", "magenta", "brown", "misc", "green", and "red".}
 
 \item{reverse}{Logical, defaults to \code{FALSE}. Should the palette be reversed.}
+
+\item{n}{Number of colours desired. If a specific value is given which corresponds
+to the length of a palette used in the 2019 WHO TB report, this palette is returned,
+else the number of entries in the palette with the most colour options (up to its
+full length) is returned. Defaults to \code{NULL} which returns the longest palette.}
+
+\item{add_missings}{Add a grey and white colour to the palette, defaults to \code{FALSE}.}
 
 \item{...}{Pass additional arguments to \code{colorRampPalette}.}
 }
