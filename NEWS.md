@@ -12,7 +12,7 @@
 * Updated the spelling of organisation to organization in all uses relating to the World Health Organization. Thanks to [@mariabnd](https://github.com/mariabnd) for spotting this.
 * Added [@mariabnd](https://github.com/mariabnd) as a package contributor.
 
-Thanks to [@mariabnd](https://github.com/mariabnd) for contributiong to this release.
+Thanks to [@mariabnd](https://github.com/mariabnd) for contributing to this release.
 
 # getTBinR 0.7.0
 
