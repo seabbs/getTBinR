@@ -3,10 +3,6 @@
 #'
 #' @description Applies WHO inspired colours as a fill for \code{ggplot2} plots. Currently a continuous
 #' palette has not been implemented so the \code{viridis} palettes will be used as a fallback in this situation.
-#' @param discrete Logical, defaults to \code{TRUE}. Should the palette be discrete or continuous.
-#' @param add_missings Add a grey and white colour to the palette, defaults to \code{FALSE}.
-#' @param ... Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
-#' depending on the \code{discrete} setting.
 #' @export
 #' @importFrom ggplot2 discrete_scale scale_fill_viridis_c
 #' @inheritParams scale_colour_who

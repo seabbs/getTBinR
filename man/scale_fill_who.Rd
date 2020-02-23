@@ -30,6 +30,8 @@ full length) is returned. Defaults to \code{NULL} which returns the longest pale
 \item{add_missings}{Add a grey and white colour to the palette, defaults to \code{FALSE}.}
 
 \item{...}{Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
+depending on the \code{discrete} setting.
+@param ... Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
 depending on the \code{discrete} setting.}
 }
 \description{

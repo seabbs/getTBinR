@@ -19,6 +19,8 @@ scale_colour_who(
 "main", "light" and "misc" for mixed colours as well as "purple", "turquoise",
 "blue", "magenta", "brown", "misc", "green", and "red".}
 
+\item{discrete}{Logical, defaults to \code{TRUE}. Should the palette be discrete or continuous.}
+
 \item{reverse}{Logical, defaults to \code{FALSE}. Should the palette be reversed.}
 
 \item{n}{Number of colours desired. If a specific value is given which corresponds
@@ -29,6 +31,8 @@ full length) is returned. Defaults to \code{NULL} which returns the longest pale
 \item{add_missings}{Add a grey and white colour to the palette, defaults to \code{FALSE}.}
 
 \item{...}{Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
+depending on the \code{discrete} setting.
+@param ... Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
 depending on the \code{discrete} setting.}
 }
 \description{

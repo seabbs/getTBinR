@@ -3,7 +3,10 @@
 #'
 #' @description Applies WHO inspired colours for \code{ggplot2} plots. Currently a continuous
 #' palette has not been implemented so the \code{viridis} palettes will be used as a fallback in this situation.
+#' @param discrete Logical, defaults to \code{TRUE}. Should the palette be discrete or continuous.
 #' @param ... Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
+#' depending on the \code{discrete} setting.
+#'  @param ... Pass additional arguments to \code{ggplot2::discrete_scale} or \code{ggplot2::scale_colour_viridis_c}
 #' depending on the \code{discrete} setting.
 #'
 #' @export
