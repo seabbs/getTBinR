@@ -23,10 +23,9 @@ First load the package. We also load several other packages to help quickly expl
 
 ```{r packages, message = FALSE}
 library(getTBinR)
+library(dplyr)
 library(ggplot2)
 library(knitr)
-library(magrittr)
-library(dplyr)
 ```
 
 

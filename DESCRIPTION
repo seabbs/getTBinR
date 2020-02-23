@@ -57,7 +57,6 @@ Suggests:
     shinydashboard (>= 0.7.1),
     shinyWidgets (>= 0.4.9),
     testthat (>= 2.2.1),
-    tidyverse (>= 1.2.1),
     vdiffr (>= 0.3.1)
 VignetteBuilder: 
     knitr

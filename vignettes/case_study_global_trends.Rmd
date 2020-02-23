@@ -20,12 +20,11 @@ knitr::opts_chunk$set(
 This case study investigates global trends in Tuberculosis incidence rates and explores whether Tuberculosis eradication is on the horizon. It was adapted from [this](https://www.samabbott.co.uk/post/intro-gettbinr/) blog post. To get started the first step is to get the package, as well as loading other packages required for the analysis.
 
 ```{r get-packages, message = FALSE}
-# install.packages("getTBinR")
 library(getTBinR)
-#  install.packages("tidyverse")
-library(tidyverse)
-# install.packages("viridis")
+library(dplyr)
+library(ggplot2)
 library(viridis)
+library(knitr)
 ```
 
 The package is loaded, time to get the data. We download both the data itself and it's accompanying data dictionary.

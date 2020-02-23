@@ -13,6 +13,8 @@
 * Added [@mariabnd](https://github.com/mariabnd) as a package contributor.
 * Changed `verbose` to default to `FALSE` package wide.
 * Bumped data availability to 2018.
+* Standarised legend to be bottom aligned across package.
+* Dropped `tidyverse` from suggests as per this [issue](https://github.com/seabbs/getTBinR/issues/96).
 
 Thanks to [@mariabnd](https://github.com/mariabnd) for contributing to this release.
 

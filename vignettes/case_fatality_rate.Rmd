@@ -24,14 +24,12 @@ It is estimated that in 2016 there was more than 10 million cases of active TB, 
 A key component of TB control is reducing the case fatality rate from active TB, this post explores WHO estimates for the TB case fatality rate in the most recent year of data and then estimates the case fatality rates in previous years. The first step is to download and install the required packages.
 
 ```{r get-packages, message = FALSE}
-# install.packages("getTBinR")
 library(getTBinR)
-#  install.packages("tidyverse")
-library(tidyverse)
-# install.packages("viridis")
+library(dplyr)
+library(ggplot2)
 library(viridis)
-# install.packages("scales")
 library(scales)
+library(knitr)
 ```
 
 Now we use `getTBinR` to download the TB burden data and its accompanying data dictionary.
