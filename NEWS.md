@@ -12,6 +12,7 @@
 * Updated the spelling of organisation to organization in all uses relating to the World Health Organization. Thanks to [@mariabnd](https://github.com/mariabnd) for spotting this.
 * Added [@mariabnd](https://github.com/mariabnd) as a package contributor.
 * Changed `verbose` to default to `FALSE` package wide.
+* Bumped data availability to 2018.
 
 Thanks to [@mariabnd](https://github.com/mariabnd) for contributing to this release.
 
