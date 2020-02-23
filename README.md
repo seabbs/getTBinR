@@ -147,17 +147,6 @@ getTBinR::summarise_tb_burden(metric = "e_inc_num",
                               countries = "United Kingdom", 
                               compare_to_world = FALSE, 
                               compare_to_region = FALSE) 
-#> Extracting data for specified countries
-#> Loading data from: /tmp/RtmpVNJxJG/tb_burden.rds
-#> Loading data from: /tmp/RtmpVNJxJG/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpVNJxJG/dictionary.rds
-#> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpVNJxJG/tb_burden.rds
-#> Loading data from: /tmp/RtmpVNJxJG/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpVNJxJG/dictionary.rds
-#> 1 results found for your variable search for e_inc_num
 #> # A tibble: 133 x 5
 #>    area            year e_inc_num e_inc_num_lo e_inc_num_hi
 #>    <fct>          <int>     <dbl>        <dbl>        <dbl>
@@ -222,41 +211,7 @@ Alternatively, they can all be imported in one go using
 `additional_datasets = "all"`, as below,
 
 ``` r
-getTBinR::get_tb_burden(additional_datasets = "all", verbose = TRUE)
-#> Loading data from: /tmp/RtmpVNJxJG/tb_burden.rds
-#> Loading data from: /tmp/RtmpVNJxJG/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Getting additional dataset: Latent TB infection
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=ltbi_estimates
-#> Saving data to: /tmp/RtmpVNJxJG/latent_tb_infection.rds
-#> Getting additional dataset: Notification
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=notifications
-#> Saving data to: /tmp/RtmpVNJxJG/notification.rds
-#> Getting additional dataset: Drug resistance surveillance
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dr_surveillance
-#> Saving data to: /tmp/RtmpVNJxJG/drug_resistance_surveillance.rds
-#> Getting additional dataset: Non-routine HIV surveillance
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=tbhivnonroutinesurv
-#> Saving data to: /tmp/RtmpVNJxJG/non-routine_hiv_surveillance.rds
-#> Getting additional dataset: Outcomes
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=outcomes
-#> Saving data to: /tmp/RtmpVNJxJG/outcomes.rds
-#> Getting additional dataset: Budget
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=budget
-#> Saving data to: /tmp/RtmpVNJxJG/budget.rds
-#> Getting additional dataset: Expenditure and utilisation
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=expenditure_utilisation
-#> Saving data to: /tmp/RtmpVNJxJG/expenditure_and_utilisation.rds
-#> Getting additional dataset: Policies and services
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=policies
-#> Saving data to: /tmp/RtmpVNJxJG/policies_and_services.rds
-#> Getting additional dataset: Community engagement
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=community
-#> Saving data to: /tmp/RtmpVNJxJG/community_engagement.rds
-#> Getting additional dataset: Laboratories
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=labs
-#> Saving data to: /tmp/RtmpVNJxJG/laboratories.rds
-#> Joining TB burden data and additional datasets.
+getTBinR::get_tb_burden(additional_datasets = "all")
 #> # A tibble: 8,694 x 485
 #>    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #>    <chr>   <chr> <chr>       <int> <chr>       <int>     <int>      <dbl>

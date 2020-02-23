@@ -129,7 +129,7 @@ knitr::kable(getTBinR::available_datasets[, 1:4])
 These datasets can be imported into `R` by supplying the name of the required dataset to the `additional_datasets` argument of `get_tb_burden` (or any of the various plotting/summary functions). Alternatively, they can all be imported in one go using `additional_datasets = "all"`, as below, 
 
 ```{r import-additional_datasets}
-getTBinR::get_tb_burden(additional_datasets = "all", verbose = TRUE)
+getTBinR::get_tb_burden(additional_datasets = "all")
 ```
 
 Once imported, these datasets can be used in the plotting and summary functions provided by `getTBinR` (by passing them to their `df` argument or using the `additional_datasets` argument in each function). See the contributing section if their are any other datasets that you think `getTBinR` should support or if you have suggestions for better descriptions for each dataset.

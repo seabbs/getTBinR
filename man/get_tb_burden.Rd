@@ -14,7 +14,7 @@ get_tb_burden(
   mdr_save_name = NULL,
   mdr_url = NULL,
   return = TRUE,
-  verbose = TRUE,
+  verbose = FALSE,
   use_utils = FALSE,
   retry_download = TRUE
 )

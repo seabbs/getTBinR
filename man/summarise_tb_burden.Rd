@@ -24,7 +24,7 @@ summarise_tb_burden(
   annual_change = FALSE,
   download_data = TRUE,
   save = TRUE,
-  verbose = TRUE,
+  verbose = FALSE,
   ...
 )
 }

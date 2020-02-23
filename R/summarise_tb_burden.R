@@ -102,7 +102,7 @@ summarise_tb_burden <- function(df = NULL,
                                 annual_change = FALSE,
                                 download_data = TRUE,
                                 save = TRUE,
-                                verbose = TRUE,
+                                verbose = FALSE,
                                 ...) {
 
   ## Deal with undefined global function notes
