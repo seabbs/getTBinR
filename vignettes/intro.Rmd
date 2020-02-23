@@ -51,7 +51,7 @@ knitr::kable(available_datasets[, 1:4])
 These datasets can be imported into `R` by supplying the name of the required dataset to the `additional_datasets` argument of `get_tb_burden` (or any of the various plotting/summary functions). Alternatively, they can all be imported in one go using `additional_datasets = "all"`, as below, 
 
 ```{r import-additional_datasets}
-get_tb_burden(additional_datasets = "all", verbose = FALSE)
+get_tb_burden(additional_datasets = "all")
 ```
 
 Once imported, these datasets can be used in the plotting and summary functions provided by `getTBinR` (by passing them to their `df` argument or using the `additional_datasets` argument in each function).
@@ -110,8 +110,7 @@ To showcase how quickly we can go from no data to plotting informative graphs we
 
 
 ```{r plot-tb-all, fig.height=20, fig.width = 10}
-getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
-                                  interactive = FALSE)
+getTBinR::plot_tb_burden_overview(metric = "e_inc_100k")
 ```
 
 
@@ -157,8 +156,7 @@ Diving deeper into the data lets plot a sample of 9 countries using the inbuilt 
 ## Take a random sample of countries
 sample_countries <- sample(unique(tb_burden$country), 9)
 plot_tb_burden(tb_burden, metric = "e_inc_100k",
-               countries = sample_countries,
-               legend = "top")
+               countries = sample_countries)
 ```
 
 We have faceted by country so that we can more easily see what is going on. This allows us to easily explore between country variation - depending on the sample there is likely to be a lot of this.

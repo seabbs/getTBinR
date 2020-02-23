@@ -37,8 +37,8 @@ library(scales)
 Now we use `getTBinR` to download the TB burden data and its accompanying data dictionary.
 
 ```{r get-data}
-tb_burden <- get_tb_burden(verbose = FALSE)
-dict <- get_data_dict(verbose = FALSE)
+tb_burden <- get_tb_burden()
+dict <- get_data_dict()
 
 tb_burden
 
@@ -48,7 +48,7 @@ dict
 We want to explore the case fatality rate (`cfr`), lets first look at the WHO definition.
 
 ```{r search-dict-inc}
-search_data_dict("cfr", verbose = FALSE) %>% 
+search_data_dict("cfr") %>% 
   knitr::kable()
 ```
 
@@ -56,7 +56,7 @@ Maps can be a useful first visualisation for summarising spatial data, although 
 
 ```{r make-inc-map, message = FALSE}
 # Map TB incidence rates
-mp1 <- map_tb_burden(verbose = FALSE, 
+mp1 <- map_tb_burden( 
                      viridis_palette = "cividis", 
                      viridis_direction = -1
                      ) +
@@ -70,8 +70,7 @@ mp1
 # Map TB case fatality ratio -2016
 mp2 <- map_tb_burden(metric = "cfr", 
                      viridis_palette = "cividis", 
-                     viridis_direction = -1,
-                     verbose= FALSE) +
+                     viridis_direction = -1) +
   labs(title = "Map of Tuberculosis Case Fatality Ratio",
        subtitle = "Case fatality rate estimated by the WHO")
 
@@ -166,7 +165,7 @@ region_case_fat <- tb_burden %>%
   summarise(mean = mean(cfr, na.rm = TRUE),
             sd = sd(cfr, na.rm = TRUE)) %>% 
   mutate(ll = mean - sd,
-         lll = mean - 2*sd,
+         lll = mean - 2 * sd,
          hh = mean + sd,
          hhh = mean + 2 * sd)
 
@@ -198,9 +197,12 @@ plot_region_case_fatality <- region_case_fatality %>%
                    y_lab = "Estimated TB Case Fatality Ratio") +
   labs(caption = "Case fatality ratio estimated by taking the ratio of TB mortality rates and TB incidence rates each year in all years. For the most recent year 
        the mean regional case fatality ratio estimated by the WHO is also shown (along with one and two standard deviations)") +
-  geom_point(data = region_case_fat, aes(y = mean, x = year, fill = g_whoregion), shape = 2, size = 1.3, col = "black") +
-  geom_linerange(data = region_case_fat, aes(ymin = ll, ymax = hh, y = NULL), alpha = 0.4, size = 1.2, col = "black") +
-  geom_linerange(data = region_case_fat, aes(ymin = lll, ymax = hhh, y = NULL), alpha = 0.2, size = 1.2, col = "black")
+  geom_point(data = region_case_fat, aes(y = mean, x = year, fill = g_whoregion),
+             shape = 2, size = 1.3, col = "black") +
+  geom_linerange(data = region_case_fat, aes(ymin = ll, ymax = hh, y = NULL),
+                 alpha = 0.4, size = 1.2, col = "black") +
+  geom_linerange(data = region_case_fat, aes(ymin = lll, ymax = hhh, y = NULL),
+                 alpha = 0.2, size = 1.2, col = "black")
   
 plot_region_case_fatality +
   labs(caption = "Source: World Health Organization")
@@ -226,7 +228,6 @@ We can then plot the TB case fatality ratio in these countries, as well as the T
 ## Plot overview of cases fatality ratios
 plot_high_cfr <- plot_tb_burden_overview(metric = "cfr", 
                                          countries = highest_case_fataltity_countries,
-                                         verbose = FALSE,
                                          viridis_palette = "cividis",
                                          viridis_direction = -1,
                                          viridis_end = 0.9) +
@@ -241,7 +242,6 @@ plot_high_cfr
 
 ```{r plot-inc-rates-high-cfr, message = FALSE}
 plot_inc_high_cfr <- plot_tb_burden_overview(countries = highest_case_fataltity_countries,
-                                             verbose = FALSE,
                                              viridis_palette = "cividis",
                                              viridis_direction = -1,
                                              viridis_end = 0.9) +

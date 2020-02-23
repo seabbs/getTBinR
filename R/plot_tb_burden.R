@@ -62,7 +62,7 @@
 #' search_data_dict(def = "mortality")
 #' ## Plot mortality rates (exc HIV) - without progress messages
 #' plot_tb_burden(metric = "e_mort_exc_tbhiv_100k", facet = "country", 
-#'                countries = sample_countries, scales = "free_y", verbose = FALSE)
+#'                countries = sample_countries, scales = "free_y")
 #'}  
 plot_tb_burden <- function(df = NULL, dict = NULL, 
                            metric = "e_inc_100k",
@@ -83,7 +83,7 @@ plot_tb_burden <- function(df = NULL, dict = NULL,
                            viridis_palette = "viridis",
                            viridis_direction = -1,
                            viridis_end = 0.9,
-                           verbose = TRUE, ...) {
+                           verbose = FALSE, ...) {
 
   year <- NULL; 
   

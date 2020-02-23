@@ -38,7 +38,7 @@ dict <- get_data_dict()
 We want to explore incidence rates so we need to find them in the data. We can do this using the `getTBinR::search_data_dict` function,
 
 ```{r search-dict-inc}
-search_data_dict(dict = dict, def = "incidence", verbose = FALSE) %>% 
+search_data_dict(dict = dict, def = "incidence") %>% 
   knitr::kable()
 ```
 
@@ -46,7 +46,7 @@ The first hit, `e_inc_100k`, is the TB incidence rate, with the next two variabl
 
 ```{r map-tb-2016-inc}
 map_tb_burden(df = tb_burden, dict = dict, year = 2016,
-              metric = "e_inc_100k", verbose = FALSE) +
+              metric = "e_inc_100k") +
   labs(title = "Map of Global Tuberculosis Incidence Rates - 2016",
        subtitle = "", caption = "Source: World Health Organization")
 ```
@@ -63,9 +63,11 @@ tb_inc_region <- tb_burden %>%
 
 plot_tb_inc_region <- function(df = NULL, title = NULL, subtitle = NULL, scales = NULL) {
   df %>% 
-      ggplot(aes(x = year, y = e_inc_num_inc_rate, col = g_whoregion, group = g_whoregion)) +
+      ggplot(aes(x = year, y = e_inc_num_inc_rate,
+                 col = g_whoregion, group = g_whoregion)) +
   geom_point() +
-  geom_linerange(aes(ymin = e_inc_num_lo_inc_rate, ymax = e_inc_num_hi_inc_rate)) +
+  geom_linerange(aes(ymin = e_inc_num_lo_inc_rate, 
+                     ymax = e_inc_num_hi_inc_rate)) +
   geom_line() +
   scale_colour_viridis(discrete = TRUE) +
   labs(title = title, subtitle = subtitle, 
@@ -121,8 +123,7 @@ This results in a list of `r length(countries_inc_up)` countries all of which ha
 plot_tb_burden_overview(df = tb_burden,
                         dict = dict, 
                         metric = "e_inc_100k", 
-                        countries = high_inc_up_countries,
-                        verbose = FALSE) +
+                        countries = high_inc_up_countries) +
   labs(title = "Tuberculosis Incidence Rates from 2000-2016",
        subtitle = "Showing countries with the highest incidence rates in which incidence rates are increasing",
        caption = "Source: World Health Organization")
@@ -134,7 +135,7 @@ GetTBinR also supplies another function (`plot_tb_burden`) that can be used to v
 plot_tb_burden(df = tb_burden,
                dict = dict,
                metric = "e_inc_100k", countries = high_inc_up_countries, 
-               facet = "country", scales = "free_y", verbose = FALSE) +
+               facet = "country", scales = "free_y") +
   labs(title = "Tuberculosis Incidence Rates",
        subtitle = "Showing countries with the highest incidence rates in which incidence rates are increasing",
        caption = "Source: World Health Organization")
@@ -143,7 +144,7 @@ plot_tb_burden(df = tb_burden,
 A possible cause of this may be that reporting of Tuberculosis notifications has improved over time, to understand this we first find the required variable in the data,
 
 ```{r search-dict-report}
-search_data_dict(dict = dict, def = "detection", verbose = FALSE) %>% 
+search_data_dict(dict = dict, def = "detection") %>% 
   knitr::kable()
 ```
 
@@ -153,7 +154,7 @@ We then plot the case detection rate over time in the countries of interest,
 plot_tb_burden(df = tb_burden,
                dict = dict,
                metric = "c_cdr", countries = high_inc_up_countries, 
-               facet = "country", scales = "free_y", verbose = FALSE) +
+               facet = "country", scales = "free_y") +
   labs(title = "Tuberculosis Detection Rates",
        subtitle = "Showing countries with the highest incidence rates in which incidence rates are increasing",
        caption = "Source: World Health Organization")

@@ -37,7 +37,7 @@
 summarise_metric <- function(df = NULL,  metric = NULL,
                              countries = NULL, conf = c("_lo", "_hi"),
                              download_data = TRUE, save = TRUE, 
-                             verbose = TRUE, ...) {
+                             verbose = FALSE, ...) {
   
   
   if (is.null(df)) {

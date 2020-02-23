@@ -78,7 +78,7 @@ plot_tb_burden_summary <- function(df = NULL,
                                    viridis_end = 0.9,
                                    download_data = TRUE,
                                    save = TRUE,
-                                   verbose = TRUE,
+                                   verbose = FALSE,
                                    ...){
   
   

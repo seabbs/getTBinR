@@ -1,4 +1,4 @@
-# getTBinR 0.7.1 (in development)
+# getTBinR 0.7.1
 
 ## Feature updates
 
@@ -11,6 +11,7 @@
 * Additional documentation for the new WHO inspired theme and colour palettes.
 * Updated the spelling of organisation to organization in all uses relating to the World Health Organization. Thanks to [@mariabnd](https://github.com/mariabnd) for spotting this.
 * Added [@mariabnd](https://github.com/mariabnd) as a package contributor.
+* Changed `verbose` to default to `FALSE` package wide.
 
 Thanks to [@mariabnd](https://github.com/mariabnd) for contributing to this release.
 

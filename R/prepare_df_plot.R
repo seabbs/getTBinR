@@ -48,7 +48,7 @@ prepare_df_plot <- function(df = NULL,
                             annual_change = FALSE,
                             trans = "identity",
                             download_data = TRUE, save = TRUE, 
-                            verbose = TRUE,
+                            verbose = FALSE,
                             ...){
 
   country <- NULL

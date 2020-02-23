@@ -14,7 +14,7 @@
 #' \code{NULL}.
 #' @param return Logical, should the data be returned as a dataframe.
 #' Defaults to \code{TRUE}.
-#' @param verbose Logical, defaults to \code{TRUE}. Should additional status and progress messages
+#' @param verbose Logical, defaults to \code{FALSE}. Should additional status and progress messages
 #' be displayed.
 #' @param use_utils Logical, defaults to \code{FALSE}. Used for testing alternative
 #' data download function. When \code{TRUE} data is downloaded using \code{read.csv}.
@@ -44,7 +44,7 @@ get_data <- function(url = NULL,
                      save = TRUE,
                      save_name = NULL,
                      return = TRUE,
-                     verbose = TRUE,
+                     verbose = FALSE,
                      use_utils = FALSE,
                      use_direct_download = FALSE,
                      retry_download = TRUE) {

@@ -64,8 +64,7 @@ Then compare TB incidence rates in the UK to TB incidence rates in other countri
 ```{r plot-tb-incidence-eur, fig.height = 8}
 getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
-                                  compare_to_region = TRUE,
-                                  interactive = FALSE)
+                                  compare_to_region = TRUE)
 ```
 
 In order to compare the changes in incidence rates over time, in the region, plot the annual percentage change,
@@ -74,8 +73,7 @@ In order to compare the changes in incidence rates over time, in the region, plo
 getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
-                                  annual_change = TRUE,
-                                  interactive = FALSE)
+                                  annual_change = TRUE)
 ```
 
 Now plot TB incidence rates over time in the United Kingdom, compared to TB incidence rates in Europe and globally. 
@@ -84,19 +82,16 @@ Now plot TB incidence rates over time in the United Kingdom, compared to TB inci
 getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  metric_label = "e_inc_100k",
                                  countries = "United Kingdom",
-                                 legend = "top",
                                  compare_all_regions = FALSE,
                                  compare_to_region = TRUE,
-                                 compare_to_world = TRUE,
-                                 interactive = FALSE)
+                                 compare_to_world = TRUE)
 ```
 
 We can repeat the above plot but this time only for the UK - this allows us to get a clear picture of trends in TB incidence rates in the UK.
 
 ```{r plot-tb-incidence-uk}
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
-                         countries = "United Kingdom",
-                         interactive = FALSE)
+                         countries = "United Kingdom")
 ```
 
 We might be interested in having some of this information in tablular form. We can either generate a short summary for the most recent year of available data with the following, 
@@ -114,8 +109,7 @@ getTBinR::summarise_tb_burden(metric = "e_inc_num",
                               stat = "rate",
                               countries = "United Kingdom", 
                               compare_to_world = FALSE, 
-                              compare_to_region = FALSE,
-                              verbose = FALSE) 
+                              compare_to_region = FALSE) 
 
 ```
 
@@ -135,7 +129,7 @@ knitr::kable(getTBinR::available_datasets[, 1:4])
 These datasets can be imported into `R` by supplying the name of the required dataset to the `additional_datasets` argument of `get_tb_burden` (or any of the various plotting/summary functions). Alternatively, they can all be imported in one go using `additional_datasets = "all"`, as below, 
 
 ```{r import-additional_datasets}
-getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
+getTBinR::get_tb_burden(additional_datasets = "all", verbose = TRUE)
 ```
 
 Once imported, these datasets can be used in the plotting and summary functions provided by `getTBinR` (by passing them to their `df` argument or using the `additional_datasets` argument in each function). See the contributing section if their are any other datasets that you think `getTBinR` should support or if you have suggestions for better descriptions for each dataset.
@@ -145,8 +139,9 @@ Once imported, these datasets can be used in the plotting and summary functions 
 The WHO makes use of several standardised plot themes and colour palettes. `getTBinR` implements these so that the package can be easily used internally at the WHO or by those collaborating with the WHO. 
 
 ```{r who-theme-example, message = FALSE, warning = FALSE}
-getTBinR::plot_tb_burden_summary(countries = "United Kingdom", compare_all_regions = FALSE, 
-                                 compare_to_region = TRUE, verbose = FALSE) +
+getTBinR::plot_tb_burden_summary(countries = "United Kingdom", 
+                                 compare_all_regions = FALSE, 
+                                 compare_to_region = TRUE) +
   getTBinR::theme_who() +
   getTBinR::scale_colour_who(reverse = TRUE) +
   getTBinR::scale_fill_who(reverse = TRUE)

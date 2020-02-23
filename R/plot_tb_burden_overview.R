@@ -53,7 +53,7 @@ plot_tb_burden_overview <- function(df = NULL, dict = NULL,
                                     viridis_palette = "viridis",
                                     viridis_direction = -1,
                                     viridis_end = 0.9,
-                                    verbose = TRUE, 
+                                    verbose = FALSE, 
                                     ...) {
  
   Year <- NULL;

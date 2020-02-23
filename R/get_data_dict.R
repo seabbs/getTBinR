@@ -27,7 +27,7 @@ get_data_dict <- function(url = NULL,
                           save = TRUE,
                           dict_save_name = NULL,
                           return = TRUE,
-                          verbose = TRUE,
+                          verbose = FALSE,
                           use_utils = FALSE,
                           retry_download = TRUE) {
 
