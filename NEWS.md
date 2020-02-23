@@ -94,6 +94,7 @@ summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articl
 * Added a `smooth` argument to `plot_tb_burden` to allow smooth trend lines to be plotted (derived using `ggplot2::geom_smooth`).
 * Tweaked line thickness in `plot_tb_burden` to improve plot appearance.
 * Added `legend` argument to all plotting functions to allow control of the legend appearance.
+* Added spell checking and list of allowed words.
 
 ## Package updates
 
