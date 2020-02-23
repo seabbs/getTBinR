@@ -18,6 +18,8 @@ scale_fill_who(
 "main", "light" and "misc" for mixed colours as well as "purple", "turquoise",
 "blue", "magenta", "brown", "misc", "green", and "red".}
 
+\item{discrete}{Logical, defaults to \code{TRUE}. Should the palette be discrete or continuous.}
+
 \item{reverse}{Logical, defaults to \code{FALSE}. Should the palette be reversed.}
 
 \item{n}{Number of colours desired. If a specific value is given which corresponds

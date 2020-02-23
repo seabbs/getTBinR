@@ -75,14 +75,6 @@ temporary directory),
 
 ``` r
 getTBinR::map_tb_burden(metric = "e_inc_100k")
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=estimates
-#> Saving data to: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates
-#> Saving data to: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dictionary
-#> Saving data to: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_100k
 ```
 
 ![](man/figures/map-tb-incidence-eur-1.png)<!-- -->
@@ -93,13 +85,7 @@ countries in the region,
 ``` r
 getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
-                                  compare_to_region = TRUE,
-                                  interactive = FALSE)
-#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_100k
+                                  compare_to_region = TRUE)
 ```
 
 ![](man/figures/plot-tb-incidence-eur-1.png)<!-- -->
@@ -111,13 +97,7 @@ region, plot the annual percentage change,
 getTBinR::plot_tb_burden_overview(metric = "e_inc_100k",
                                   countries = "United Kingdom",
                                   compare_to_region = TRUE,
-                                  annual_change = TRUE,
-                                  interactive = FALSE)
-#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_100k
+                                  annual_change = TRUE)
 ```
 
 ![](man/figures/plot-tb-incidence-eur-per-1.png)<!-- -->
@@ -129,29 +109,9 @@ TB incidence rates in Europe and globally.
 getTBinR::plot_tb_burden_summary(metric = "e_inc_num",
                                  metric_label = "e_inc_100k",
                                  countries = "United Kingdom",
-                                 legend = "top",
                                  compare_all_regions = FALSE,
                                  compare_to_region = TRUE,
-                                 compare_to_world = TRUE,
-                                 interactive = FALSE)
-#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_100k
-#> Extracting data for specified countries
-#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_num
-#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_num
+                                 compare_to_world = TRUE)
 ```
 
 ![](man/figures/plot-tb-incidence-uk-compare-1.png)<!-- -->
@@ -161,13 +121,7 @@ us to get a clear picture of trends in TB incidence rates in the UK.
 
 ``` r
 getTBinR::plot_tb_burden(metric = "e_inc_100k",
-                         countries = "United Kingdom",
-                         interactive = FALSE)
-#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
-#> Loading data from: /tmp/RtmpkjkDp6/dictionary.rds
-#> 1 results found for your variable search for e_inc_100k
+                         countries = "United Kingdom")
 ```
 
 ![](man/figures/plot-tb-incidence-uk-1.png)<!-- -->
@@ -179,9 +133,6 @@ available data with the following,
 ``` r
 getTBinR::summarise_metric(metric = "e_inc_100k",
                            countries = "United Kingdom")
-#> Loading data from: /tmp/RtmpkjkDp6/tb_burden.rds
-#> Loading data from: /tmp/RtmpkjkDp6/mdr_tb.rds
-#> Joining TB burden data and MDR TB data.
 #> # A tibble: 1 x 6
 #>   country         year metric        world_rank region_rank avg_change
 #>   <chr>          <int> <chr>              <int>       <int> <chr>     
@@ -195,8 +146,18 @@ getTBinR::summarise_tb_burden(metric = "e_inc_num",
                               stat = "rate",
                               countries = "United Kingdom", 
                               compare_to_world = FALSE, 
-                              compare_to_region = FALSE,
-                              verbose = FALSE) 
+                              compare_to_region = FALSE) 
+#> Extracting data for specified countries
+#> Loading data from: /tmp/RtmpVNJxJG/tb_burden.rds
+#> Loading data from: /tmp/RtmpVNJxJG/mdr_tb.rds
+#> Joining TB burden data and MDR TB data.
+#> Loading data from: /tmp/RtmpVNJxJG/dictionary.rds
+#> 1 results found for your variable search for e_inc_num
+#> Loading data from: /tmp/RtmpVNJxJG/tb_burden.rds
+#> Loading data from: /tmp/RtmpVNJxJG/mdr_tb.rds
+#> Joining TB burden data and MDR TB data.
+#> Loading data from: /tmp/RtmpVNJxJG/dictionary.rds
+#> 1 results found for your variable search for e_inc_num
 #> # A tibble: 133 x 5
 #>    area            year e_inc_num e_inc_num_lo e_inc_num_hi
 #>    <fct>          <int>     <dbl>        <dbl>        <dbl>
@@ -240,19 +201,19 @@ knitr::kable(getTBinR::available_datasets[, 1:4])
 
 | dataset                      | description                                                                                                                                                                                          | timespan  | default |
 | :--------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------- | :------ |
-| Estimates                    | Generated estimates of TB mortality, incidence, case fatality ratio, and treatment coverage (previously called case detection rate). Data available split by HIV status.                             | 2000-2017 | yes     |
-| Estimates                    | Generated estimates for the proportion of TB cases that have rifampicin-resistant TB (RR-TB, which includes cases with multidrug-resistant TB, MDR-TB), RR/MDR-TB among notified pulmonary TB cases. | 2017      | yes     |
-| Incidence by age and sex     | Generated estimates of TB incidence stratified by age and sex. This dataset is currently experimental.                                                                                               | 2017      | no      |
-| Latent TB infection          | Generated estimates incidence of latent TB stratified by age.                                                                                                                                        | 2017      | no      |
-| Notification                 | TB notification dataset linking to TB notifications as raw numbers. Age-stratified, with good data dictionary coverage but has large amounts of missing data.                                        | 1980-2017 | no      |
-| Drug resistance surveillance | Country level drug resistance surveillance. Lists drug resistance data from country level reporting. Good data dictionary coverage but has large amounts of missing data.                            | 2017      | no      |
-| Non-routine HIV surveillance | Country level, non-routine HIV surveillance data. Good data dictionary coverage but with a large amount of missing data.                                                                             | 2007-2017 | no      |
-| Outcomes                     | Country level TB outcomes data. Lists numeric outcome data, very messy but with good data dictionary coverage.                                                                                       | 1994-2017 | no      |
+| Estimates                    | Generated estimates of TB mortality, incidence, case fatality ratio, and treatment coverage (previously called case detection rate). Data available split by HIV status.                             | 2000-2018 | yes     |
+| Estimates                    | Generated estimates for the proportion of TB cases that have rifampicin-resistant TB (RR-TB, which includes cases with multidrug-resistant TB, MDR-TB), RR/MDR-TB among notified pulmonary TB cases. | 2018      | yes     |
+| Incidence by age and sex     | Generated estimates of TB incidence stratified by age and sex. This dataset is currently experimental.                                                                                               | 2018      | no      |
+| Latent TB infection          | Generated estimates incidence of latent TB stratified by age.                                                                                                                                        | 2018      | no      |
+| Notification                 | TB notification dataset linking to TB notifications as raw numbers. Age-stratified, with good data dictionary coverage but has large amounts of missing data.                                        | 1980-2018 | no      |
+| Drug resistance surveillance | Country level drug resistance surveillance. Lists drug resistance data from country level reporting. Good data dictionary coverage but has large amounts of missing data.                            | 2018      | no      |
+| Non-routine HIV surveillance | Country level, non-routine HIV surveillance data. Good data dictionary coverage but with a large amount of missing data.                                                                             | 2007-2018 | no      |
+| Outcomes                     | Country level TB outcomes data. Lists numeric outcome data, very messy but with good data dictionary coverage.                                                                                       | 1994-2018 | no      |
 | Budget                       | Current year TB intervention budgets per country. Many of the data fields are cryptic but has good data dictionary coverage.                                                                         | 2018      | no      |
-| Expenditure and utilisation  | Previous year expenditure on TB interventions. Highly detailed, with good data dictionary coverage but lots of missing data.                                                                         | 2017      | no      |
-| Policies and services        | Lists TB policies that have been implemented per country. Highly detailed, with good data dictionary coverage but lots of missing data.                                                              | 2017      | no      |
-| Community engagement         | Lists community engagement programmes. Highly detailed, with good data dictionary coverage but lots of missing data.                                                                                 | 2013-2017 | no      |
-| Laboratories                 | Country specific laboratory data. Highly detailed, with good data dictionary coverage but lots of missing data.                                                                                      | 2009-2017 | no      |
+| Expenditure and utilisation  | Previous year expenditure on TB interventions. Highly detailed, with good data dictionary coverage but lots of missing data.                                                                         | 2018      | no      |
+| Policies and services        | Lists TB policies that have been implemented per country. Highly detailed, with good data dictionary coverage but lots of missing data.                                                              | 2018      | no      |
+| Community engagement         | Lists community engagement programmes. Highly detailed, with good data dictionary coverage but lots of missing data.                                                                                 | 2013-2018 | no      |
+| Laboratories                 | Country specific laboratory data. Highly detailed, with good data dictionary coverage but lots of missing data.                                                                                      | 2009-2018 | no      |
 
 These datasets can be imported into `R` by supplying the name of the
 required dataset to the `additional_datasets` argument of
@@ -261,7 +222,41 @@ Alternatively, they can all be imported in one go using
 `additional_datasets = "all"`, as below,
 
 ``` r
-getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
+getTBinR::get_tb_burden(additional_datasets = "all", verbose = TRUE)
+#> Loading data from: /tmp/RtmpVNJxJG/tb_burden.rds
+#> Loading data from: /tmp/RtmpVNJxJG/mdr_tb.rds
+#> Joining TB burden data and MDR TB data.
+#> Getting additional dataset: Latent TB infection
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=ltbi_estimates
+#> Saving data to: /tmp/RtmpVNJxJG/latent_tb_infection.rds
+#> Getting additional dataset: Notification
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=notifications
+#> Saving data to: /tmp/RtmpVNJxJG/notification.rds
+#> Getting additional dataset: Drug resistance surveillance
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=dr_surveillance
+#> Saving data to: /tmp/RtmpVNJxJG/drug_resistance_surveillance.rds
+#> Getting additional dataset: Non-routine HIV surveillance
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=tbhivnonroutinesurv
+#> Saving data to: /tmp/RtmpVNJxJG/non-routine_hiv_surveillance.rds
+#> Getting additional dataset: Outcomes
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=outcomes
+#> Saving data to: /tmp/RtmpVNJxJG/outcomes.rds
+#> Getting additional dataset: Budget
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=budget
+#> Saving data to: /tmp/RtmpVNJxJG/budget.rds
+#> Getting additional dataset: Expenditure and utilisation
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=expenditure_utilisation
+#> Saving data to: /tmp/RtmpVNJxJG/expenditure_and_utilisation.rds
+#> Getting additional dataset: Policies and services
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=policies
+#> Saving data to: /tmp/RtmpVNJxJG/policies_and_services.rds
+#> Getting additional dataset: Community engagement
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=community
+#> Saving data to: /tmp/RtmpVNJxJG/community_engagement.rds
+#> Getting additional dataset: Laboratories
+#> Downloading data from: https://extranet.who.int/tme/generateCSV.asp?ds=labs
+#> Saving data to: /tmp/RtmpVNJxJG/laboratories.rds
+#> Joining TB burden data and additional datasets.
 #> # A tibble: 8,694 x 485
 #>    country iso2  iso3  iso_numeric g_whoregion  year e_pop_num e_inc_100k
 #>    <chr>   <chr> <chr>       <int> <chr>       <int>     <int>      <dbl>
@@ -278,9 +273,8 @@ getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
 #> # … with 8,684 more rows, and 477 more variables: e_inc_100k_lo <dbl>,
 #> #   e_inc_100k_hi <dbl>, e_inc_num <int>, e_inc_num_lo <int>,
 #> #   e_inc_num_hi <int>, e_tbhiv_prct <dbl>, e_tbhiv_prct_lo <dbl>,
-#> #   e_tbhiv_prct_hi <dbl>, e_inc_tbhiv_100k <dbl>,
-#> #   e_inc_tbhiv_100k_lo <dbl>, e_inc_tbhiv_100k_hi <dbl>,
-#> #   e_inc_tbhiv_num <int>, e_inc_tbhiv_num_lo <int>,
+#> #   e_tbhiv_prct_hi <dbl>, e_inc_tbhiv_100k <dbl>, e_inc_tbhiv_100k_lo <dbl>,
+#> #   e_inc_tbhiv_100k_hi <dbl>, e_inc_tbhiv_num <int>, e_inc_tbhiv_num_lo <int>,
 #> #   e_inc_tbhiv_num_hi <int>, e_mort_exc_tbhiv_100k <dbl>,
 #> #   e_mort_exc_tbhiv_100k_lo <dbl>, e_mort_exc_tbhiv_100k_hi <dbl>,
 #> #   e_mort_exc_tbhiv_num <int>, e_mort_exc_tbhiv_num_lo <int>,
@@ -289,32 +283,30 @@ getTBinR::get_tb_burden(additional_datasets = "all", verbose = FALSE)
 #> #   e_mort_tbhiv_num <int>, e_mort_tbhiv_num_lo <int>,
 #> #   e_mort_tbhiv_num_hi <int>, e_mort_100k <dbl>, e_mort_100k_lo <dbl>,
 #> #   e_mort_100k_hi <dbl>, e_mort_num <int>, e_mort_num_lo <int>,
-#> #   e_mort_num_hi <int>, cfr <dbl>, cfr_lo <dbl>, cfr_hi <dbl>,
-#> #   cfr_pct <int>, cfr_pct_lo <int>, cfr_pct_hi <int>,
-#> #   c_newinc_100k <dbl>, c_cdr <dbl>, c_cdr_lo <dbl>, c_cdr_hi <dbl>,
-#> #   source_rr_new <chr>, source_drs_coverage_new <chr>,
-#> #   source_drs_year_new <int>, e_rr_pct_new <dbl>, e_rr_pct_new_lo <dbl>,
-#> #   e_rr_pct_new_hi <dbl>, e_mdr_pct_rr_new <int>, source_rr_ret <chr>,
-#> #   source_drs_coverage_ret <chr>, source_drs_year_ret <int>,
-#> #   e_rr_pct_ret <dbl>, e_rr_pct_ret_lo <dbl>, e_rr_pct_ret_hi <dbl>,
-#> #   e_mdr_pct_rr_ret <int>, e_inc_rr_num <int>, e_inc_rr_num_lo <int>,
-#> #   e_inc_rr_num_hi <int>, e_mdr_pct_rr <dbl>,
+#> #   e_mort_num_hi <int>, cfr <dbl>, cfr_lo <dbl>, cfr_hi <dbl>, cfr_pct <int>,
+#> #   cfr_pct_lo <int>, cfr_pct_hi <int>, c_newinc_100k <dbl>, c_cdr <dbl>,
+#> #   c_cdr_lo <dbl>, c_cdr_hi <dbl>, source_rr_new <chr>,
+#> #   source_drs_coverage_new <chr>, source_drs_year_new <int>,
+#> #   e_rr_pct_new <dbl>, e_rr_pct_new_lo <dbl>, e_rr_pct_new_hi <dbl>,
+#> #   e_mdr_pct_rr_new <int>, source_rr_ret <chr>, source_drs_coverage_ret <chr>,
+#> #   source_drs_year_ret <int>, e_rr_pct_ret <dbl>, e_rr_pct_ret_lo <dbl>,
+#> #   e_rr_pct_ret_hi <dbl>, e_mdr_pct_rr_ret <int>, e_inc_rr_num <int>,
+#> #   e_inc_rr_num_lo <int>, e_inc_rr_num_hi <int>, e_mdr_pct_rr <dbl>,
 #> #   e_rr_in_notified_labconf_pulm <int>,
 #> #   e_rr_in_notified_labconf_pulm_lo <int>,
-#> #   e_rr_in_notified_labconf_pulm_hi <int>, source_hh <chr>,
-#> #   e_hh_size <dbl>, prevtx_data_available <int>,
-#> #   newinc_con04_prevtx <int>, ptsurvey_newinc <int>,
-#> #   ptsurvey_newinc_con04_prevtx <int>, e_prevtx_eligible <dbl>,
-#> #   e_prevtx_eligible_lo <dbl>, e_prevtx_eligible_hi <dbl>,
-#> #   e_prevtx_kids_pct <dbl>, e_prevtx_kids_pct_lo <dbl>,
-#> #   e_prevtx_kids_pct_hi <dbl>, new_sp <int>, new_sn <int>, new_su <int>,
-#> #   new_ep <int>, new_oth <int>, ret_rel <int>, ret_taf <int>,
-#> #   ret_tad <int>, ret_oth <int>, newret_oth <int>, new_labconf <int>,
-#> #   new_clindx <int>, ret_rel_labconf <int>, ret_rel_clindx <int>,
-#> #   ret_rel_ep <int>, ret_nrel <int>, notif_foreign <int>, c_newinc <int>,
-#> #   new_sp_m04 <int>, new_sp_m514 <int>, new_sp_m014 <int>,
-#> #   new_sp_m1524 <int>, new_sp_m2534 <int>, new_sp_m3544 <int>,
-#> #   new_sp_m4554 <int>, …
+#> #   e_rr_in_notified_labconf_pulm_hi <int>, source_hh <chr>, e_hh_size <dbl>,
+#> #   prevtx_data_available <int>, newinc_con04_prevtx <int>,
+#> #   ptsurvey_newinc <int>, ptsurvey_newinc_con04_prevtx <int>,
+#> #   e_prevtx_eligible <dbl>, e_prevtx_eligible_lo <dbl>,
+#> #   e_prevtx_eligible_hi <dbl>, e_prevtx_kids_pct <dbl>,
+#> #   e_prevtx_kids_pct_lo <dbl>, e_prevtx_kids_pct_hi <dbl>, new_sp <int>,
+#> #   new_sn <int>, new_su <int>, new_ep <int>, new_oth <int>, ret_rel <int>,
+#> #   ret_taf <int>, ret_tad <int>, ret_oth <int>, newret_oth <int>,
+#> #   new_labconf <int>, new_clindx <int>, ret_rel_labconf <int>,
+#> #   ret_rel_clindx <int>, ret_rel_ep <int>, ret_nrel <int>,
+#> #   notif_foreign <int>, c_newinc <int>, new_sp_m04 <int>, new_sp_m514 <int>,
+#> #   new_sp_m014 <int>, new_sp_m1524 <int>, new_sp_m2534 <int>,
+#> #   new_sp_m3544 <int>, new_sp_m4554 <int>, …
 ```
 
 Once imported, these datasets can be used in the plotting and summary
@@ -328,12 +320,12 @@ descriptions for each dataset.
 
 The WHO makes use of several standardised plot themes and colour
 palettes. `getTBinR` implements these so that the package can be easily
-used internally at the WHO or by those collaborating with the
-WHO.
+used internally at the WHO or by those collaborating with the WHO.
 
 ``` r
-getTBinR::plot_tb_burden_summary(countries = "United Kingdom", compare_all_regions = FALSE, 
-                                 compare_to_region = TRUE, verbose = FALSE) +
+getTBinR::plot_tb_burden_summary(countries = "United Kingdom", 
+                                 compare_all_regions = FALSE, 
+                                 compare_to_region = TRUE) +
   getTBinR::theme_who() +
   getTBinR::scale_colour_who(reverse = TRUE) +
   getTBinR::scale_fill_who(reverse = TRUE)
@@ -395,9 +387,8 @@ citation("getTBinR")
 #> To cite getTBinR in publications use:
 #> 
 #>   Sam Abbott (2019). getTBinR: an R package for accessing and
-#>   summarising the World Health Organisation Tuberculosis data
-#>   Journal of Open Source Software, 4(34), 1260. doi:
-#>   10.21105/joss.01260
+#>   summarising the World Health Organisation Tuberculosis data Journal
+#>   of Open Source Software, 4(34), 1260. doi: 10.21105/joss.01260
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 

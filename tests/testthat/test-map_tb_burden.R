@@ -53,7 +53,7 @@ test_that("map_tb_burden can have a custom legend specified.", {
   plot <- map_tb_burden(metric_label = test_label)
 
   expect_true(!is.null(plot))
-  expect_equal(plot$guides$fill$title, test_label)
+  expect_equal(plot$labels$fill, test_label)
   skip_on_cran()
   vdiffr::expect_doppelganger("legend-map", plot)
 })

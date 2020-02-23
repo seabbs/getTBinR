@@ -18,7 +18,7 @@ update_deps:
 ## Update package styling
 .PHONY: styling
 styling: 
-		Rscript -e 'usethis::use_tidy_style()'
+		Rscript -e 'styler::style_pkg(".", style = styler::tidyverse_style, strict = TRUE)'
 		
 #build update documents and build package
 .PHONY: package
