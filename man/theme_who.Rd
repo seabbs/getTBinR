@@ -13,7 +13,7 @@ See the report \href{https://www.who.int/tb/publications/global_report/en/}{here
 \examples{
 
 plot_tb_burden_summary(conf = NULL, verbose = FALSE) +
-theme_who()
+  theme_who()
 }
 \seealso{
 bbplot::bbc_style()

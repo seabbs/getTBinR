@@ -81,7 +81,6 @@ head(tb_burden)
 tb_with_latents <- get_tb_burden(additional_datasets = available_datasets$dataset[3])
 
 head(tb_with_latents)
-
 }
 \seealso{
 get_data search_data_dict

@@ -117,24 +117,29 @@ sample_countries <- sample(unique(tb_burden$country), 9)
 
 ## Plot incidence rates in these countries
 plot_tb_burden(df = tb_burden, dict = dict, facet = "country", countries = sample_countries)
-
 \dontrun{
 ## Plot smoothed incidence rates in these countries
-plot_tb_burden(df = tb_burden, dict = dict, facet = "country", smooth = TRUE,
-               countries = sample_countries)
+plot_tb_burden(
+  df = tb_burden, dict = dict, facet = "country", smooth = TRUE,
+  countries = sample_countries
+)
 ## Use data caching to plot incidence rates with free y scales
 plot_tb_burden(facet = "country", countries = sample_countries, scales = "free_y")
- 
+
 ## Plot annual percentage change in incidence rates in selected countries
-plot_tb_burden(df = tb_burden, dict = dict, facet = "country", scales = "free_y", 
-               countries = sample_countries, annual_change = TRUE, conf = NULL)
-               
+plot_tb_burden(
+  df = tb_burden, dict = dict, facet = "country", scales = "free_y",
+  countries = sample_countries, annual_change = TRUE, conf = NULL
+)
+
 ## Find variables relating to mortality in the WHO dataset
 search_data_dict(def = "mortality")
 ## Plot mortality rates (exc HIV) - without progress messages
-plot_tb_burden(metric = "e_mort_exc_tbhiv_100k", facet = "country", 
-               countries = sample_countries, scales = "free_y")
-}  
+plot_tb_burden(
+  metric = "e_mort_exc_tbhiv_100k", facet = "country",
+  countries = sample_countries, scales = "free_y"
+)
+}
 }
 \seealso{
 get_tb_burden search_data_dict

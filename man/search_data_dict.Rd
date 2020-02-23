@@ -65,7 +65,6 @@ search_data_dict(dataset = "Estimates")
 ## Search for both a known variable and for mortality being mentioned in there definition
 ## Duplicate entries will be omitted.
 search_data_dict(var = "e_mort_exc_tbhiv_100k", def = "mortality")
-
 }
 \seealso{
 get_data_dict

@@ -56,7 +56,6 @@ will instead download the data.
 dict <- get_data_dict()
 
 head(dict)
-
 }
 \seealso{
 get_data search_data_dict

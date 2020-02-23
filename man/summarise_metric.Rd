@@ -61,7 +61,7 @@ summarise_metric(metric = "c_cdr", countries = "France")
 ## Get a summary of case detection rates in France - without confidence intervals
 summarise_metric(metric = "c_cdr", countries = "France", conf = NULL)
 
-## Provide a dataset and get summary measures from it. 
+## Provide a dataset and get summary measures from it.
 tb <- get_tb_burden()
 summarise_metric(df = tb, metric = "c_cdr", countries = "France")
 }

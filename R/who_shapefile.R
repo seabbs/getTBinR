@@ -1,7 +1,7 @@
 #' WHO shapefile
 #'
-#'The shapefile used in the WHO TB report, see [here](https://github.com/hazimtimimi/global_report/raw/master/Data/gparts.Rdata) 
-#'for the original source. This shapefile is used in \code{\link[getTBinR]{map_tb_burden}}.
+#' The shapefile used in the WHO TB report, see [here](https://github.com/hazimtimimi/global_report/raw/master/Data/gparts.Rdata)
+#' for the original source. This shapefile is used in \code{\link[getTBinR]{map_tb_burden}}.
 #' @format A data frame with 15243 rows and 7 variables.
 #' \describe{
 #'   \item{long}{Longitude}

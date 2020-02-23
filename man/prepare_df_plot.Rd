@@ -78,7 +78,6 @@ and \code{\link[getTBinR]{plot_tb_burden_overview}} to prepare data for plotting
 \examples{
 
 prepare_df_plot(countries = "Guinea")
-
 }
 \seealso{
 plot_tb_burden plot_tb_burden_overview

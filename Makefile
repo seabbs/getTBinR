@@ -3,7 +3,7 @@
 default: all
 
 
-all: build_data update_deps package docs man/figures/logo.png README.md check_package git_commit
+all: build_data update_deps styling package docs man/figures/logo.png README.md check_package git_commit
 
 #Update data
 .PHONY: build_data
@@ -14,7 +14,12 @@ build_data:
 .PHONY: update_deps
 update_deps:
 		 Rscript -e "usethis::use_tidy_versions(overwrite = TRUE)"
-		 
+	
+## Update package styling
+.PHONY: styling
+styling: 
+		Rscript -e 'usethis::use_tidy_style()'
+		
 #build update documents and build package
 .PHONY: package
 package:

@@ -107,41 +107,49 @@ tb_burden <- get_tb_burden()
 most_recent_year <- max(tb_burden$year)
 
 ## Get summary of the e_mdr_pct_rr_new cases
-summarise_tb_burden(metric = "e_mdr_pct_rr_new",
-                    years =  most_recent_year,
-                    stat = "mean",
-                    samples = 100,
-                    compare_all_regions = TRUE,
-                    compare_to_world = TRUE,
-                    verbose = TRUE)
+summarise_tb_burden(
+  metric = "e_mdr_pct_rr_new",
+  years = most_recent_year,
+  stat = "mean",
+  samples = 100,
+  compare_all_regions = TRUE,
+  compare_to_world = TRUE,
+  verbose = TRUE
+)
 \dontrun{
 ## Get median (with 95\% IQR) of the case fatality rate for regions and the world
 ## Boostrapping uncertainty in country measures
-summarise_tb_burden(metric = "cfr",
-                    years =  most_recent_year,
-                    samples = 100,
-                    stat = "median",
-                    compare_all_regions = TRUE,
-                    compare_to_world = TRUE,
-                    verbose = FALSE)
+summarise_tb_burden(
+  metric = "cfr",
+  years = most_recent_year,
+  samples = 100,
+  stat = "median",
+  compare_all_regions = TRUE,
+  compare_to_world = TRUE,
+  verbose = FALSE
+)
 
 
 ## Get summary data for the UK, Europe and the world
-## Bootstrapping CI's 
-summarise_tb_burden(metric = "e_inc_num",
-                    samples = 100,
-                    stat = "median",
-                    countries = "United Kingdom", 
-                    compare_to_world = TRUE, 
-                    compare_to_region = TRUE,
-                    verbose = FALSE)
-                    
- ## Get an overview of incidence rates regionally and globally compared to the UK
-summarise_tb_burden(metric = "e_inc_num",
-                    stat = "rate",
-                    countries = "United Kingdom", 
-                    compare_to_world = TRUE, 
-                    compare_to_region = TRUE,
-                    verbose = FALSE) 
-}                     
+## Bootstrapping CI's
+summarise_tb_burden(
+  metric = "e_inc_num",
+  samples = 100,
+  stat = "median",
+  countries = "United Kingdom",
+  compare_to_world = TRUE,
+  compare_to_region = TRUE,
+  verbose = FALSE
+)
+
+## Get an overview of incidence rates regionally and globally compared to the UK
+summarise_tb_burden(
+  metric = "e_inc_num",
+  stat = "rate",
+  countries = "United Kingdom",
+  compare_to_world = TRUE,
+  compare_to_region = TRUE,
+  verbose = FALSE
+)
+}
 }

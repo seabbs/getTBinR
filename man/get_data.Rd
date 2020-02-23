@@ -58,11 +58,12 @@ saved  to the temporary directory by specifying \code{save = TRUE}.
 }
 \examples{
 
-tb_burden <- get_data(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
-save_name = "TB_burden")
+tb_burden <- get_data(
+  url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
+  save_name = "TB_burden"
+)
 
 head(tb_burden)
-
 }
 \seealso{
 get_tb_burden get_data_dict

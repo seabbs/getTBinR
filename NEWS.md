@@ -95,6 +95,7 @@ summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articl
 * Tweaked line thickness in `plot_tb_burden` to improve plot appearance.
 * Added `legend` argument to all plotting functions to allow control of the legend appearance.
 * Added spell checking and list of allowed words.
+* Automated package styling using `usethis::use_tidy_style()` via the `styler` package. Based on this [issue](https://github.com/seabbs/getTBinR/issues/89).
 
 ## Package updates
 

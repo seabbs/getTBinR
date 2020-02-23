@@ -143,31 +143,34 @@ include this in any estimated summary measures. Currently four statistics are su
 \examples{
 
 ## Get an overview of incidence rates regionally and globally compared to the UK
-plot_tb_burden_summary(metric = "e_inc_num",
-                       metric_label = "e_inc_100k",
-                       stat = "rate",
-                       countries = "United Kingdom", 
-                       compare_to_world = TRUE, 
-                       compare_all_regions = TRUE,
-                       verbose = FALSE,
-                       scales = "free_y",
-                       facet = "Area") 
+plot_tb_burden_summary(
+  metric = "e_inc_num",
+  metric_label = "e_inc_100k",
+  stat = "rate",
+  countries = "United Kingdom",
+  compare_to_world = TRUE,
+  compare_all_regions = TRUE,
+  verbose = FALSE,
+  scales = "free_y",
+  facet = "Area"
+)
 \dontrun{
 
 
 ## Get summary data for the UK, Europe and the world
-## Bootstrapping CI's 
-plot_tb_burden_summary(metric = "e_inc_num",
-                       samples = 100,
-                       stat = "mean",
-                       countries = "United Kingdom", 
-                       compare_to_world = TRUE, 
-                       compare_to_region = TRUE,
-                       verbose = FALSE,
-                       facet = "Area",
-                       scales = "free_y")
-                    
-}                     
+## Bootstrapping CI's
+plot_tb_burden_summary(
+  metric = "e_inc_num",
+  samples = 100,
+  stat = "mean",
+  countries = "United Kingdom",
+  compare_to_world = TRUE,
+  compare_to_region = TRUE,
+  verbose = FALSE,
+  facet = "Area",
+  scales = "free_y"
+)
+}
 }
 \seealso{
 search_data_dict plot_tb_burden summarise_tb_burden

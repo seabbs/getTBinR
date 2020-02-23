@@ -1,14 +1,14 @@
 #' Generic Get Data Function
 #'
 #' @description If the data is found locally in the temporary directory then this function will load the data into R.
-#'  Otherwise if \code{download_data = TRUE} then the data will be retrieved from the specified URL. Data can then be 
+#'  Otherwise if \code{download_data = TRUE} then the data will be retrieved from the specified URL. Data can then be
 #'  saved  to the temporary directory by specifying \code{save = TRUE}.
 #' @param url Character string, indicating  the url of the data to download.
 #' @param data_trans_fn Function that takes a data.table as input and returns a single
 #' dataframe of any type. If not specified defaults to transforming the data into a tibble.
 #' @param download_data Logical, defaults to \code{TRUE}. If not found locally should the data be
 #'  downloaded from the specified URL?
-#' @param save Logical, should the data be saved for reuse during the current R session. Defaults to 
+#' @param save Logical, should the data be saved for reuse during the current R session. Defaults to
 #' \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.
 #' @param save_name Character string, name to save the data under. Defaults to
 #' \code{NULL}.
@@ -32,13 +32,14 @@
 #' @importFrom stats runif
 #' @seealso get_tb_burden get_data_dict
 #' @examples
-#' 
-#' tb_burden <- get_data(url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
-#' save_name = "TB_burden")
-#' 
+#'
+#' tb_burden <- get_data(
+#'   url = "https://extranet.who.int/tme/generateCSV.asp?ds=estimates",
+#'   save_name = "TB_burden"
+#' )
+#'
 #' head(tb_burden)
-#' 
-get_data <- function(url = NULL, 
+get_data <- function(url = NULL,
                      data_trans_fn = NULL,
                      download_data = TRUE,
                      save = TRUE,
@@ -48,129 +49,121 @@ get_data <- function(url = NULL,
                      use_utils = FALSE,
                      use_direct_download = FALSE,
                      retry_download = TRUE) {
-    path <- tempdir()
-  
+  path <- tempdir()
+
   if (is.null(data_trans_fn)) {
     data_trans_fn <- tibble::as_tibble
   }
-  
+
   data_path <- file.path(path, paste0(save_name, ".rds"))
-  
+
   if (!file.exists(data_path) && download_data) {
-  
     max_tries <- 3
     tries <- 1
     failed <- FALSE
-    
+
     if (!retry_download) {
       tries <- max_tries
     }
-    
+
     while (tries < max_tries + 1) {
-      
       if (verbose) {
         message("Downloading data from: ", url)
       }
-      
+
       if (!use_utils && !use_direct_download) {
         ddata <- try(data.table::fread(url), silent = TRUE)
-        
+
         if ("try-error" %in% class(ddata)) {
           use_utils <- TRUE
           failed <- TRUE
-          
+
           if (verbose) {
             message("Downloading the data using fread::data.table has failed. Trying
                 again using utils::read.csv")
           }
         }
       }
-      
+
       if (use_utils) {
         ddata <- try(read.csv(url, stringsAsFactors = FALSE), silent = TRUE)
-        
+
         if ("try-error" %in% class(ddata)) {
           use_direct_download <- TRUE
           failed <- TRUE
-          
+
           if (verbose) {
             message("Downloading the data using utils::read.csv has failed trying a 
                   direct download instead.")
           }
-          }else{
+        } else {
           failed <- FALSE
         }
       }
-      
+
       if (use_direct_download) {
-        
         tmp_loc <- tempfile()
-        
+
         try(download.file(url, destfile = tmp_loc), silent = TRUE)
-        
+
         ddata <- try(read.csv(tmp_loc, stringsAsFactors = FALSE), silent = TRUE)
-        
+
         if ("try-error" %in% class(ddata)) {
           failed <- TRUE
-        }else{
+        } else {
           failed <- FALSE
         }
-        
       }
-      
+
       if (failed) {
-        
         message("Downloading data has failed after ", tries, " tries.")
-        
+
         tries <- tries + 1
-        
+
         pause_time <- runif(1, 0.5, 3)
         pause_time <- round(pause_time, digits = 1)
-        
+
         message("Attempting data download in ", pause_time, " seconds.")
-        
+
         Sys.sleep(pause_time)
       }
-      
-      if(!failed) {
+
+      if (!failed) {
         break
       }
-      
     }
 
     if (failed || is.null(ddata)) {
       stop("Data downloading has failed, check your internet connection.
            If this issue is not resolved, contact the package author.")
     }
-    
+
     ddata <- data_trans_fn(ddata)
-    
+
     if (save) {
       if (!dir.exists(path)) {
         dir.create(path)
       }
-      
+
       if (verbose) {
         message("Saving data to: ", data_path)
       }
       saveRDS(ddata, data_path)
     }
-    
-  }else if (!file.exists(data_path) && !download_data) {
+  } else if (!file.exists(data_path) && !download_data) {
     stop("Data not found locally at: ", data_path, "Permission to download has 
 not been given. 
 If the data exists locally, check the path and save_name.
 If it does not exist locally then change download_data to TRUE to download the data.
 Set save to TRUE to save the data for local use.")
-  }else {
-    
+  } else {
     if (verbose) {
       message("Loading data from: ", data_path)
     }
-    
+
     ddata <- readRDS(data_path)
   }
-  
+
   if (return) {
     return(ddata)
   }

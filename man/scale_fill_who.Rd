@@ -18,9 +18,7 @@ scale_fill_who(
 "main", "light" and "misc" for mixed colours as well as "purple", "turquoise",
 "blue", "magenta", "brown", "misc", "green", and "red".}
 
-\item{discrete}{Logical, defaults to \code{TRUE}. Should the palette be discrete or continuous.}
-
-\item{reverse}{Logical, defaults to \code{FALSE}. Should the colour palette be reversed.}
+\item{reverse}{Logical, defaults to \code{FALSE}. Should the palette be reversed.}
 
 \item{n}{Number of colours desired. If a specific value is given which corresponds
 to the length of a palette used in the 2019 WHO TB report, this palette is returned,
@@ -39,11 +37,13 @@ palette has not been implemented so the \code{viridis} palettes will be used as 
 \examples{
 
 
-plot_tb_burden_summary(countries = "United Kingdom", compare_all_regions = FALSE,
-                       compare_to_region = TRUE, verbose = FALSE) +
-theme_who() +
-scale_colour_who(reverse = TRUE) +
-scale_fill_who(reverse = TRUE)
+plot_tb_burden_summary(
+  countries = "United Kingdom", compare_all_regions = FALSE,
+  compare_to_region = TRUE, verbose = FALSE
+) +
+  theme_who() +
+  scale_colour_who(reverse = TRUE) +
+  scale_fill_who(reverse = TRUE)
 }
 \seealso{
 scale_colour_who who_palettes
