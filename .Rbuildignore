@@ -19,3 +19,4 @@
 ^inst/paper$
 ^\.github$
 ^binder$
+^inst/dev$

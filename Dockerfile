@@ -23,5 +23,5 @@ RUN Rscript -e 'install.packages("hexSticker")'
 ## Install dev deps
 RUN Rscript -e 'devtools::install_dev_deps("home/rstudio/getTBinR")'
 
-## Install the getTBinR
+## Install getTBinR
 RUN Rscript -e 'devtools::install("home/rstudio/getTBinR")'
