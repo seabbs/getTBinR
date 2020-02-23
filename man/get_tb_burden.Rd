@@ -4,11 +4,20 @@
 \alias{get_tb_burden}
 \title{Get the WHO TB Burden Data}
 \usage{
-get_tb_burden(url = NULL, download_data = TRUE, save = TRUE,
-  burden_save_name = NULL, add_mdr_data = TRUE,
-  additional_datasets = NULL, mdr_save_name = NULL, mdr_url = NULL,
-  return = TRUE, verbose = TRUE, use_utils = FALSE,
-  retry_download = TRUE)
+get_tb_burden(
+  url = NULL,
+  download_data = TRUE,
+  save = TRUE,
+  burden_save_name = NULL,
+  add_mdr_data = TRUE,
+  additional_datasets = NULL,
+  mdr_save_name = NULL,
+  mdr_url = NULL,
+  return = TRUE,
+  verbose = TRUE,
+  use_utils = FALSE,
+  retry_download = TRUE
+)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the TB burden data.
@@ -41,7 +50,7 @@ see \code{\link[getTBinR]{available_datasets}} for details.}
 \item{return}{Logical, should the data be returned as a dataframe.
 Defaults to \code{TRUE}.}
 
-\item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
+\item{verbose}{Logical, defaults to \code{FALSE}. Should additional status and progress messages
 be displayed.}
 
 \item{use_utils}{Logical, defaults to \code{FALSE}. Used for testing alternative

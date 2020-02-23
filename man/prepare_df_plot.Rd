@@ -4,11 +4,23 @@
 \alias{prepare_df_plot}
 \title{Generic Function to Prepare TB Burden Data for Plotting}
 \usage{
-prepare_df_plot(df = NULL, dict = NULL, metric = "e_inc_100k",
-  conf = NULL, metric_label = NULL, countries = NULL, years = NULL,
-  compare_to_region = FALSE, facet = NULL, annual_change = FALSE,
-  trans = "identity", download_data = TRUE, save = TRUE,
-  verbose = TRUE, ...)
+prepare_df_plot(
+  df = NULL,
+  dict = NULL,
+  metric = "e_inc_100k",
+  conf = NULL,
+  metric_label = NULL,
+  countries = NULL,
+  years = NULL,
+  compare_to_region = FALSE,
+  facet = NULL,
+  annual_change = FALSE,
+  trans = "identity",
+  download_data = TRUE,
+  save = TRUE,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{df}{Dataframe of TB burden data, as sourced by \code{\link[getTBinR]{get_tb_burden}}.
@@ -50,7 +62,7 @@ downloaded from the specified URL?}
 \item{save}{Logical, should the data be saved for reuse during the current R session. Defaults to
 \code{TRUE}. If \code{TRUE} then the data is saved to the temporary directory specified by \code{\link[base]{tempdir}}.}
 
-\item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
+\item{verbose}{Logical, defaults to \code{FALSE}. Should additional status and progress messages
 be displayed.}
 
 \item{...}{Additional arguments to pass to \code{\link[getTBinR]{get_tb_burden}}.}

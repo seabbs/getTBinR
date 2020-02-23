@@ -5,8 +5,14 @@
 \alias{scale_color_who}
 \title{Adds World Health Organization-inspired colours to plots}
 \usage{
-scale_colour_who(palette = "main", discrete = TRUE, reverse = FALSE,
-  n = NULL, add_missings = FALSE, ...)
+scale_colour_who(
+  palette = "main",
+  discrete = TRUE,
+  reverse = FALSE,
+  n = NULL,
+  add_missings = FALSE,
+  ...
+)
 }
 \arguments{
 \item{palette}{A character string. the colours of choice, current options are

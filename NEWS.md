@@ -15,6 +15,7 @@
 * Bumped data availability to 2018.
 * Standarised legend to be bottom aligned across package.
 * Dropped `tidyverse` from suggests as per this [issue](https://github.com/seabbs/getTBinR/issues/96).
+* Fixed legend types as per this [issue](https://github.com/seabbs/getTBinR/issues/87)
 
 Thanks to [@mariabnd](https://github.com/mariabnd) for contributing to this release.
 

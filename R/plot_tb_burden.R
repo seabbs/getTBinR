@@ -28,7 +28,7 @@
 #' @return A plot of TB Incidence Rates by Country
 #' @export
 #' @import magrittr
-#' @importFrom ggplot2 ggplot aes geom_smooth geom_point geom_line geom_smooth scale_y_continuous theme theme_minimal labs facet_wrap guides guide_legend
+#' @importFrom ggplot2 ggplot aes geom_smooth geom_point geom_line geom_smooth scale_y_continuous theme theme_minimal labs facet_wrap 
 #' @importFrom dplyr filter
 #' @importFrom rlang .data
 #' @importFrom scales percent

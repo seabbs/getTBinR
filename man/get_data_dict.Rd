@@ -4,9 +4,16 @@
 \alias{get_data_dict}
 \title{Get the WHO Data Dictionary for TB Data}
 \usage{
-get_data_dict(url = NULL, download_data = TRUE, save = TRUE,
-  dict_save_name = NULL, return = TRUE, verbose = TRUE,
-  use_utils = FALSE, retry_download = TRUE)
+get_data_dict(
+  url = NULL,
+  download_data = TRUE,
+  save = TRUE,
+  dict_save_name = NULL,
+  return = TRUE,
+  verbose = FALSE,
+  use_utils = FALSE,
+  retry_download = TRUE
+)
 }
 \arguments{
 \item{url}{Character string, indicating  the url of the data
@@ -24,7 +31,7 @@ and will be removed from future releases. Dataset naming is now handled internal
 \item{return}{Logical, should the data  dictionary be returned as a dataframe.
 Defaults to \code{TRUE}.}
 
-\item{verbose}{Logical, defaults to \code{TRUE}. Should additional status and progress messages
+\item{verbose}{Logical, defaults to \code{FALSE}. Should additional status and progress messages
 be displayed.}
 
 \item{use_utils}{Logical, defaults to \code{FALSE}. Used for testing alternative

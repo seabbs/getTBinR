@@ -4,9 +4,17 @@
 \alias{search_data_dict}
 \title{Search the WHO TB Data Dictionary by Variable Name.}
 \usage{
-search_data_dict(var = NULL, def = NULL, dataset = NULL,
-  dict = NULL, download_data = TRUE, save = TRUE,
-  dict_save_name = NULL, verbose = TRUE, ...)
+search_data_dict(
+  var = NULL,
+  def = NULL,
+  dataset = NULL,
+  dict = NULL,
+  download_data = TRUE,
+  save = TRUE,
+  dict_save_name = NULL,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{var}{A character vector of variable names.}

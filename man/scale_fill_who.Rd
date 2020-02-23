@@ -4,8 +4,14 @@
 \alias{scale_fill_who}
 \title{Adds World Health Organization-inspired colours as fills to plots}
 \usage{
-scale_fill_who(palette = "light", discrete = TRUE, reverse = FALSE,
-  n = NULL, add_missings = FALSE, ...)
+scale_fill_who(
+  palette = "light",
+  discrete = TRUE,
+  reverse = FALSE,
+  n = NULL,
+  add_missings = FALSE,
+  ...
+)
 }
 \arguments{
 \item{palette}{A character string. the colours of choice, current options are

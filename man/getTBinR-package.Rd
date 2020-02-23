@@ -4,12 +4,12 @@
 \name{getTBinR-package}
 \alias{getTBinR}
 \alias{getTBinR-package}
-\title{getTBinR: Access and Summarise World Health Organisation Tuberculosis data}
+\title{getTBinR: Access and Summarise World Health Organization Tuberculosis data}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Quickly and easily import analysis ready
-    Tuberculosis (TB) burden data, from the World Health Organisation
+    Tuberculosis (TB) burden data, from the World Health Organization
     (WHO), into R. The aim of getTBinR is to allow researchers, and other
     interested individuals, to quickly and easily gain access to a
     detailed TB data set and to start using it to derive key insights. It
@@ -33,11 +33,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (0000-0001-8057-8037)
+\strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (\href{https://orcid.org/0000-0001-8057-8037}{ORCID})
 
 Other contributors:
 \itemize{
-  \item Maria Bekker-Nielsen Dunbar (0000-0002-7249-3524) [contributor]
+  \item Maria Bekker-Nielsen Dunbar (\href{https://orcid.org/0000-0002-7249-3524}{ORCID}) [contributor]
 }
 
 }

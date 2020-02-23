@@ -4,9 +4,13 @@
 \alias{render_country_report}
 \title{Render a Country Level TB Report}
 \usage{
-render_country_report(country = "United Kingdom",
-  format = "html_document", interactive = FALSE, save_dir = NULL,
-  filename = NULL)
+render_country_report(
+  country = "United Kingdom",
+  format = "html_document",
+  interactive = FALSE,
+  save_dir = NULL,
+  filename = NULL
+)
 }
 \arguments{
 \item{country}{Character string, defaults to \code{"United Kingdom"}. Specify the country to

@@ -13,7 +13,7 @@
 #' @seealso plot_tb_burden plot_tb_burden_overview get_tb_burden search_data_dict
 #' @return A plot of TB Incidence Rates by Country
 #' @export
-#' @importFrom ggplot2 ggplot aes geom_polygon coord_equal theme labs guides guide_legend facet_wrap
+#' @importFrom ggplot2 ggplot aes geom_polygon coord_equal theme labs facet_wrap
 #' @importFrom rlang .data
 #' @importFrom viridis scale_fill_viridis
 #' @importFrom ggthemes theme_map
@@ -140,8 +140,9 @@ map_tb_burden <- function(df = NULL, dict = NULL,
     coord_equal() +
     ggthemes::theme_map() +
     theme(legend.position = legend) +
-    guides(fill = guide_legend(title = df_prep$metric_label)) +
-    labs(caption = "Source: World Health Organization")
+    labs(
+      fill = df_prep$metric_label,
+      caption = "Source: World Health Organization")
   
   if (annual_change) {
     

@@ -4,8 +4,13 @@
 \alias{who_palettes}
 \title{World Health Organization-inspired palettes}
 \usage{
-who_palettes(palette = "main", reverse = FALSE, n = NULL,
-  add_missings = FALSE, ...)
+who_palettes(
+  palette = "main",
+  reverse = FALSE,
+  n = NULL,
+  add_missings = FALSE,
+  ...
+)
 }
 \arguments{
 \item{palette}{A character string. the colours of choice, current options are
