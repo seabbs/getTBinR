@@ -7,6 +7,7 @@
 #' plot, defaults to 0.5.
 #' @param font_increase The amount to increase the font size by, default to
 #' 1.5.
+#' @return A plot adjusted for presentaion.
 #' @export
 #' @importFrom ggplot2 theme
 #' @author Maria Bekker-Nielsen Dunbar

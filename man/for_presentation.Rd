@@ -15,6 +15,9 @@ plot, defaults to 0.5.}
 \item{font_increase}{The amount to increase the font size by, default to
 1.5.}
 }
+\value{
+A plot adjusted for presentaion.
+}
 \description{
 This function adjusts the aspect ratio and default font size
 of a plot to improve readibility when including figures in presentations.
