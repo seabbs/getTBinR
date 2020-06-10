@@ -32,34 +32,34 @@ Depends:
     R (>= 3.3.0)
 Imports: 
     data.table (>= 1.12.8),
-    dplyr (>= 0.8.4),
-    ggplot2 (>= 3.2.1),
+    dplyr (>= 1.0.0),
+    ggplot2 (>= 3.3.1),
     ggthemes (>= 4.2.0),
     magrittr (>= 1.5),
-    plotly (>= 4.9.2),
-    purrr (>= 0.3.3),
-    scales (>= 1.1.0),
-    tibble (>= 2.1.3),
-    tidyr (>= 1.0.2),
+    plotly (>= 4.9.2.1),
+    purrr (>= 0.3.4),
+    scales (>= 1.1.1),
+    tibble (>= 3.0.1),
+    tidyr (>= 1.1.0),
     viridis (>= 0.5.1),
-    rlang (>= 0.4.4),
+    rlang (>= 0.4.6),
     grDevices
 Suggests:
     spelling (>= 2.1),
-    covr (>= 3.4.0),
-    devtools (>= 2.2.2),
-    usethis (>= 1.5.1),
+    covr (>= 3.5.0),
+    devtools (>= 2.3.0),
+    usethis (>= 1.6.1),
     knitr (>= 1.28),
-    pkgnet (>= 0.4.0),
-    rmarkdown (>= 2.1),
-    shiny (>= 1.4.0),
+    pkgnet (>= 0.4.1),
+    rmarkdown (>= 2.2),
+    shiny (>= 1.4.0.2),
     shinycssloaders (>= 0.3),
     shinydashboard (>= 0.7.1),
-    shinyWidgets (>= 0.5.0),
-    testthat (>= 2.3.1),
-    vdiffr (>= 0.3.1),
+    shinyWidgets (>= 0.5.3),
+    testthat (>= 2.3.2),
+    vdiffr (>= 0.3.2),
     styler (>= 1.3.2),
-    pkgdown (>= 1.4.1)
+    pkgdown (>= 1.5.1)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

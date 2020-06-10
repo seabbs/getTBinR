@@ -13,7 +13,7 @@ build_data:
 ## Update dependencies based on those installed
 .PHONY: update_deps
 update_deps:
-		 Rscript -e "usethis::use_tidy_versions(overwrite = TRUE)"
+		 Rscript -e "usethis::use_latest_dependencies(overwrite = TRUE)"
 	
 ## Update package styling
 .PHONY: styling

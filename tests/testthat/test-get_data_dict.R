@@ -28,4 +28,3 @@ test_that("Data dictionary has at least the expected number of variables", {
 test_that("Data dictionary has at least the expected number of entries", {
   expect_true(exp_nrows <= nrows_dict)
 })
-

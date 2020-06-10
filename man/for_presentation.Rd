@@ -24,8 +24,10 @@ of a plot to improve readability when including figures in presentations.
 }
 \examples{
 
-plot <- plot_tb_burden_summary(countries = "United Kingdom",
-compare_all_regions = FALSE, compare_to_region = TRUE)
+plot <- plot_tb_burden_summary(
+  countries = "United Kingdom",
+  compare_all_regions = FALSE, compare_to_region = TRUE
+)
 plot # Original
 for_presentation(plot) # After adjustments
 }

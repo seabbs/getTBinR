@@ -133,7 +133,7 @@ test_that("annual_change correctly transforms metric and confidence intervals", 
   result_df$e_inc_100k_hi <- 0.1
   result_df$`Percentage annual change: Estimated incidence (all forms) per 100 000 population` <- 0.2
   result_df$Year <- result_df$year
-  
+
   df_annual_change <- prepare_df_plot(
     metric = "e_inc_100k", conf = c("_lo", "_hi"),
     df = test_df, annual_change = TRUE
