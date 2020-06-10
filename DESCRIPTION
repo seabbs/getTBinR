@@ -1,6 +1,6 @@
 Type: Package
 Package: getTBinR
-Title: Access and Summarise World Health Organization Tuberculosis data
+Title: Access and Summarise World Health Organization Tuberculosis Data
 Version: 0.7.1
 Authors@R: c(
     person(given = "Sam Abbott",

@@ -75,7 +75,7 @@ wanted and rates were estimated for countries.
 * Used `usethis::use_tidy_description` to improve DESCRIPTION formatting.
 * Added development documentation badge to the README + website.
 * Moved to automated pkgdown deployment using travis. Based on [this](https://pkgdown.r-lib.org/reference/deploy_site_github.html) and the [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
-* Expanded travis testing grid based on [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
+* Expanded travis testing grid based on `dplyr` implementation.
 * Updated earliest supported R version based on travis testing - now `3.2.0`. 
 * Used `usethis::use_tidy_versions()` to set package to dependent on package versions used during development work. Added this to makefile to make automated.
 * Added a git commit step to the `Makefile` use with `make message="your commit message". This will automatically run all build steps that are required and then commit any changes. 
