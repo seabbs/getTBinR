@@ -29,7 +29,8 @@ exp_def <- c(
 test_var_def <- search_data_dict(var = "e_mort_100k", def = "mortality")
 
 test_that("Variable search for a known variable returns expected results", {
-  expect_equal(exp_var, test_var)
+  expect_equal(colnames(exp_var), colnames(test_var))
+  expect_equal(unlist(exp_var), unlist(test_var))
 })
 
 test_that("Definition search for an unknown variable returns expected results", {

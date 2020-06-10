@@ -4,7 +4,8 @@
 \name{who_shapefile}
 \alias{who_shapefile}
 \title{WHO shapefile}
-\format{A data frame with 15243 rows and 7 variables.
+\format{
+A data frame with 15243 rows and 7 variables.
 \describe{
 \item{long}{Longitude}
 \item{lat}{Latitude}
@@ -13,7 +14,8 @@
 \item{piece}{}
 \item{group}{The country group}
 \item{id}{The country acronym}
-}}
+}
+}
 \usage{
 who_shapefile
 }
