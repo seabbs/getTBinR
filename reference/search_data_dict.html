@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,7 +46,7 @@
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
@@ -52,7 +56,6 @@
 <meta property="og:description" content="Searches the WHO data dictionary for TB burden data. When run for the first time
 it will download the data dictionary, if download_data = TRUE, and save it into the temporary" />
 <meta property="og:image" content="samabbott.co.uk/getTBinR/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -70,7 +73,7 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -84,7 +87,7 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">getTBinR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.1</span>
       </span>
     </div>
 
@@ -149,7 +152,7 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/seabbs/getTBinR">
+  <a href="https://github.com/seabbs/getTBinR/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -183,9 +186,17 @@ it will download the data dictionary, if download_data = TRUE, and save it into 
 it will download the data dictionary, if <code>download_data = TRUE</code>, and save it into the temporary</p>
     </div>
 
-    <pre class="usage"><span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>search_data_dict</span>(
+  <span class='kw'>var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>def</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dict</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>download_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>dict_save_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -247,63 +258,57 @@ searched for. If nothing is found then <code>NULL</code> is returned.</p>
     <pre class="examples"><div class='input'>
 <span class='co'>## Search for a known variable</span>
 <span class='co'>## Download and save the dictionary if it is not available locally</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for country</span></div><div class='output co'>#&gt; # A tibble: 1 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 4</span><span>
 #&gt;   variable_name dataset                code_list definition               
-#&gt;   &lt;chr&gt;         &lt;chr&gt;                  &lt;chr&gt;     &lt;chr&gt;                    
-#&gt; 1 country       Country identification ""        Country or territory name</div><div class='input'>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                    
+#&gt; </span><span style='color: #555555;'>1</span><span> country       Country identification </span><span style='color: #555555;'>""</span><span>        Country or territory name</div><div class='input'>
 <span class='co'>## Search for all variables mentioning mortality in their definition</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 9 x 4</span><span>
 #&gt;   variable_name      dataset  code_list definition                              
-#&gt;   &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;                                   
-#&gt; 1 e_mort_100k        Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 2 e_mort_100k_hi     Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 3 e_mort_100k_lo     Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 4 e_mort_exc_tbhiv_… Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 5 e_mort_exc_tbhiv_… Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 6 e_mort_exc_tbhiv_… Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 7 e_mort_tbhiv_100k  Estimat… ""        Estimated mortality of TB cases who are…
-#&gt; 8 e_mort_tbhiv_100k… Estimat… ""        Estimated mortality of TB cases who are…
-#&gt; 9 e_mort_tbhiv_100k… Estimat… ""        Estimated mortality of TB cases who are…</div><div class='input'>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                   
+#&gt; </span><span style='color: #555555;'>1</span><span> e_mort_100k        Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>2</span><span> e_mort_100k_hi     Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>3</span><span> e_mort_100k_lo     Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>4</span><span> e_mort_exc_tbhiv_… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>5</span><span> e_mort_exc_tbhiv_… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>6</span><span> e_mort_exc_tbhiv_… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>7</span><span> e_mort_tbhiv_100k  Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases who are…
+#&gt; </span><span style='color: #555555;'>8</span><span> e_mort_tbhiv_100k… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases who are…
+#&gt; </span><span style='color: #555555;'>9</span><span> e_mort_tbhiv_100k… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases who are…</div><div class='input'>
 <span class='co'>## Search for all variables in the Estimates dataset.</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"Estimates"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>65 results found for your dataset search for Estimates</span></div><div class='output co'>#&gt; # A tibble: 65 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"Estimates"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 65 x 4</span><span>
 #&gt;    variable_name dataset   code_list definition                                 
-#&gt;    &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                                      
-#&gt;  1 c_cdr         Estimates ""        Case detection rate (all forms) [also know…
-#&gt;  2 c_cdr_hi      Estimates ""        Case detection rate (all forms) [also know…
-#&gt;  3 c_cdr_lo      Estimates ""        Case detection rate (all forms) [also know…
-#&gt;  4 c_newinc_100k Estimates ""        Case notification rate, which is the total…
-#&gt;  5 cfr           Estimates ""        Estimated TB case fatality ratio           
-#&gt;  6 cfr_hi        Estimates ""        Estimated TB case fatality ratio: high bou…
-#&gt;  7 cfr_lo        Estimates ""        Estimated TB case fatality ratio: low bound
-#&gt;  8 cfr_pct       Estimates ""        Estimated TB case fatality ratio expressed…
-#&gt;  9 cfr_pct_hi    Estimates ""        Estimated TB case fatality ratio: high bou…
-#&gt; 10 cfr_pct_lo    Estimates ""        Estimated TB case fatality ratio: low boun…
-#&gt; # … with 55 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                      
+#&gt; </span><span style='color: #555555;'> 1</span><span> c_cdr         Estimates </span><span style='color: #555555;'>""</span><span>        Case detection rate (all forms) [also know…
+#&gt; </span><span style='color: #555555;'> 2</span><span> c_cdr_hi      Estimates </span><span style='color: #555555;'>""</span><span>        Case detection rate (all forms) [also know…
+#&gt; </span><span style='color: #555555;'> 3</span><span> c_cdr_lo      Estimates </span><span style='color: #555555;'>""</span><span>        Case detection rate (all forms) [also know…
+#&gt; </span><span style='color: #555555;'> 4</span><span> c_newinc_100k Estimates </span><span style='color: #555555;'>""</span><span>        Case notification rate, which is the total…
+#&gt; </span><span style='color: #555555;'> 5</span><span> cfr           Estimates </span><span style='color: #555555;'>""</span><span>        Estimated TB case fatality ratio           
+#&gt; </span><span style='color: #555555;'> 6</span><span> cfr_hi        Estimates </span><span style='color: #555555;'>""</span><span>        Estimated TB case fatality ratio: high bou…
+#&gt; </span><span style='color: #555555;'> 7</span><span> cfr_lo        Estimates </span><span style='color: #555555;'>""</span><span>        Estimated TB case fatality ratio: low bound
+#&gt; </span><span style='color: #555555;'> 8</span><span> cfr_pct       Estimates </span><span style='color: #555555;'>""</span><span>        Estimated TB case fatality ratio expressed…
+#&gt; </span><span style='color: #555555;'> 9</span><span> cfr_pct_hi    Estimates </span><span style='color: #555555;'>""</span><span>        Estimated TB case fatality ratio: high bou…
+#&gt; </span><span style='color: #555555;'>10</span><span> cfr_pct_lo    Estimates </span><span style='color: #555555;'>""</span><span>        Estimated TB case fatality ratio: low boun…
+#&gt; </span><span style='color: #555555;'># … with 55 more rows</span><span></div><div class='input'>
 <span class='co'>## Search for both a known variable and for mortality being mentioned in there definition</span>
 <span class='co'>## Duplicate entries will be omitted.</span>
-<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading data from: /tmp/RtmpNd0myK/dictionary.rds</span></div><div class='output co'>#&gt; <span class='message'>1 results found for your variable search for e_mort_exc_tbhiv_100k</span></div><div class='output co'>#&gt; <span class='message'>9 results found for your definition search for mortality</span></div><div class='output co'>#&gt; # A tibble: 9 x 4
+<span class='fu'>search_data_dict</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"e_mort_exc_tbhiv_100k"</span>, <span class='kw'>def</span> <span class='kw'>=</span> <span class='st'>"mortality"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 9 x 4</span><span>
 #&gt;   variable_name      dataset  code_list definition                              
-#&gt;   &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;                                   
-#&gt; 1 e_mort_exc_tbhiv_… Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 2 e_mort_100k        Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 3 e_mort_100k_hi     Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 4 e_mort_100k_lo     Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 5 e_mort_exc_tbhiv_… Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 6 e_mort_exc_tbhiv_… Estimat… ""        Estimated mortality of TB cases (all fo…
-#&gt; 7 e_mort_tbhiv_100k  Estimat… ""        Estimated mortality of TB cases who are…
-#&gt; 8 e_mort_tbhiv_100k… Estimat… ""        Estimated mortality of TB cases who are…
-#&gt; 9 e_mort_tbhiv_100k… Estimat… ""        Estimated mortality of TB cases who are…</div><div class='input'>
-</div></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                   
+#&gt; </span><span style='color: #555555;'>1</span><span> e_mort_exc_tbhiv_… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>2</span><span> e_mort_100k        Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>3</span><span> e_mort_100k_hi     Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>4</span><span> e_mort_100k_lo     Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>5</span><span> e_mort_exc_tbhiv_… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>6</span><span> e_mort_exc_tbhiv_… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases (all fo…
+#&gt; </span><span style='color: #555555;'>7</span><span> e_mort_tbhiv_100k  Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases who are…
+#&gt; </span><span style='color: #555555;'>8</span><span> e_mort_tbhiv_100k… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases who are…
+#&gt; </span><span style='color: #555555;'>9</span><span> e_mort_tbhiv_100k… Estimat… </span><span style='color: #555555;'>""</span><span>        Estimated mortality of TB cases who are…</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -314,7 +319,7 @@ searched for. If nothing is found then <code>NULL</code> is returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

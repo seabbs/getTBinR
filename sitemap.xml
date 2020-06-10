@@ -7,6 +7,9 @@
     <loc>samabbott.co.uk/getTBinR//reference/available_datasets.html</loc>
   </url>
   <url>
+    <loc>samabbott.co.uk/getTBinR//reference/for_presentation.html</loc>
+  </url>
+  <url>
     <loc>samabbott.co.uk/getTBinR//reference/getTBinR-package.html</loc>
   </url>
   <url>
@@ -40,6 +43,12 @@
     <loc>samabbott.co.uk/getTBinR//reference/run_tb_dashboard.html</loc>
   </url>
   <url>
+    <loc>samabbott.co.uk/getTBinR//reference/scale_colour_who.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/getTBinR//reference/scale_fill_who.html</loc>
+  </url>
+  <url>
     <loc>samabbott.co.uk/getTBinR//reference/search_data_dict.html</loc>
   </url>
   <url>
@@ -47,6 +56,12 @@
   </url>
   <url>
     <loc>samabbott.co.uk/getTBinR//reference/summarise_tb_burden.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/getTBinR//reference/theme_who.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/getTBinR//reference/who_palettes.html</loc>
   </url>
   <url>
     <loc>samabbott.co.uk/getTBinR//reference/who_shapefile.html</loc>
