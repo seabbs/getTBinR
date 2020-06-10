@@ -31,7 +31,7 @@ BugReports: https://github.com/seabbs/getTBinR/issues
 Depends: 
     R (>= 3.3.0)
 Imports: 
-    data.table (>= 1.12.8),
+    data.table (>= 1.12.0),
     dplyr (>= 1.0.0),
     ggplot2 (>= 3.3.1),
     ggthemes (>= 4.2.0),

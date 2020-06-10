@@ -74,7 +74,7 @@ wanted and rates were estimated for countries.
 * Improved package DESCRIPTION for CRAN only users - suggested during review for JOSS submission by @[rrrlw](https://github.com/rrrlw).
 * Used `usethis::use_tidy_description` to improve DESCRIPTION formatting.
 * Added development documentation badge to the README + website.
-* Moved to automated pkgdown deployment using travis. Based on [this](https://pkgdown.r-lib.org/reference/deploy_site_github.html) and the [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
+* Moved to automated pkgdown deployment using travis. Based on [this](https://pkgdown.r-lib.org/reference/deploy_site_github.html) and the `dplyr` implementation.
 * Expanded travis testing grid based on `dplyr` implementation.
 * Updated earliest supported R version based on travis testing - now `3.2.0`. 
 * Used `usethis::use_tidy_versions()` to set package to dependent on package versions used during development work. Added this to makefile to make automated.
