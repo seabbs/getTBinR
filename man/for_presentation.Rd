@@ -4,7 +4,7 @@
 \alias{for_presentation}
 \title{Presentation style plots}
 \usage{
-for_presentation(plot, aspect_ratio = 0.5, font_increase = 1.5, ...)
+for_presentation(plot, aspect_ratio = 0.5, font_increase = 1.5)
 }
 \arguments{
 \item{plot}{The ggplot2 object to be adjusted.}
@@ -16,11 +16,11 @@ plot, defaults to 0.5.}
 1.5.}
 }
 \value{
-A plot adjusted for presentaion.
+A plot adjusted for presentation.
 }
 \description{
 This function adjusts the aspect ratio and default font size
-of a plot to improve readibility when including figures in presentations.
+of a plot to improve readability when including figures in presentations.
 }
 \examples{
 

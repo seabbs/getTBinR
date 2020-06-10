@@ -6,6 +6,7 @@ inst/doc
 inst/shiny/ExploreGlobalTB/rsconnect/
 country-report.html
 docs
+pkgdown
 .rstudio
 .local
 .config

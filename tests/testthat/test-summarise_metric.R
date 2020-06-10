@@ -27,10 +27,10 @@ test_that("summarise_metric can summarise incidence rates for a single country",
 
 
 test_that("summarise_metric can fail gracefully when extensive missing data is present.", {
-  sum_tab <- summarise_metric(test_df,
+  sum_tab <- suppressWarnings(summarise_metric(test_df,
     metric = "e_inc_num",
     countries = test_countries[1]
-  )
+  ))
   skip_on_cran()
   expect_known_output(sum_tab, file = "../../tests/test-files/summarise_metric/test-03.rds")
 })

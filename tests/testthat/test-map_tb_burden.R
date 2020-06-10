@@ -11,12 +11,12 @@ test_that("map_tb_burden produces a plot", {
 })
 
 test_that("map_tb_burden produces a plot when a log transform is used", {
-  plot <- suppressWarnings(map_tb_burden(trans = "log"))
+  plot <- suppressMessages(suppressWarnings(map_tb_burden(trans = "log")))
 
-  expect_true(!is.null(suppressWarnings(plot)))
-  expect_equal("ggplot", class(suppressWarnings(plot))[2])
+  expect_true(!is.null(suppressWarnings(suppressMessages(plot))))
+  expect_equal("ggplot", class(suppressWarnings(suppressMessages(plot)))[2])
   skip_on_cran()
-  vdiffr::expect_doppelganger("log-map", suppressWarnings(plot))
+  vdiffr::expect_doppelganger("log-map", suppressWarnings(suppressMessages(plot)))
 })
 
 test_that("map_tb_burden produces a plot with annual change", {

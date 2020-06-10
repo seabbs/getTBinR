@@ -109,10 +109,9 @@ test_df <- tibble::tibble(
 )
 
 result_df <- test_df
-result_df$Year <- result_df$year
 result_df$country <- factor(result_df$country)
 result_df$`Estimated incidence (all forms) per 100 000 population` <- result_df$e_inc_100k
-
+result_df$Year <- result_df$year
 
 test_that("prepare_df_plot correctly formats the input data.", {
   skip_on_cran()
@@ -128,12 +127,13 @@ test_that("prepare_df_plot correctly formats the input data.", {
 
 test_that("annual_change correctly transforms metric and confidence intervals", {
   result_df <- result_df[-1, ]
-  result_df <- result_df[, -ncol(result_df)]
+  result_df <- result_df[, (1:(ncol(result_df) - 2))]
   result_df$e_inc_100k <- 0.2
   result_df$e_inc_100k_lo <- 0.25
   result_df$e_inc_100k_hi <- 0.1
   result_df$`Percentage annual change: Estimated incidence (all forms) per 100 000 population` <- 0.2
-
+  result_df$Year <- result_df$year
+  
   df_annual_change <- prepare_df_plot(
     metric = "e_inc_100k", conf = c("_lo", "_hi"),
     df = test_df, annual_change = TRUE
